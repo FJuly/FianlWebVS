@@ -1,0 +1,91 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link href="~/Areas/Login/CSS/Index.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.7.1.min.js"></script>
+    <script src="~/Areas/Login/JS/Index.js"></script>
+
+    <title></title>
+    <script type="text/javascript">
+        ///Onload事件响应
+        //$(window).load(
+        //    function () {
+        //        ResizeWindow();
+        //        InitLeftMenu();
+        //    }
+        //    );
+
+
+
+        ///窗体resize事件响应
+        //$(window).resize(
+        //    function () {
+        //        ResizeWindow();
+        //    }
+        //    );
+    </script>
+</head>
+<body>
+    <div id="header">
+        <div id="header-left" title="FINAL实验室">
+            <div id="header-left-logo"></div>
+            <div id="header-left-name">FINAL实验室</div>
+        </div>
+        <div id="header-right">
+            <div id="header-right-content">
+                <div id="header-search">
+                    <div id="header-search-btn" >
+                    </div>
+                    <input id="header-search-text" type="text" />
+                </div>
+                <!-- 消息  --> 
+                <div id="header-msg-btn" >
+                </div>
+                <!-- 头像  -->
+                <div id="header-photo" >
+                </div>
+                <!-- nickname -->
+                <div id="header-nickname" >
+                    昵称.....
+                </div>
+                <!-- Logout -->
+                <div id="header-logout-btn" title="退出登陆" >
+                    <div id="header-logout-img" >
+                    </div>
+                    <div id="header-logout-text" >退出</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 左部收缩列表 -->
+    <div id="left">
+        <div class="menu" id="menu">
+        </div>
+       
+    </div>
+
+    <!--收缩按钮-->
+     <div id="left-shrink-btn" >
+    </div>
+
+    <!-- 主面板 -->
+    <div id="main">
+        <div class="top_nav" id="top-nav">
+            <div id="nav-body">
+                <ul>
+                </ul>
+            </div>
+        </div>
+        <div class="main_panel" id="main-panel">
+        </div>
+    </div>
+
+    <div id="footer"></div>
+</body>
+</html>
+

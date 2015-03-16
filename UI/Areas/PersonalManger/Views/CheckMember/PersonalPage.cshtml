@@ -1,0 +1,214 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+@model MODEL.T_MemberInformation
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>test</title>
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
+
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script>
+        //$(function () {
+        //    $('#datetimepicker').datetimepicker();
+        //})
+
+        function hide() {
+            $("#labinfor").css("display", "none");
+            $("#InformationForm").submit();
+        }
+    </script>
+</head>
+<body style="font-family: 'Microsoft YaHei'">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">修改信息</h3>
+        </div>
+        <div class="panel-body">
+            <div class="container" style="width: 1000px">
+
+                <form>
+                    <h4>修改头像</h4>
+                    <div class="row" style="height: 110px; text-align: left">
+                        <div class="col-md-offset-1 col-md-5">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <img src="/xiaolisha.jpg" alt="" class="img-circle" style="height: 80px; width: 80px" id="update-photo-img">
+                                </div>
+                                <div class="col-md-9">
+                                    <p>头像设置</p>
+                                    <p>支持 jpg、gif、png 等格式的图片（大小不能超过1024KB）</p>
+                                    <div style="position: relative">
+                                        <button style="width: 70px" class="btn btn-success btn-xs">预览</button>
+                                        <input type="file" style="position: absolute; top: 0px; left: 0px; width: 70px; opacity: 0" id="fileup" onchange="preImg(this.id,'update-photo-img')" />
+                                        <a href="#" role="button" style="width: 70px; margin-left: 5px" class="btn btn-success btn-xs" id="btn-submit" onclick="hide()">上传</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+                <form id="InformationForm" class="form-horizontal" action="/PersonalManger/CheckMember/AdminEdit" method="post">
+                    <div id="basicinfor">
+                        <h4>基本信息</h4>
+                        <div class="form-group">
+                            <label for="StuName" class="col-sm-2 control-label">姓名:</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" name="StuName" placeholder="姓名" value="@ViewBag.member.StuName">
+                            </div>
+                            <label for="Counselor" class="col-sm-2 control-label" style="padding: 0px">辅导员:</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" name="Counselor" placeholder="辅导员名称" value="@ViewBag.member.Counselor">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="LoginPwd" class="col-sm-2 control-label">登陆密码:</label>
+                            <div class="col-sm-4">
+                                <input type="password" class="form-control" name="password" placeholder="登陆密码"  value="@ViewBag.member.LoginPwd">
+                            </div>
+                            <label for="QQNum" class="col-sm-2 control-label">QQ:</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" name="QQ" placeholder="QQ" value="@ViewBag.member.QQNum">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="HeadTeacher" class="col-sm-2 control-label">班主任:</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" name="HeadTeacher" placeholder="班主任" value="@ViewBag.member.HeadTeacher">
+                            </div>
+                            <label for="UndergraduateTutor" class="col-sm-2 control-label">指导老师:</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" name="UndergraduateTutor" placeholder="指导老师" value="@ViewBag.member.UndergraduateTutor">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Class" class="col-sm-2 control-label">班级:</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" name="Class" placeholder="班级"  value="@ViewBag.member.Class">
+                            </div>
+                            <label for="Major" class="col-sm-2 control-label">专业:</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" name="Major" placeholder="专业" value="@ViewBag.member.Major">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="FamilyAddress" class="col-sm-2 control-label">家庭住址:</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" name="FamilyAddress" placeholder="家庭住址">
+                            </div>
+                            <label for="TelephoneNumber" class="col-sm-2 control-label">手机号码:</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" name="TelephoneNumber" placeholder="手机号码">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Email" class="col-sm-2 control-label">邮箱:</label>
+                            <div class="col-sm-4">
+                                <input type="Email" class="form-control" name="Email" placeholder="邮箱">
+                            </div>
+                            <label for="HomPhoneNumber" class="col-sm-2 control-label">家庭电话:</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" name="HomPhoneNumber" placeholder="家庭电话">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Gender" class="col-sm-2 control-label">性别:</label>
+                            <div class="col-sm-4">
+                                <select class="form-control" name="Gender">
+                                    <option value="10001">男</option>
+                                    <option value="10002">女</option>
+                                </select>
+                            </div>
+                            <label for="Sign" class="col-sm-2 control-label">个性签名:</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" name="Sign" placeholder="不超过10个字">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="otherinfor" class="col-sm-2 control-label">补充信息:</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="otherinfor" placeholder="不超过100个字">
+                            </div>
+                        </div>
+                    </div>
+                    <div id="labinfor">
+                        <h4>实验室信息</h4>
+                        <div class="form-group">
+                            <label for="Department" class="col-sm-2 control-label">部门:</label>
+                            <div class="col-sm-4">
+                                <select class="form-control" name="Department">
+                                    @foreach (MODEL.T_Department dep in ViewBag.dep as List<MODEL.T_Department>)
+                                    {
+                                        <option value="@dep.DepartmentId">@dep.DepartmentName</option>
+                                }
+                                </select>
+                            </div>
+
+                            <label for="TechnicaLevel" class="col-sm-2 control-label">技术层次:</label>
+                            <div class="col-sm-4">
+                                <select class="form-control" name="TechnicaLevel">
+                                    @foreach (MODEL.T_TechnicaLevel techLeval in ViewBag.techLeval as List<MODEL.T_TechnicaLevel>)
+                                    {
+                                        <option value="@techLeval.TechLevelId">@techLeval.TechLevelName</option>
+                                }
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="JoinTime" class="col-sm-2 control-label">加入时间:</label>
+                            <div class="col-sm-4">
+                                <input type="text" value="2012-06-15" class="form_datetime form-control" id="datetimepicker" name="JoinTime" readonly ">
+                            </div>
+                            <label for="EndTime" class="col-sm-2 control-label">退出时间:</label>
+                            <div class="col-sm-4">
+                                    <input type="text" value="2012-06-15" class="form_datetime form-control" name="EndTime" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="StudyGuideNumber" class="col-sm-2 control-label">学习顾问:</label>
+                            <div class="col-sm-4">
+                                <select class="form-control" name="StudyGuideNumber">
+                                    @foreach (MODEL.T_MemberInformation member in ViewBag.members as List<MODEL.T_MemberInformation>)
+                                    {
+                                        <option value="@member.StuNum">@member.StuName</option>
+                                }
+                                </select>
+                            </div>
+                            <label for="TechnicalGuideNumber" class="col-sm-2 control-label">技术指导:</label>
+                            <div class="col-sm-4">
+                                <select class="form-control" name="TechnicalGuideNumber">
+                                    @foreach (MODEL.T_MemberInformation member in ViewBag.members as List<MODEL.T_MemberInformation>)
+                                    {
+                                        <option value="@member.StuNum">@member.StuName</option>
+                                }
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+                <div class="row" style="margin-top: 30px">
+                    <div class="col-md-offset-10 col-md-2">
+                        <button type="button" class="btn btn-success" style="width: 120px">保存</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>

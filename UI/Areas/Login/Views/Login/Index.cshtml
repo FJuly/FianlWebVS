@@ -1,0 +1,79 @@
+﻿@{
+    Layout = null;
+}
+@model MODEL.ViewModel.LoginUser
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+@*    @System.Web.Optimization.Scripts.Render("~/jsValid")*@
+    <title></title>
+    <link href="~/Areas/Login/CSS/Login.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.7.1.min.js"></script>
+    <script src="~/Areas/Login/JS/Login.js"></script>
+
+@*    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>*@
+</head>
+<body>
+    <!--背景图-->
+    <div id="BackGroundDiv">
+         <div id="TopDivShadow"></div>
+         <div id="TopDiv">
+             <div id="LogoImg"></div>
+            <div id="title"><span>网络信息安全实验室</span></div>
+         </div>
+
+       <!-- 登录框-->
+        <div id="LoginBoxShadow">
+           
+        </div>
+@using (Html.BeginForm("Login", "Login", FormMethod.Post, new { @class = "form", @onsubmit = "return login()" }))
+{
+        <div id="LoginBox">
+        <!-- 用户名-->
+            <div id="UserNameDiv">
+                <div><span>用户名:</span></div>
+                <div id="UserNameText"><div id="UserNameImg"></div>@Html.TextBoxFor(u => u.LoginName, new { @Value=ViewData["Name"]})</div>
+            </div>
+            <!--密 码-->
+            <div id="PasswordDiv">
+               <div><span>密&nbsp;码:</span></div>
+                <div id="PasswordText"><div id="PasswordImg"></div>@Html.TextBoxFor(u=>u.Pwd)</div>
+                <div id="BackPassword"><a>找回密码</a></div>
+            </div>
+            <!--验证码-->
+            <div id="VCodeDiv">
+                <div><span>验证码:</span></div>
+                <div id="VCodeText"><input type="text" id="VCode" name="VCode"/></div>
+                <div id="VCodeImg"><img id="ValiCode" src="GetVcode"/></div>
+            </div>
+            <!--记住密码、自动登录-->
+            <div id="CheckBoxDiv">
+                <div id="RememberPwd"><input type="checkbox"/><span>记住密码</span></div>
+                <div id="AutoLogin">@Html.CheckBoxFor(u=>u.IsAlways)<span>自动登录</span></div>
+            </div>
+            <div id="btnLogin">
+                <div><input type="submit" value="登陆"/></div>
+            </div>
+        </div>
+}
+        <!--背景切换-->
+        <div id="BgSwitch">
+            <div id="bgOne"></div>
+            <div id="bgTwo"></div>
+            <div id="bgThree"></div>
+        </div>
+
+
+        <div id="BelowDiv">
+            <a href="#">关于我们</a><a href="#">联系我们</a><a href="#">友情链接</a><a href="#">加入我们</a><br/>
+            <hr/>
+            <span>湖南|长沙理工理工大学|Final团队</span><br/>
+            <span>CopyRight@2000-2014</span>
+        </div>
+    </div>
+</body>
+</html>

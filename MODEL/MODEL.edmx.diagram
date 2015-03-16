@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4361754232b242d7bf4b7628793e77d5" Name="关系图1">
+        <EntityTypeShape EntityType="LIMSDBModel.T_Department" Width="1.5" PointX="1.875" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LIMSDBModel.T_MemberInformation" Width="1.5" PointX="5" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="LIMSDBModel.T_Organization" Width="1.5" PointX="1.125" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="LIMSDBModel.T_ProjectType" Width="1.5" PointX="1.5" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LIMSDBModel.T_ProjPhase" Width="1.5" PointX="8.25" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="LIMSDBModel.T_TaskInformation" Width="1.5" PointX="8.25" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LIMSDBModel.T_TaskParticipation" Width="1.5" PointX="10.5" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="LIMSDBModel.T_TaskType" Width="1.5" PointX="8.625" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="LIMSDBModel.T_TechnicaLevel" Width="1.5" PointX="0.875" PointY="12.125" IsExpanded="true" />
+        <AssociationConnector Association="LIMSDBModel.FK__T_MemberI__Depar__173876EA" ManuallyRouted="false" />
+        <AssociationConnector Association="LIMSDBModel.FK__T_MemberI__Organ__1B0907CE" ManuallyRouted="false" />
+        <AssociationConnector Association="LIMSDBModel.FK__T_MemberI__Study__1920BF5C" ManuallyRouted="false" />
+        <AssociationConnector Association="LIMSDBModel.FK__T_MemberI__Techn__182C9B23" ManuallyRouted="false" />
+        <AssociationConnector Association="LIMSDBModel.FK__T_MemberI__Techn__1A14E395" ManuallyRouted="false" />
+        <AssociationConnector Association="LIMSDBModel.FK__T_TaskPar__TaskR__6C190EBB" ManuallyRouted="false" />
+        <AssociationConnector Association="LIMSDBModel.FK__T_TaskInf__ProjP__60A75C0F" ManuallyRouted="false" />
+        <AssociationConnector Association="LIMSDBModel.FK__T_TaskInf__TaskT__5EBF139D" ManuallyRouted="false" />
+        <AssociationConnector Association="LIMSDBModel.FK__T_TaskPar__TaskI__6B24EA82" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="LIMSDBModel.T_ProjectInformation" Width="1.5" PointX="1.125" PointY="17.875" />
+        <EntityTypeShape EntityType="LIMSDBModel.T_ProjectParticipation" Width="1.5" PointX="6.375" PointY="18.625" />
+        <EntityTypeShape EntityType="LIMSDBModel.T_Role" Width="1.5" PointX="12" PointY="21" />
+        <EntityTypeShape EntityType="LIMSDBModel.T_RoleAct" Width="1.5" PointX="10.25" PointY="18.875" />
+        <EntityTypeShape EntityType="LIMSDBModel.T_RolePermission" Width="1.5" PointX="14.125" PointY="18.125" />
+        <AssociationConnector Association="LIMSDBModel.FK__T_Project__ProjL__4F7CD00D" />
+        <AssociationConnector Association="LIMSDBModel.FK__T_Project__ProjP__5070F446" />
+        <AssociationConnector Association="LIMSDBModel.FK__T_Project__ProjR__5629CD9C" />
+        <AssociationConnector Association="LIMSDBModel.FK__T_RoleAct__RoleA__21B6055D" />
+        <AssociationConnector Association="LIMSDBModel.FK__T_Project__ProjI__5535A963" />
+        <AssociationConnector Association="LIMSDBModel.FK__T_Project__ProjT__4E88ABD4" />
+        <AssociationConnector Association="LIMSDBModel.FK__T_TaskInf__ProjI__5FB337D6" />
+        <AssociationConnector Association="LIMSDBModel.FK__T_RoleAct__RoleI__20C1E124" />
+        <AssociationConnector Association="LIMSDBModel.FK__T_RolePer__RoleI__300424B4" />
+        <EntityTypeShape EntityType="LIMSDBModel.T_Permission" Width="1.5" PointX="8.6792772806618714" PointY="2.2011101703164679" />
+        <AssociationConnector Association="LIMSDBModel.FK__T_RolePer__PerId__245D67DE" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

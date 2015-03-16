@@ -1,0 +1,1253 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="LIMSDBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="LIMSDBModelStoreContainer">
+          <EntitySet Name="T_Department" EntityType="LIMSDBModel.Store.T_Department" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="T_MemberInformation" EntityType="LIMSDBModel.Store.T_MemberInformation" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="T_Organization" EntityType="LIMSDBModel.Store.T_Organization" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="T_Permission" EntityType="LIMSDBModel.Store.T_Permission" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="T_ProjectInformation" EntityType="LIMSDBModel.Store.T_ProjectInformation" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="T_ProjectParticipation" EntityType="LIMSDBModel.Store.T_ProjectParticipation" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="T_ProjectType" EntityType="LIMSDBModel.Store.T_ProjectType" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="T_ProjPhase" EntityType="LIMSDBModel.Store.T_ProjPhase" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="T_Role" EntityType="LIMSDBModel.Store.T_Role" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="T_RoleAct" EntityType="LIMSDBModel.Store.T_RoleAct" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="T_RolePermission" EntityType="LIMSDBModel.Store.T_RolePermission" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="T_TaskInformation" EntityType="LIMSDBModel.Store.T_TaskInformation" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="T_TaskParticipation" EntityType="LIMSDBModel.Store.T_TaskParticipation" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="T_TaskType" EntityType="LIMSDBModel.Store.T_TaskType" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="T_TechnicaLevel" EntityType="LIMSDBModel.Store.T_TechnicaLevel" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK__T_MemberI__Depar__173876EA" Association="LIMSDBModel.Store.FK__T_MemberI__Depar__173876EA">
+            <End Role="T_Department" EntitySet="T_Department" />
+            <End Role="T_MemberInformation" EntitySet="T_MemberInformation" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_MemberI__Organ__1B0907CE" Association="LIMSDBModel.Store.FK__T_MemberI__Organ__1B0907CE">
+            <End Role="T_Organization" EntitySet="T_Organization" />
+            <End Role="T_MemberInformation" EntitySet="T_MemberInformation" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_MemberI__Study__1920BF5C" Association="LIMSDBModel.Store.FK__T_MemberI__Study__1920BF5C">
+            <End Role="T_MemberInformation" EntitySet="T_MemberInformation" />
+            <End Role="T_MemberInformation1" EntitySet="T_MemberInformation" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_MemberI__Techn__182C9B23" Association="LIMSDBModel.Store.FK__T_MemberI__Techn__182C9B23">
+            <End Role="T_TechnicaLevel" EntitySet="T_TechnicaLevel" />
+            <End Role="T_MemberInformation" EntitySet="T_MemberInformation" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_MemberI__Techn__1A14E395" Association="LIMSDBModel.Store.FK__T_MemberI__Techn__1A14E395">
+            <End Role="T_MemberInformation" EntitySet="T_MemberInformation" />
+            <End Role="T_MemberInformation1" EntitySet="T_MemberInformation" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_Project__ProjI__5535A963" Association="LIMSDBModel.Store.FK__T_Project__ProjI__5535A963">
+            <End Role="T_ProjectInformation" EntitySet="T_ProjectInformation" />
+            <End Role="T_ProjectParticipation" EntitySet="T_ProjectParticipation" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_Project__ProjL__4F7CD00D" Association="LIMSDBModel.Store.FK__T_Project__ProjL__4F7CD00D">
+            <End Role="T_MemberInformation" EntitySet="T_MemberInformation" />
+            <End Role="T_ProjectInformation" EntitySet="T_ProjectInformation" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_Project__ProjP__5070F446" Association="LIMSDBModel.Store.FK__T_Project__ProjP__5070F446">
+            <End Role="T_MemberInformation" EntitySet="T_MemberInformation" />
+            <End Role="T_ProjectInformation" EntitySet="T_ProjectInformation" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_Project__ProjR__5629CD9C" Association="LIMSDBModel.Store.FK__T_Project__ProjR__5629CD9C">
+            <End Role="T_MemberInformation" EntitySet="T_MemberInformation" />
+            <End Role="T_ProjectParticipation" EntitySet="T_ProjectParticipation" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_Project__ProjT__4E88ABD4" Association="LIMSDBModel.Store.FK__T_Project__ProjT__4E88ABD4">
+            <End Role="T_ProjectType" EntitySet="T_ProjectType" />
+            <End Role="T_ProjectInformation" EntitySet="T_ProjectInformation" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_RoleAct__RoleA__21B6055D" Association="LIMSDBModel.Store.FK__T_RoleAct__RoleA__21B6055D">
+            <End Role="T_MemberInformation" EntitySet="T_MemberInformation" />
+            <End Role="T_RoleAct" EntitySet="T_RoleAct" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_RoleAct__RoleI__20C1E124" Association="LIMSDBModel.Store.FK__T_RoleAct__RoleI__20C1E124">
+            <End Role="T_Role" EntitySet="T_Role" />
+            <End Role="T_RoleAct" EntitySet="T_RoleAct" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_RolePer__PerId__245D67DE" Association="LIMSDBModel.Store.FK__T_RolePer__PerId__245D67DE">
+            <End Role="T_Permission" EntitySet="T_Permission" />
+            <End Role="T_RolePermission" EntitySet="T_RolePermission" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_RolePer__RoleI__236943A5" Association="LIMSDBModel.Store.FK__T_RolePer__RoleI__236943A5">
+            <End Role="T_Role" EntitySet="T_Role" />
+            <End Role="T_RolePermission" EntitySet="T_RolePermission" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_TaskInf__ProjI__5FB337D6" Association="LIMSDBModel.Store.FK__T_TaskInf__ProjI__5FB337D6">
+            <End Role="T_ProjectInformation" EntitySet="T_ProjectInformation" />
+            <End Role="T_TaskInformation" EntitySet="T_TaskInformation" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_TaskInf__ProjP__60A75C0F" Association="LIMSDBModel.Store.FK__T_TaskInf__ProjP__60A75C0F">
+            <End Role="T_ProjPhase" EntitySet="T_ProjPhase" />
+            <End Role="T_TaskInformation" EntitySet="T_TaskInformation" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_TaskInf__TaskT__5EBF139D" Association="LIMSDBModel.Store.FK__T_TaskInf__TaskT__5EBF139D">
+            <End Role="T_TaskType" EntitySet="T_TaskType" />
+            <End Role="T_TaskInformation" EntitySet="T_TaskInformation" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_TaskPar__TaskI__6B24EA82" Association="LIMSDBModel.Store.FK__T_TaskPar__TaskI__6B24EA82">
+            <End Role="T_TaskInformation" EntitySet="T_TaskInformation" />
+            <End Role="T_TaskParticipation" EntitySet="T_TaskParticipation" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_TaskPar__TaskR__6C190EBB" Association="LIMSDBModel.Store.FK__T_TaskPar__TaskR__6C190EBB">
+            <End Role="T_MemberInformation" EntitySet="T_MemberInformation" />
+            <End Role="T_TaskParticipation" EntitySet="T_TaskParticipation" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="T_Department">
+          <Key>
+            <PropertyRef Name="DepartmentId" />
+          </Key>
+          <Property Name="DepartmentId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="DepartmentName" Type="nvarchar" Nullable="false" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="T_MemberInformation">
+          <Key>
+            <PropertyRef Name="StuNum" />
+          </Key>
+          <Property Name="StuNum" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="StuName" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="Gender" Type="nvarchar" Nullable="false" MaxLength="1" />
+          <Property Name="QQNum" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="Email" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="LoginPwd" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Birthday" Type="datetime" Nullable="false" />
+          <Property Name="PhotoPath" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="Class" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="JoinTime" Type="datetime" Nullable="false" />
+          <Property Name="EndTime" Type="datetime" Nullable="false" />
+          <Property Name="Major" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="Counselor" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="HeadTeacher" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="UndergraduateTutor" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="TelephoneNumber" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="HomPhoneNumber" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="FamilyAddress" Type="nvarchar" Nullable="false" MaxLength="80" />
+          <Property Name="Department" Type="int" Nullable="false" />
+          <Property Name="TechnicalLevel" Type="int" Nullable="false" />
+          <Property Name="StudyGuideNumber" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="TechnicalGuideNumber" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="Organization" Type="int" Nullable="false" />
+          <Property Name="IsDelete" Type="bit" Nullable="false" />
+          <Property Name="StandbyA" Type="nvarchar" MaxLength="20" />
+          <Property Name="StandbyB" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="T_Organization">
+          <Key>
+            <PropertyRef Name="OrganizationId" />
+          </Key>
+          <Property Name="OrganizationId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="OrganizationName" Type="nvarchar" Nullable="false" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="T_Permission">
+          <Key>
+            <PropertyRef Name="PerId" />
+          </Key>
+          <Property Name="PerId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="PerName" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="PerParent" Type="int" />
+          <Property Name="PerAreaName" Type="nvarchar" MaxLength="20" />
+          <Property Name="PerControllerName" Type="nvarchar" MaxLength="20" />
+          <Property Name="PerActionName" Type="nvarchar" MaxLength="20" />
+          <Property Name="PerFormMethod" Type="int" Nullable="false" />
+          <Property Name="PerIsDel" Type="bit" Nullable="false" />
+          <Property Name="PerIsShow" Type="bit" Nullable="false" />
+          <Property Name="PerAddTime" Type="datetime" Nullable="false" />
+          <Property Name="PerIco" Type="nvarchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="T_ProjectInformation">
+          <Key>
+            <PropertyRef Name="ProjId" />
+          </Key>
+          <Property Name="ProjId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ProjTypeId" Type="int" Nullable="false" />
+          <Property Name="ProjName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="ProjLeader" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="ProjPublisher" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="ProjStartTime" Type="datetime" Nullable="false" />
+          <Property Name="ExFinishiTime" Type="datetime" Nullable="false" />
+          <Property Name="AcFinishiTime" Type="datetime" Nullable="false" />
+          <Property Name="ProjProfile" Type="text" Nullable="false" />
+          <Property Name="ProjPay" Type="float" Nullable="false" />
+          <Property Name="ProjIncome" Type="float" Nullable="false" />
+          <Property Name="ProjMark" Type="text" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_ProjectParticipation">
+          <Key>
+            <PropertyRef Name="ProjId" />
+            <PropertyRef Name="ProjReceiver" />
+          </Key>
+          <Property Name="ProjId" Type="int" Nullable="false" />
+          <Property Name="ProjReceiver" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="IsDel" Type="bit" Nullable="false" />
+          <Property Name="AddTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="T_ProjectType">
+          <Key>
+            <PropertyRef Name="ProjTypeId" />
+          </Key>
+          <Property Name="ProjTypeId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ProjTypeName" Type="nvarchar" Nullable="false" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="T_ProjPhase">
+          <Key>
+            <PropertyRef Name="ProjPhaseId" />
+          </Key>
+          <Property Name="ProjPhaseId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ProjPhaseName" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="T_Role">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="nvarchar" Nullable="false" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="T_RoleAct">
+          <Key>
+            <PropertyRef Name="RoleId" />
+            <PropertyRef Name="RoleActor" />
+          </Key>
+          <Property Name="RoleId" Type="int" Nullable="false" />
+          <Property Name="RoleActor" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="AddTime" Type="datetime" />
+          <Property Name="IsDel" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_RolePermission">
+          <Key>
+            <PropertyRef Name="RoleId" />
+            <PropertyRef Name="PerId" />
+          </Key>
+          <Property Name="RoleId" Type="int" Nullable="false" />
+          <Property Name="PerId" Type="int" Nullable="false" />
+          <Property Name="AddTime" Type="datetime" />
+          <Property Name="IsDel" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_TaskInformation">
+          <Key>
+            <PropertyRef Name="TaskId" />
+          </Key>
+          <Property Name="TaskId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="TaskSender" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="TaskName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="TaskTypeId" Type="int" Nullable="false" />
+          <Property Name="TaskContent" Type="text" Nullable="false" />
+          <Property Name="TaskBegTime" Type="datetime" Nullable="false" />
+          <Property Name="TaskEndTime" Type="datetime" Nullable="false" />
+          <Property Name="ProjId" Type="int" Nullable="false" />
+          <Property Name="ProjPhaseId" Type="int" Nullable="false" />
+          <Property Name="TaskAttachmentPath" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="StandbyA" Type="nvarchar" MaxLength="20" />
+          <Property Name="StandbyB" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="T_TaskParticipation">
+          <Key>
+            <PropertyRef Name="TaskId" />
+            <PropertyRef Name="TaskReceiver" />
+          </Key>
+          <Property Name="TaskId" Type="int" Nullable="false" />
+          <Property Name="TaskReceiver" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="TaskGrade" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="IsRead" Type="bit" Nullable="false" />
+          <Property Name="IsComplete" Type="bit" Nullable="false" />
+          <Property Name="TaskResponse" Type="text" Nullable="false" />
+          <Property Name="StandA" Type="nvarchar" MaxLength="20" />
+          <Property Name="StandB" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="T_TaskType">
+          <Key>
+            <PropertyRef Name="TaskTypeId" />
+          </Key>
+          <Property Name="TaskTypeId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="TaskTypeName" Type="nvarchar" Nullable="false" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="T_TechnicaLevel">
+          <Key>
+            <PropertyRef Name="TechLevelId" />
+          </Key>
+          <Property Name="TechLevelId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="TechLevelName" Type="nvarchar" Nullable="false" MaxLength="20" />
+        </EntityType>
+        <Association Name="FK__T_MemberI__Depar__173876EA">
+          <End Role="T_Department" Type="LIMSDBModel.Store.T_Department" Multiplicity="1" />
+          <End Role="T_MemberInformation" Type="LIMSDBModel.Store.T_MemberInformation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_Department">
+              <PropertyRef Name="DepartmentId" />
+            </Principal>
+            <Dependent Role="T_MemberInformation">
+              <PropertyRef Name="Department" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_MemberI__Organ__1B0907CE">
+          <End Role="T_Organization" Type="LIMSDBModel.Store.T_Organization" Multiplicity="1" />
+          <End Role="T_MemberInformation" Type="LIMSDBModel.Store.T_MemberInformation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_Organization">
+              <PropertyRef Name="OrganizationId" />
+            </Principal>
+            <Dependent Role="T_MemberInformation">
+              <PropertyRef Name="Organization" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_MemberI__Study__1920BF5C">
+          <End Role="T_MemberInformation" Type="LIMSDBModel.Store.T_MemberInformation" Multiplicity="1" />
+          <End Role="T_MemberInformation1" Type="LIMSDBModel.Store.T_MemberInformation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_MemberInformation">
+              <PropertyRef Name="StuNum" />
+            </Principal>
+            <Dependent Role="T_MemberInformation1">
+              <PropertyRef Name="StudyGuideNumber" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_MemberI__Techn__182C9B23">
+          <End Role="T_TechnicaLevel" Type="LIMSDBModel.Store.T_TechnicaLevel" Multiplicity="1" />
+          <End Role="T_MemberInformation" Type="LIMSDBModel.Store.T_MemberInformation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_TechnicaLevel">
+              <PropertyRef Name="TechLevelId" />
+            </Principal>
+            <Dependent Role="T_MemberInformation">
+              <PropertyRef Name="TechnicalLevel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_MemberI__Techn__1A14E395">
+          <End Role="T_MemberInformation" Type="LIMSDBModel.Store.T_MemberInformation" Multiplicity="1" />
+          <End Role="T_MemberInformation1" Type="LIMSDBModel.Store.T_MemberInformation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_MemberInformation">
+              <PropertyRef Name="StuNum" />
+            </Principal>
+            <Dependent Role="T_MemberInformation1">
+              <PropertyRef Name="TechnicalGuideNumber" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_Project__ProjI__5535A963">
+          <End Role="T_ProjectInformation" Type="LIMSDBModel.Store.T_ProjectInformation" Multiplicity="1" />
+          <End Role="T_ProjectParticipation" Type="LIMSDBModel.Store.T_ProjectParticipation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_ProjectInformation">
+              <PropertyRef Name="ProjId" />
+            </Principal>
+            <Dependent Role="T_ProjectParticipation">
+              <PropertyRef Name="ProjId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_Project__ProjL__4F7CD00D">
+          <End Role="T_MemberInformation" Type="LIMSDBModel.Store.T_MemberInformation" Multiplicity="1" />
+          <End Role="T_ProjectInformation" Type="LIMSDBModel.Store.T_ProjectInformation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_MemberInformation">
+              <PropertyRef Name="StuNum" />
+            </Principal>
+            <Dependent Role="T_ProjectInformation">
+              <PropertyRef Name="ProjLeader" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_Project__ProjP__5070F446">
+          <End Role="T_MemberInformation" Type="LIMSDBModel.Store.T_MemberInformation" Multiplicity="1" />
+          <End Role="T_ProjectInformation" Type="LIMSDBModel.Store.T_ProjectInformation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_MemberInformation">
+              <PropertyRef Name="StuNum" />
+            </Principal>
+            <Dependent Role="T_ProjectInformation">
+              <PropertyRef Name="ProjPublisher" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_Project__ProjR__5629CD9C">
+          <End Role="T_MemberInformation" Type="LIMSDBModel.Store.T_MemberInformation" Multiplicity="1" />
+          <End Role="T_ProjectParticipation" Type="LIMSDBModel.Store.T_ProjectParticipation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_MemberInformation">
+              <PropertyRef Name="StuNum" />
+            </Principal>
+            <Dependent Role="T_ProjectParticipation">
+              <PropertyRef Name="ProjReceiver" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_Project__ProjT__4E88ABD4">
+          <End Role="T_ProjectType" Type="LIMSDBModel.Store.T_ProjectType" Multiplicity="1" />
+          <End Role="T_ProjectInformation" Type="LIMSDBModel.Store.T_ProjectInformation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_ProjectType">
+              <PropertyRef Name="ProjTypeId" />
+            </Principal>
+            <Dependent Role="T_ProjectInformation">
+              <PropertyRef Name="ProjTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_RoleAct__RoleA__21B6055D">
+          <End Role="T_MemberInformation" Type="LIMSDBModel.Store.T_MemberInformation" Multiplicity="1" />
+          <End Role="T_RoleAct" Type="LIMSDBModel.Store.T_RoleAct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_MemberInformation">
+              <PropertyRef Name="StuNum" />
+            </Principal>
+            <Dependent Role="T_RoleAct">
+              <PropertyRef Name="RoleActor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_RoleAct__RoleI__20C1E124">
+          <End Role="T_Role" Type="LIMSDBModel.Store.T_Role" Multiplicity="1" />
+          <End Role="T_RoleAct" Type="LIMSDBModel.Store.T_RoleAct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_Role">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="T_RoleAct">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_RolePer__PerId__245D67DE">
+          <End Role="T_Permission" Type="LIMSDBModel.Store.T_Permission" Multiplicity="1" />
+          <End Role="T_RolePermission" Type="LIMSDBModel.Store.T_RolePermission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_Permission">
+              <PropertyRef Name="PerId" />
+            </Principal>
+            <Dependent Role="T_RolePermission">
+              <PropertyRef Name="PerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_RolePer__RoleI__236943A5">
+          <End Role="T_Role" Type="LIMSDBModel.Store.T_Role" Multiplicity="1" />
+          <End Role="T_RolePermission" Type="LIMSDBModel.Store.T_RolePermission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_Role">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="T_RolePermission">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_TaskInf__ProjI__5FB337D6">
+          <End Role="T_ProjectInformation" Type="LIMSDBModel.Store.T_ProjectInformation" Multiplicity="1" />
+          <End Role="T_TaskInformation" Type="LIMSDBModel.Store.T_TaskInformation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_ProjectInformation">
+              <PropertyRef Name="ProjId" />
+            </Principal>
+            <Dependent Role="T_TaskInformation">
+              <PropertyRef Name="ProjId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_TaskInf__ProjP__60A75C0F">
+          <End Role="T_ProjPhase" Type="LIMSDBModel.Store.T_ProjPhase" Multiplicity="1" />
+          <End Role="T_TaskInformation" Type="LIMSDBModel.Store.T_TaskInformation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_ProjPhase">
+              <PropertyRef Name="ProjPhaseId" />
+            </Principal>
+            <Dependent Role="T_TaskInformation">
+              <PropertyRef Name="ProjPhaseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_TaskInf__TaskT__5EBF139D">
+          <End Role="T_TaskType" Type="LIMSDBModel.Store.T_TaskType" Multiplicity="1" />
+          <End Role="T_TaskInformation" Type="LIMSDBModel.Store.T_TaskInformation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_TaskType">
+              <PropertyRef Name="TaskTypeId" />
+            </Principal>
+            <Dependent Role="T_TaskInformation">
+              <PropertyRef Name="TaskTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_TaskPar__TaskI__6B24EA82">
+          <End Role="T_TaskInformation" Type="LIMSDBModel.Store.T_TaskInformation" Multiplicity="1" />
+          <End Role="T_TaskParticipation" Type="LIMSDBModel.Store.T_TaskParticipation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_TaskInformation">
+              <PropertyRef Name="TaskId" />
+            </Principal>
+            <Dependent Role="T_TaskParticipation">
+              <PropertyRef Name="TaskId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_TaskPar__TaskR__6C190EBB">
+          <End Role="T_MemberInformation" Type="LIMSDBModel.Store.T_MemberInformation" Multiplicity="1" />
+          <End Role="T_TaskParticipation" Type="LIMSDBModel.Store.T_TaskParticipation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_MemberInformation">
+              <PropertyRef Name="StuNum" />
+            </Principal>
+            <Dependent Role="T_TaskParticipation">
+              <PropertyRef Name="TaskReceiver" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="LIMSDBModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="LIMSDBEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="T_Department" EntityType="LIMSDBModel.T_Department" />
+          <EntitySet Name="T_MemberInformation" EntityType="LIMSDBModel.T_MemberInformation" />
+          <EntitySet Name="T_Organization" EntityType="LIMSDBModel.T_Organization" />
+          <EntitySet Name="T_ProjectType" EntityType="LIMSDBModel.T_ProjectType" />
+          <EntitySet Name="T_ProjPhase" EntityType="LIMSDBModel.T_ProjPhase" />
+          <EntitySet Name="T_TaskInformation" EntityType="LIMSDBModel.T_TaskInformation" />
+          <EntitySet Name="T_TaskParticipation" EntityType="LIMSDBModel.T_TaskParticipation" />
+          <EntitySet Name="T_TaskType" EntityType="LIMSDBModel.T_TaskType" />
+          <EntitySet Name="T_TechnicaLevel" EntityType="LIMSDBModel.T_TechnicaLevel" />
+          <AssociationSet Name="FK__T_MemberI__Depar__173876EA" Association="LIMSDBModel.FK__T_MemberI__Depar__173876EA">
+            <End Role="T_Department" EntitySet="T_Department" />
+            <End Role="T_MemberInformation" EntitySet="T_MemberInformation" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_MemberI__Organ__1B0907CE" Association="LIMSDBModel.FK__T_MemberI__Organ__1B0907CE">
+            <End Role="T_Organization" EntitySet="T_Organization" />
+            <End Role="T_MemberInformation" EntitySet="T_MemberInformation" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_MemberI__Study__1920BF5C" Association="LIMSDBModel.FK__T_MemberI__Study__1920BF5C">
+            <End Role="T_MemberInformation" EntitySet="T_MemberInformation" />
+            <End Role="T_MemberInformation1" EntitySet="T_MemberInformation" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_MemberI__Techn__182C9B23" Association="LIMSDBModel.FK__T_MemberI__Techn__182C9B23">
+            <End Role="T_TechnicaLevel" EntitySet="T_TechnicaLevel" />
+            <End Role="T_MemberInformation" EntitySet="T_MemberInformation" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_MemberI__Techn__1A14E395" Association="LIMSDBModel.FK__T_MemberI__Techn__1A14E395">
+            <End Role="T_MemberInformation" EntitySet="T_MemberInformation" />
+            <End Role="T_MemberInformation1" EntitySet="T_MemberInformation" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_TaskPar__TaskR__6C190EBB" Association="LIMSDBModel.FK__T_TaskPar__TaskR__6C190EBB">
+            <End Role="T_MemberInformation" EntitySet="T_MemberInformation" />
+            <End Role="T_TaskParticipation" EntitySet="T_TaskParticipation" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_TaskInf__ProjP__60A75C0F" Association="LIMSDBModel.FK__T_TaskInf__ProjP__60A75C0F">
+            <End Role="T_ProjPhase" EntitySet="T_ProjPhase" />
+            <End Role="T_TaskInformation" EntitySet="T_TaskInformation" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_TaskInf__TaskT__5EBF139D" Association="LIMSDBModel.FK__T_TaskInf__TaskT__5EBF139D">
+            <End Role="T_TaskType" EntitySet="T_TaskType" />
+            <End Role="T_TaskInformation" EntitySet="T_TaskInformation" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_TaskPar__TaskI__6B24EA82" Association="LIMSDBModel.FK__T_TaskPar__TaskI__6B24EA82">
+            <End Role="T_TaskInformation" EntitySet="T_TaskInformation" />
+            <End Role="T_TaskParticipation" EntitySet="T_TaskParticipation" />
+          </AssociationSet>
+          <EntitySet Name="T_ProjectInformation" EntityType="LIMSDBModel.T_ProjectInformation" />
+          <EntitySet Name="T_ProjectParticipation" EntityType="LIMSDBModel.T_ProjectParticipation" />
+          <EntitySet Name="T_Role" EntityType="LIMSDBModel.T_Role" />
+          <EntitySet Name="T_RoleAct" EntityType="LIMSDBModel.T_RoleAct" />
+          <EntitySet Name="T_RolePermission" EntityType="LIMSDBModel.T_RolePermission" />
+          <AssociationSet Name="FK__T_Project__ProjL__4F7CD00D" Association="LIMSDBModel.FK__T_Project__ProjL__4F7CD00D">
+            <End Role="T_MemberInformation" EntitySet="T_MemberInformation" />
+            <End Role="T_ProjectInformation" EntitySet="T_ProjectInformation" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_Project__ProjP__5070F446" Association="LIMSDBModel.FK__T_Project__ProjP__5070F446">
+            <End Role="T_MemberInformation" EntitySet="T_MemberInformation" />
+            <End Role="T_ProjectInformation" EntitySet="T_ProjectInformation" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_Project__ProjR__5629CD9C" Association="LIMSDBModel.FK__T_Project__ProjR__5629CD9C">
+            <End Role="T_MemberInformation" EntitySet="T_MemberInformation" />
+            <End Role="T_ProjectParticipation" EntitySet="T_ProjectParticipation" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_RoleAct__RoleA__21B6055D" Association="LIMSDBModel.FK__T_RoleAct__RoleA__21B6055D">
+            <End Role="T_MemberInformation" EntitySet="T_MemberInformation" />
+            <End Role="T_RoleAct" EntitySet="T_RoleAct" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_Project__ProjI__5535A963" Association="LIMSDBModel.FK__T_Project__ProjI__5535A963">
+            <End Role="T_ProjectInformation" EntitySet="T_ProjectInformation" />
+            <End Role="T_ProjectParticipation" EntitySet="T_ProjectParticipation" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_Project__ProjT__4E88ABD4" Association="LIMSDBModel.FK__T_Project__ProjT__4E88ABD4">
+            <End Role="T_ProjectType" EntitySet="T_ProjectType" />
+            <End Role="T_ProjectInformation" EntitySet="T_ProjectInformation" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_TaskInf__ProjI__5FB337D6" Association="LIMSDBModel.FK__T_TaskInf__ProjI__5FB337D6">
+            <End Role="T_ProjectInformation" EntitySet="T_ProjectInformation" />
+            <End Role="T_TaskInformation" EntitySet="T_TaskInformation" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_RoleAct__RoleI__20C1E124" Association="LIMSDBModel.FK__T_RoleAct__RoleI__20C1E124">
+            <End Role="T_Role" EntitySet="T_Role" />
+            <End Role="T_RoleAct" EntitySet="T_RoleAct" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_RolePer__RoleI__300424B4" Association="LIMSDBModel.FK__T_RolePer__RoleI__300424B4">
+            <End Role="T_Role" EntitySet="T_Role" />
+            <End Role="T_RolePermission" EntitySet="T_RolePermission" />
+          </AssociationSet>
+          <EntitySet Name="T_Permission" EntityType="LIMSDBModel.T_Permission" />
+          <AssociationSet Name="FK__T_RolePer__PerId__245D67DE" Association="LIMSDBModel.FK__T_RolePer__PerId__245D67DE">
+            <End Role="T_Permission" EntitySet="T_Permission" />
+            <End Role="T_RolePermission" EntitySet="T_RolePermission" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="T_Department">
+          <Key>
+            <PropertyRef Name="DepartmentId" />
+          </Key>
+          <Property Name="DepartmentId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="DepartmentName" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="T_MemberInformation" Relationship="LIMSDBModel.FK__T_MemberI__Depar__173876EA" FromRole="T_Department" ToRole="T_MemberInformation" />
+        </EntityType>
+        <EntityType Name="T_MemberInformation">
+          <Key>
+            <PropertyRef Name="StuNum" />
+          </Key>
+          <Property Name="StuNum" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="StuName" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="Gender" Type="String" Nullable="false" MaxLength="1" Unicode="true" FixedLength="false" />
+          <Property Name="QQNum" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="LoginPwd" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Birthday" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="PhotoPath" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="Class" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="JoinTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EndTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Major" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="Counselor" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="HeadTeacher" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="UndergraduateTutor" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="TelephoneNumber" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="HomPhoneNumber" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="FamilyAddress" Type="String" Nullable="false" MaxLength="80" Unicode="true" FixedLength="false" />
+          <Property Name="Department" Type="Int32" Nullable="false" />
+          <Property Name="TechnicalLevel" Type="Int32" Nullable="false" />
+          <Property Name="StudyGuideNumber" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="TechnicalGuideNumber" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="Organization" Type="Int32" Nullable="false" />
+          <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+          <Property Name="StandbyA" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="StandbyB" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="T_Department" Relationship="LIMSDBModel.FK__T_MemberI__Depar__173876EA" FromRole="T_MemberInformation" ToRole="T_Department" />
+          <NavigationProperty Name="T_Organization" Relationship="LIMSDBModel.FK__T_MemberI__Organ__1B0907CE" FromRole="T_MemberInformation" ToRole="T_Organization" />
+          <NavigationProperty Name="T_MemberInformation1" Relationship="LIMSDBModel.FK__T_MemberI__Study__1920BF5C" FromRole="T_MemberInformation" ToRole="T_MemberInformation1" />
+          <NavigationProperty Name="T_MemberInformation2" Relationship="LIMSDBModel.FK__T_MemberI__Study__1920BF5C" FromRole="T_MemberInformation1" ToRole="T_MemberInformation" />
+          <NavigationProperty Name="T_TechnicaLevel" Relationship="LIMSDBModel.FK__T_MemberI__Techn__182C9B23" FromRole="T_MemberInformation" ToRole="T_TechnicaLevel" />
+          <NavigationProperty Name="T_MemberInformation11" Relationship="LIMSDBModel.FK__T_MemberI__Techn__1A14E395" FromRole="T_MemberInformation" ToRole="T_MemberInformation1" />
+          <NavigationProperty Name="T_MemberInformation3" Relationship="LIMSDBModel.FK__T_MemberI__Techn__1A14E395" FromRole="T_MemberInformation1" ToRole="T_MemberInformation" />
+          <NavigationProperty Name="T_TaskParticipation" Relationship="LIMSDBModel.FK__T_TaskPar__TaskR__6C190EBB" FromRole="T_MemberInformation" ToRole="T_TaskParticipation" />
+          <NavigationProperty Name="T_ProjectInformation" Relationship="LIMSDBModel.FK__T_Project__ProjL__4F7CD00D" FromRole="T_MemberInformation" ToRole="T_ProjectInformation" />
+          <NavigationProperty Name="T_ProjectInformation1" Relationship="LIMSDBModel.FK__T_Project__ProjP__5070F446" FromRole="T_MemberInformation" ToRole="T_ProjectInformation" />
+          <NavigationProperty Name="T_ProjectParticipation" Relationship="LIMSDBModel.FK__T_Project__ProjR__5629CD9C" FromRole="T_MemberInformation" ToRole="T_ProjectParticipation" />
+          <NavigationProperty Name="T_RoleAct" Relationship="LIMSDBModel.FK__T_RoleAct__RoleA__21B6055D" FromRole="T_MemberInformation" ToRole="T_RoleAct" />
+        </EntityType>
+        <EntityType Name="T_Organization">
+          <Key>
+            <PropertyRef Name="OrganizationId" />
+          </Key>
+          <Property Name="OrganizationId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="OrganizationName" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="T_MemberInformation" Relationship="LIMSDBModel.FK__T_MemberI__Organ__1B0907CE" FromRole="T_Organization" ToRole="T_MemberInformation" />
+        </EntityType>
+        <EntityType Name="T_ProjectType">
+          <Key>
+            <PropertyRef Name="ProjTypeId" />
+          </Key>
+          <Property Name="ProjTypeId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="ProjTypeName" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="T_ProjectInformation" Relationship="LIMSDBModel.FK__T_Project__ProjT__4E88ABD4" FromRole="T_ProjectType" ToRole="T_ProjectInformation" />
+        </EntityType>
+        <EntityType Name="T_ProjPhase">
+          <Key>
+            <PropertyRef Name="ProjPhaseId" />
+          </Key>
+          <Property Name="ProjPhaseId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="ProjPhaseName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="T_TaskInformation" Relationship="LIMSDBModel.FK__T_TaskInf__ProjP__60A75C0F" FromRole="T_ProjPhase" ToRole="T_TaskInformation" />
+        </EntityType>
+        <EntityType Name="T_TaskInformation">
+          <Key>
+            <PropertyRef Name="TaskId" />
+          </Key>
+          <Property Name="TaskId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="TaskSender" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="TaskName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="TaskTypeId" Type="Int32" Nullable="false" />
+          <Property Name="TaskContent" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="TaskBegTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TaskEndTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ProjId" Type="Int32" Nullable="false" />
+          <Property Name="ProjPhaseId" Type="Int32" Nullable="false" />
+          <Property Name="TaskAttachmentPath" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="StandbyA" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="StandbyB" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="T_ProjPhase" Relationship="LIMSDBModel.FK__T_TaskInf__ProjP__60A75C0F" FromRole="T_TaskInformation" ToRole="T_ProjPhase" />
+          <NavigationProperty Name="T_TaskType" Relationship="LIMSDBModel.FK__T_TaskInf__TaskT__5EBF139D" FromRole="T_TaskInformation" ToRole="T_TaskType" />
+          <NavigationProperty Name="T_TaskParticipation" Relationship="LIMSDBModel.FK__T_TaskPar__TaskI__6B24EA82" FromRole="T_TaskInformation" ToRole="T_TaskParticipation" />
+          <NavigationProperty Name="T_ProjectInformation" Relationship="LIMSDBModel.FK__T_TaskInf__ProjI__5FB337D6" FromRole="T_TaskInformation" ToRole="T_ProjectInformation" />
+        </EntityType>
+        <EntityType Name="T_TaskParticipation">
+          <Key>
+            <PropertyRef Name="TaskId" />
+            <PropertyRef Name="TaskReceiver" />
+          </Key>
+          <Property Name="TaskId" Type="Int32" Nullable="false" />
+          <Property Name="TaskReceiver" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="TaskGrade" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="IsRead" Type="Boolean" Nullable="false" />
+          <Property Name="IsComplete" Type="Boolean" Nullable="false" />
+          <Property Name="TaskResponse" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="StandA" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="StandB" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="T_MemberInformation" Relationship="LIMSDBModel.FK__T_TaskPar__TaskR__6C190EBB" FromRole="T_TaskParticipation" ToRole="T_MemberInformation" />
+          <NavigationProperty Name="T_TaskInformation" Relationship="LIMSDBModel.FK__T_TaskPar__TaskI__6B24EA82" FromRole="T_TaskParticipation" ToRole="T_TaskInformation" />
+        </EntityType>
+        <EntityType Name="T_TaskType">
+          <Key>
+            <PropertyRef Name="TaskTypeId" />
+          </Key>
+          <Property Name="TaskTypeId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="TaskTypeName" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="T_TaskInformation" Relationship="LIMSDBModel.FK__T_TaskInf__TaskT__5EBF139D" FromRole="T_TaskType" ToRole="T_TaskInformation" />
+        </EntityType>
+        <EntityType Name="T_TechnicaLevel">
+          <Key>
+            <PropertyRef Name="TechLevelId" />
+          </Key>
+          <Property Name="TechLevelId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="TechLevelName" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="T_MemberInformation" Relationship="LIMSDBModel.FK__T_MemberI__Techn__182C9B23" FromRole="T_TechnicaLevel" ToRole="T_MemberInformation" />
+        </EntityType>
+        <Association Name="FK__T_MemberI__Depar__173876EA">
+          <End Role="T_Department" Type="LIMSDBModel.T_Department" Multiplicity="1" />
+          <End Role="T_MemberInformation" Type="LIMSDBModel.T_MemberInformation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_Department">
+              <PropertyRef Name="DepartmentId" />
+            </Principal>
+            <Dependent Role="T_MemberInformation">
+              <PropertyRef Name="Department" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_MemberI__Organ__1B0907CE">
+          <End Role="T_Organization" Type="LIMSDBModel.T_Organization" Multiplicity="1" />
+          <End Role="T_MemberInformation" Type="LIMSDBModel.T_MemberInformation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_Organization">
+              <PropertyRef Name="OrganizationId" />
+            </Principal>
+            <Dependent Role="T_MemberInformation">
+              <PropertyRef Name="Organization" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_MemberI__Study__1920BF5C">
+          <End Role="T_MemberInformation" Type="LIMSDBModel.T_MemberInformation" Multiplicity="1" />
+          <End Role="T_MemberInformation1" Type="LIMSDBModel.T_MemberInformation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_MemberInformation">
+              <PropertyRef Name="StuNum" />
+            </Principal>
+            <Dependent Role="T_MemberInformation1">
+              <PropertyRef Name="StudyGuideNumber" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_MemberI__Techn__182C9B23">
+          <End Role="T_TechnicaLevel" Type="LIMSDBModel.T_TechnicaLevel" Multiplicity="1" />
+          <End Role="T_MemberInformation" Type="LIMSDBModel.T_MemberInformation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_TechnicaLevel">
+              <PropertyRef Name="TechLevelId" />
+            </Principal>
+            <Dependent Role="T_MemberInformation">
+              <PropertyRef Name="TechnicalLevel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_MemberI__Techn__1A14E395">
+          <End Role="T_MemberInformation" Type="LIMSDBModel.T_MemberInformation" Multiplicity="1" />
+          <End Role="T_MemberInformation1" Type="LIMSDBModel.T_MemberInformation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_MemberInformation">
+              <PropertyRef Name="StuNum" />
+            </Principal>
+            <Dependent Role="T_MemberInformation1">
+              <PropertyRef Name="TechnicalGuideNumber" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_TaskPar__TaskR__6C190EBB">
+          <End Role="T_MemberInformation" Type="LIMSDBModel.T_MemberInformation" Multiplicity="1" />
+          <End Role="T_TaskParticipation" Type="LIMSDBModel.T_TaskParticipation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_MemberInformation">
+              <PropertyRef Name="StuNum" />
+            </Principal>
+            <Dependent Role="T_TaskParticipation">
+              <PropertyRef Name="TaskReceiver" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_TaskInf__ProjP__60A75C0F">
+          <End Role="T_ProjPhase" Type="LIMSDBModel.T_ProjPhase" Multiplicity="1" />
+          <End Role="T_TaskInformation" Type="LIMSDBModel.T_TaskInformation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_ProjPhase">
+              <PropertyRef Name="ProjPhaseId" />
+            </Principal>
+            <Dependent Role="T_TaskInformation">
+              <PropertyRef Name="ProjPhaseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_TaskInf__TaskT__5EBF139D">
+          <End Role="T_TaskType" Type="LIMSDBModel.T_TaskType" Multiplicity="1" />
+          <End Role="T_TaskInformation" Type="LIMSDBModel.T_TaskInformation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_TaskType">
+              <PropertyRef Name="TaskTypeId" />
+            </Principal>
+            <Dependent Role="T_TaskInformation">
+              <PropertyRef Name="TaskTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_TaskPar__TaskI__6B24EA82">
+          <End Role="T_TaskInformation" Type="LIMSDBModel.T_TaskInformation" Multiplicity="1" />
+          <End Role="T_TaskParticipation" Type="LIMSDBModel.T_TaskParticipation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_TaskInformation">
+              <PropertyRef Name="TaskId" />
+            </Principal>
+            <Dependent Role="T_TaskParticipation">
+              <PropertyRef Name="TaskId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="T_ProjectInformation">
+          <Key>
+            <PropertyRef Name="ProjId" />
+          </Key>
+          <Property Type="Int32" Name="ProjId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="ProjTypeId" Nullable="false" />
+          <Property Type="String" Name="ProjName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ProjLeader" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ProjPublisher" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="ProjStartTime" Nullable="false" Precision="3" />
+          <Property Type="DateTime" Name="ExFinishiTime" Nullable="false" Precision="3" />
+          <Property Type="DateTime" Name="AcFinishiTime" Nullable="false" Precision="3" />
+          <Property Type="String" Name="ProjProfile" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="Double" Name="ProjPay" Nullable="false" />
+          <Property Type="Double" Name="ProjIncome" Nullable="false" />
+          <Property Type="String" Name="ProjMark" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="T_MemberInformation" Relationship="LIMSDBModel.FK__T_Project__ProjL__4F7CD00D" FromRole="T_ProjectInformation" ToRole="T_MemberInformation" />
+          <NavigationProperty Name="T_MemberInformation1" Relationship="LIMSDBModel.FK__T_Project__ProjP__5070F446" FromRole="T_ProjectInformation" ToRole="T_MemberInformation" />
+          <NavigationProperty Name="T_ProjectParticipation" Relationship="LIMSDBModel.FK__T_Project__ProjI__5535A963" FromRole="T_ProjectInformation" ToRole="T_ProjectParticipation" />
+          <NavigationProperty Name="T_ProjectType" Relationship="LIMSDBModel.FK__T_Project__ProjT__4E88ABD4" FromRole="T_ProjectInformation" ToRole="T_ProjectType" />
+          <NavigationProperty Name="T_TaskInformation" Relationship="LIMSDBModel.FK__T_TaskInf__ProjI__5FB337D6" FromRole="T_ProjectInformation" ToRole="T_TaskInformation" />
+        </EntityType>
+        <EntityType Name="T_ProjectParticipation">
+          <Key>
+            <PropertyRef Name="ProjId" />
+            <PropertyRef Name="ProjReceiver" />
+          </Key>
+          <Property Type="Int32" Name="ProjId" Nullable="false" />
+          <Property Type="String" Name="ProjReceiver" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="IsDel" Nullable="false" />
+          <Property Type="DateTime" Name="AddTime" Precision="3" />
+          <NavigationProperty Name="T_MemberInformation" Relationship="LIMSDBModel.FK__T_Project__ProjR__5629CD9C" FromRole="T_ProjectParticipation" ToRole="T_MemberInformation" />
+          <NavigationProperty Name="T_ProjectInformation" Relationship="LIMSDBModel.FK__T_Project__ProjI__5535A963" FromRole="T_ProjectParticipation" ToRole="T_ProjectInformation" />
+        </EntityType>
+        <EntityType Name="T_Role">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Type="Int32" Name="RoleId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="RoleName" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="T_RoleAct" Relationship="LIMSDBModel.FK__T_RoleAct__RoleI__20C1E124" FromRole="T_Role" ToRole="T_RoleAct" />
+          <NavigationProperty Name="T_RolePermission" Relationship="LIMSDBModel.FK__T_RolePer__RoleI__300424B4" FromRole="T_Role" ToRole="T_RolePermission" />
+        </EntityType>
+        <EntityType Name="T_RoleAct">
+          <Key>
+            <PropertyRef Name="RoleId" />
+            <PropertyRef Name="RoleActor" />
+          </Key>
+          <Property Type="Int32" Name="RoleId" Nullable="false" />
+          <Property Type="String" Name="RoleActor" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="AddTime" Precision="3" />
+          <Property Type="Boolean" Name="IsDel" Nullable="false" />
+          <NavigationProperty Name="T_MemberInformation" Relationship="LIMSDBModel.FK__T_RoleAct__RoleA__21B6055D" FromRole="T_RoleAct" ToRole="T_MemberInformation" />
+          <NavigationProperty Name="T_Role" Relationship="LIMSDBModel.FK__T_RoleAct__RoleI__20C1E124" FromRole="T_RoleAct" ToRole="T_Role" />
+        </EntityType>
+        <EntityType Name="T_RolePermission">
+          <Key>
+            <PropertyRef Name="RoleId" />
+            <PropertyRef Name="PerId" />
+          </Key>
+          <Property Type="Int32" Name="RoleId" Nullable="false" />
+          <Property Type="Int32" Name="PerId" Nullable="false" />
+          <Property Type="DateTime" Name="AddTime" Precision="3" />
+          <Property Type="Boolean" Name="IsDel" Nullable="false" />
+          <NavigationProperty Name="T_Role" Relationship="LIMSDBModel.FK__T_RolePer__RoleI__300424B4" FromRole="T_RolePermission" ToRole="T_Role" />
+          <NavigationProperty Name="T_Permission" Relationship="LIMSDBModel.FK__T_RolePer__PerId__245D67DE" FromRole="T_RolePermission" ToRole="T_Permission" />
+        </EntityType>
+        <Association Name="FK__T_Project__ProjL__4F7CD00D">
+          <End Type="LIMSDBModel.T_MemberInformation" Role="T_MemberInformation" Multiplicity="1" />
+          <End Type="LIMSDBModel.T_ProjectInformation" Role="T_ProjectInformation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_MemberInformation">
+              <PropertyRef Name="StuNum" />
+            </Principal>
+            <Dependent Role="T_ProjectInformation">
+              <PropertyRef Name="ProjLeader" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_Project__ProjP__5070F446">
+          <End Type="LIMSDBModel.T_MemberInformation" Role="T_MemberInformation" Multiplicity="1" />
+          <End Type="LIMSDBModel.T_ProjectInformation" Role="T_ProjectInformation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_MemberInformation">
+              <PropertyRef Name="StuNum" />
+            </Principal>
+            <Dependent Role="T_ProjectInformation">
+              <PropertyRef Name="ProjPublisher" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_Project__ProjR__5629CD9C">
+          <End Type="LIMSDBModel.T_MemberInformation" Role="T_MemberInformation" Multiplicity="1" />
+          <End Type="LIMSDBModel.T_ProjectParticipation" Role="T_ProjectParticipation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_MemberInformation">
+              <PropertyRef Name="StuNum" />
+            </Principal>
+            <Dependent Role="T_ProjectParticipation">
+              <PropertyRef Name="ProjReceiver" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_RoleAct__RoleA__21B6055D">
+          <End Type="LIMSDBModel.T_MemberInformation" Role="T_MemberInformation" Multiplicity="1" />
+          <End Type="LIMSDBModel.T_RoleAct" Role="T_RoleAct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_MemberInformation">
+              <PropertyRef Name="StuNum" />
+            </Principal>
+            <Dependent Role="T_RoleAct">
+              <PropertyRef Name="RoleActor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_Project__ProjI__5535A963">
+          <End Type="LIMSDBModel.T_ProjectInformation" Role="T_ProjectInformation" Multiplicity="1" />
+          <End Type="LIMSDBModel.T_ProjectParticipation" Role="T_ProjectParticipation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_ProjectInformation">
+              <PropertyRef Name="ProjId" />
+            </Principal>
+            <Dependent Role="T_ProjectParticipation">
+              <PropertyRef Name="ProjId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_Project__ProjT__4E88ABD4">
+          <End Type="LIMSDBModel.T_ProjectType" Role="T_ProjectType" Multiplicity="1" />
+          <End Type="LIMSDBModel.T_ProjectInformation" Role="T_ProjectInformation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_ProjectType">
+              <PropertyRef Name="ProjTypeId" />
+            </Principal>
+            <Dependent Role="T_ProjectInformation">
+              <PropertyRef Name="ProjTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_TaskInf__ProjI__5FB337D6">
+          <End Type="LIMSDBModel.T_ProjectInformation" Role="T_ProjectInformation" Multiplicity="1" />
+          <End Type="LIMSDBModel.T_TaskInformation" Role="T_TaskInformation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_ProjectInformation">
+              <PropertyRef Name="ProjId" />
+            </Principal>
+            <Dependent Role="T_TaskInformation">
+              <PropertyRef Name="ProjId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_RoleAct__RoleI__20C1E124">
+          <End Type="LIMSDBModel.T_Role" Role="T_Role" Multiplicity="1" />
+          <End Type="LIMSDBModel.T_RoleAct" Role="T_RoleAct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_Role">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="T_RoleAct">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_RolePer__RoleI__300424B4">
+          <End Type="LIMSDBModel.T_Role" Role="T_Role" Multiplicity="1" />
+          <End Type="LIMSDBModel.T_RolePermission" Role="T_RolePermission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_Role">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="T_RolePermission">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="T_Permission">
+          <Key>
+            <PropertyRef Name="PerId" />
+          </Key>
+          <Property Type="Int32" Name="PerId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="PerName" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="PerParent" />
+          <Property Type="String" Name="PerAreaName" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PerControllerName" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PerActionName" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="PerFormMethod" Nullable="false" />
+          <Property Type="Boolean" Name="PerIsDel" Nullable="false" />
+          <Property Type="Boolean" Name="PerIsShow" Nullable="false" />
+          <Property Type="DateTime" Name="PerAddTime" Nullable="false" Precision="3" />
+          <Property Type="String" Name="PerIco" MaxLength="30" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="T_RolePermission" Relationship="LIMSDBModel.FK__T_RolePer__PerId__245D67DE" FromRole="T_Permission" ToRole="T_RolePermission" />
+        </EntityType>
+        <Association Name="FK__T_RolePer__PerId__245D67DE">
+          <End Type="LIMSDBModel.T_Permission" Role="T_Permission" Multiplicity="1" />
+          <End Type="LIMSDBModel.T_RolePermission" Role="T_RolePermission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_Permission">
+              <PropertyRef Name="PerId" />
+            </Principal>
+            <Dependent Role="T_RolePermission">
+              <PropertyRef Name="PerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="LIMSDBModelStoreContainer" CdmEntityContainer="LIMSDBEntities">
+          <EntitySetMapping Name="T_Department">
+            <EntityTypeMapping TypeName="LIMSDBModel.T_Department">
+              <MappingFragment StoreEntitySet="T_Department">
+                <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+                <ScalarProperty Name="DepartmentName" ColumnName="DepartmentName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_MemberInformation">
+            <EntityTypeMapping TypeName="LIMSDBModel.T_MemberInformation">
+              <MappingFragment StoreEntitySet="T_MemberInformation">
+                <ScalarProperty Name="StuNum" ColumnName="StuNum" />
+                <ScalarProperty Name="StuName" ColumnName="StuName" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="QQNum" ColumnName="QQNum" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="LoginPwd" ColumnName="LoginPwd" />
+                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+                <ScalarProperty Name="PhotoPath" ColumnName="PhotoPath" />
+                <ScalarProperty Name="Class" ColumnName="Class" />
+                <ScalarProperty Name="JoinTime" ColumnName="JoinTime" />
+                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+                <ScalarProperty Name="Major" ColumnName="Major" />
+                <ScalarProperty Name="Counselor" ColumnName="Counselor" />
+                <ScalarProperty Name="HeadTeacher" ColumnName="HeadTeacher" />
+                <ScalarProperty Name="UndergraduateTutor" ColumnName="UndergraduateTutor" />
+                <ScalarProperty Name="TelephoneNumber" ColumnName="TelephoneNumber" />
+                <ScalarProperty Name="HomPhoneNumber" ColumnName="HomPhoneNumber" />
+                <ScalarProperty Name="FamilyAddress" ColumnName="FamilyAddress" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="TechnicalLevel" ColumnName="TechnicalLevel" />
+                <ScalarProperty Name="StudyGuideNumber" ColumnName="StudyGuideNumber" />
+                <ScalarProperty Name="TechnicalGuideNumber" ColumnName="TechnicalGuideNumber" />
+                <ScalarProperty Name="Organization" ColumnName="Organization" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="StandbyA" ColumnName="StandbyA" />
+                <ScalarProperty Name="StandbyB" ColumnName="StandbyB" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_Organization">
+            <EntityTypeMapping TypeName="LIMSDBModel.T_Organization">
+              <MappingFragment StoreEntitySet="T_Organization">
+                <ScalarProperty Name="OrganizationId" ColumnName="OrganizationId" />
+                <ScalarProperty Name="OrganizationName" ColumnName="OrganizationName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_ProjectType">
+            <EntityTypeMapping TypeName="LIMSDBModel.T_ProjectType">
+              <MappingFragment StoreEntitySet="T_ProjectType">
+                <ScalarProperty Name="ProjTypeId" ColumnName="ProjTypeId" />
+                <ScalarProperty Name="ProjTypeName" ColumnName="ProjTypeName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_ProjPhase">
+            <EntityTypeMapping TypeName="LIMSDBModel.T_ProjPhase">
+              <MappingFragment StoreEntitySet="T_ProjPhase">
+                <ScalarProperty Name="ProjPhaseId" ColumnName="ProjPhaseId" />
+                <ScalarProperty Name="ProjPhaseName" ColumnName="ProjPhaseName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_TaskInformation">
+            <EntityTypeMapping TypeName="LIMSDBModel.T_TaskInformation">
+              <MappingFragment StoreEntitySet="T_TaskInformation">
+                <ScalarProperty Name="TaskId" ColumnName="TaskId" />
+                <ScalarProperty Name="TaskSender" ColumnName="TaskSender" />
+                <ScalarProperty Name="TaskName" ColumnName="TaskName" />
+                <ScalarProperty Name="TaskTypeId" ColumnName="TaskTypeId" />
+                <ScalarProperty Name="TaskContent" ColumnName="TaskContent" />
+                <ScalarProperty Name="TaskBegTime" ColumnName="TaskBegTime" />
+                <ScalarProperty Name="TaskEndTime" ColumnName="TaskEndTime" />
+                <ScalarProperty Name="ProjId" ColumnName="ProjId" />
+                <ScalarProperty Name="ProjPhaseId" ColumnName="ProjPhaseId" />
+                <ScalarProperty Name="TaskAttachmentPath" ColumnName="TaskAttachmentPath" />
+                <ScalarProperty Name="StandbyA" ColumnName="StandbyA" />
+                <ScalarProperty Name="StandbyB" ColumnName="StandbyB" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_TaskParticipation">
+            <EntityTypeMapping TypeName="LIMSDBModel.T_TaskParticipation">
+              <MappingFragment StoreEntitySet="T_TaskParticipation">
+                <ScalarProperty Name="TaskId" ColumnName="TaskId" />
+                <ScalarProperty Name="TaskReceiver" ColumnName="TaskReceiver" />
+                <ScalarProperty Name="TaskGrade" ColumnName="TaskGrade" />
+                <ScalarProperty Name="IsRead" ColumnName="IsRead" />
+                <ScalarProperty Name="IsComplete" ColumnName="IsComplete" />
+                <ScalarProperty Name="TaskResponse" ColumnName="TaskResponse" />
+                <ScalarProperty Name="StandA" ColumnName="StandA" />
+                <ScalarProperty Name="StandB" ColumnName="StandB" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_TaskType">
+            <EntityTypeMapping TypeName="LIMSDBModel.T_TaskType">
+              <MappingFragment StoreEntitySet="T_TaskType">
+                <ScalarProperty Name="TaskTypeId" ColumnName="TaskTypeId" />
+                <ScalarProperty Name="TaskTypeName" ColumnName="TaskTypeName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_TechnicaLevel">
+            <EntityTypeMapping TypeName="LIMSDBModel.T_TechnicaLevel">
+              <MappingFragment StoreEntitySet="T_TechnicaLevel">
+                <ScalarProperty Name="TechLevelId" ColumnName="TechLevelId" />
+                <ScalarProperty Name="TechLevelName" ColumnName="TechLevelName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_ProjectInformation">
+            <EntityTypeMapping TypeName="LIMSDBModel.T_ProjectInformation">
+              <MappingFragment StoreEntitySet="T_ProjectInformation">
+                <ScalarProperty Name="ProjMark" ColumnName="ProjMark" />
+                <ScalarProperty Name="ProjIncome" ColumnName="ProjIncome" />
+                <ScalarProperty Name="ProjPay" ColumnName="ProjPay" />
+                <ScalarProperty Name="ProjProfile" ColumnName="ProjProfile" />
+                <ScalarProperty Name="AcFinishiTime" ColumnName="AcFinishiTime" />
+                <ScalarProperty Name="ExFinishiTime" ColumnName="ExFinishiTime" />
+                <ScalarProperty Name="ProjStartTime" ColumnName="ProjStartTime" />
+                <ScalarProperty Name="ProjPublisher" ColumnName="ProjPublisher" />
+                <ScalarProperty Name="ProjLeader" ColumnName="ProjLeader" />
+                <ScalarProperty Name="ProjName" ColumnName="ProjName" />
+                <ScalarProperty Name="ProjTypeId" ColumnName="ProjTypeId" />
+                <ScalarProperty Name="ProjId" ColumnName="ProjId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_ProjectParticipation">
+            <EntityTypeMapping TypeName="LIMSDBModel.T_ProjectParticipation">
+              <MappingFragment StoreEntitySet="T_ProjectParticipation">
+                <ScalarProperty Name="AddTime" ColumnName="AddTime" />
+                <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+                <ScalarProperty Name="ProjReceiver" ColumnName="ProjReceiver" />
+                <ScalarProperty Name="ProjId" ColumnName="ProjId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_Role">
+            <EntityTypeMapping TypeName="LIMSDBModel.T_Role">
+              <MappingFragment StoreEntitySet="T_Role">
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_RoleAct">
+            <EntityTypeMapping TypeName="LIMSDBModel.T_RoleAct">
+              <MappingFragment StoreEntitySet="T_RoleAct">
+                <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+                <ScalarProperty Name="AddTime" ColumnName="AddTime" />
+                <ScalarProperty Name="RoleActor" ColumnName="RoleActor" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_RolePermission">
+            <EntityTypeMapping TypeName="LIMSDBModel.T_RolePermission">
+              <MappingFragment StoreEntitySet="T_RolePermission">
+                <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+                <ScalarProperty Name="AddTime" ColumnName="AddTime" />
+                <ScalarProperty Name="PerId" ColumnName="PerId" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_Permission">
+            <EntityTypeMapping TypeName="LIMSDBModel.T_Permission">
+              <MappingFragment StoreEntitySet="T_Permission">
+                <ScalarProperty Name="PerIco" ColumnName="PerIco" />
+                <ScalarProperty Name="PerAddTime" ColumnName="PerAddTime" />
+                <ScalarProperty Name="PerIsShow" ColumnName="PerIsShow" />
+                <ScalarProperty Name="PerIsDel" ColumnName="PerIsDel" />
+                <ScalarProperty Name="PerFormMethod" ColumnName="PerFormMethod" />
+                <ScalarProperty Name="PerActionName" ColumnName="PerActionName" />
+                <ScalarProperty Name="PerControllerName" ColumnName="PerControllerName" />
+                <ScalarProperty Name="PerAreaName" ColumnName="PerAreaName" />
+                <ScalarProperty Name="PerParent" ColumnName="PerParent" />
+                <ScalarProperty Name="PerName" ColumnName="PerName" />
+                <ScalarProperty Name="PerId" ColumnName="PerId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

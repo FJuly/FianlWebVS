@@ -1,0 +1,247 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Index</title>
+<!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link href="~/left-top.css" rel="stylesheet" />
+    <link href="~/left.css" rel="stylesheet" />
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
+
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+    <script>
+        $(function () {
+            $(".form_datetime").datetimepicker({
+                format: yyyy - mm - dd,
+                weekStart: 1,
+                todayBtn: 1,
+                autoclose: 1,
+                todayHighlight: 1,
+                startView: 2,
+            });
+        })
+
+        function hide() {
+            $("#labinfor").css("display", "none");
+            $("#InformationForm").submit();
+        }
+
+        /*htm5实现图片本地预览，js代码*/
+        function preImg(sourceId, targetId) {
+            if (typeof FileReader === 'undefined') {
+                alert('你的浏览器不支持...');
+                return;
+            }
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                var img = document.getElementById(targetId);
+                img.src = this.result;
+            }
+            reader.readAsDataURL(document.getElementById(sourceId).files[0]);
+        }
+    </script>
+</head>
+<body style="background-color:rgb(237,241,249);font-family:'Microsoft YaHei'">
+
+    <div style="border: none; margin: 0 auto; width: 1157px; height: 45px; border-bottom: 2px solid rgb(39,184,165); margin-top: 20px">
+        <div class="title-png"></div>
+        <span class="title-info">个人资料</span>
+        <div style="float: right; border: none; margin-top: 5px; margin-right: 73px">
+            <button  data-toggle="modal" data-target="#myModal" class="title-btn">
+                编辑
+            </button>
+        </div>
+    </div>
+
+    <div style="margin: 0 auto; border: none; width: 1106px; margin-top: 16px">
+        <div style="float: left">
+            @*---------------左上角方框-------------------------------------------*@
+            <div style="border: none; width: 480px; height: 183px; position: relative">
+                <div class="div-top-img">
+                    <div class="div-top-circle">
+                        <div></div>
+                        <div style="margin-left: 390px"></div>
+                    </div>
+                    <div class="div-top-head">
+                        <div class="head-circle-my">
+                            <img src="~/xiaolisha.jpg" alt="头像" class="img-circle head-img" ">
+                        </div>
+                        <div class="div-top-info">
+                            <div class="top-info-text">
+                                <div style="font-size: 18px; font-family: 'Microsoft YaHei'; color: rgb(39,184,165); float: left">方 刚</div>
+                                <div class="gender-img"></div>
+                            </div>
+                            <div class="top-intro">
+                                <div class="intro-text">天行健，君子以自强不息</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="div-top-shadow"></div>
+            </div>
+
+            @*---------------左下角方框-------------------------------------------*@
+            <div style="border: none; width: 475px; position: relative; margin-top: 10px">
+                <div class="left-content">
+                    <div class="left-title">
+                        <div class="left-div-img" style="background-position: -67px -376px"></div>
+                        <span class="left-span-img">实验室信息</span>
+                    </div>
+                    <table class="left-table">
+                        <tr>
+                            <td class="left-td-one">
+                                <div style="background-position: -25px -245px;"></div>
+                            </td>
+                            <td class="left-td-two">
+                                <span>技术方向:</span>
+                                <span style="margin-left: 130px">.NET方向</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="left-td-one">
+                                <div style="background-position: -25px -287px;"></div>
+                            </td>
+                            <td class="left-td-two">
+                                <span>技术方向:</span>
+                                <span style="margin-left: 130px">.NET方向</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="left-td-one">
+                                <div style="background-position: -25px -331px;"></div>
+                            </td>
+                            <td class="left-td-two">
+                                <span>技术方向:</span>
+                                <span style="margin-left: 130px">.NET方向</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="left-td-one">
+                                <div style="background-position: -25px -373px;"></div>
+                            </td>
+                            <td class="left-td-two">
+                                <span>技术方向:</span>
+                                <span style="margin-left: 130px">.NET方向</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="left-td-one" style="border-bottom: none">
+                                <div style="background-position: -25px -331px;"></div>
+                            </td>
+                            <td class="left-td-two" style="border-bottom: none">
+                                <span>技术方向:</span>
+                                <span style="margin-left: 130px">.NET方向</span>
+                            </td>
+                        </tr>
+                    </table>
+                    <div style="width: 99.5%; border: 1px solid rgb(202,224,227); height: 67px">
+                        <div class="left-bottom-back" style="background-position: -66px -332px"></div>
+                    </div>
+                </div>
+                <div style="border: none; height: 465px; height: 340px; position: absolute; top: 10px; left: 10px; z-index: 1; background-color: rgb(220,234,236); width: 468px"></div>
+            </div>
+        </div>
+            @*---------------右边方框---------------------------------------------*@
+        <div style="float: left; margin-left: 20px">
+            <div style="border: none; width: 604px; position: relative">
+                <div class="right-content-my">
+                    <div class="left-title">
+                        <div class="left-div-img" style="background-position: -25px -156px"></div>
+                        <span class="left-span-img">基本信息</span>
+                    </div>
+                    <table class="right-table">
+                        <tr>
+                            <td>
+                                <div class="right-td-div right-td-div-position1"></div>
+                                <span class="right-table-span1">技术方向:</span>
+                                <span class="right-table-span2">.NET方向</span>
+                            </td>
+                            <td>
+                                <div class="right-td-div right-td-div-position1"></div>
+                                <span class="right-table-span1">技术方向:</span>
+                                <span class="right-table-span2">.NET方向</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="right-td-div right-td-div-position"></div>
+                                <span class="right-table-span1">技术方向:</span>
+                                <span class="right-table-span2">.NET方向</span>
+                            </td>
+                            <td>
+                                <div class="right-td-div right-td-div-position"></div>
+                                <span class="right-table-span1">技术方向:</span>
+                                <span class="right-table-span2">.NET方向</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="right-td-div right-td-div-position1"></div>
+                                <span class="right-table-span1">技术方向:</span>
+                                <span class="right-table-span2">.NET方向</span>
+                            </td>
+                            <td>
+                                <div class="right-td-div right-td-div-position1"></div>
+                                <span class="right-table-span1">技术方向:</span>
+                                <span class="right-table-span2">.NET方向</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="right-td-div right-td-div-position"></div>
+                                <span class="right-table-span1">技术方向:</span>
+                                <span class="right-table-span2">.NET方向</span>
+                            </td>
+                            <td>
+                                <div class="right-td-div right-td-div-position"></div>
+                                <span class="right-table-span1">技术方向:</span>
+                                <span class="right-table-span2">.NET方向</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="right-td-div right-td-div-position1"></div>
+                                <span class="right-table-span1">技术方向:</span>
+                                <span class="right-table-span2">.NET方向</span>
+                            </td>
+                            <td>
+                                <div class="right-td-div right-td-div-position1"></div>
+                                <span class="right-table-span1">技术方向:</span>
+                                <span class="right-table-span2">.NET方向</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="right-td-div right-td-div-position"></div>
+                                <span class="right-table-span1">技术方向:</span>
+                                <span class="right-table-span2">.NET方向</span>
+                            </td>
+                            <td>
+                                <div class="right-td-div right-td-div-position1"></div>
+                                <span class="right-table-span1">技术方向:</span>
+                                <span class="right-table-span2">.NET方向</span>
+                            </td>
+                        </tr>
+                    </table>
+                    <div style="border: 1px solid rgb(220,234,236); width: 100%; height: 169px;">
+                        <div style="border: 1px solid rgb(202,224,227); width: 542px; height: 130px; margin: 20px auto; border-radius: 5px">
+                            <p style="margin:10px 10px;line-height:1.428;font-size:14px;font-family:'Microsoft YaHei'">生活赋予我们一种巨大的和无限高贵的礼品，这就是青春：充满着力量，充满着期待志愿，充满着求知和斗争的志向，充满着希望信心和青春。</p>
+                        </div>
+                    </div>
+                </div>
+                <div style="border: none; height: 525px; width: 594px; position: absolute; top: 15px; left: 10px; z-index: 0; background-color: rgb(220,234,236)"></div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

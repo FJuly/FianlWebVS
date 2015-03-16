@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{14CFA3C9-2F8E-4B82-BE3F-601001DF7A30}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MODEL</RootNamespace>
+    <AssemblyName>MODEL</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DTO\MemberInformationDTO.cs" />
+    <Compile Include="ExtensionMODEL\T_MemberInformation.cs" />
+    <Compile Include="ExtensionMODEL\T_Permission.cs" />
+    <Compile Include="FormatModel\AjaxMsgModel.cs" />
+    <Compile Include="FormatModel\JsonModel.cs" />
+    <Compile Include="MenuMODEL\Icon.cs" />
+    <Compile Include="MenuMODEL\TreeNode.cs" />
+    <Compile Include="MODEL.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MODEL.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MODEL.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MODEL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MODEL.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MODEL.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="T_Department.cs">
+      <DependentUpon>MODEL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_MemberInformation.cs">
+      <DependentUpon>MODEL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_Organization.cs">
+      <DependentUpon>MODEL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_Permission.cs">
+      <DependentUpon>MODEL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_ProjectInformation.cs">
+      <DependentUpon>MODEL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_ProjectParticipation.cs">
+      <DependentUpon>MODEL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_ProjectType.cs">
+      <DependentUpon>MODEL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_ProjPhase.cs">
+      <DependentUpon>MODEL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_Role.cs">
+      <DependentUpon>MODEL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_RoleAct.cs">
+      <DependentUpon>MODEL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_RolePermission.cs">
+      <DependentUpon>MODEL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_TaskInformation.cs">
+      <DependentUpon>MODEL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_TaskParticipation.cs">
+      <DependentUpon>MODEL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_TaskType.cs">
+      <DependentUpon>MODEL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_TechnicaLevel.cs">
+      <DependentUpon>MODEL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\LoginUser.cs" />
+    <Compile Include="ViewModel\PageModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="MODEL.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>MODEL.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="MODEL.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MODEL.edmx</DependentUpon>
+      <LastGenOutput>MODEL.Context.cs</LastGenOutput>
+    </None>
+    <None Include="MODEL.edmx.diagram">
+      <DependentUpon>MODEL.edmx</DependentUpon>
+    </None>
+    <None Include="MODEL.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MODEL.edmx</DependentUpon>
+      <LastGenOutput>MODEL.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
