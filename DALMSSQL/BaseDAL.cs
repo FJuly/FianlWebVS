@@ -8,6 +8,7 @@ using System.Reflection;
 using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
+using MODEL;
 
 namespace DALMSSQL
 {
@@ -70,8 +71,7 @@ namespace DALMSSQL
             //4.1将 对象 添加到 EF中
             DbEntityEntry entry = db.Entry<T>(model);
             //4.2先设置 对象的包装 状态为 Unchanged
-            //这里存在问题
-            //entry.State = System.Data.EntityState.Unchanged; 
+            entry.State = System.Data.EntityState.Unchanged; 
             //4.3循环 被修改的属性名 数组
             foreach (string proName in proNames)
             {

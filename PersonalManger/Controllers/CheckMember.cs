@@ -8,6 +8,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using System.Web.Mvc;
 
 namespace PersonalManger
@@ -116,17 +117,39 @@ namespace PersonalManger
             List<MODEL.T_Department> dep = OperateContext.Current.BLLSession.IDepartmentBLL.GetListBy(u=>u.DepartmentId>0);
             List<MODEL.T_TechnicaLevel> techLeval = OperateContext.Current.BLLSession.ITechnicaLevelBLL.GetListBy(u=>u.TechLevelId>0);
             List<MODEL.T_MemberInformation> members = OperateContext.Current.BLLSession.IMemberInformationBLL.GetListBy(u=>u.StuNum.Contains("2012"));
+            List<MODEL.T_Organization> organization = OperateContext.Current.BLLSession.IOrganizationBLL.GetListBy(u=>u.OrganizationId>0);
             MODEL.T_MemberInformation member = OperateContext.Current.BLLSession.IMemberInformationBLL.GetListBy(u => u.StuNum=="201258080133").FirstOrDefault();
             ViewBag.dep = dep;
             ViewBag.techLeval = techLeval;
             ViewBag.members = members;
             ViewBag.member = member;
+            ViewBag.organization = organization;
             return View();
         }
         /*管理员修改*/
         public ActionResult AdminEdit(MODEL.T_MemberInformation member)
         {
-            return Content(member.Department.ToString());
+            /*EF修改主键一定要加*/
+            string[] proNames = new string[] { "StuNum", "StuName", "Gender", "Email", "LoginPwd", "Class", "Major", "Counselor", "HeadTeacher", "UndergraduateTutor", "TelephoneNumber",
+            "HomPhoneNumber","FamilyAddress","Department","TechnicalLevel","StudyGuideNumber","TechnicalGuideNumber","Organization","Sign","OtheInfor"};
+            OperateContext.Current.BLLSession.IMemberInformationBLL.Modify(member, proNames);
+            return Content("修改成功");
+        }
+
+        /*上传头像*/
+        public ActionResult UpLoadImg(HttpPostedFileBase UpLoadImg)
+        {
+            string fileName = UpLoadImg.FileName;
+            //转换只取得文件名，去掉路径。 
+            if (fileName.LastIndexOf("\\") > -1)
+            {
+                fileName = fileName.Substring(fileName.LastIndexOf("\\") + 1);
+            }
+            UpLoadImg.SaveAs(Server.MapPath("../../image/img/" + fileName));
+            string ImagePath = "../../image/img/" + fileName;
+            MODEL.T_MemberInformation user = new MODEL.T_MemberInformation() { PhotoPath=ImagePath};
+            OperateContext.Current.BLLSession.IMemberInformationBLL.Modify(user, new string[] { "PhotoPath" });
+            return View(); 
         }
     }
 }

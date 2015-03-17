@@ -80,6 +80,7 @@ namespace BLL
         /// <returns></returns>
         public int Modify(T model, params string[] proNames)
         {
+
             return idal.Modify(model, proNames);
         }
         #endregion

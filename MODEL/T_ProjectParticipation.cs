@@ -19,7 +19,7 @@ namespace MODEL
         public bool IsDel { get; set; }
         public Nullable<System.DateTime> AddTime { get; set; }
     
-        public virtual T_MemberInformation T_MemberInformation { get; set; }
         public virtual T_ProjectInformation T_ProjectInformation { get; set; }
+        public virtual T_MemberInformation T_MemberInformation { get; set; }
     }
 }

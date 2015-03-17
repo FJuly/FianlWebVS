@@ -18,11 +18,11 @@ namespace MODEL
         {
             this.T_MemberInformation1 = new HashSet<T_MemberInformation>();
             this.T_MemberInformation11 = new HashSet<T_MemberInformation>();
-            this.T_TaskParticipation = new HashSet<T_TaskParticipation>();
             this.T_ProjectInformation = new HashSet<T_ProjectInformation>();
             this.T_ProjectInformation1 = new HashSet<T_ProjectInformation>();
             this.T_ProjectParticipation = new HashSet<T_ProjectParticipation>();
             this.T_RoleAct = new HashSet<T_RoleAct>();
+            this.T_TaskParticipation = new HashSet<T_TaskParticipation>();
         }
     
         public string StuNum { get; set; }
@@ -31,7 +31,6 @@ namespace MODEL
         public string QQNum { get; set; }
         public string Email { get; set; }
         public string LoginPwd { get; set; }
-        public System.DateTime Birthday { get; set; }
         public string PhotoPath { get; set; }
         public string Class { get; set; }
         public System.DateTime JoinTime { get; set; }
@@ -49,8 +48,8 @@ namespace MODEL
         public string TechnicalGuideNumber { get; set; }
         public int Organization { get; set; }
         public bool IsDelete { get; set; }
-        public string StandbyA { get; set; }
-        public string StandbyB { get; set; }
+        public string Sign { get; set; }
+        public string OtheInfor { get; set; }
     
         public virtual T_Department T_Department { get; set; }
         public virtual T_Organization T_Organization { get; set; }
@@ -59,10 +58,10 @@ namespace MODEL
         public virtual T_TechnicaLevel T_TechnicaLevel { get; set; }
         public virtual ICollection<T_MemberInformation> T_MemberInformation11 { get; set; }
         public virtual T_MemberInformation T_MemberInformation3 { get; set; }
-        public virtual ICollection<T_TaskParticipation> T_TaskParticipation { get; set; }
         public virtual ICollection<T_ProjectInformation> T_ProjectInformation { get; set; }
         public virtual ICollection<T_ProjectInformation> T_ProjectInformation1 { get; set; }
         public virtual ICollection<T_ProjectParticipation> T_ProjectParticipation { get; set; }
         public virtual ICollection<T_RoleAct> T_RoleAct { get; set; }
+        public virtual ICollection<T_TaskParticipation> T_TaskParticipation { get; set; }
     }
 }

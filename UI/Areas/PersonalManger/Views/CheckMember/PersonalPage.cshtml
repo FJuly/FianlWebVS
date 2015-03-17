@@ -7,21 +7,58 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>test</title>
+    <!-- bootstrap的CSS文件-->
     <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css">
-
-    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
     <script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
-
     <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
     <script src="http://cdn.bootcss.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script src="~/jquery.form.min.js"></script>
     <script>
-        //$(function () {
-        //    $('#datetimepicker').datetimepicker();
-        //})
-
         function hide() {
-            $("#labinfor").css("display", "none");
-            $("#InformationForm").submit();
+            //$("#labinfor").css("display", "none");
+            $("#save").submit();
+        }
+
+        var options = {
+            target: '#output',    // 把服务器返回的内容放入id为output的元素中
+            beforeSubmit: showRequest,    // 提交前的回调函数
+            success: showResponse,    // 提交后的回调函数
+            // url : url,    //默认是form的action，如果申明，则会覆盖
+            // type : type,    // 默认值是form的method("GET" or "POST")，如果声明，则会覆盖
+            // dataType : null,    // html（默认）、xml、script、json接受服务器端返回的类型
+            // clearForm : true,    // 成功提交后，清除所有表单元素的值
+            // resetForm : true,    // 成功提交后，重置所有表单元素的值
+            timeout: 3000    // 限制请求的时间，当请求大于3秒后，跳出请求
+        }
+
+        function showRequest(formData, jqForm, options) {
+            alert('发送前');
+            // formData: 数组对象，提交表单时，form插件会以ajax方式自动提交这些数据，格式如[{name:user,value:val},{name:pwd,value:pwd}]
+            // jqForm: jQuery对象，封装了表单的元素
+            // options: options对象
+            var queryString = $.param(formData); // name=1&address=2
+            var formElement = jqForm[0]; // 将jqForm转换为DOM对象
+            var address = formElement.address.value; // 访问jqForm的DOM元素
+            return true; // 只要不返回false，表单都会提交，在这里可以对表单元素进行验证
+        }
+        function showResponse(responseText, statusText) {
+            // dataType=xml
+            var name = $("name", responseXML).text();
+            var address = $("address", responseXML).text();
+            $("#xmlout").html(name + " " + address);
+            // dataType=json
+            $("#jsonout").html(data.name + " " + data.address);
+        }
+
+        $("#UpLoadImg").submit(function () {
+            $(this).ajaxSubmit(function (options) {
+                alert("提交成功1");
+            });
+            return false;
+        });
+
+        function hide(){
+            $("#btn-submit").submit();
         }
     </script>
 </head>
@@ -33,7 +70,7 @@
         <div class="panel-body">
             <div class="container" style="width: 1000px">
 
-                <form>
+                <form id="UpLoadImg" action="/PersonalManger/CheckMember/UpLoadImg" method="post" enctype="multipart/form-data">
                     <h4>修改头像</h4>
                     <div class="row" style="height: 110px; text-align: left">
                         <div class="col-md-offset-1 col-md-5">
@@ -58,6 +95,7 @@
                 <form id="InformationForm" class="form-horizontal" action="/PersonalManger/CheckMember/AdminEdit" method="post">
                     <div id="basicinfor">
                         <h4>基本信息</h4>
+                        <input type="text" hidden name="StuNum" value="@ViewBag.member.StuNum"/>
                         <div class="form-group">
                             <label for="StuName" class="col-sm-2 control-label">姓名:</label>
                             <div class="col-sm-4">
@@ -72,7 +110,7 @@
                         <div class="form-group">
                             <label for="LoginPwd" class="col-sm-2 control-label">登陆密码:</label>
                             <div class="col-sm-4">
-                                <input type="password" class="form-control" name="password" placeholder="登陆密码"  value="@ViewBag.member.LoginPwd">
+                                <input type="password" class="form-control" name="LoginPwd" placeholder="登陆密码"  value="@ViewBag.member.LoginPwd">
                             </div>
                             <label for="QQNum" class="col-sm-2 control-label">QQ:</label>
                             <div class="col-sm-4">
@@ -144,14 +182,14 @@
                             </div>
                             <label for="Sign" class="col-sm-2 control-label">个性签名:</label>
                             <div class="col-sm-4">
-                                <input type="text" class="form-control" name="Sign" placeholder="不超过10个字">
+                                <input type="text" class="form-control" name="Sign" placeholder="不超过10个字" value="@ViewBag.member.Sign">
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="otherinfor" class="col-sm-2 control-label">补充信息:</label>
+                            <label for="OtheInfor" class="col-sm-2 control-label">补充信息:</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" name="otherinfor" placeholder="不超过100个字">
+                                <input type="text" class="form-control" name="OtheInfor" placeholder="不超过100个字" value="@ViewBag.member.OtheInfor">
                             </div>
                         </div>
                     </div>
@@ -176,7 +214,7 @@
 
                             <label for="TechnicaLevel" class="col-sm-2 control-label">技术层次:</label>
                             <div class="col-sm-4">
-                                <select class="form-control" name="TechnicaLevel">
+                                <select class="form-control" name="TechnicalLevel">
                                     @foreach (MODEL.T_TechnicaLevel techLeval in ViewBag.techLeval as List<MODEL.T_TechnicaLevel>)
                                     {
                                         if (techLeval.TechLevelId == ViewBag.member.TechnicalLevel)
@@ -195,7 +233,7 @@
                         <div class="form-group">
                             <label for="JoinTime" class="col-sm-2 control-label">加入时间:</label>
                             <div class="col-sm-4">
-                                <input type="text" value="2012-06-15" class="form_datetime form-control" id="datetimepicker" name="JoinTime" readonly ">
+                               <input type="date" value="2012-06-15" class="form_datetime form-control" name="EndTime" readonly>
                             </div>
                             <label for="EndTime" class="col-sm-2 control-label">退出时间:</label>
                             <div class="col-sm-4">
@@ -208,7 +246,14 @@
                                 <select class="form-control" name="StudyGuideNumber">
                                     @foreach (MODEL.T_MemberInformation member in ViewBag.members as List<MODEL.T_MemberInformation>)
                                     {
+                                        if (member.StuNum == @ViewBag.member.StudyGuideNumber)
+                                        {
+                                        <option value="@member.StuNum" selected = "selected">@member.StuName</option>
+                                        }
+                                        else
+                                        {
                                         <option value="@member.StuNum">@member.StuName</option>
+                                        }
                                     }
                                 </select>
                             </div>
@@ -217,7 +262,32 @@
                                 <select class="form-control" name="TechnicalGuideNumber">
                                     @foreach (MODEL.T_MemberInformation member in ViewBag.members as List<MODEL.T_MemberInformation>)
                                     {
+                                        if (member.StuNum == @ViewBag.member.TechnicalGuideNumber)
+                                        {
+                                        <option value="@member.StuNum" selected = "selected">@member.StuName</option>
+                                        }
+                                        else
+                                        {
                                         <option value="@member.StuNum">@member.StuName</option>
+                                        }
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="StudyGuideNumber" class="col-sm-2 control-label">学习顾问:</label>
+                            <div class="col-sm-4">
+                                <select class="form-control" name="Organization">
+                                    @foreach (MODEL.T_Organization orgnization in ViewBag.organization as List<MODEL.T_Organization>)
+                                    {
+                                        if (orgnization.OrganizationId == @ViewBag.member.Organization)
+                                        {
+                                        <option value="@orgnization.OrganizationId" selected = "selected">@orgnization.OrganizationName</option>
+                                        }
+                                        else
+                                        {
+                                        <option value="@orgnization.OrganizationId">@orgnization.OrganizationName</option>
+                                        }
                                     }
                                 </select>
                             </div>
@@ -227,7 +297,7 @@
 
                 <div class="row" style="margin-top: 30px">
                     <div class="col-md-offset-10 col-md-2">
-                        <button type="button" class="btn btn-success" style="width: 120px">保存</button>
+                        <button type="button" id="save" class="btn btn-success" style="width: 120px">保存</button>
                     </div>
                 </div>
 

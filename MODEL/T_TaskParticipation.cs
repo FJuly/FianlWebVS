@@ -23,7 +23,7 @@ namespace MODEL
         public string StandA { get; set; }
         public string StandB { get; set; }
     
-        public virtual T_MemberInformation T_MemberInformation { get; set; }
         public virtual T_TaskInformation T_TaskInformation { get; set; }
+        public virtual T_MemberInformation T_MemberInformation { get; set; }
     }
 }

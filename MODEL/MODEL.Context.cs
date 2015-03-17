@@ -26,7 +26,6 @@ namespace MODEL
         }
     
         public DbSet<T_Department> T_Department { get; set; }
-        public DbSet<T_MemberInformation> T_MemberInformation { get; set; }
         public DbSet<T_Organization> T_Organization { get; set; }
         public DbSet<T_ProjectType> T_ProjectType { get; set; }
         public DbSet<T_ProjPhase> T_ProjPhase { get; set; }
@@ -40,5 +39,6 @@ namespace MODEL
         public DbSet<T_RoleAct> T_RoleAct { get; set; }
         public DbSet<T_RolePermission> T_RolePermission { get; set; }
         public DbSet<T_Permission> T_Permission { get; set; }
+        public DbSet<T_MemberInformation> T_MemberInformation { get; set; }
     }
 }
