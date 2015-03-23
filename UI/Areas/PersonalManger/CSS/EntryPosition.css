@@ -38,11 +38,16 @@ body { }
 
 
 /*--------------------表格样式----------------------------------*/
-.table-self { border: 1px rgb(66,199,203) solid; height: 450px; width: 1056px; border-top: none; border-bottom: none; overFlow-x: hidden; }
+.table-self { border: 1px rgb(66,199,203) solid; height: 450px; width: 1056px; border-top: none; border-bottom: none; overFlow-x: hidden }
 
-.thead-tr > th { border: 1px rgb(66,199,203) solid; width: 146px; height: 36px; text-align: center; color: rgb(39,184,165); font-weight: bold; }
+.thead-tr > th { border: 1px rgb(66,199,203) solid; width: 170px; height: 36px; text-align: center; color: rgb(39,184,165); font-weight: bold; }
 
-.tbody-tr > td { border: 1px rgb(66,199,203) solid; width: 146px; height: 36px; text-align: center; }
+.tbody-tr > td { border: 1px rgb(66,199,203) solid; width: 170px; height: 36px; text-align: center;
+                 word-break:keep-all;/* 不换行 */
+white-space:nowrap;/* 不换行 */
+overflow:hidden;/* 内容超出宽度时隐藏超出部分的内容 */
+text-overflow:ellipsis;/* 当对象内文本溢出时显示省略标记(...) ；需与overflow:hidden;一起使用。*/
+}
 
 
 #head-th-first { width: 36px; border-left: none; }
@@ -70,7 +75,7 @@ body { }
 .a-refresh { background-position: -155px -75px; height: 20px; margin-left: 10px; margin-top: 7px; }
 
 
-.lable-text, .lable-page, .lable-text-right { float: left; color: black; font-family: 'Microsoft YaHei'; font-size: 9px; margin-top: 9px; margin-left: 10px; }
+.lable-text, .lable-page, .lable-text-right { float: left; color: black; font-family: 'Microsoft YaHei'; font-size: 9px; margin-top: 7px; margin-left: 10px; }
 
 .lable-text { margin-left: 12px; }
 .lable-page { margin-top: 7px; border: 1px rgb(39,184,165) solid; width: 25px; text-align: center; margin-left: 6px; }

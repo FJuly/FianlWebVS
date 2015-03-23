@@ -9,57 +9,9 @@
     <title>test</title>
     <!-- bootstrap的CSS文件-->
     <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css">
-    <script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
-    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
-    <script src="http://cdn.bootcss.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-    <script src="~/jquery.form.min.js"></script>
-    <script>
-        function hide() {
-            //$("#labinfor").css("display", "none");
-            $("#save").submit();
-        }
-
-        var options = {
-            target: '#output',    // 把服务器返回的内容放入id为output的元素中
-            beforeSubmit: showRequest,    // 提交前的回调函数
-            success: showResponse,    // 提交后的回调函数
-            // url : url,    //默认是form的action，如果申明，则会覆盖
-            // type : type,    // 默认值是form的method("GET" or "POST")，如果声明，则会覆盖
-            // dataType : null,    // html（默认）、xml、script、json接受服务器端返回的类型
-            // clearForm : true,    // 成功提交后，清除所有表单元素的值
-            // resetForm : true,    // 成功提交后，重置所有表单元素的值
-            timeout: 3000    // 限制请求的时间，当请求大于3秒后，跳出请求
-        }
-
-        function showRequest(formData, jqForm, options) {
-            alert('发送前');
-            // formData: 数组对象，提交表单时，form插件会以ajax方式自动提交这些数据，格式如[{name:user,value:val},{name:pwd,value:pwd}]
-            // jqForm: jQuery对象，封装了表单的元素
-            // options: options对象
-            var queryString = $.param(formData); // name=1&address=2
-            var formElement = jqForm[0]; // 将jqForm转换为DOM对象
-            var address = formElement.address.value; // 访问jqForm的DOM元素
-            return true; // 只要不返回false，表单都会提交，在这里可以对表单元素进行验证
-        }
-        function showResponse(responseText, statusText) {
-            // dataType=xml
-            var name = $("name", responseXML).text();
-            var address = $("address", responseXML).text();
-            $("#xmlout").html(name + " " + address);
-            // dataType=json
-            $("#jsonout").html(data.name + " " + data.address);
-        }
-
-        $("#UpLoadImg").submit(function () {
-            $(this).ajaxSubmit(function (options) {
-                alert("提交成功1");
-            });
-            return false;
-        });
-
-        function hide(){
-            $("#btn-submit").submit();
-        }
+    <script src="~/Scripts/jquery-1.7.1.min.js"></script>
+    <script src="~/jquery.form.js"></script>
+    <script>  
     </script>
 </head>
 <body style="font-family: 'Microsoft YaHei'">
@@ -67,6 +19,7 @@
         <div class="panel-heading">
             <h3 class="panel-title">修改信息</h3>
         </div>
+
         <div class="panel-body">
             <div class="container" style="width: 1000px">
 
@@ -76,14 +29,14 @@
                         <div class="col-md-offset-1 col-md-5">
                             <div class="row">
                                 <div class="col-md-3">
-                                    <img src="/xiaolisha.jpg" alt="" class="img-circle" style="height: 80px; width: 80px" id="update-photo-img">
+                                    <img src="/xiaolisha.jpg" alt="" class="img-circle" style="height:96px; width: 96px" id="update-photo-img">
                                 </div>
                                 <div class="col-md-9">
                                     <p>头像设置</p>
                                     <p>支持 jpg、gif、png 等格式的图片（大小不能超过1024KB）</p>
                                     <div style="position: relative">
                                         <button style="width: 70px" class="btn btn-success btn-xs">预览</button>
-                                        <input type="file" style="position: absolute; top: 0px; left: 0px; width: 70px; opacity: 0" id="fileup" onchange="preImg(this.id,'update-photo-img')" />
+                                        <input type="file" style="position: absolute; top: 0px; left: 0px; width: 70px; opacity: 0" id="fileup" onchange="preImg(this.id,'update-photo-img')" name="head" />
                                         <a href="#" role="button" style="width: 70px; margin-left: 5px" class="btn btn-success btn-xs" id="btn-submit" onclick="hide()">上传</a>
                                     </div>
                                 </div>
@@ -99,66 +52,66 @@
                         <div class="form-group">
                             <label for="StuName" class="col-sm-2 control-label">姓名:</label>
                             <div class="col-sm-4">
-                                <input type="text" class="form-control" name="StuName" placeholder="姓名" value="@ViewBag.member.StuName">
+                                <input type="text" class="form-control" name="StuName" placeholder="姓名" value="@ViewBag.member.StuName" required="required">
                             </div>
                             <label for="Counselor" class="col-sm-2 control-label" style="padding: 0px">辅导员:</label>
                             <div class="col-sm-4">
-                                <input type="text" class="form-control" name="Counselor" placeholder="辅导员名称" value="@ViewBag.member.Counselor">
+                                <input type="text" class="form-control" name="Counselor" placeholder="辅导员名称" value="@ViewBag.member.Counselor" required="required">
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label for="LoginPwd" class="col-sm-2 control-label">登陆密码:</label>
                             <div class="col-sm-4">
-                                <input type="password" class="form-control" name="LoginPwd" placeholder="登陆密码"  value="@ViewBag.member.LoginPwd">
+                                <input type="password" class="form-control" name="LoginPwd" placeholder="登陆密码"  value="@ViewBag.member.LoginPwd" required="required">
                             </div>
                             <label for="QQNum" class="col-sm-2 control-label">QQ:</label>
-                            <div class="col-sm-4">
-                                <input type="text" class="form-control" name="QQ" placeholder="QQ" value="@ViewBag.member.QQNum">
+                            <div class="col-sm-4"> 
+                                <input type="text" class="form-control" name="QQNum" placeholder="QQ" value="@ViewBag.member.QQNum" required="required">
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label for="HeadTeacher" class="col-sm-2 control-label">班主任:</label>
                             <div class="col-sm-4">
-                                <input type="text" class="form-control" name="HeadTeacher" placeholder="班主任" value="@ViewBag.member.HeadTeacher">
+                                <input type="text" class="form-control" name="HeadTeacher" placeholder="班主任" value="@ViewBag.member.HeadTeacher" required="required">
                             </div>
                             <label for="UndergraduateTutor" class="col-sm-2 control-label">指导老师:</label>
                             <div class="col-sm-4">
-                                <input type="text" class="form-control" name="UndergraduateTutor" placeholder="指导老师" value="@ViewBag.member.UndergraduateTutor">
+                                <input type="text" class="form-control" name="UndergraduateTutor" placeholder="指导老师" value="@ViewBag.member.UndergraduateTutor" required="required">
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label for="Class" class="col-sm-2 control-label">班级:</label>
                             <div class="col-sm-4">
-                                <input type="text" class="form-control" name="Class" placeholder="班级"  value="@ViewBag.member.Class">
+                                <input type="text" class="form-control" name="Class" placeholder="班级"  value="@ViewBag.member.Class" required="required">
                             </div>
                             <label for="Major" class="col-sm-2 control-label">专业:</label>
                             <div class="col-sm-4">
-                                <input type="text" class="form-control" name="Major" placeholder="专业" value="@ViewBag.member.Major">
+                                <input type="text" class="form-control" name="Major" placeholder="专业" value="@ViewBag.member.Major" required="required">
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label for="FamilyAddress" class="col-sm-2 control-label">家庭住址:</label>
                             <div class="col-sm-4">
-                                <input type="text" class="form-control" name="FamilyAddress" placeholder="家庭住址" value="@ViewBag.member.FamilyAddress">
+                                <input type="text" class="form-control" name="FamilyAddress" placeholder="家庭住址" value="@ViewBag.member.FamilyAddress" required="required">
                             </div>
                             <label for="TelephoneNumber" class="col-sm-2 control-label">手机号码:</label>
                             <div class="col-sm-4">
-                                <input type="text" class="form-control" name="TelephoneNumber" placeholder="手机号码" value="@ViewBag.member.TelephoneNumber">
+                                <input type="text" class="form-control" name="TelephoneNumber" placeholder="手机号码" value="@ViewBag.member.TelephoneNumber" required="required">
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label for="Email" class="col-sm-2 control-label">邮箱:</label>
                             <div class="col-sm-4">
-                                <input type="Email" class="form-control" name="Email" placeholder="邮箱" value="@ViewBag.member.Email">
+                                <input type="Email" class="form-control" name="Email" placeholder="邮箱" value="@ViewBag.member.Email" required="required">
                             </div>
                             <label for="HomPhoneNumber" class="col-sm-2 control-label">家庭电话:</label>
                             <div class="col-sm-4">
-                                <input type="text" class="form-control" name="HomPhoneNumber" placeholder="家庭电话"  value="@ViewBag.member.HomPhoneNumber">
+                                <input type="text" class="form-control" name="HomPhoneNumber" placeholder="家庭电话"  value="@ViewBag.member.HomPhoneNumber" required="required">
                             </div>
                         </div>
 
@@ -182,14 +135,14 @@
                             </div>
                             <label for="Sign" class="col-sm-2 control-label">个性签名:</label>
                             <div class="col-sm-4">
-                                <input type="text" class="form-control" name="Sign" placeholder="不超过10个字" value="@ViewBag.member.Sign">
+                                <input type="text" class="form-control" name="Sign" placeholder="不超过10个字" value="@ViewBag.member.Sign" maxlength="10">
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label for="OtheInfor" class="col-sm-2 control-label">补充信息:</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" name="OtheInfor" placeholder="不超过100个字" value="@ViewBag.member.OtheInfor">
+                                <input type="text" class="form-control" name="OtheInfor" placeholder="不超过100个字" value="@ViewBag.member.OtheInfor" maxlength="100">
                             </div>
                         </div>
                     </div>
@@ -233,11 +186,11 @@
                         <div class="form-group">
                             <label for="JoinTime" class="col-sm-2 control-label">加入时间:</label>
                             <div class="col-sm-4">
-                               <input type="date" value="2012-06-15" class="form_datetime form-control" name="EndTime" readonly>
+                                <input type="date" value="2012-06-15" class="form_datetime form-control" name="EndTime" readonly>
                             </div>
                             <label for="EndTime" class="col-sm-2 control-label">退出时间:</label>
                             <div class="col-sm-4">
-                                    <input type="text" value="2012-06-15" class="form_datetime form-control" name="EndTime" readonly>
+                                <input type="text" value="2012-06-15" class="form_datetime form-control" name="EndTime" readonly>
                             </div>
                         </div>
                         <div class="form-group">
@@ -275,7 +228,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="StudyGuideNumber" class="col-sm-2 control-label">学习顾问:</label>
+                            <label for="Organization" class="col-sm-2 control-label">学习顾问:</label>
                             <div class="col-sm-4">
                                 <select class="form-control" name="Organization">
                                     @foreach (MODEL.T_Organization orgnization in ViewBag.organization as List<MODEL.T_Organization>)
@@ -293,14 +246,14 @@
                             </div>
                         </div>
                     </div>
-                </form>
 
-                <div class="row" style="margin-top: 30px">
-                    <div class="col-md-offset-10 col-md-2">
-                        <button type="button" id="save" class="btn btn-success" style="width: 120px">保存</button>
+
+                    <div class="row" style="margin-top: 30px">
+                        <div class="col-md-offset-10 col-md-2">
+                            <input type="submit" id="save" class="btn btn-success" style="width: 120px" onclick="hide()" value="保存" />
+                        </div>
                     </div>
-                </div>
-
+                </form>
             </div>
         </div>
     </div>

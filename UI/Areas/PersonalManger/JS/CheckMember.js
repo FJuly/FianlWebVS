@@ -59,7 +59,7 @@ function PreCreateTable(jsonObj) {
 $.extend({
     Init: function () {
         $.ajax({
-            url: '/PersonnalManger/CheckMember/GetPageData',
+            url: '/PersonalManger/CheckMember/GetPageData',
             type: 'post',
             data: { "pageindex": pageIndex },
             success: function (json) {
@@ -136,7 +136,7 @@ $.extend({
             /*生成其他七列*/
             var $content = $("<td><a href='#' class='a-stum'>" + data[i].StuNum + "</a></td>" + "<td>" + data[i].StuName + "</td>"+
                 "<td>" + data[i].TelephoneNumber + "</td>" + "<td>" + data[i].Major + "</td>" + "<td>" + data[i].Department + "</td>"+
-                "<td>" + data[i].TechnicalLevel + "</td>" + "<td><a href='#' class='a-operate' onclick='Edit(" + data[i].StuNum + ")'>编辑</a> <a href='#' class='a-operate' id='a-operate-delete' onclick='Delete(" + data[i].StuNum + ")'>删除</a></td>");
+                "<td>" + data[i].TechnicalLevel + "</td>" + "<td><a href='#' class='a-operate' onclick='Edit(" + data[i].StuNum + ")'>录入</a> <a href='#' class='a-operate' id='a-operate-delete' onclick='Delete(" + data[i].StuNum + ")'>取消</a></td>");
             $tr.append($content);
             $body.append($tr);
         }

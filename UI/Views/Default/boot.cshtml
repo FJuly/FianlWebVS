@@ -6,220 +6,27 @@
 <html>
 <head>
     <title>Boot</title>
-<!-- 新 Bootstrap 核心 CSS 文件 -->
-<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css">
-    <link href="~/bootstrap-datetimepicker.min.css" rel="stylesheet" />
-    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
-    <script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
-
-    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
-    <script src="http://cdn.bootcss.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-    <script src="~/bootstrap-datetimepicker.min.js"></script>
+    <script src="~/Scripts/jquery-1.7.1.min.js"></script>
+    <script src="~/jquery.form.js"></script>
     <script>
-        $(function () {
-            $(".form_datetime").datetimepicker({
-                format: yyyy - mm - dd,
-                weekStart: 1,
-                todayBtn: 1,
-                autoclose: 1,
-                todayHighlight: 1,
-                startView: 2,
-            });
-        })
-
-        $(function () {
-            $("#btn-submit").click(function () {
-                alert("aaa");
-            });
-
-        });
-
-        /*htm5实现图片本地预览，js代码*/
-        function preImg(sourceId, targetId) {
-            if (typeof FileReader === 'undefined') {
-                alert('你的浏览器不支持...');
-                return;
-            }
-            var reader = new FileReader();
-
-            reader.onload = function (e) {
-                var img = document.getElementById(targetId);
-                img.src = this.result;
-            }
-            reader.readAsDataURL(document.getElementById(sourceId).files[0]);
+        function hide() {
+            alert("kkk");
+            //$("#labinfor").css("display", "none");
+            console.info($("#UpLoadImg"));
+            $("#UpLoadImg").AjaxSubmit()
+            alert("sss");
         }
+        $("#submit").submit(function () {
+            $("#UpLoadImg").ajaxSubmit();
+            return false;
+        })
     </script>
 </head>
-
 <body style="font-family:'Microsoft YaHei'">
-    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-        Launch demo modal
-    </button>
-
-    <!-- Modal -->
-    <div class="modal fade bs-example-modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog  modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">修改信息</h4>
-                </div>
-                <div class="modal-body">
-                    <form>
-                    <h4>修改头像</h4>
-                        <div class="row" style="height:110px; text-align: left">
-                            <div class="col-md-offset-1 col-md-5">
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <img src="~/xiaolisha.jpg" alt="" class="img-circle" style="height: 80px; width: 80px" id="update-photo-img">
-                                    </div>
-                                    <div class="col-md-9">
-                                        <p>头像设置</p>
-                                        <p>支持 jpg、gif、png 等格式的图片（大小不能超过1024KB）</p>
-                                        <div style="position:relative">
-                                            <button style="width:70px" class="btn btn-success btn-xs">预览</button>
-                                            <input type="file" style="position:absolute;top:0px;left:0px;width:70px;opacity:0" id="fileup" onchange="preImg(this.id,'update-photo-img')"/>
-                                            <a href="#" role="button" style="width:70px;margin-left:5px" onclick="alert('sss')" class="btn btn-success btn-xs" id="btn-submit">上传</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                    <form class="form-horizontal">
-                        <div id="basicinfor">
-                            <h4>基本信息</h4>
-                            <div class="form-group">
-                                <label for="inputName" class="col-sm-2 control-label">姓名:</label>
-                                <div class="col-sm-4">
-                                    <input type="text" class="form-control" id="inputName" placeholder="姓名">
-                                </div>
-                                <label for="Counselor" class="col-sm-2 control-label" style="padding: 0px">辅导员:</label>
-                                <div class="col-sm-4">
-                                    <input type="text" class="form-control" id="Counselor" placeholder="辅导员名称">
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="password" class="col-sm-2 control-label">登陆密码:</label>
-                                <div class="col-sm-4">
-                                    <input type="password" class="form-control" id="password" placeholder="登陆密码">
-                                </div>
-                                <label for="QQ" class="col-sm-2 control-label">QQ:</label>
-                                <div class="col-sm-4">
-                                    <input type="text" class="form-control" id="QQ" placeholder="QQ">
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="HeadTeacher" class="col-sm-2 control-label">班主任:</label>
-                                <div class="col-sm-4">
-                                    <input type="password" class="form-control" id="HeadTeacher" placeholder="班主任">
-                                </div>
-                                <label for="UndergraduateTutor" class="col-sm-2 control-label">指导老师:</label>
-                                <div class="col-sm-4">
-                                    <input type="text" class="form-control" id="UndergraduateTutor" placeholder="指导老师">
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="Class" class="col-sm-2 control-label">班级:</label>
-                                <div class="col-sm-4">
-                                    <input type="password" class="form-control" id="Class" placeholder="班主任">
-                                </div>
-                                <label for="Major" class="col-sm-2 control-label">专业:</label>
-                                <div class="col-sm-4">
-                                    <input type="text" class="form-control" id="Major" placeholder="专业">
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="FamilyAddress" class="col-sm-2 control-label">家庭住址:</label>
-                                <div class="col-sm-4">
-                                    <input type="password" class="form-control" id="FamilyAddress" placeholder="家庭住址">
-                                </div>
-                                <label for="TelephoneNumber" class="col-sm-2 control-label">手机号码:</label>
-                                <div class="col-sm-4">
-                                    <input type="text" class="form-control" id="TelephoneNumber" placeholder="手机号码">
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="Email" class="col-sm-2 control-label">邮箱:</label>
-                                <div class="col-sm-4">
-                                    <input type="password" class="form-control" id="Email" placeholder="邮箱">
-                                </div>
-                                <label for="HomPhoneNumber" class="col-sm-2 control-label">家庭电话:</label>
-                                <div class="col-sm-4">
-                                    <input type="text" class="form-control" id="HomPhoneNumber" placeholder="家庭电话">
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="Gender" class="col-sm-2 control-label">性别:</label>
-                                <div class="col-sm-4">
-                                    <select class="form-control" id="Gender">
-                                        <option>男</option>
-                                        <option>女</option>
-                                    </select>
-                                </div>
-                                <label for="oneWord" class="col-sm-2 control-label">个性签名:</label>
-                                <div class="col-sm-4">
-                                    <input type="text" class="form-control" id="oneWord" placeholder="不超过10个字">
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="otherinfor" class="col-sm-2 control-label">补充信息:</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="otherinfor" placeholder="不超过100个字">
-                                </div>
-                            </div>
-                        </div>
-                        <h4>实验室信息</h4>
-                        <div id="labinfor">
-                            <div class="form-group">
-                                <label for="Department" class="col-sm-2 control-label">部门:</label>
-                                <div class="col-sm-4">
-                                    <select class="form-control" id="Department">
-                                        <option>JAVA部门</option>
-                                        <option>.Net部门</option>
-                                        <option>硬件编程部</option>
-                                        <option>系统编程部</option>
-                                    </select>
-                                </div>
-
-                                <label for="TechnicaLevel" class="col-sm-2 control-label">技术层次:</label>
-                                <div class="col-sm-4">
-                                    <select class="form-control" id="TechnicaLevel">
-                                        <option>实习生</option>
-                                        <option>技术骨干</option>
-                                        <option>项目精英</option>
-                                        <option>正式成员</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="JoinTime" class="col-sm-2 control-label">加入时间:</label>
-                                <div class="col-sm-4">
-                                    <input type="text" value="2012-06-15"  class="form_datetime form-control">
-                                </div>
-                                <label for="EndTime" class="col-sm-2 control-label">退出时间:</label>
-                                <div class="col-sm-4">
-                                    <input type="text" value="2012-06-15"  class="form_datetime form-control">
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                    <button type="button" class="btn btn-primary">保存</button>
-                </div>
-            </div>
-        </div>
-    </div>
+    <form id="UpLoadImg" action="/PersonalManger/CheckMember/AdminEdit" method="post" enctype="multipart/form-data">
+        <input type="file" name="head"/>
+        <input type="submit" id="submit" value="提交">
+    </form>
+    <button onclick="hide()">提交</button>
 </body>
 </html>

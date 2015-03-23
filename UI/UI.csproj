@@ -122,16 +122,13 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Content Include="amazeui.datetimepicker.css" />
-    <Content Include="amazeui.datetimepicker.min.js" />
     <Content Include="Areas\Login\Images\background .png" />
+    <Content Include="Areas\PersonalManger\CSS\EntryPosition.css" />
     <Content Include="Areas\PersonalManger\Images\serach.png" />
     <Content Include="Areas\PersonalManger\JS\CheckMember.js" />
-    <Content Include="Areas\PersonalManger\JS\sco.valid.js" />
-    <Content Include="bootstrap-datetimepicker.min.css" />
-    <Content Include="bootstrap-datetimepicker.min.js" />
+    <Content Include="Areas\PersonalManger\JS\EntryPosition.js" />
     <Content Include="bootstrap.min.css" />
-    <Content Include="jquery.form.min.js" />
+    <Content Include="jquery.form.js" />
     <Content Include="left-top.css" />
     <Content Include="Global.asax" />
     <Content Include="Areas\Login\Views\Web.config" />
@@ -144,6 +141,7 @@
     <Content Include="left.css" />
     <Content Include="page.png" />
     <Content Include="xiaolisha.jpg" />
+    <Content Include="Areas\PersonalManger\Views\CheckMember\EntryPosition.cshtml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Areas\Login\CSS\Index.css" />
     <Content Include="Areas\Login\CSS\Login.css" />

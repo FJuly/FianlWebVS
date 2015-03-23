@@ -107,18 +107,18 @@ namespace PersonalManger
             {
                 return OperateContext.Current.RedirectAjax("err", "删除失败", null, null);
             }
-        } 
+        }
         #endregion
 
 
         public ViewResult PersonalPage()
         {
             /*准备好数据*/
-            List<MODEL.T_Department> dep = OperateContext.Current.BLLSession.IDepartmentBLL.GetListBy(u=>u.DepartmentId>0);
-            List<MODEL.T_TechnicaLevel> techLeval = OperateContext.Current.BLLSession.ITechnicaLevelBLL.GetListBy(u=>u.TechLevelId>0);
-            List<MODEL.T_MemberInformation> members = OperateContext.Current.BLLSession.IMemberInformationBLL.GetListBy(u=>u.StuNum.Contains("2012"));
-            List<MODEL.T_Organization> organization = OperateContext.Current.BLLSession.IOrganizationBLL.GetListBy(u=>u.OrganizationId>0);
-            MODEL.T_MemberInformation member = OperateContext.Current.BLLSession.IMemberInformationBLL.GetListBy(u => u.StuNum=="201258080133").FirstOrDefault();
+            List<MODEL.T_Department> dep = OperateContext.Current.BLLSession.IDepartmentBLL.GetListBy(u => u.DepartmentId > 0);
+            List<MODEL.T_TechnicaLevel> techLeval = OperateContext.Current.BLLSession.ITechnicaLevelBLL.GetListBy(u => u.TechLevelId > 0);
+            List<MODEL.T_MemberInformation> members = OperateContext.Current.BLLSession.IMemberInformationBLL.GetListBy(u => u.StuNum.Contains("2012"));
+            List<MODEL.T_Organization> organization = OperateContext.Current.BLLSession.IOrganizationBLL.GetListBy(u => u.OrganizationId > 0);
+            MODEL.T_MemberInformation member = OperateContext.Current.BLLSession.IMemberInformationBLL.GetListBy(u => u.StuNum == "201258080133").FirstOrDefault();
             ViewBag.dep = dep;
             ViewBag.techLeval = techLeval;
             ViewBag.members = members;
@@ -129,11 +129,19 @@ namespace PersonalManger
         /*管理员修改*/
         public ActionResult AdminEdit(MODEL.T_MemberInformation member)
         {
-            /*EF修改主键一定要加*/
-            string[] proNames = new string[] { "StuNum", "StuName", "Gender", "Email", "LoginPwd", "Class", "Major", "Counselor", "HeadTeacher", "UndergraduateTutor", "TelephoneNumber",
+            if (ModelState.IsValid)
+            {
+                /*EF修改主键一定要加*/
+                string[] proNames = new string[] { "StuNum", "StuName", "Gender", "Email", "LoginPwd", "Class", "Major", "Counselor", "HeadTeacher", "UndergraduateTutor", "TelephoneNumber",
             "HomPhoneNumber","FamilyAddress","Department","TechnicalLevel","StudyGuideNumber","TechnicalGuideNumber","Organization","Sign","OtheInfor"};
-            OperateContext.Current.BLLSession.IMemberInformationBLL.Modify(member, proNames);
-            return Content("修改成功");
+                OperateContext.Current.BLLSession.IMemberInformationBLL.Modify(member, proNames);
+                return Content("修改成功");
+            }
+            else
+            {
+                return Content("修改失败");
+            }
+
         }
 
         /*上传头像*/
@@ -147,9 +155,51 @@ namespace PersonalManger
             }
             UpLoadImg.SaveAs(Server.MapPath("../../image/img/" + fileName));
             string ImagePath = "../../image/img/" + fileName;
-            MODEL.T_MemberInformation user = new MODEL.T_MemberInformation() { PhotoPath=ImagePath};
+            MODEL.T_MemberInformation user = new MODEL.T_MemberInformation() { PhotoPath = ImagePath };
             OperateContext.Current.BLLSession.IMemberInformationBLL.Modify(user, new string[] { "PhotoPath" });
-            return View(); 
+            return View();
+        }
+
+        public ActionResult EntryPosition() {
+            return View();
+        }
+        public ActionResult GetEntryData(FormCollection form)
+        {
+            int pageIndex = Convert.ToInt32(form["pageindex"]);
+            int role = Convert.ToInt32(form["role"]);
+            int pageSize = 10;//页容量固定死为10
+            int totalRecord;
+            Expression<Func<MODEL.T_MemberInformation, bool>> whereLambda;
+            whereLambda = u => u.IsDelete == false && (u.T_RoleAct.Select(p => p.RoleId).Contains(role));
+            var list = OperateContext.Current.BLLSession.IMemberInformationBLL.GetPagedList(pageIndex, pageSize,
+                whereLambda, u => u.StuNum, out totalRecord).Select(u => new MemberInformationDTO()
+                {
+                    StuNum = u.StuNum,
+                    StuName = u.StuName,
+                    Major = u.Major,
+                    TelephoneNumber = u.TelephoneNumber,
+                    Department = u.T_Department.DepartmentName,//效率比较低
+                    TechnicalLevel = u.T_TechnicaLevel.TechLevelName//效率比较低
+                });
+            totalRecord = list.Count();
+            PageModel pageModel = new PageModel()
+            {
+                TotalRecord = totalRecord,
+                data = list
+            };
+
+            JsonModel json = new JsonModel()
+            {
+                Data = pageModel,
+                BackUrl = "",
+                Statu = "ok",
+                Msg = "成功"
+            };
+
+            JsonResult jr = new JsonResult();
+            jr.Data = json;
+            jr.JsonRequestBehavior = JsonRequestBehavior.AllowGet;
+            return jr;
         }
     }
 }

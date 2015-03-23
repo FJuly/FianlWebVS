@@ -8,10 +8,17 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <link href="~/bootstrap.min.css" rel="stylesheet" />
-    <link href="~/Areas/PersonalManger/CSS/CheckMember.css" rel="stylesheet" />
+    <link href="~/Areas/PersonalManger/CSS/EntryPosition.css" rel="stylesheet" />
     <script src="~/Areas/PersonalManger/JS/jquery-1.3.1.js"></script>
+    <script src="~/Areas/PersonalManger/JS/EntryPosition.js"></script>
     <title>Index</title>
-    <script src="~/Areas/PersonalManger/JS/CheckMember.js"></script>
+    <script>
+        //select改变事件函数
+        function check() {
+            var role=$('#input-text option:selected').val();//选中的值
+            $.Init(role);
+        }
+    </script>
 </head>
 <body>
     <div class="head">
@@ -23,10 +30,19 @@
     @*------------------------------------中间搜索框-----------------------------------*@
     <div class="toolbar">
         <div class="search">
-            <button class="ser-btn">搜索</button>
-            <div class="ser-img"></div>
+            <button class="ser-btn">职位</button>
             <div id="div-input">
-                <input type="text" id="input-text" placeholder="学号或姓名" value="" style="border: 1px solid none" />
+                <select id="input-text" style="border: 1px solid none; width: 152px" onchange="check()">
+                    <option value="10001">总裁</option>
+                    <option value="10002">部长</option>
+                    <option value="10003">学习顾问团团长</option>
+                    <option value="10004">学习顾问团团员</option>
+                    <option value="10005">活动策划组组长</option>
+                    <option value="10006">活动策划组组员</option>
+                    <option value="10007">财务主管</option>
+                    <option value="10008">实习生</option>
+                    <option value="10009">正式成员</option>
+                </select>
             </div>
         </div>
     </div>
@@ -44,7 +60,6 @@
                     <th>专业</th>
                     <th>所属部门</th>
                     <th>技术水平</th>
-                    <th id="head-th-last">操作</th>
                 </tr>
             </thead>
             <tbody id="body">
@@ -69,8 +84,5 @@
         <a class="a-refresh" href="###"></a>
         <label class="lable-text-right">显示1到10，总计15条记录</label>
     </div>
-
-    @*  --------- 遮罩效果，还没用-----------------------*@
-    <div class="theme-popover-mask"></div>
 </body>
 </html>
