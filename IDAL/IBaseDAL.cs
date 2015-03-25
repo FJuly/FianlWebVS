@@ -24,6 +24,17 @@ namespace IDAL
         int Add(T model);
         #endregion
 
+        #region int AddList(List<MODEL.T_RoleAct> list)+批量增加
+        /// <summary>
+        /// 批量增加
+        /// </summary>
+        /// <param name="list"></param>
+        /// <returns></returns>
+        int AddList(List<T> list); 
+        #endregion
+
+
+
         #region 2.0 根据 id 删除 +int Del(T model)
         /// <summary>
         /// 根据 id 删除

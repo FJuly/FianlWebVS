@@ -40,9 +40,9 @@ body { }
 /*--------------------表格样式----------------------------------*/
 .table-self { border: 1px rgb(66,199,203) solid; height: 450px; width: 1056px; border-top: none; border-bottom: none; overFlow-x: hidden }
 
-.thead-tr > th { border: 1px rgb(66,199,203) solid; width: 170px; height: 36px; text-align: center; color: rgb(39,184,165); font-weight: bold; }
+.thead-tr > th { border: 1px rgb(66,199,203) solid; width: 146px; height: 36px; text-align: center; color: rgb(39,184,165); font-weight: bold; }
 
-.tbody-tr > td { border: 1px rgb(66,199,203) solid; width: 170px; height: 36px; text-align: center;
+.tbody-tr > td { border: 1px rgb(66,199,203) solid; width: 146px; height: 36px; text-align: center;
                  word-break:keep-all;/* 不换行 */
 white-space:nowrap;/* 不换行 */
 overflow:hidden;/* 内容超出宽度时隐藏超出部分的内容 */
@@ -97,7 +97,7 @@ text-overflow:ellipsis;/* 当对象内文本溢出时显示省略标记(...) ；
 
 
 /*-----------------搜索框样式-------------*/
-
+#entry { float: left; margin-left: 20px; height: 28px; margin-top: 3px; width: 80px; }
 .toolbar { width: 1056px; height: 35px; border: 1px solid RGB(166,199,203); border-bottom: none; }
 .search { width: 214px; height: 26px; border: 1px solid rgb(237,121,141); margin-top: 3px; margin-left: 813px; border-radius: 3px; }
 

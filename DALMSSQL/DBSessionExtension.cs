@@ -229,7 +229,7 @@ namespace DALMSSQL
 			}
 		}
 		#endregion
-
+         
 		#region 14 数据接口 ITaskTypeDAL
 		ITaskTypeDAL iTaskTypeDAL;
 		public ITaskTypeDAL ITaskTypeDAL

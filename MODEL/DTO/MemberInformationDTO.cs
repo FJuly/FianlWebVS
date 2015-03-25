@@ -14,5 +14,6 @@ namespace MODEL.DTO
         public string Major;
         public string Department;
         public string TechnicalLevel;
+        public string roles;
     }
 }

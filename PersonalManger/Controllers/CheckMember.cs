@@ -160,17 +160,29 @@ namespace PersonalManger
             return View();
         }
 
-        public ActionResult EntryPosition() {
+        public ActionResult EntryPosition()
+        {
             return View();
         }
         public ActionResult GetEntryData(FormCollection form)
         {
             int pageIndex = Convert.ToInt32(form["pageindex"]);
             int role = Convert.ToInt32(form["role"]);
+            string datetime = "";
+            if (role == 10009 || role == 10008)
+            {
+                DateTime dt = DateTime.Now;
+                datetime = (dt.Year - 1).ToString();
+            }
+            else
+            {
+                DateTime dt = DateTime.Now;
+                datetime = (dt.Year - 3).ToString();
+            }
             int pageSize = 10;//页容量固定死为10
             int totalRecord;
             Expression<Func<MODEL.T_MemberInformation, bool>> whereLambda;
-            whereLambda = u => u.IsDelete == false && (u.T_RoleAct.Select(p => p.RoleId).Contains(role));
+            whereLambda = u => u.IsDelete == false && (u.StuNum.Contains(datetime));
             var list = OperateContext.Current.BLLSession.IMemberInformationBLL.GetPagedList(pageIndex, pageSize,
                 whereLambda, u => u.StuNum, out totalRecord).Select(u => new MemberInformationDTO()
                 {
@@ -179,7 +191,7 @@ namespace PersonalManger
                     Major = u.Major,
                     TelephoneNumber = u.TelephoneNumber,
                     Department = u.T_Department.DepartmentName,//效率比较低
-                    TechnicalLevel = u.T_TechnicaLevel.TechLevelName//效率比较低
+                    roles = string.Join(" ", u.T_RoleAct.OrderBy(s => s.RoleId).Select(p => p.T_Role.RoleName).ToArray())//效率比较低
                 });
             totalRecord = list.Count();
             PageModel pageModel = new PageModel()
@@ -201,5 +213,30 @@ namespace PersonalManger
             jr.JsonRequestBehavior = JsonRequestBehavior.AllowGet;
             return jr;
         }
+
+        public ActionResult EntryPositionEx(FormCollection form)
+        {
+            string[] StuNums = form["stunums"].Split(new char[] { ';' });
+            int role = Convert.ToInt32(form["form"]);
+            List<MODEL.T_RoleAct> listRole = new List<MODEL.T_RoleAct>(); ;
+            int count = 0;
+            for (int i = 0; i < StuNums.Length - 1; i++)
+            {
+                MODEL.T_RoleAct roleAct = new MODEL.T_RoleAct() { RoleId = role, RoleActor = StuNums[i], AddTime = DateTime.Now };
+                listRole.Add(roleAct);
+            }
+            try
+            {
+                //count= OperateContext.Current.BLLSession.IRoleActBLL.Add(listRole);
+            }
+            catch (Exception ex)
+            {
+                return Content(ex.Message);
+            }
+            return Content(count.ToString());
+        }
+
     }
+
+    /*怎么去重写List的tostring方法*/
 }

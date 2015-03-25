@@ -1,14 +1,52 @@
-﻿var stunums = "";
+﻿
+
+$.extend({
+    Entry: function (stunums,role) {
+        $.ajax({
+            url: '/PersonalManger/CheckMember/EntryPositionEx',
+            type: 'post',
+            data: { "stunums": stunums, "role": role },
+            success: function (json) {
+                //转换json，很奇怪............
+                var jsonObj = JSON.parse(json);
+                if (jsonObj.Statu == "ok") {
+                    $("#body").empty();
+                    PreCreateTable(jsonObj);
+                }
+                else { }
+            }
+        })
+    }
+})
+
+
+/*录入职位*/
+function entry() {
+    var stunums = "";
+    var role = $('#input-text option:selected').val()
+    $("input[type='checkbox']").each(function () {
+        if ($(this).attr("checked")) {
+            stunums = stunums + $(this).attr("data-stunum") + ";";
+        }
+    });
+    /*r进行判断，每个职位录入的人数是固定的*/
+    if (role == 10001) {
+        if ($("input[type='checkbox']:checked").length > 1) {
+            alert("只能录入一位");
+        } else {
+            $.Entry(stunums, role);
+        }
+    } else {
+        alert(stunums);
+        $.Entry(stunums, role);
+    }
+
+}
 //编辑方法
 function Edit(stuNum) {}
     //选中方法
     function choose() {
-        $("input[type='checkbox']").each(function () {
-            if ($(this).attr("checked")) {
-                stunums = stunums + $(this).attr("data-stunum") + ";";
-                console.info(stunums);
-            }
-        });
+
     }
     //删除方法
     function Delete(stuNum) {
@@ -145,7 +183,7 @@ function Edit(stuNum) {}
                 /*生成其他七列*/
                 var $content = $("<td><a href='#' class='a-stum'>" + data[i].StuNum + "</a></td>" + "<td>" + data[i].StuName + "</td>" +
                     "<td>" + data[i].TelephoneNumber + "</td>" + "<td>" + data[i].Major + "</td>" + "<td>" + data[i].Department + "</td>" +
-                    "<td>" + data[i].TechnicalLevel + "</td>");
+                    "<td style='width:300px'>" + data[i].roles + "</td>");
                 $tr.append($content);
                 $body.append($tr);
             }
