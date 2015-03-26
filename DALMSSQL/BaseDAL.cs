@@ -22,21 +22,8 @@ namespace DALMSSQL
             return db.SaveChanges();//保存成功后，会将自增的id设置给 model的 主键属性，并返回受影响行数
         }
 
-        #region 批量增加+int AddList(List<MODEL.T_RoleAct> list)
-        /// <summary>
-        /// 批量增加
-        /// </summary>
-        /// <param name="list"></param>
-        /// <returns></returns>
-        public int AddList(List<T> list)
-        {
-            foreach (T role in list)
-            {
-                db.Set<T>().Add(role);
-            }
-            return db.SaveChanges();
-        } 
-        #endregion
+
+
         #region 2.0 根据 id 删除 +int Del(T model)
         /// <summary>
         /// 根据 id 删除

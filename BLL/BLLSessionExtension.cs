@@ -170,7 +170,7 @@ namespace BLL
 			get
 			{
 				if(iRoleActBLL==null)
-					iRoleActBLL= new T_RoleAct();
+                    iRoleActBLL = new T_RoleAct();
 				return iRoleActBLL;
 			}
 			set

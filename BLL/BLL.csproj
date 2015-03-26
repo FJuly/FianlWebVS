@@ -46,7 +46,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BLL.tt</DependentUpon>
     </Compile>
-    <Compile Include="BLLExtension\T_RoleAct.cs" />
+    <Compile Include="BLLExtension\T_RoleActDAL.cs" />
     <Compile Include="BLLSession.cs" />
     <Compile Include="BLLSessionExtension.cs">
       <AutoGen>True</AutoGen>

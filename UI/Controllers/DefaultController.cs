@@ -19,6 +19,7 @@ namespace UI.Controllers
 
         public ActionResult Index()
         {
+            //new DALMSSQL.DBSessionFactory();
             MODEL.T_MemberInformation member = OperateContext.Current.BLLSession.IMemberInformationBLL.GetListBy(u => u.StuNum == "201258080133").FirstOrDefault();
             ViewBag.member = member;
             string RoleString = "";

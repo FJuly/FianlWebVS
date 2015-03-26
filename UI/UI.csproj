@@ -20,6 +20,8 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -128,7 +130,6 @@
     <Content Include="Areas\PersonalManger\JS\CheckMember.js" />
     <Content Include="Areas\PersonalManger\JS\EntryPosition.js" />
     <Content Include="bootstrap.min.css" />
-    <Content Include="jquery.form.js" />
     <Content Include="left-top.css" />
     <Content Include="Global.asax" />
     <Content Include="Areas\Login\Views\Web.config" />
@@ -142,6 +143,8 @@
     <Content Include="page.png" />
     <Content Include="xiaolisha.jpg" />
     <Content Include="Areas\PersonalManger\Views\CheckMember\EntryPosition.cshtml" />
+    <Content Include="Areas\PersonalManger\Views\CheckMember\BrowsePosition.cshtml" />
+    <Content Include="Areas\PersonalManger\Views\CheckMember\EntryChoose.cshtml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Areas\Login\CSS\Index.css" />
     <Content Include="Areas\Login\CSS\Login.css" />
@@ -203,6 +206,10 @@
       <Project>{abd91768-9e9c-48db-9079-3116119763ba}</Project>
       <Name>Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DALMSSQL\DALMSSQL.csproj">
+      <Project>{aa19e137-2828-49aa-9dec-99623764c3e4}</Project>
+      <Name>DALMSSQL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DI\DI.csproj">
       <Project>{ad8c23f1-2e52-4761-8990-da2159891a44}</Project>
       <Name>DI</Name>
@@ -256,6 +263,13 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。启用“NuGet 程序包还原”可下载这些程序包。有关详细信息，请参阅 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

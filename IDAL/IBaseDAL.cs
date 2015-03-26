@@ -24,14 +24,7 @@ namespace IDAL
         int Add(T model);
         #endregion
 
-        #region int AddList(List<MODEL.T_RoleAct> list)+批量增加
-        /// <summary>
-        /// 批量增加
-        /// </summary>
-        /// <param name="list"></param>
-        /// <returns></returns>
-        int AddList(List<T> list); 
-        #endregion
+
 
 
 

@@ -217,26 +217,58 @@ namespace PersonalManger
         public ActionResult EntryPositionEx(FormCollection form)
         {
             string[] StuNums = form["stunums"].Split(new char[] { ';' });
-            int role = Convert.ToInt32(form["form"]);
-            List<MODEL.T_RoleAct> listRole = new List<MODEL.T_RoleAct>(); ;
-            int count = 0;
+            int role = Convert.ToInt32(form["role"]);
             for (int i = 0; i < StuNums.Length - 1; i++)
             {
                 MODEL.T_RoleAct roleAct = new MODEL.T_RoleAct() { RoleId = role, RoleActor = StuNums[i], AddTime = DateTime.Now };
-                listRole.Add(roleAct);
+                OperateContext.Current.BLLSession.IRoleActBLL.Add(roleAct);
             }
-            try
-            {
-                //count= OperateContext.Current.BLLSession.IRoleActBLL.Add(listRole);
-            }
-            catch (Exception ex)
-            {
-                return Content(ex.Message);
-            }
-            return Content(count.ToString());
+
+            return Content("生成成功");
+        }
+        public ActionResult BrowsePosition() 
+        {
+            List<MODEL.T_MemberInformation> list1 = new List<MODEL.T_MemberInformation>();
+            list1=OperateContext.Current.BLLSession.IMemberInformationBLL.GetListBy(u => u.T_RoleAct.Select(p => p.RoleId).Contains(10001)).ToList();
+            ViewBag.list1= list1;
+
+            List<MODEL.T_MemberInformation> list2 = new List<MODEL.T_MemberInformation>();
+            list2 = OperateContext.Current.BLLSession.IMemberInformationBLL.GetListBy(u => u.T_RoleAct.Select(p => p.RoleId).Contains(10002)).ToList();
+            ViewBag.list2 = list2;
+
+            List<MODEL.T_MemberInformation> list3 = new List<MODEL.T_MemberInformation>();
+            list3 = OperateContext.Current.BLLSession.IMemberInformationBLL.GetListBy(u => u.T_RoleAct.Select(p => p.RoleId).Contains(10003)).ToList();
+            ViewBag.list3 = list3;
+
+            List<MODEL.T_MemberInformation> list4 = new List<MODEL.T_MemberInformation>();
+            list4 = OperateContext.Current.BLLSession.IMemberInformationBLL.GetListBy(u => u.T_RoleAct.Select(p => p.RoleId).Contains(10004)).ToList();
+            ViewBag.list4 = list4;
+
+            List<MODEL.T_MemberInformation> list5 = new List<MODEL.T_MemberInformation>();
+            list5 = OperateContext.Current.BLLSession.IMemberInformationBLL.GetListBy(u => u.T_RoleAct.Select(p => p.RoleId).Contains(10005)).ToList();
+            ViewBag.list5 = list5;
+
+            List<MODEL.T_MemberInformation> list6 = new List<MODEL.T_MemberInformation>();
+            list6 = OperateContext.Current.BLLSession.IMemberInformationBLL.GetListBy(u => u.T_RoleAct.Select(p => p.RoleId).Contains(10006)).ToList();
+            ViewBag.list6 = list6;
+
+            List<MODEL.T_MemberInformation> list7 = new List<MODEL.T_MemberInformation>();
+            list7 = OperateContext.Current.BLLSession.IMemberInformationBLL.GetListBy(u => u.T_RoleAct.Select(p => p.RoleId).Contains(10007)).ToList();
+            ViewBag.list7 = list7;
+
+            List<MODEL.T_MemberInformation> list8 = new List<MODEL.T_MemberInformation>();
+            list8 = OperateContext.Current.BLLSession.IMemberInformationBLL.GetListBy(u => u.T_RoleAct.Select(p => p.RoleId).Contains(10008)).ToList();
+            ViewBag.list8 = list8;
+            return View();
         }
 
+
+        public ActionResult EntryChoose()
+        {
+            return View();
+        }
     }
+
 
     /*怎么去重写List的tostring方法*/
 }

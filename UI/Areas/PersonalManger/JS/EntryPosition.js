@@ -24,6 +24,7 @@ $.extend({
 function entry() {
     var stunums = "";
     var role = $('#input-text option:selected').val()
+    alert(role);
     $("input[type='checkbox']").each(function () {
         if ($(this).attr("checked")) {
             stunums = stunums + $(this).attr("data-stunum") + ";";

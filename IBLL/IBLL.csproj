@@ -45,7 +45,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>IBLL.tt</DependentUpon>
     </Compile>
-    <Compile Include="IBLLExtension\IRoleActBLL.cs" />
+    <Compile Include="IBLLExtension\IRoleActDAL.cs" />
     <Compile Include="IBLLSessionExtension.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

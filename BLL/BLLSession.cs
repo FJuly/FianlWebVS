@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BLL
 {
-    public partial class BLLSession 
-    {
-    }
+    //public partial class BLLSession 
+    //{
+    //}
 }
