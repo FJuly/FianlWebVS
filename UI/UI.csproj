@@ -125,9 +125,11 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Content Include="Areas\Login\Images\background .png" />
+    <Content Include="Areas\PersonalManger\CSS\DepartmentInfo.css" />
     <Content Include="Areas\PersonalManger\CSS\EntryPosition.css" />
     <Content Include="Areas\PersonalManger\Images\serach.png" />
     <Content Include="Areas\PersonalManger\JS\CheckMember.js" />
+    <Content Include="Areas\PersonalManger\JS\DepartmentInfo.js" />
     <Content Include="Areas\PersonalManger\JS\EntryPosition.js" />
     <Content Include="bootstrap.min.css" />
     <Content Include="left-top.css" />
@@ -142,9 +144,11 @@
     <Content Include="left.css" />
     <Content Include="page.png" />
     <Content Include="xiaolisha.jpg" />
-    <Content Include="Areas\PersonalManger\Views\CheckMember\EntryPosition.cshtml" />
+    <Content Include="Areas\PersonalManger\Views\CheckMember\DepartmentInfo.cshtml" />
     <Content Include="Areas\PersonalManger\Views\CheckMember\BrowsePosition.cshtml" />
-    <Content Include="Areas\PersonalManger\Views\CheckMember\EntryChoose.cshtml" />
+    <Content Include="Areas\PersonalManger\Views\EntryPosition\EntryChoose.cshtml" />
+    <Content Include="Areas\PersonalManger\Views\EntryPosition\EntryPosition.cshtml" />
+    <Content Include="Areas\PersonalManger\Views\CheckMember\PersonPage.cshtml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Areas\Login\CSS\Index.css" />
     <Content Include="Areas\Login\CSS\Login.css" />
@@ -182,9 +186,8 @@
     <Content Include="Views\Web.config" />
     <Content Include="Areas\Login\Views\Login\MainPage.cshtml" />
     <Content Include="Areas\PersonalManger\Views\CheckMember\Index.cshtml" />
-    <Content Include="Views\Default\Index.cshtml" />
     <Content Include="Views\Default\boot.cshtml" />
-    <Content Include="Areas\PersonalManger\Views\CheckMember\PersonalPage.cshtml" />
+    <Content Include="Areas\PersonalManger\Views\CheckMember\PageEdit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

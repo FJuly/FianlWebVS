@@ -8,28 +8,58 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <link href="~/bootstrap.min.css" rel="stylesheet" />
-    <link href="~/Areas/PersonalManger/CSS/CheckMember.css" rel="stylesheet" />
+    <link href="~/Areas/PersonalManger/CSS/EntryPosition.css" rel="stylesheet" />
     <script src="~/Areas/PersonalManger/JS/jquery-1.3.1.js"></script>
+    <script src="~/Areas/PersonalManger/JS/EntryPosition.js"></script>
     <title>Index</title>
-    <script src="~/Areas/PersonalManger/JS/CheckMember.js"></script>
+    <script type="text/ecmascript">
+        /*请求数据时带上职务参数   */
+        $(function () {
+            var oprate=$("#oprate").val();
+            var role = $("#role").val();
+            /*根据不同角色初始化表格*/
+            $.Init(role, oprate);
+        })
+        $(function () {
+            var role = $("#role").val();
+            var oprate = $("#oprate").val();
+            /*更改标题*/
+            if (role == @MVC.Helper.Position.President)
+                $("#head-nav-text").text(oprate + "总裁");
+            if (role == @MVC.Helper.Position.Minister)
+                $("#head-nav-text").text(oprate + "部长");
+            if (role == @MVC.Helper.Position.StudyLeader)
+                $("#head-nav-text").text(oprate + "团长");
+            if (role == @MVC.Helper.Position.StudyMember)
+                $("#head-nav-text").text(oprate + "团员");
+            if (role == @MVC.Helper.Position.PlanLeader)
+                $("#head-nav-text").text(oprate + "组长");
+            if (role == @MVC.Helper.Position.PlanMmember)
+                $("#head-nav-text").text(oprate + "组员");
+            if (role == @MVC.Helper.Position.Financial)
+                $("#head-nav-text").text(oprate + "财务主管");
+            if (role == 10000)
+                $("#head-nav-text").text(oprate + "部门成员");
+            if (role == 10010)
+                $("#head-nav-text").text(oprate + "技术指导");
+        })
+    </script>
 </head>
 <body style="font-family: 'Microsoft YaHei'; background-color: rgb(237,241,249)">
-    <div style="margin: 20px auto;width:1056px;background-color:white">
+    <input type="hidden" value="@ViewBag.oprate" id="oprate"/>
+    <input type="hidden" value="@ViewBag.num" id="role"/>
+    <input type="hidden" value="IsPostBack" id="IsPostBack" />
+    <input type="hidden" value="@ViewBag.urlfix" id="urlfix"/>
+    <div style="margin: 20px auto; width: 1056px; background-color: white">
         <div class="head">
             <div class="head-nav">
                 <div class="head-nav-img"></div>
-                <div class="head-nav-text">成员信息</div>
+                <div class="head-nav-text" id="head-nav-text">@ViewBag.oprate</div>
             </div>
         </div>
         @*------------------------------------中间搜索框-----------------------------------*@
         <div class="toolbar">
-            <div class="search">
-                <button class="ser-btn">搜索</button>
-                <div class="ser-img"></div>
-                <div id="div-input">
-                    <input type="text" id="input-text" placeholder="学号或姓名" value="" style="border: 1px solid none" />
-                </div>
-            </div>
+            <button class="btn btn-success btn-sm" id="entry" onclick="entry()">@ViewBag.oprate</button>
         </div>
 
 
@@ -45,7 +75,6 @@
                         <th>专业</th>
                         <th>所属部门</th>
                         <th>职务</th>
-                        <th id="head-th-last">操作</th>
                     </tr>
                 </thead>
                 <tbody id="body">

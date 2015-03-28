@@ -207,62 +207,6 @@
                 </tbody>
             </table>
         </div>
-
-        <div class="panel panel-default panel-danger">
-            <!-- Default panel contents -->
-            <div class="panel-heading">实习生</div>
-
-            <!-- Table -->
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>学号</th>
-                        <th>姓名</th>
-                        <th>职务</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (MODEL.T_MemberInformation member in ViewBag.list7 as List<MODEL.T_MemberInformation>)
-                    { 
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>@member.StuNum</td>
-                            <td>@member.StuName</td>
-                            <td>@string.Join(" ", member.T_RoleAct.OrderBy(s => s.RoleId).Select(p => p.T_Role.RoleName).ToArray())</td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
-        </div>
-
-        <div class="panel panel-default panel-danger">
-            <!-- Default panel contents -->
-            <div class="panel-heading">正式成员</div>
-
-            <!-- Table -->
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>学号</th>
-                        <th>姓名</th>
-                        <th>职务</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (MODEL.T_MemberInformation member in ViewBag.list8 as List<MODEL.T_MemberInformation>)
-                    { 
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>@member.StuNum</td>
-                            <td>@member.StuName</td>
-                            <td>@string.Join(" ", member.T_RoleAct.OrderBy(s => s.RoleId).Select(p => p.T_Role.RoleName).ToArray())</td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
-        </div>
     </div>
 </body>
 </html>

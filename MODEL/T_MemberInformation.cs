@@ -57,15 +57,15 @@ namespace MODEL
         public string HomPhoneNumber { get; set; }
         [Required]
         public string FamilyAddress { get; set; }
-        [Required]
+        //[Required]
         public int Department { get; set; }
-        [Required]
+        //[Required]
         public int TechnicalLevel { get; set; }
-        [Required]
+        //[Required]
         public string StudyGuideNumber { get; set; }
-        [Required]
+        //[Required]
         public string TechnicalGuideNumber { get; set; }
-        [Required]
+        //[Required]
         public int Organization { get; set; }
         public bool IsDelete { get; set; }
         [StringLength(20)] 

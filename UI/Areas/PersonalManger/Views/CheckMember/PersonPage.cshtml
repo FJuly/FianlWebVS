@@ -7,9 +7,14 @@
 <html>
 <head>
     <title>Index</title>
-    <!-- 新 Bootstrap 核心 CSS 文件 -->
     <link href="~/left-top.css" rel="stylesheet" />
     <link href="~/left.css" rel="stylesheet" />
+    <script type="text/javascript">
+        function jump(StuNum)
+        {
+            window.location = "/PersonalManger/CheckMember/PageEdit?StuNum=" + StuNum;
+        }
+    </script>
 </head>
 <body style="background-color: rgb(237,241,249); font-family: 'Microsoft YaHei'; font-size: 14px">
 
@@ -17,7 +22,7 @@
         <div class="title-png"></div>
         <span class="title-info">个人资料</span>
         <div style="float: right; border: none; margin-top: 5px; margin-right: 73px">
-            <button data-toggle="modal" data-target="#myModal" class="title-btn">
+            <button class="btn title-btn" onclick="jump(@ViewBag.member.StuNum)">
                 编辑
             </button>
         </div>

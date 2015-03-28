@@ -1,52 +1,4 @@
 ﻿
-$.extend({
-    Entry: function (stunums, oprate, urlfix, IsPostBack, role) {
-        $.ajax({
-            url: '/PersonalManger/EntryPosition/Entry' + urlfix,
-            type: 'post',
-            data: { "stunums": stunums, "oprate": oprate, "IsPostBack": IsPostBack, "role": role },
-            success: function (json) {
-                //转换json，很奇怪............
-                var jsonObj = JSON.parse(json);
-                if (jsonObj.Statu == "ok") {
-                    location.href = jsonObj.BackUrl;
-                }
-                else {
-                    alert(jsonObj.Msg);
-                }
-            }
-        })
-    }
-})
-
-/*录入职位*/
-function entry() {
-    var stunums = "";
-    var role = $("#role").val();
-    var oprate = $("#oprate").val();
-    var IsPostBack = $("#IsPostBack").val();
-    var urlfix = $("#urlfix").val();
-    $("input[type='checkbox']").each(function () {
-
-        if ($(this).attr("checked")) {
-            stunums = stunums + $(this).attr("data-stunum") + ";";
-        }
-    });
-    /*如果是删除操作则不需要进行判断*/
-    if (oprate == "增加") {
-        if (role == 10001) {
-            /*进行判断，每个职位录入的人数是固定的*/
-            if ($("input[type='checkbox']:checked").length > 1) {
-                alert("只能录入一位");
-            } else {
-
-                $.Entry(stunums, oprate, urlfix, IsPostBack, role);
-            }
-        }
-    }
-    $.Entry(stunums, oprate, urlfix, IsPostBack, role);
-}
-
 /*分页定义的变量*/
 var json = "";//json数据
 var pageSize = 10;//页的容量
@@ -78,13 +30,13 @@ function PreCreateTable(jsonObj) {
 }
 
 $.extend({
-    Init: function (role, oprate) {
-        var oprate = $("#oprate").val();
-        var role = $("#role").val();
+    Init: function () {
+        var IsPostBack = $("#IsPostBack").val();
+        var DepId = $('#input-text option:selected').val();//选中的值
         $.ajax({
-            url: '/PersonalManger/EntryPosition/GetEntryData',
+            url: '/PersonalManger/CheckMember/DepartmentInfo',
             type: 'post',
-            data: { "pageindex": pageIndex, "role": role, "oprate": oprate },
+            data: { "pageindex": pageIndex, "DepId": DepId, "IsPostBack": IsPostBack },
             success: function (json) {
                 //转换json，很奇怪............
                 var jsonObj = JSON.parse(json);
@@ -96,6 +48,12 @@ $.extend({
             }
         })
     }
+})
+
+//第一次请求初始化
+$(function () {
+    //清空表格
+    $.Init("10001");
 })
 
 //各种点击事件
@@ -148,7 +106,7 @@ $.extend({
             var $tr = $("<tr class='tbody-tr'></tr>");
             /*生成第一列*/
             var $td = $("<td id='body-td-first'></td>");
-            var $div = $("<input type='checkbox'  data-stunum=" + data[i].StuNum + ">");
+            var $div = $("<div class='head-table-img'></div>");
             $td.append($div);
             $tr.append($td);
             /*生成其他七列*/

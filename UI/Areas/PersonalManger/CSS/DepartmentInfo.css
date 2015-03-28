@@ -30,8 +30,8 @@ html { overflow-y: scroll; }
 body { }
 .head { width: 1056px; height: 35px; border: 1px RGB(166,199,203) solid; background-color: rgb(215,232,234); border-bottom: none; }
 
-.head-nav { width: 250px; height: 35px; border: none; margin-left: 17px; }
-.head-nav-img { border: none; width: 20px; height: 17px; margin-top: 11px; background: url(/Areas/PersonalManger/Images/页面2图标.png); background-position: -60px -42px; float: left; }
+.head-nav { width: 200px; height: 35px; border: none; margin-left: 17px; }
+.head-nav-img { border: none; width: 20px; height: 17px; margin-top: 10px; background: url(/Areas/PersonalManger/Images/页面2图标.png); background-position: -60px -42px; float: left; }
 
 .head-nav-text { width: 120px; border: none; height: 17px; margin-top: 9px;  font-size: 15px; font-family: 'Microsoft YaHei'; font-weight: bold; color: black;float:left;margin-left:10px }
 
@@ -92,8 +92,16 @@ body { }
 
 
 /*-----------------搜索框样式-------------*/
-#entry {  margin-left: 930px; height: 28px; margin-top: 3px; width: 80px; }
+#entry { float: left; margin-left: 20px; height: 28px; margin-top: 3px; width: 80px; }
 .toolbar { width: 1056px; height: 35px; border: 1px solid RGB(166,199,203); border-bottom: none; }
+.search { width: 214px; height: 26px; border: 1px solid rgb(237,121,141); margin-top: 3px; margin-left: 813px; border-radius: 3px; }
+
+.ser-btn { height: 25px; width: 59px; border: none; float: left; background-color: rgb(255,116,139); font-size: 9px; color: white; font-family: 'Microsoft YaHei'; margin-right: 1px; }
+    .ser-btn:active { background-color: rgb(217,71,97); }
+
+button:focus { outline: none; }
+
+.ser-img { border: none; height: 12px; width: 13px; float: left; margin-top: 7px; background: url(/Areas/PersonalManger/Images/serach.png); margin-right: 3px; }
 /*------------input点击后不出现效果----------------------*/
 input:focus { outline: none; }
 select:focus { outline: none; }

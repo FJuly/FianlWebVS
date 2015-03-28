@@ -7,7 +7,7 @@ function Edit(stuNum) {
 function Delete(stuNum) {
     if (confirm("确定要删除吗？")) {
         $.ajax({
-            url: '/PersonnalManger/CheckMember/DeleteBy',
+            url: '/PersonalManger/CheckMember/DeleteBy',
             type: 'post',
             data: { "stuNum": stuNum },
             success: function (data) {
@@ -136,7 +136,7 @@ $.extend({
             /*生成其他七列*/
             var $content = $("<td><a href='#' class='a-stum'>" + data[i].StuNum + "</a></td>" + "<td>" + data[i].StuName + "</td>"+
                 "<td>" + data[i].TelephoneNumber + "</td>" + "<td>" + data[i].Major + "</td>" + "<td>" + data[i].Department + "</td>"+
-                "<td>" + data[i].TechnicalLevel + "</td>" + "<td><a href='#' class='a-operate' onclick='Edit(" + data[i].StuNum + ")'>录入</a> <a href='#' class='a-operate' id='a-operate-delete' onclick='Delete(" + data[i].StuNum + ")'>取消</a></td>");
+                "<td>" + data[i].roles + "</td>" + "<td><a href='/PersonalManger/CheckMember/PersonPage?StuNum=" + data[i].StuNum + "'class='a-operate' onclick='Edit(" + data[i].StuNum + ")'>查看</a> <a href='#' class='a-operate' id='a-operate-delete' onclick='Delete(" + data[i].StuNum + ")'>删除</a></td>");
             $tr.append($content);
             $body.append($tr);
         }
@@ -146,7 +146,7 @@ $.extend({
 //进行查询dataBy:查询条件Obj);
 function Search(dataBy) {
     $.ajax({
-        url: '/PersonnalManger/CheckMember/GetPageData',
+        url: '/PersonalManger/CheckMember/GetPageData',
         type: 'post',
         data: { "dataBy": dataBy ,"pageindex":1},
         success: function (data) {
