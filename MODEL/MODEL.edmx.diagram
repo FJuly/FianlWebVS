@@ -4,42 +4,42 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="4361754232b242d7bf4b7628793e77d5" Name="关系图1">
-        <EntityTypeShape EntityType="LIMSDBModel.T_Department" Width="1.5" PointX="1.875" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="LIMSDBModel.T_Organization" Width="1.5" PointX="1.125" PointY="9.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="LIMSDBModel.T_ProjectType" Width="1.5" PointX="1.5" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="LIMSDBModel.T_ProjPhase" Width="1.5" PointX="8.25" PointY="3.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="LIMSDBModel.T_TaskInformation" Width="1.5" PointX="8.25" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="LIMSDBModel.T_TaskParticipation" Width="1.5" PointX="10.5" PointY="7.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="LIMSDBModel.T_TaskType" Width="1.5" PointX="8.625" PointY="12.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="LIMSDBModel.T_TechnicaLevel" Width="1.5" PointX="0.875" PointY="12.125" IsExpanded="true" />
-        <AssociationConnector Association="LIMSDBModel.FK__T_TaskInf__ProjP__60A75C0F" ManuallyRouted="false" />
-        <AssociationConnector Association="LIMSDBModel.FK__T_TaskInf__TaskT__5EBF139D" ManuallyRouted="false" />
-        <AssociationConnector Association="LIMSDBModel.FK__T_TaskPar__TaskI__6B24EA82" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="LIMSDBModel.T_ProjectInformation" Width="1.5" PointX="1.125" PointY="17.875" />
-        <EntityTypeShape EntityType="LIMSDBModel.T_ProjectParticipation" Width="1.5" PointX="6.375" PointY="18.625" />
-        <EntityTypeShape EntityType="LIMSDBModel.T_Role" Width="1.5" PointX="12" PointY="21" />
-        <EntityTypeShape EntityType="LIMSDBModel.T_RoleAct" Width="1.5" PointX="10.25" PointY="18.875" />
-        <EntityTypeShape EntityType="LIMSDBModel.T_RolePermission" Width="1.5" PointX="14.125" PointY="18.125" />
-        <AssociationConnector Association="LIMSDBModel.FK__T_Project__ProjI__5535A963" />
-        <AssociationConnector Association="LIMSDBModel.FK__T_Project__ProjT__4E88ABD4" />
-        <AssociationConnector Association="LIMSDBModel.FK__T_TaskInf__ProjI__5FB337D6" />
-        <AssociationConnector Association="LIMSDBModel.FK__T_RoleAct__RoleI__20C1E124" />
-        <AssociationConnector Association="LIMSDBModel.FK__T_RolePer__RoleI__300424B4" />
-        <EntityTypeShape EntityType="LIMSDBModel.T_Permission" Width="1.5" PointX="10.875" PointY="2.5" />
-        <AssociationConnector Association="LIMSDBModel.FK__T_RolePer__PerId__245D67DE" />
-        <EntityTypeShape EntityType="LIMSDBModel.T_MemberInformation" Width="1.5" PointX="0.803192083166536" PointY="6.6496863992184805" />
-        <AssociationConnector Association="LIMSDBModel.FK__T_MemberI__Depar__173876EA" />
-        <AssociationConnector Association="LIMSDBModel.FK__T_MemberI__Organ__1B0907CE" />
-        <AssociationConnector Association="LIMSDBModel.FK__T_MemberI__Study__1920BF5C" />
-        <AssociationConnector Association="LIMSDBModel.FK__T_MemberI__Techn__182C9B23" />
-        <AssociationConnector Association="LIMSDBModel.FK__T_MemberI__Techn__1A14E395" />
-        <AssociationConnector Association="LIMSDBModel.FK__T_Project__ProjL__4F7CD00D" />
-        <AssociationConnector Association="LIMSDBModel.FK__T_Project__ProjP__5070F446" />
-        <AssociationConnector Association="LIMSDBModel.FK__T_Project__ProjR__5629CD9C" />
-        <AssociationConnector Association="LIMSDBModel.FK__T_RoleAct__RoleA__21B6055D" />
-        <AssociationConnector Association="LIMSDBModel.FK__T_TaskPar__TaskR__6C190EBB" />
-        </Diagram>
+      <Diagram DiagramId="0093a05afbe546b99caa72cb4991a640" Name="关系图1">
+        <EntityTypeShape EntityType="FinalModel.T_Department" Width="1.5" PointX="0.75" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FinalModel.T_MemberInformation" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FinalModel.T_Organization" Width="1.5" PointX="0.75" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="FinalModel.T_Permission" Width="1.5" PointX="9" PointY="14.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FinalModel.T_ProjectInformation" Width="1.5" PointX="5.25" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FinalModel.T_ProjectParticipation" Width="1.5" PointX="7.5" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FinalModel.T_ProjectType" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FinalModel.T_ProjPhase" Width="1.5" PointX="8.25" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FinalModel.T_Role" Width="1.5" PointX="6" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FinalModel.T_RoleAct" Width="1.5" PointX="8.25" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FinalModel.T_RolePermission" Width="1.5" PointX="11.25" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FinalModel.T_TaskInformation" Width="1.5" PointX="10.5" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FinalModel.T_TaskParticipation" Width="1.5" PointX="12.75" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FinalModel.T_TaskType" Width="1.5" PointX="8.25" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FinalModel.T_TechnicaLevel" Width="1.5" PointX="0.75" PointY="9.875" IsExpanded="true" />
+        <AssociationConnector Association="FinalModel.FK__T_MemberI__Depar__108B795B" ManuallyRouted="false" />
+        <AssociationConnector Association="FinalModel.FK__T_MemberI__Organ__145C0A3F" ManuallyRouted="false" />
+        <AssociationConnector Association="FinalModel.FK__T_MemberI__Study__1273C1CD" ManuallyRouted="false" />
+        <AssociationConnector Association="FinalModel.FK__T_MemberI__Techn__117F9D94" ManuallyRouted="false" />
+        <AssociationConnector Association="FinalModel.FK__T_MemberI__Techn__1367E606" ManuallyRouted="false" />
+        <AssociationConnector Association="FinalModel.FK__T_Project__ProjL__37A5467C" ManuallyRouted="false" />
+        <AssociationConnector Association="FinalModel.FK__T_Project__ProjP__38996AB5" ManuallyRouted="false" />
+        <AssociationConnector Association="FinalModel.FK__T_Project__ProjR__4222D4EF" ManuallyRouted="false" />
+        <AssociationConnector Association="FinalModel.FK__T_RoleAct__RoleA__267ABA7A" ManuallyRouted="false" />
+        <AssociationConnector Association="FinalModel.FK__T_TaskPar__TaskR__534D60F1" ManuallyRouted="false" />
+        <AssociationConnector Association="FinalModel.FK__T_RolePer__PerId__2D27B809" ManuallyRouted="false" />
+        <AssociationConnector Association="FinalModel.FK__T_Project__ProjI__412EB0B6" ManuallyRouted="false" />
+        <AssociationConnector Association="FinalModel.FK__T_Project__ProjT__36B12243" ManuallyRouted="false" />
+        <AssociationConnector Association="FinalModel.FK__T_TaskInf__ProjI__4CA06362" ManuallyRouted="false" />
+        <AssociationConnector Association="FinalModel.FK__T_TaskInf__ProjP__4D94879B" ManuallyRouted="false" />
+        <AssociationConnector Association="FinalModel.FK__T_RoleAct__RoleI__25869641" ManuallyRouted="false" />
+        <AssociationConnector Association="FinalModel.FK__T_RolePer__RoleI__2C3393D0" ManuallyRouted="false" />
+        <AssociationConnector Association="FinalModel.FK__T_TaskInf__TaskT__4BAC3F29" ManuallyRouted="false" />
+        <AssociationConnector Association="FinalModel.FK__T_TaskPar__TaskI__52593CB8" ManuallyRouted="false" />
+      </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

@@ -21,6 +21,7 @@ namespace MODEL
     
         public int OrganizationId { get; set; }
         public string OrganizationName { get; set; }
+        public bool IsDelete { get; set; }
     
         public virtual ICollection<T_MemberInformation> T_MemberInformation { get; set; }
     }

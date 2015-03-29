@@ -11,7 +11,6 @@ namespace MODEL
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
     
     public partial class T_MemberInformation
     {
@@ -25,52 +24,32 @@ namespace MODEL
             this.T_RoleAct = new HashSet<T_RoleAct>();
             this.T_TaskParticipation = new HashSet<T_TaskParticipation>();
         }
-
+    
         public string StuNum { get; set; }
-        [Required]
         public string StuName { get; set; }
-        [Required]
         public string Gender { get; set; }
-        [Required]
         public string QQNum { get; set; }
-        [Required]
-        //[RegularExpression("/^[a-z]([a-z0-9]*[-_]?[a-z0-9]+)*@([a-z0-9]*[-_]?[a-z0-9]+)+[\\.][a-z]{2,3}([\\.][a-z]{2})?$/i")] 
         public string Email { get; set; }
-        [Required]
         public string LoginPwd { get; set; }
+        public Nullable<System.DateTime> Birthday { get; set; }
         public string PhotoPath { get; set; }
-        [Required]
         public string Class { get; set; }
         public System.DateTime JoinTime { get; set; }
-        public System.DateTime EndTime { get; set; }
-        [Required]
+        public Nullable<System.DateTime> EndTime { get; set; }
         public string Major { get; set; }
-        [Required]
         public string Counselor { get; set; }
-        [Required]
         public string HeadTeacher { get; set; }
-        [Required]
         public string UndergraduateTutor { get; set; }
-        [Required]
         public string TelephoneNumber { get; set; }
-        [Required]
         public string HomPhoneNumber { get; set; }
-        [Required]
         public string FamilyAddress { get; set; }
-        //[Required]
-        public int Department { get; set; }
-        //[Required]
-        public int TechnicalLevel { get; set; }
-        //[Required]
+        public Nullable<int> Department { get; set; }
+        public Nullable<int> TechnicalLevel { get; set; }
         public string StudyGuideNumber { get; set; }
-        //[Required]
         public string TechnicalGuideNumber { get; set; }
-        //[Required]
-        public int Organization { get; set; }
+        public Nullable<int> Organization { get; set; }
         public bool IsDelete { get; set; }
-        [StringLength(20)] 
         public string Sign { get; set; }
-        [StringLength(100)] 
         public string OtheInfor { get; set; }
     
         public virtual T_Department T_Department { get; set; }

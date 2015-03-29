@@ -22,6 +22,7 @@ namespace MODEL
     
         public int RoleId { get; set; }
         public string RoleName { get; set; }
+        public bool IsDelete { get; set; }
     
         public virtual ICollection<T_RoleAct> T_RoleAct { get; set; }
         public virtual ICollection<T_RolePermission> T_RolePermission { get; set; }

@@ -32,9 +32,9 @@ namespace MODEL
         public string StandbyA { get; set; }
         public string StandbyB { get; set; }
     
+        public virtual T_ProjectInformation T_ProjectInformation { get; set; }
         public virtual T_ProjPhase T_ProjPhase { get; set; }
         public virtual T_TaskType T_TaskType { get; set; }
         public virtual ICollection<T_TaskParticipation> T_TaskParticipation { get; set; }
-        public virtual T_ProjectInformation T_ProjectInformation { get; set; }
     }
 }

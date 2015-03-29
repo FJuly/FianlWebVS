@@ -30,6 +30,7 @@ namespace MODEL
         public bool PerIsShow { get; set; }
         public System.DateTime PerAddTime { get; set; }
         public string PerIco { get; set; }
+        public bool IsDelete { get; set; }
     
         public virtual ICollection<T_RolePermission> T_RolePermission { get; set; }
     }

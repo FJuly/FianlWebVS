@@ -93,9 +93,7 @@ namespace Login.Controllers
         /// 
         public ActionResult GetMenuData()
         {
-            //MODEL.EasyUIModel.Tree tree = Helper.OperateContext.CurUserPermission;
             return Content(OperateContext.Current.UsrMenuJsonStr);
-        // return Content("{\"data\":[{\"id\":1,\"text\":\"后台菜单导航\",\"state\":\"open\",\"attributes\":null,\"children\":[{\"id\":2,\"text\":\"系统管理\",\"Checked\":false}]}]}");
         }
         #endregion
 

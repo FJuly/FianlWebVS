@@ -94,22 +94,22 @@ namespace DALMSSQL
 		}
 		#endregion
 
-        #region 06 数据接口 IProjectParticipationDAL
-        IProjectParticipationDAL iProjectParticipationDAL;
-        public IProjectParticipationDAL IProjectParticipationDAL
-        {
-            get
-            {
-                if (iProjectParticipationDAL == null)
-                    iProjectParticipationDAL = new T_ProjectParticipationDAL();
-                return iProjectParticipationDAL;
-            }
-            set
-            {
-                iProjectParticipationDAL = value;
-            }
-        }
-        #endregion
+		#region 06 数据接口 IProjectParticipationDAL
+		IProjectParticipationDAL iProjectParticipationDAL;
+		public IProjectParticipationDAL IProjectParticipationDAL
+		{
+			get
+			{
+				if(iProjectParticipationDAL==null)
+					iProjectParticipationDAL= new T_ProjectParticipationDAL();
+				return iProjectParticipationDAL;
+			}
+			set
+			{
+				iProjectParticipationDAL= value;
+			}
+		}
+		#endregion
 
 		#region 07 数据接口 IProjectTypeDAL
 		IProjectTypeDAL iProjectTypeDAL;
@@ -229,7 +229,7 @@ namespace DALMSSQL
 			}
 		}
 		#endregion
-         
+
 		#region 14 数据接口 ITaskTypeDAL
 		ITaskTypeDAL iTaskTypeDAL;
 		public ITaskTypeDAL ITaskTypeDAL

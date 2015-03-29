@@ -18,7 +18,7 @@ namespace DALMSSQL
             DbContext dbContext = CallContext.GetData(typeof(DBContextFactory).Name) as DbContext;
             if (dbContext == null)
             {
-                dbContext = new LIMSDBEntities();
+                dbContext = new FinalEntities();
                 dbContext.Configuration.ValidateOnSaveEnabled = false;
                 //将新创建的 ef上下文对象 存入线程
                 CallContext.SetData(typeof(DBContextFactory).Name, dbContext);

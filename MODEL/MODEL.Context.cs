@@ -13,10 +13,10 @@ namespace MODEL
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class LIMSDBEntities : DbContext
+    public partial class FinalEntities : DbContext
     {
-        public LIMSDBEntities()
-            : base("name=LIMSDBEntities")
+        public FinalEntities()
+            : base("name=FinalEntities")
         {
         }
     
@@ -26,19 +26,19 @@ namespace MODEL
         }
     
         public DbSet<T_Department> T_Department { get; set; }
+        public DbSet<T_MemberInformation> T_MemberInformation { get; set; }
         public DbSet<T_Organization> T_Organization { get; set; }
+        public DbSet<T_Permission> T_Permission { get; set; }
+        public DbSet<T_ProjectInformation> T_ProjectInformation { get; set; }
+        public DbSet<T_ProjectParticipation> T_ProjectParticipation { get; set; }
         public DbSet<T_ProjectType> T_ProjectType { get; set; }
         public DbSet<T_ProjPhase> T_ProjPhase { get; set; }
+        public DbSet<T_Role> T_Role { get; set; }
+        public DbSet<T_RoleAct> T_RoleAct { get; set; }
+        public DbSet<T_RolePermission> T_RolePermission { get; set; }
         public DbSet<T_TaskInformation> T_TaskInformation { get; set; }
         public DbSet<T_TaskParticipation> T_TaskParticipation { get; set; }
         public DbSet<T_TaskType> T_TaskType { get; set; }
         public DbSet<T_TechnicaLevel> T_TechnicaLevel { get; set; }
-        public DbSet<T_ProjectInformation> T_ProjectInformation { get; set; }
-        public DbSet<T_ProjectParticipation> T_ProjectParticipation { get; set; }
-        public DbSet<T_Role> T_Role { get; set; }
-        public DbSet<T_RoleAct> T_RoleAct { get; set; }
-        public DbSet<T_RolePermission> T_RolePermission { get; set; }
-        public DbSet<T_Permission> T_Permission { get; set; }
-        public DbSet<T_MemberInformation> T_MemberInformation { get; set; }
     }
 }

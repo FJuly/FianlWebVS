@@ -34,13 +34,13 @@ namespace PersonalManger
             /*代表删除的是部门成员*/
             if (role == 10000)
             {
-                int DepId = OperateContext.Current.Usr.Department;
+                int? DepId = OperateContext.Current.Usr.Department;
                 filter = u => u.IsDelete == false && u.Department == DepId;
             }
             if (role == 10010)//代表删除的是技术指导
             {
                 /*当前部长的id*/
-                int DepId = OperateContext.Current.Usr.Department;
+                int? DepId = OperateContext.Current.Usr.Department;
                 /*选出这个部门是技术指导的大二成员*/
                 filter = u => u.IsDelete == false && u.Department == DepId && (u.T_RoleAct.Select(p => p.RoleId).Contains(Position.TechnicalGuide)) &&
                     u.StuNum.Contains((DateTime.Now.Year - 2).ToString());
@@ -61,7 +61,7 @@ namespace PersonalManger
             /*带代表录入的是技术指导*/
             if (role == 10010)
             {
-                int DepId = OperateContext.Current.Usr.Department;
+                int? DepId = OperateContext.Current.Usr.Department;
                 filter = u => u.IsDelete == false && u.Department == DepId && (u.T_RoleAct.Select(p => p.RoleId).Contains(Position.TechnicalGuide) == false) &&
 u.StuNum.Contains((DateTime.Now.Year - 2).ToString());
             }
@@ -182,7 +182,7 @@ u.StuNum.Contains((DateTime.Now.Year - 2).ToString());
         {
             try
             {
-                int DepId = OperateContext.Current.Usr.Department;
+                int? DepId = OperateContext.Current.Usr.Department;
                 for (int i = 0; i < stum.Length - 1; i++)
                 {
                     MODEL.T_MemberInformation member = new MODEL.T_MemberInformation() { StuNum = stum[i], Department = DepId, TechnicalLevel = TechnicalLevel.FullMember };
@@ -221,10 +221,10 @@ u.StuNum.Contains((DateTime.Now.Year - 2).ToString());
         {
             try
             {
-                int DepId = OperateContext.Current.Usr.Department;
+                int? DepId = OperateContext.Current.Usr.Department;
                 for (int i = 0; i < stum.Length - 1; i++)
                 {
-                    MODEL.T_MemberInformation member = new MODEL.T_MemberInformation() { StuNum = stum[i], Department = 10001, TechnicalLevel = TechnicalLevel.Student };
+                    MODEL.T_MemberInformation member = new MODEL.T_MemberInformation() { StuNum = stum[i], Department = null, TechnicalLevel = TechnicalLevel.Student };
                     OperateContext.Current.BLLSession.IMemberInformationBLL.Modify(member, "Department", "TechnicalLevel");
                 }
                 return OperateContext.Current.RedirectAjax("ok", "删除成功", null, "/PersonalManger/CheckMember/DepartmentInfo?DepId=" + DepId);

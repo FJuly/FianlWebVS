@@ -16,10 +16,10 @@ namespace MODEL
     {
         public int RoleId { get; set; }
         public string RoleActor { get; set; }
-        public Nullable<System.DateTime> AddTime { get; set; }
         public bool IsDel { get; set; }
+        public Nullable<System.DateTime> AddTime { get; set; }
     
-        public virtual T_Role T_Role { get; set; }
         public virtual T_MemberInformation T_MemberInformation { get; set; }
+        public virtual T_Role T_Role { get; set; }
     }
 }
