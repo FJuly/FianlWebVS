@@ -2,54 +2,45 @@
     Layout = null;
 }
 
+
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="shortcut icon" type="image/x-icon" href="~/Areas/Login/Images/web_logo.ico" media="screen" />
     <link href="~/Areas/Login/CSS/Index.css" rel="stylesheet" />
-    <script src="~/Scripts/jquery-1.7.1.min.js"></script>
+    <script src="~/Scripts/jquery.min.js"></script>
     <script src="~/Areas/Login/JS/Index.js"></script>
-
-    <title></title>
-    <script type="text/javascript">
-        ///Onload事件响应
-        //$(window).load(
-        //    function () {
-        //        ResizeWindow();
-        //        InitLeftMenu();
-        //    }
-        //    );
-
-
-
-        ///窗体resize事件响应
-        //$(window).resize(
-        //    function () {
-        //        ResizeWindow();
-        //    }
-        //    );
-    </script>
+    <title>欢迎来到FINAL实验室</title>
 </head>
 <body>
+    <!-- 页首 -->
     <div id="header">
-        <div id="header-left" title="FINAL实验室">
+        <!-- Lab Logo And Name -->
+        <div title="FINAL实验室" id="header-left" title="FINAL实验室">
+            <!-- Logo -->
             <div id="header-left-logo"></div>
+            <!-- Name -->
             <div id="header-left-name">FINAL实验室</div>
         </div>
+        
+        <!--  -->
         <div id="header-right">
             <div id="header-right-content">
+                <!-- SearchBox -->
                 <div id="header-search">
-                    <div id="header-search-btn" >
+<!--                    <div id="header-search-btn" >
                     </div>
-                    <input id="header-search-text" type="text" />
+                    <input id="header-search-text" type="text" />-->
                 </div>
-                <!-- 消息  --> 
+                <!-- Msg  --> 
                 <div id="header-msg-btn" >
                 </div>
-                <!-- 头像  -->
+                <!-- Photo  -->
                 <div id="header-photo" >
                 </div>
-                <!-- nickname -->
+                <!-- Nickname -->
                 <div id="header-nickname" >
                     昵称.....
                 </div>
@@ -62,30 +53,49 @@
             </div>
         </div>
     </div>
+
     <!-- 左部收缩列表 -->
     <div id="left">
         <div class="menu" id="menu">
-        </div>
-       
+        </div>       
     </div>
 
-    <!--收缩按钮-->
-     <div id="left-shrink-btn" >
+    <!--收缩按钮 ShrinkBotton-->
+     <div id="left-shrink-btn">
     </div>
 
-    <!-- 主面板 -->
+    <!-- 主面板main -->
     <div id="main">
+
         <div class="top_nav" id="top-nav">
             <div id="nav-body">
-                <ul>
+<!--                <div onclick="NavMoveLeft()" id="nav-body-move-left"><</div>-->
+                <ul id="nav-body-ul">
+                    <li id="nav-column-00">
+                        <div class="main_nav_li_interlayer" onclick="ChangeFrame('00')">
+                            <div class="mian_nav_li_content">
+                                <span class="mian_nav_li_content_title">欢迎页</span>
+                            </div>
+                        </div>
+                        <!--<div class="mian_nav_li_close_btn" id="nav-li-close-btn-0"></div>-->
+                    </li>
                 </ul>
+<!--                <div onclick="NavMoveRight()" id="nav-body-move-right">></div>-->
             </div>
         </div>
+
         <div class="main_panel" id="main-panel">
+            <div id="panel-body-00" style="width: inherit; height: inherit;">
+                <iframe src="WelcomePage.html" style="border: 0px currentColor; border-image: none; width: 100%; height: 100%;"></iframe>
+            </div>
         </div>
     </div>
 
-    <div id="footer"></div>
+    <!-- 页脚 -->
+    <div id="footer">
+        Copyright ©2014-2015 FINAL LAB. All Rights Reserved
+    </div>
 </body>
 </html>
+
 

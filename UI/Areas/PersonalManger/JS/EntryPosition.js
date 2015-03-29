@@ -9,6 +9,7 @@ $.extend({
                 //转换json，很奇怪............
                 var jsonObj = JSON.parse(json);
                 if (jsonObj.Statu == "ok") {
+                    alert("ss");
                     location.href = jsonObj.BackUrl;
                 }
                 else {

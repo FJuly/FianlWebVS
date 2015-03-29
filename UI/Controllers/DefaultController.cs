@@ -11,7 +11,7 @@ namespace UI.Controllers
     {
         public ActionResult Index()
         {
-            return Content("缺省主页");
+            return View();
         }
     }
 }

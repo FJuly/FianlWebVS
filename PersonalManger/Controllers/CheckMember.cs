@@ -206,29 +206,30 @@ namespace PersonalManger
         /// <returns></returns>
         public ActionResult BrowsePosition()
         {
-            List<MODEL.T_MemberInformation> list1 = new List<MODEL.T_MemberInformation>();
-            list1 = OperateContext.Current.BLLSession.IMemberInformationBLL.GetListBy(u => u.T_RoleAct.Where(p => p.IsDel == false).Select(r => r.RoleId).Contains(Position.President)).ToList();
-            ViewBag.list1 = list1;
+            List<MODEL.T_MemberInformation> listPresident = OperateContext.Current.BLLSession.IMemberInformationBLL.GetListBy(u => u.T_RoleAct.Where(p => p.IsDel == false).Select(r => r.RoleId).Contains(Position.President)).ToList();
+            ViewBag.listPresident = listPresident;
 
-            List<MODEL.T_MemberInformation> list2 = new List<MODEL.T_MemberInformation>();
-            list2 = OperateContext.Current.BLLSession.IMemberInformationBLL.GetListBy(u => u.T_RoleAct.Where(p => p.IsDel == false).Select(r => r.RoleId).Contains(Position.PlanLeader)).ToList();
-            ViewBag.list2 = list2;
+            List<MODEL.T_MemberInformation> PlanLeader= OperateContext.Current.BLLSession.IMemberInformationBLL.GetListBy(u => u.T_RoleAct.Where(p => p.IsDel == false).Select(r => r.RoleId).Contains(Position.PlanLeader)).ToList();
+            ViewBag.PlanLeader = PlanLeader;
 
-            List<MODEL.T_MemberInformation> list3 = new List<MODEL.T_MemberInformation>();
-            list3 = OperateContext.Current.BLLSession.IMemberInformationBLL.GetListBy(u => u.T_RoleAct.Where(p => p.IsDel == false).Select(r => r.RoleId).Contains(Position.StudyLeader)).ToList();
-            ViewBag.list3 = list3;
+            List<MODEL.T_MemberInformation> StudyLeader = OperateContext.Current.BLLSession.IMemberInformationBLL.GetListBy(u => u.T_RoleAct.Where(p => p.IsDel == false).Select(r => r.RoleId).Contains(Position.StudyLeader)).ToList();
+            ViewBag.StudyLeader = StudyLeader;
 
-            List<MODEL.T_MemberInformation> list4 = new List<MODEL.T_MemberInformation>();
-            list4 = OperateContext.Current.BLLSession.IMemberInformationBLL.GetListBy(u => u.T_RoleAct.Where(p => p.IsDel == false).Select(r => r.RoleId).Contains(Position.StudyMember)).ToList();
-            ViewBag.list4 = list4;
+            List<MODEL.T_MemberInformation> StudyMember =OperateContext.Current.BLLSession.IMemberInformationBLL.GetListBy(u => u.T_RoleAct.Where(p => p.IsDel == false).Select(r => r.RoleId).Contains(Position.StudyMember)).ToList();
+            ViewBag.StudyMember = StudyMember;
 
-            List<MODEL.T_MemberInformation> list5 = new List<MODEL.T_MemberInformation>();
-            list5 = OperateContext.Current.BLLSession.IMemberInformationBLL.GetListBy(u => u.T_RoleAct.Select(p => p.RoleId).Contains(Position.PlanLeader)).ToList();
-            ViewBag.list5 = list5;
+            List<MODEL.T_MemberInformation> PlanMmember = OperateContext.Current.BLLSession.IMemberInformationBLL.GetListBy(u => u.T_RoleAct.Select(p => p.RoleId).Contains(Position.PlanMmember)).ToList();
+            ViewBag.PlanMmember = PlanMmember;
 
-            List<MODEL.T_MemberInformation> list6 = new List<MODEL.T_MemberInformation>();
-            list6 = OperateContext.Current.BLLSession.IMemberInformationBLL.GetListBy(u => u.T_RoleAct.Where(p=>p.IsDel==false).Select(r=>r.RoleId).Contains(Position.PlanMmember)).ToList();
-            ViewBag.list6 = list6;
+            List<MODEL.T_MemberInformation> Financial = OperateContext.Current.BLLSession.IMemberInformationBLL.GetListBy(u => u.T_RoleAct.Where(p=>p.IsDel==false).Select(r=>r.RoleId).Contains(Position.Financial)).ToList();
+            ViewBag.Financial = Financial;
+
+            List<MODEL.T_MemberInformation> Minister = OperateContext.Current.BLLSession.IMemberInformationBLL.GetListBy(u => u.T_RoleAct.Where(p => p.IsDel == false).Select(r => r.RoleId).Contains(Position.Minister)).ToList();
+            ViewBag.Minister = Minister;
+
+            List<MODEL.T_MemberInformation> TechnicalGuide = OperateContext.Current.BLLSession.IMemberInformationBLL.GetListBy(u => u.T_RoleAct.Where(p => p.IsDel == false).Select(r => r.RoleId).Contains(Position.TechnicalGuide)).ToList();
+            ViewBag.TechnicalGuide = TechnicalGuide;
+
             return View();
         }
         #endregion

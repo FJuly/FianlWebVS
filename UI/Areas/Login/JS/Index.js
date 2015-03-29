@@ -11,23 +11,31 @@ $(function () {
 
 ///窗体resize事件响应
 $(function () {
-    $(window).resize(
+ChangeFrame('00');
+$("#left-shrink-btn").click(function () {
+    LeftMenuShrink();        
+});
+
+///Onload事件响应
+$(window).load(
+    function () {
+        ResizeWindow();
+        InitLeftMenu();
+
+    }
+    );
+
+///窗体resize事件响应
+$(window).resize(
     function () {
         ResizeWindow();
     }
-    )
-})
+    );
 
-$(function () {
-    $("#left-shrink-btn").click(function () {
-        LeftMenuShrink();
-    });
 });
 
-
 //初始化左侧导航面板
-function InitLeftMenu(jsonMenu)
-{
+function InitLeftMenu(jsonMenu) {
     var jsonMenus = jQuery.parseJSON(jsonMenu);
     var $menu = $("#menu");
 
@@ -48,15 +56,15 @@ function InitLeftMenu(jsonMenu)
         menuList += '<div class="menu_column_title_border" >';
         menuList += '<div id="menu-column-title-logo-' + n.menuId + '" class="menu_column_title_logo" style="background-image:url(\'' + n.icon.imgPath + '\');background-position:' + bgx + 'px ' + 0 + 'px;"></div>';
         menuList += '<span class="menu_column_title_text">' + n.menuName + '</span>';
-        menuList += '<div id="menu-column-title-state-'+n.menuId+'" class="menu_column_title_state" style="background-image:url(\'Images/index_icon.png\');background-position-x:-240px;background-position-y:0px;"></div>';
+        menuList += '<div id="menu-column-title-state-' + n.menuId + '" class="menu_column_title_state" style="background-image:url(\'Images/index_icon.png\');background-position-x:-240px;background-position-y:0px;"></div>';
         menuList += '</div>';
         menuList += '</div>';
 
         menuList += '<div class="child_menu" id="child-menu-' + n.menuId + '">';
         menuList += '<ul>';
         $.each(n.childMenus, function (j, o) {
-            
-            menuList += '<li  onclick="AddIframe('+o.menuId+',\''+o.url+'\',\''+o.menuName+'\')">';
+
+            menuList += '<li  onclick="AddIframe(' + o.menuId + ',\'' + o.url + '\',\'' + o.menuName + '\')">';
             menuList += '<div class="child_menu_column_border">';
             menuList += '<div class="child_menu_column_logo"  ></div>';
             menuList += '<span class="child_menu_column_text" >' + o.menuName + '</span>';
@@ -68,12 +76,13 @@ function InitLeftMenu(jsonMenu)
         menuList += '</div>';
         menuList += '</li>';
         bgx = bgx - 20;
-        
+
     });
 
     menuList += "</ul>"
     $menu.append(menuList);
 }
+
 
 //根据浏览器高度改变nav和main的高度
 function ResizeWindow()
@@ -89,8 +98,18 @@ function ResizeWindow()
     $("#main").css('height', windowHeight - headerHeight - footerHeight + 'px');
     $("#main").css('width', windowWidth - $("#left").outerWidth() + 'px');
     $("#main-panel").css('height', $("#main").outerHeight() - $('#top-nav').outerHeight() + 'px');
+    $("#header-right").css('width', $("#header").outerWidth() - 187 + 'px');
 
     ResizeChildMenu();
+    if ($(".menu").css("width") == '0px')
+    {
+        $("#nav-body").animate({ width: $(window).outerWidth() - 0 }, 200);
+        $("#nav-body-ul").animate({ width: $(window).outerWidth() - 0 }, 200);
+    } else
+    {
+        $("#nav-body").animate({ width: $(window).outerWidth() - 185 },200);
+        $("#nav-body-ul").animate({ width: $(window).outerWidth() - 185  }, 200);
+    }
     
 }
 
@@ -111,24 +130,23 @@ function SlideToggleChildMenu(childMenu,id)
     var $childMenu = $(childMenu);
     var $states = $(".menu_column_title_state");
     var $state = $("#menu-column-title-state-" + id);
-
-    if ($state.css('background-position') == "-240px 0px")
+    if ($state.css('background-position') == '-240px 0px')
     {
-        $state.css('background-position-x', '-260px'); 
+        setTimeout(function () { $state.css('background-position-x', '-260px'); }, 200); 
     } else
     {
-        $state.css('background-position-x', '-240px');
+        setTimeout(function () { $state.css('background-position-x', '-240px'); }, 200);
     }
     $childMenus.each(function (i, n) {
         if (n.style.display == "block" && $childMenu.next().css("display") != "block")
         {
-            $($states[i]).css('background-position-x', '-240px');
-            $(n).slideToggle(1000);
+            setTimeout(function () { $($states[i]).css('background-position-x', '-240px'); }, 200);
+            $(n).slideToggle(800);
         }
     })
     ResizeChildMenu();
 
-    $childMenu.next().slideToggle(1000);
+    $childMenu.next().slideToggle(800);
 
     
 }
@@ -138,27 +156,31 @@ function LeftMenuShrink()
 {
     if ($(".menu").css("width") == '0px')
     {
-        $("#left").animate({ width: 185 }, "slow");
-        $(".menu").animate({ width: 185 }, "slow");
-        $("#left-shrink-btn").animate({ left: 185 }, "slow");
-        $("#left-shrink-btn").css('background-position-x','0px');
-        $("#main").animate({ left: 185, width: $(window).outerWidth() - 185 }, "slow");
-
+        $("#left").animate({ width: 185 }, 500);
+        $(".menu").animate({ width: 185 }, 500);
+        $("#left-shrink-btn").animate({ left: 185 }, 500);
+        setTimeout(function () { $("#left-shrink-btn").css('background-position-x', '0px'); }, 200);
+        $("#main").animate({ left: 185, width: $(window).outerWidth() - 185 }, 500);
+        $("#nav-body").animate({ width: $(window).outerWidth() - 185 }, 500);
+        $("#nav-body-ul").animate({ width: $(window).outerWidth() - 185 }, 500);
     } else
     {
-
-        $("#left").animate({ width: 0 }, "slow");
-        $(".menu").animate({ width: 0 }, "slow");
-        $("#left-shrink-btn").animate({ left: 0 }, "slow");
-        $("#left-shrink-btn").css('background-position-x', '-20px');
-        $("#main").animate({ left: 0, width: $(window).outerWidth() - 0 }, "slow");
-        
+        $("#left").animate({ width: 0 }, 500);
+        $(".menu").animate({ width: 0 }, 500);
+        $("#left-shrink-btn").animate({ left: 0 }, 500);
+        setTimeout(function () { $("#left-shrink-btn").css('background-position-x', '-20px'); }, 200);
+        $("#main").animate({ left: 0, width: $(window).outerWidth() - 0 }, 500);
+        $("#nav-body").animate({ width: $(window).outerWidth() - 0}, 500);
+        $("#nav-body-ul").animate({ width: $(window).outerWidth() - 0 }, 500);
     }
 }
 
 /*AddFrame*/
 function AddIframe(id, url, name) {
-
+    if (($("#nav-body-ul li").length + 1) * 100  >= $("#nav-body-ul").outerWidth()) {
+        alert("您打开的页面太多惹~~关掉几个再试试？？");
+        return;
+    }
     var strLi = "";
     var strIframe = "";
 
@@ -169,8 +191,8 @@ function AddIframe(id, url, name) {
     var $mainPanelChilds = $mainPanel.children();
 
     $mainPanelChilds.each(function (i, n) {
-            n.style.display = "none";
-        });
+        n.style.display = "none";
+    });
     
     if (document.getElementById("nav-column-" + id)) {
         document.getElementById("panel-body-" + id).style.display = 'block';
@@ -186,8 +208,8 @@ function AddIframe(id, url, name) {
         strLi += '<div onclick="SubIframe('+id+')" onmouseover ="NavCloseBtnMouseOver(' + id + ')" onmouseout ="NavCloseBtnMouseOut(' + id + ')" class="mian_nav_li_close_btn" id="nav-li-close-btn-' + id + '"></div>';
         strLi += '</li>';
 
-        $ul.append(strLi);
 
+        $ul.append(strLi);
     
         strIframe += '<div id="panel-body-'+id+'" style="width:inherit;height:inherit">';
         strIframe += '<iframe src="'+url+'" style="border:0px none;width:100%;height:100%;">';
@@ -198,17 +220,25 @@ function AddIframe(id, url, name) {
 
     }
 
+    $("#nav-body-ul").children().each(function (i, n) {
+        $(n).css("background-position-y", "-20px");
+    });
+
+    $("#nav-column-" + id).css("background-position-y", "-100px");
+
 }
 
 function NavCloseBtnMouseOver(navId)
 {
     $li = $("#nav-column-" + navId);
-    $li.css('background-position-y', '-60px');
+    var oldBPY = $li.css('background-position-y');
+    $li.css('background-position-y',oldBPY.substring(0,oldBPY.length-2) - 40 +"px");
 }
 
 function NavCloseBtnMouseOut(navId) {
     $li = $("#nav-column-" + navId);
-    $li.css('background-position-y', '-20px');
+    var oldBPY = $li.css('background-position-y');
+    $li.css('background-position-y',Number(oldBPY.substring(0,oldBPY.length-2)) + 40 +"px");
 }
 
 function SubIframe(id)
@@ -219,9 +249,9 @@ function SubIframe(id)
     var $nextIframe = $iframe.next();
 
     //若$nextIframe不存在length = 0 ，否则为length = 1
-    if ($nextIframe.length < 1) {
+    if ($nextIframe.length <= 0) {
         $nextIframe = $iframe.prev();
-        if ($nextIframe.length < 1) {
+        if ($nextIframe.length <= 0) {
             $nextIframe = $iframe;
         }
     }
@@ -240,6 +270,38 @@ function ChangeFrame(id)
     $mainPanelChilds.each(function (i, n) {
         n.style.display = "none";
     });
-
     document.getElementById("panel-body-" + id).style.display = 'block';
+    $("#nav-body-ul").children().each(function (i, n) {
+        $(n).css("background-position-y", "-20px");
+    });
+
+    $("#nav-column-" + id).css("background-position-y","-100px");
+
+    
 }
+
+/************标题左移*******************/
+//function NavMoveLeft()
+//{
+//    $navLi = $("#nav-body-ul");
+
+//    //alert($("#nav-body-ul").outerWidth());
+
+//    $Child = $("#nav-body-ul li");
+
+//    if ($("#nav-body-ul li").length * 100 + Number($Child.css("left").substring(0, $Child.css("left").length - 2)) >= $("#nav-body-ul").outerWidth())
+//    {
+//    $Child.css("left", $Child.css("left").substring(0, $Child.css("left").length - 2) - 100 + "px");
+//    }
+
+//}
+///************标题右移*******************/
+//function NavMoveRight()
+//{
+//    $navLi = $("#nav-body-ul");
+//    $Child = $("#nav-body-ul li");
+
+//    if ($Child.css("left").substring(0, $Child.css("left").length - 2)<0) {
+//        $Child.css("left", Number($Child.css("left").substring(0, $Child.css("left").length - 2) )+ 100 + "px");
+//    }
+//}

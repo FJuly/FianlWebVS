@@ -15,7 +15,6 @@ namespace MVC.Helper
         public static readonly int PlanLeader = 10005;//策划组组长
         public static readonly int PlanMmember = 10006;//策划组成员
         public static readonly int  Financial = 10007;//财务主管
-        public static readonly int Student = 10008; //实习生
         public static readonly int TechnicalGuide = 10009; //技术指导
     }
 
@@ -27,5 +26,14 @@ namespace MVC.Helper
         public static readonly int System = 10004;//系统编程部
         public static readonly int Design = 10005;//设计
         public static readonly int Scheme = 10007;//策划
+    }
+
+    public class TechnicalLevel
+    {
+        public static readonly int  TechBackbone = 10001;//技术骨干
+        public static readonly int EliteProgram = 10002;//项目精英
+        public static readonly int  FullMember = 10003;//正式成员
+        public static readonly int Technician = 10004;//技术人员
+        public static readonly int Student = 10005;//实习生
     }
 }

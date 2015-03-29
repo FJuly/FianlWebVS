@@ -124,7 +124,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Content Include="Areas\Login\Images\background .png" />
+    <Content Include="Areas\Login\Images\web_logo.ico" />
     <Content Include="Areas\PersonalManger\CSS\DepartmentInfo.css" />
     <Content Include="Areas\PersonalManger\CSS\EntryPosition.css" />
     <Content Include="Areas\PersonalManger\Images\serach.png" />
@@ -188,6 +188,7 @@
     <Content Include="Areas\PersonalManger\Views\CheckMember\Index.cshtml" />
     <Content Include="Views\Default\boot.cshtml" />
     <Content Include="Areas\PersonalManger\Views\CheckMember\PageEdit.cshtml" />
+    <Content Include="Views\Default\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

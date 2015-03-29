@@ -27,7 +27,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (MODEL.T_MemberInformation member in ViewBag.list1 as List<MODEL.T_MemberInformation>)
+                    @foreach (MODEL.T_MemberInformation member in ViewBag.listPresident as List<MODEL.T_MemberInformation>)
                     { 
                         <tr>
                             <th scope="row">1</th>
@@ -55,7 +55,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (MODEL.T_MemberInformation member in ViewBag.list2 as List<MODEL.T_MemberInformation>)
+                    @foreach (MODEL.T_MemberInformation member in ViewBag.Minister as List<MODEL.T_MemberInformation>)
                     { 
                         <tr>
                             <th scope="row">1</th>
@@ -83,7 +83,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (MODEL.T_MemberInformation member in ViewBag.list3 as List<MODEL.T_MemberInformation>)
+                    @foreach (MODEL.T_MemberInformation member in ViewBag.StudyLeader as List<MODEL.T_MemberInformation>)
                     { 
                         <tr>
                             <th scope="row">1</th>
@@ -111,7 +111,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (MODEL.T_MemberInformation member in ViewBag.list4 as List<MODEL.T_MemberInformation>)
+                    @foreach (MODEL.T_MemberInformation member in ViewBag.StudyMember as List<MODEL.T_MemberInformation>)
                     { 
                         <tr>
                             <th scope="row">1</th>
@@ -139,7 +139,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (MODEL.T_MemberInformation member in ViewBag.list4 as List<MODEL.T_MemberInformation>)
+                    @foreach (MODEL.T_MemberInformation member in ViewBag.PlanLeader as List<MODEL.T_MemberInformation>)
                     { 
                         <tr>
                             <th scope="row">1</th>
@@ -167,7 +167,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (MODEL.T_MemberInformation member in ViewBag.list5 as List<MODEL.T_MemberInformation>)
+                    @foreach (MODEL.T_MemberInformation member in ViewBag.PlanMmember as List<MODEL.T_MemberInformation>)
                     { 
                         <tr>
                             <th scope="row">1</th>
@@ -195,7 +195,35 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (MODEL.T_MemberInformation member in ViewBag.list6 as List<MODEL.T_MemberInformation>)
+                    @foreach (MODEL.T_MemberInformation member in ViewBag.Financial as List<MODEL.T_MemberInformation>)
+                    { 
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>@member.StuNum</td>
+                            <td>@member.StuName</td>
+                            <td>@string.Join(" ", member.T_RoleAct.OrderBy(s => s.RoleId).Select(p => p.T_Role.RoleName).ToArray())</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+          <div class="panel panel-default panel-danger">
+            <!-- Default panel contents -->
+            <div class="panel-heading">技术指导</div>
+
+            <!-- Table -->
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>学号</th>
+                        <th>姓名</th>
+                        <th>职务</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (MODEL.T_MemberInformation member in ViewBag.TechnicalGuide as List<MODEL.T_MemberInformation>)
                     { 
                         <tr>
                             <th scope="row">1</th>
