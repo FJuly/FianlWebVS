@@ -33,10 +33,10 @@ namespace MODEL
         public double ProjIncome { get; set; }
         public string ProjMark { get; set; }
     
-        public virtual T_MemberInformation T_MemberInformation { get; set; }
-        public virtual T_MemberInformation T_MemberInformation1 { get; set; }
         public virtual ICollection<T_ProjectParticipation> T_ProjectParticipation { get; set; }
         public virtual T_ProjectType T_ProjectType { get; set; }
         public virtual ICollection<T_TaskInformation> T_TaskInformation { get; set; }
+        public virtual T_MemberInformation T_MemberInformation { get; set; }
+        public virtual T_MemberInformation T_MemberInformation1 { get; set; }
     }
 }

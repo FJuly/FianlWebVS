@@ -18,6 +18,7 @@ namespace MODEL
         {
             this.T_MemberInformation1 = new HashSet<T_MemberInformation>();
             this.T_MemberInformation11 = new HashSet<T_MemberInformation>();
+            this.T_OgnizationAct = new HashSet<T_OgnizationAct>();
             this.T_ProjectInformation = new HashSet<T_ProjectInformation>();
             this.T_ProjectInformation1 = new HashSet<T_ProjectInformation>();
             this.T_ProjectParticipation = new HashSet<T_ProjectParticipation>();
@@ -47,18 +48,17 @@ namespace MODEL
         public Nullable<int> TechnicalLevel { get; set; }
         public string StudyGuideNumber { get; set; }
         public string TechnicalGuideNumber { get; set; }
-        public Nullable<int> Organization { get; set; }
         public bool IsDelete { get; set; }
         public string Sign { get; set; }
         public string OtheInfor { get; set; }
     
         public virtual T_Department T_Department { get; set; }
-        public virtual T_Organization T_Organization { get; set; }
         public virtual ICollection<T_MemberInformation> T_MemberInformation1 { get; set; }
         public virtual T_MemberInformation T_MemberInformation2 { get; set; }
         public virtual T_TechnicaLevel T_TechnicaLevel { get; set; }
         public virtual ICollection<T_MemberInformation> T_MemberInformation11 { get; set; }
         public virtual T_MemberInformation T_MemberInformation3 { get; set; }
+        public virtual ICollection<T_OgnizationAct> T_OgnizationAct { get; set; }
         public virtual ICollection<T_ProjectInformation> T_ProjectInformation { get; set; }
         public virtual ICollection<T_ProjectInformation> T_ProjectInformation1 { get; set; }
         public virtual ICollection<T_ProjectParticipation> T_ProjectParticipation { get; set; }

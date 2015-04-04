@@ -11,6 +11,9 @@ namespace DALMSSQL
 	public partial class T_MemberInformationDAL : BaseDAL<MODEL.T_MemberInformation>,IDAL.IMemberInformationDAL
     {
     }
+	public partial class T_OgnizationActDAL : BaseDAL<MODEL.T_OgnizationAct>,IDAL.IOgnizationActDAL
+    {
+    }
 	public partial class T_OrganizationDAL : BaseDAL<MODEL.T_Organization>,IDAL.IOrganizationDAL
     {
     }

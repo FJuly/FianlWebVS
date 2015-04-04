@@ -76,14 +76,36 @@ u.StuNum.Contains((DateTime.Now.Year - 2).ToString());
             {
                 DateTime dt = DateTime.Now;
                 datetime = (dt.Year - 1).ToString();
+                filter = u => u.IsDelete == false && (u.StuNum.Contains(datetime));
             }
-            else
+            if (role==Position.Minister)
             {
-                /*其他的则是大二成员*/
+                /*部长*/
                 DateTime dt = DateTime.Now;
                 datetime = (dt.Year - 2).ToString();
+                filter = u => u.IsDelete == false && (u.StuNum.Contains(datetime)) && (u.T_RoleAct.Select(p => p.RoleId).Contains(role) == false);
             }
-            filter = u => u.IsDelete == false && (u.StuNum.Contains(datetime)) && (u.T_RoleAct.Select(p => p.RoleId).Contains(role) == false);
+            if (role == Position.Financial)
+            {
+                /*财务主管*/
+                DateTime dt = DateTime.Now;
+                datetime = (dt.Year - 2).ToString();
+                filter = u => u.IsDelete == false && (u.StuNum.Contains(datetime)) && (u.T_RoleAct.Select(p => p.RoleId).Contains(role) == false);
+            }
+            if (role == Position.President )
+            {
+                /*总裁*/
+                DateTime dt = DateTime.Now;
+                datetime = (dt.Year - 2).ToString();
+                filter = u => u.IsDelete == false && (u.StuNum.Contains(datetime)) && (u.T_RoleAct.Select(p => p.RoleId).Contains(role) == false);
+            }
+            if (role == Position.TechnicalGuide)
+            {
+                /*技术指导*/
+                DateTime dt = DateTime.Now;
+                datetime = (dt.Year - 2).ToString();
+                filter = u => u.IsDelete == false && (u.StuNum.Contains(datetime)) && (u.T_RoleAct.Select(p => p.RoleId).Contains(role) == false);
+            }
             return filter;
         }
         #endregion
@@ -109,7 +131,7 @@ u.StuNum.Contains((DateTime.Now.Year - 2).ToString());
         #region 录入操作+ public ActionResult EntryOperate(int role, string[] stum)
         public ActionResult EntryOperate(int role, string[] stum)
         {
-            if (role == 10010)
+            if (role == 10000)
             {
                 return EntryDpartment(stum, role);
             }
@@ -134,8 +156,9 @@ u.StuNum.Contains((DateTime.Now.Year - 2).ToString());
         public ActionResult EntryPosition(string[] stum, int role)
         {
             Expression<Func<MODEL.T_RoleAct, bool>> filter = null;
-                /*将原先这个职位上的旧职员删除*/
-                filter = u => u.RoleId == role && u.IsDel == false && u.IsDel == false; ;
+            string date = (DateTime.Now.Year - 3).ToString();
+                /*将原先这个职位上的大三旧职员删除*/
+            filter = u => u.RoleId == role && u.IsDel == false && u.RoleActor.Contains(date);
                 MODEL.T_RoleAct roleAct = new MODEL.T_RoleAct() { IsDel = true };
 
                 if (OperateContext.Current.BLLSession.IRoleActBLL.ModifyBy(roleAct, filter, "IsDel") < 0)

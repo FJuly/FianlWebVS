@@ -15,10 +15,15 @@ namespace PersonalManger
 {
     public class CheckMemberController : Controller
     {
-        #region 人信息展示页面+ public ViewResult PersonPage()
+        #region 人信息展示页面+ public ViewResult  ()
         public ViewResult PersonPage()
         {
-            string stunum = OperateContext.Current.Usr.StuNum;
+            string stunum =Request.QueryString["StuNum"];
+            //判断查看的是不是自己的信息
+            if (stunum == null)
+            {
+                 stunum = OperateContext.Current.Usr.StuNum;
+            }
             MODEL.T_MemberInformation member = OperateContext.Current.BLLSession.IMemberInformationBLL.GetListBy(u => u.StuNum == stunum).FirstOrDefault();
             ViewBag.member = member;
             string RoleString = "";
@@ -61,16 +66,23 @@ namespace PersonalManger
             string dataBy = form["dataBy"];//模糊查寻的条件
             int pageIndex = Convert.ToInt32(form["pageindex"]);
             Expression<Func<MODEL.T_MemberInformation, bool>> whereLambda;
-            //根据dataBy生成不同的查寻条件
-            if (!string.IsNullOrEmpty(dataBy))
+            try
             {
-                whereLambda = u => u.IsDelete == false && (u.StuNum.Contains(dataBy) || u.StuName.Contains(dataBy));
+                //根据dataBy生成不同的查寻条件
+                if (!string.IsNullOrEmpty(dataBy))
+                {
+                    whereLambda = u => u.IsDelete == false && (u.StuNum.Contains(dataBy) || u.StuName.Contains(dataBy));
+                }
+                else
+                {
+                    whereLambda = u => u.IsDelete == false;
+                }
+                return PageData(whereLambda, pageIndex);
             }
-            else
+            catch (Exception ex)
             {
-                whereLambda = u => u.IsDelete == false;
+                return null;
             }
-            return PageData(whereLambda, pageIndex);
         }
         #endregion
 
@@ -206,29 +218,77 @@ namespace PersonalManger
         /// <returns></returns>
         public ActionResult BrowsePosition()
         {
-            List<MODEL.T_MemberInformation> listPresident = OperateContext.Current.BLLSession.IMemberInformationBLL.GetListBy(u => u.T_RoleAct.Where(p => p.IsDel == false).Select(r => r.RoleId).Contains(Position.President)).ToList();
+            var  listPresident = OperateContext.Current.BLLSession.IMemberInformationBLL.GetListBy(u => u.T_RoleAct.Where(p => p.IsDel == false).Select(r => r.RoleId).Contains(Position.President)).Select(u
+                     => new MemberInformationDTO()
+                     {
+                         StuNum = u.StuNum,
+                         StuName = u.StuName,
+                         Year = (Convert.ToInt32(DateTime.Now.Year) - Convert.ToInt32(u.StuNum.Substring(0, 4))).ToString() + "年级",
+                     });
             ViewBag.listPresident = listPresident;
 
-            List<MODEL.T_MemberInformation> PlanLeader= OperateContext.Current.BLLSession.IMemberInformationBLL.GetListBy(u => u.T_RoleAct.Where(p => p.IsDel == false).Select(r => r.RoleId).Contains(Position.PlanLeader)).ToList();
+            var PlanLeader = OperateContext.Current.BLLSession.IMemberInformationBLL.GetListBy(u => u.T_RoleAct.Where(p => p.IsDel == false).Select(r => r.RoleId).Contains(Position.PlanLeader)).Select(u
+                     => new MemberInformationDTO()
+                     {
+                         StuNum = u.StuNum,
+                         StuName = u.StuName,
+                         Year = (Convert.ToInt32(DateTime.Now.Year) - Convert.ToInt32(u.StuNum.Substring(0, 4))).ToString() + "年级",
+                     });
             ViewBag.PlanLeader = PlanLeader;
 
-            List<MODEL.T_MemberInformation> StudyLeader = OperateContext.Current.BLLSession.IMemberInformationBLL.GetListBy(u => u.T_RoleAct.Where(p => p.IsDel == false).Select(r => r.RoleId).Contains(Position.StudyLeader)).ToList();
+            var StudyLeader = OperateContext.Current.BLLSession.IMemberInformationBLL.GetListBy(u => u.T_RoleAct.Where(p => p.IsDel == false).Select(r => r.RoleId).Contains(Position.StudyLeader)).Select(u
+                     => new MemberInformationDTO()
+                     {
+                         StuNum = u.StuNum,
+                         StuName = u.StuName,
+                         Year = (Convert.ToInt32(DateTime.Now.Year) - Convert.ToInt32(u.StuNum.Substring(0, 4))).ToString() + "年级",
+                     });
             ViewBag.StudyLeader = StudyLeader;
 
-            List<MODEL.T_MemberInformation> StudyMember =OperateContext.Current.BLLSession.IMemberInformationBLL.GetListBy(u => u.T_RoleAct.Where(p => p.IsDel == false).Select(r => r.RoleId).Contains(Position.StudyMember)).ToList();
+            var StudyMember = OperateContext.Current.BLLSession.IMemberInformationBLL.GetListBy(u => u.T_RoleAct.Where(p => p.IsDel == false).Select(r => r.RoleId).Contains(Position.StudyMember)).Select(u
+                     => new MemberInformationDTO()
+                     {
+                         StuNum = u.StuNum,
+                         StuName = u.StuName,
+                         Year = (Convert.ToInt32(DateTime.Now.Year) - Convert.ToInt32(u.StuNum.Substring(0, 4))).ToString() + "年级",
+                     });
             ViewBag.StudyMember = StudyMember;
 
-            List<MODEL.T_MemberInformation> PlanMmember = OperateContext.Current.BLLSession.IMemberInformationBLL.GetListBy(u => u.T_RoleAct.Select(p => p.RoleId).Contains(Position.PlanMmember)).ToList();
+            var PlanMmember = OperateContext.Current.BLLSession.IMemberInformationBLL.GetListBy(u => u.T_RoleAct.Where(p => p.IsDel == false).Select(r => r.RoleId).Contains(Position.PlanMmember)).Select(u
+                     => new MemberInformationDTO()
+                     {
+                         StuNum = u.StuNum,
+                         StuName = u.StuName,
+                         Year = (Convert.ToInt32(DateTime.Now.Year) - Convert.ToInt32(u.StuNum.Substring(0, 4))).ToString() + "年级",
+                     });
             ViewBag.PlanMmember = PlanMmember;
 
-            List<MODEL.T_MemberInformation> Financial = OperateContext.Current.BLLSession.IMemberInformationBLL.GetListBy(u => u.T_RoleAct.Where(p=>p.IsDel==false).Select(r=>r.RoleId).Contains(Position.Financial)).ToList();
+            var Financial = OperateContext.Current.BLLSession.IMemberInformationBLL.GetListBy(u => u.T_RoleAct.Where(p => p.IsDel == false).Select(r => r.RoleId).Contains(Position.Financial)).Select(u
+                     => new MemberInformationDTO()
+                     {
+                         StuNum = u.StuNum,
+                         StuName = u.StuName,
+                         Year = (Convert.ToInt32(DateTime.Now.Year) - Convert.ToInt32(u.StuNum.Substring(0, 4))).ToString() + "年级",
+                     });
             ViewBag.Financial = Financial;
 
-            List<MODEL.T_MemberInformation> Minister = OperateContext.Current.BLLSession.IMemberInformationBLL.GetListBy(u => u.T_RoleAct.Where(p => p.IsDel == false).Select(r => r.RoleId).Contains(Position.Minister)).ToList();
+            var Minister = OperateContext.Current.BLLSession.IMemberInformationBLL.GetListBy(u => u.T_RoleAct.Where(p => p.IsDel == false).Select(r => r.RoleId).Contains(Position.Minister)).Select(u
+                      => new MemberInformationDTO()
+                      {
+                          StuNum = u.StuNum,
+                          StuName = u.StuName,
+                          Year = (Convert.ToInt32(DateTime.Now.Year) - Convert.ToInt32(u.StuNum.Substring(0, 4))).ToString() + "年级",
+                      });
             ViewBag.Minister = Minister;
 
-            List<MODEL.T_MemberInformation> TechnicalGuide = OperateContext.Current.BLLSession.IMemberInformationBLL.GetListBy(u => u.T_RoleAct.Where(p => p.IsDel == false).Select(r => r.RoleId).Contains(Position.TechnicalGuide)).ToList();
-            ViewBag.TechnicalGuide = TechnicalGuide;
+            //var TechnicalGuide = OperateContext.Current.BLLSession.IMemberInformationBLL.GetListBy(u => u.T_RoleAct.Where(p => p.IsDel == false).Select(r => r.RoleId).Contains(Position.President)).Select(u
+            //         => new MemberInformationDTO()
+            //         {
+            //             StuNum = u.StuNum,
+            //             StuName = u.StuName,
+            //             Year = (Convert.ToInt32(DateTime.Now.Year) - Convert.ToInt32(u.StuNum.Substring(0, 4))).ToString() + "年级",
+            //         });
+            //ViewBag.TechnicalGuide = TechnicalGuide;
 
             return View();
         }
@@ -253,7 +313,8 @@ namespace PersonalManger
                 }
                 else
                 {
-                    department = OperateContext.Current.BLLSession.IDepartmentBLL.GetListBy(u => u.DepartmentId == Convert.ToInt32(DepId));
+                    int id=Convert.ToInt32(DepId);
+                    department = OperateContext.Current.BLLSession.IDepartmentBLL.GetListBy(u => u.DepartmentId ==id );
                 }
                 ViewBag.department = department;
                 return View();
@@ -284,37 +345,46 @@ namespace PersonalManger
             int totalRecord;
 
             int pageSize = 10;//页容量固定死为10
-            var list = OperateContext.Current.BLLSession.IMemberInformationBLL.GetPagedList(pageIndex, pageSize,
-               whereLambda, u => u.StuNum, out totalRecord).Select(u
-                 => new MemberInformationDTO()
-                 {
-                     StuNum = u.StuNum,
-                     StuName = u.StuName,
-                     Major = u.Major,
-                     TelephoneNumber = u.TelephoneNumber,
-                     Department = u.T_Department.DepartmentName,
-                     roles = string.Join(" ", u.T_RoleAct.OrderBy(s => s.RoleId).Select(p => p.T_Role.RoleName).ToArray())//效率比较低
-                 });
-
-            JsonModel json;
-            PageModel pageModel = new PageModel()
+            try//为什么异常没有捕捉到
             {
-                TotalRecord = totalRecord,
-                data = list
-            };
+                var list = OperateContext.Current.BLLSession.IMemberInformationBLL.GetPagedList(pageIndex, pageSize,
+                   whereLambda, u => u.StuNum, out totalRecord).Select(u
+                     => new MemberInformationDTO()
+                     {
+                         StuNum = u.StuNum,
+                         StuName = u.StuName,
+                         Major = u.Major,
+                         TelephoneNumber = u.TelephoneNumber,
+                         Year=(Convert.ToInt32(DateTime.Now.Year)-Convert.ToInt32(u.StuNum.Substring(0,4))).ToString()+"年级",
+                         Department =u.T_Department==null?"无":u.T_Department.DepartmentName,
+                     });
 
-            json = new JsonModel()
+                JsonModel json;
+                PageModel pageModel = new PageModel()
+                {
+                    TotalRecord = totalRecord,
+                    data = list
+                };
+
+                json = new JsonModel()
+                {
+                    Data = pageModel,
+                    BackUrl = "",
+                    Statu = "ok",
+                    Msg = "成功"
+                };
+
+                JsonResult jr = new JsonResult();
+                jr.Data = json;
+                jr.JsonRequestBehavior = JsonRequestBehavior.AllowGet;
+                return jr;
+            }
+            catch (Exception ex)
             {
-                Data = pageModel,
-                BackUrl = "",
-                Statu = "ok",
-                Msg = "成功"
-            };
+                return null;
+            }
 
-            JsonResult jr = new JsonResult();
-            jr.Data = json;
-            jr.JsonRequestBehavior = JsonRequestBehavior.AllowGet;
-            return jr;
+
         }
         #endregion
     }

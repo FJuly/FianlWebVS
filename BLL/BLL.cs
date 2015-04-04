@@ -21,6 +21,14 @@ namespace BLL
 		}
     }
 
+	public partial class T_OgnizationAct : BaseBLL<MODEL.T_OgnizationAct>,IBLL.IOgnizationActBLL
+    {
+		public override void SetDAL()
+		{
+			idal = DBSession.IOgnizationActDAL;
+		}
+    }
+
 	public partial class T_Organization : BaseBLL<MODEL.T_Organization>,IBLL.IOrganizationBLL
     {
 		public override void SetDAL()

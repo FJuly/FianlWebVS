@@ -23,14 +23,16 @@ namespace MODEL
         public string PerName { get; set; }
         public Nullable<int> PerParent { get; set; }
         public string PerAreaName { get; set; }
-        public string PerControllerName { get; set; }
+        public string PerController { get; set; }
         public string PerActionName { get; set; }
-        public int PerFormMethod { get; set; }
+        public Nullable<int> PerFormMethod { get; set; }
         public bool PerIsDel { get; set; }
         public bool PerIsShow { get; set; }
-        public System.DateTime PerAddTime { get; set; }
+        public Nullable<System.DateTime> PerAddTime { get; set; }
         public string PerIco { get; set; }
         public bool IsDelete { get; set; }
+        public Nullable<int> bpx { get; set; }
+        public Nullable<int> bpy { get; set; }
     
         public virtual ICollection<T_RolePermission> T_RolePermission { get; set; }
     }

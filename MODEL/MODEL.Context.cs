@@ -26,9 +26,6 @@ namespace MODEL
         }
     
         public DbSet<T_Department> T_Department { get; set; }
-        public DbSet<T_MemberInformation> T_MemberInformation { get; set; }
-        public DbSet<T_Organization> T_Organization { get; set; }
-        public DbSet<T_Permission> T_Permission { get; set; }
         public DbSet<T_ProjectInformation> T_ProjectInformation { get; set; }
         public DbSet<T_ProjectParticipation> T_ProjectParticipation { get; set; }
         public DbSet<T_ProjectType> T_ProjectType { get; set; }
@@ -40,5 +37,9 @@ namespace MODEL
         public DbSet<T_TaskParticipation> T_TaskParticipation { get; set; }
         public DbSet<T_TaskType> T_TaskType { get; set; }
         public DbSet<T_TechnicaLevel> T_TechnicaLevel { get; set; }
+        public DbSet<T_MemberInformation> T_MemberInformation { get; set; }
+        public DbSet<T_OgnizationAct> T_OgnizationAct { get; set; }
+        public DbSet<T_Organization> T_Organization { get; set; }
+        public DbSet<T_Permission> T_Permission { get; set; }
     }
 }

@@ -14,6 +14,10 @@ namespace IBLL
     {
     }
 
+	public partial interface IOgnizationActBLL : IBaseBLL<MODEL.T_OgnizationAct>
+    {
+    }
+
 	public partial interface IOrganizationBLL : IBaseBLL<MODEL.T_Organization>
     {
     }

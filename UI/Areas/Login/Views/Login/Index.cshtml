@@ -7,17 +7,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-@*    @System.Web.Optimization.Scripts.Render("~/jsValid")*@
     <title></title>
     <link href="~/Areas/Login/CSS/Login.css" rel="stylesheet" />
     <script src="~/Scripts/jquery-1.7.1.min.js"></script>
     <script src="~/Areas/Login/JS/Login.js"></script>
-
-@*    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
-    <script src="~/Scripts/jquery.validate.min.js"></script>
-    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>*@
 </head>
-<body style="font-family:'Microsoft YaHei'; ">
+<body >
     <!--背景图-->
     <div id="BackGroundDiv">
          <div id="TopDivShadow"></div>
@@ -30,7 +25,7 @@
         <div id="LoginBoxShadow">
            
         </div>
-@using (Html.BeginForm("Login", "Login", FormMethod.Post, new { @class = "form", @onsubmit = "return login()" }))
+@using (Html.BeginForm("Login", "Login", FormMethod.Post, new { @class = "form",@id="submitForm" }))
 {
         <div id="LoginBox">
         <!-- 用户名-->
@@ -40,7 +35,7 @@
             </div>
             <!--密 码-->
             <div id="PasswordDiv">
-               <div><span>密&nbsp;&nbsp;码:</span></div>
+               <div><span>密&nbsp码:</span></div>
                 <div id="PasswordText"><div id="PasswordImg"></div>@Html.TextBoxFor(u=>u.Pwd)</div>
                 <div id="BackPassword"><a>找回密码</a></div>
             </div>
@@ -56,8 +51,9 @@
                 <div id="AutoLogin">@Html.CheckBoxFor(u=>u.IsAlways)<span>自动登录</span></div>
             </div>
             <div id="btnLogin">
-                <div><input type="submit" value="登陆"/></div>
+                <div onclick="login()" style="color:white">登录</div>
             </div>
+             <input type="submit" value="登陆" style="display:none" id="submit"/>
         </div>
 }
         <!--背景切换-->

@@ -77,6 +77,9 @@
     <Compile Include="T_MemberInformation.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="T_OgnizationAct.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="T_Organization.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>

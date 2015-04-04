@@ -61,7 +61,7 @@ body { }
 .div-line { border: 1px RGB(39,184,165) solid; height: 25px; width: 1px; margin-top: 3px; margin-left: 10px; border-left: none; border-top: none; border-bottom: none; float: left; }
 
 
-.a-first, .a-pre, .a-last, .a-next, .a-refresh { background: url(/Areas/PersonalManger/Images/页面2图标.png); float: left; height: 22px; width: 22px; margin-top: 6px; }
+.a-first, .a-pre, .a-last, .a-next, .a-refresh { background: url(/Areas/PersonalManger/Images/页面2图标.png); float: left; height: 22px; width: 22px; margin-top: 6px;d}
     .a-first:active, .a-pre:active, .a-last:active, .a-next:active, .a-refresh:active { position: relative; top: 1px; left: 1px; }
 .a-first { background-position: -52px -74px; margin-left: 9px; }
 .a-pre { background-position: -75px -74px; margin-left: 12px; }

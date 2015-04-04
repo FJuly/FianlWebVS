@@ -44,7 +44,24 @@ namespace BLL
 		}
 		#endregion
 
-		#region 03 业务接口 IT_OrganizationDAL
+		#region 03 业务接口 IT_OgnizationActDAL
+		IOgnizationActBLL iOgnizationActBLL;
+		public IOgnizationActBLL IOgnizationActBLL
+		{
+			get
+			{
+				if(iOgnizationActBLL==null)
+					iOgnizationActBLL= new T_OgnizationAct();
+				return iOgnizationActBLL;
+			}
+			set
+			{
+				iOgnizationActBLL= value;
+			}
+		}
+		#endregion
+
+		#region 04 业务接口 IT_OrganizationDAL
 		IOrganizationBLL iOrganizationBLL;
 		public IOrganizationBLL IOrganizationBLL
 		{
@@ -61,7 +78,7 @@ namespace BLL
 		}
 		#endregion
 
-		#region 04 业务接口 IT_PermissionDAL
+		#region 05 业务接口 IT_PermissionDAL
 		IPermissionBLL iPermissionBLL;
 		public IPermissionBLL IPermissionBLL
 		{
@@ -78,7 +95,7 @@ namespace BLL
 		}
 		#endregion
 
-		#region 05 业务接口 IT_ProjectInformationDAL
+		#region 06 业务接口 IT_ProjectInformationDAL
 		IProjectInformationBLL iProjectInformationBLL;
 		public IProjectInformationBLL IProjectInformationBLL
 		{
@@ -95,7 +112,7 @@ namespace BLL
 		}
 		#endregion
 
-		#region 06 业务接口 IT_ProjectParticipationDAL
+		#region 07 业务接口 IT_ProjectParticipationDAL
 		IProjectParticipationBLL iProjectParticipationBLL;
 		public IProjectParticipationBLL IProjectParticipationBLL
 		{
@@ -112,7 +129,7 @@ namespace BLL
 		}
 		#endregion
 
-		#region 07 业务接口 IT_ProjectTypeDAL
+		#region 08 业务接口 IT_ProjectTypeDAL
 		IProjectTypeBLL iProjectTypeBLL;
 		public IProjectTypeBLL IProjectTypeBLL
 		{
@@ -129,7 +146,7 @@ namespace BLL
 		}
 		#endregion
 
-		#region 08 业务接口 IT_ProjPhaseDAL
+		#region 09 业务接口 IT_ProjPhaseDAL
 		IProjPhaseBLL iProjPhaseBLL;
 		public IProjPhaseBLL IProjPhaseBLL
 		{
@@ -146,7 +163,7 @@ namespace BLL
 		}
 		#endregion
 
-		#region 09 业务接口 IT_RoleDAL
+		#region 10 业务接口 IT_RoleDAL
 		IRoleBLL iRoleBLL;
 		public IRoleBLL IRoleBLL
 		{
@@ -163,7 +180,7 @@ namespace BLL
 		}
 		#endregion
 
-		#region 10 业务接口 IT_RoleActDAL
+		#region 11 业务接口 IT_RoleActDAL
 		IRoleActBLL iRoleActBLL;
 		public IRoleActBLL IRoleActBLL
 		{
@@ -180,7 +197,7 @@ namespace BLL
 		}
 		#endregion
 
-		#region 11 业务接口 IT_RolePermissionDAL
+		#region 12 业务接口 IT_RolePermissionDAL
 		IRolePermissionBLL iRolePermissionBLL;
 		public IRolePermissionBLL IRolePermissionBLL
 		{
@@ -197,7 +214,7 @@ namespace BLL
 		}
 		#endregion
 
-		#region 12 业务接口 IT_TaskInformationDAL
+		#region 13 业务接口 IT_TaskInformationDAL
 		ITaskInformationBLL iTaskInformationBLL;
 		public ITaskInformationBLL ITaskInformationBLL
 		{
@@ -214,7 +231,7 @@ namespace BLL
 		}
 		#endregion
 
-		#region 13 业务接口 IT_TaskParticipationDAL
+		#region 14 业务接口 IT_TaskParticipationDAL
 		ITaskParticipationBLL iTaskParticipationBLL;
 		public ITaskParticipationBLL ITaskParticipationBLL
 		{
@@ -231,7 +248,7 @@ namespace BLL
 		}
 		#endregion
 
-		#region 14 业务接口 IT_TaskTypeDAL
+		#region 15 业务接口 IT_TaskTypeDAL
 		ITaskTypeBLL iTaskTypeBLL;
 		public ITaskTypeBLL ITaskTypeBLL
 		{
@@ -248,7 +265,7 @@ namespace BLL
 		}
 		#endregion
 
-		#region 15 业务接口 IT_TechnicaLevelDAL
+		#region 16 业务接口 IT_TechnicaLevelDAL
 		ITechnicaLevelBLL iTechnicaLevelBLL;
 		public ITechnicaLevelBLL ITechnicaLevelBLL
 		{

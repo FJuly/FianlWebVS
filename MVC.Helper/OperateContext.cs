@@ -216,7 +216,7 @@ namespace MVC.Helper
             var listP = from per in UsrPermission
                         where
                             string.Equals(per.PerAreaName, areaName, StringComparison.CurrentCultureIgnoreCase) &&
-                            string.Equals(per.PerControllerName, controllerName, StringComparison.CurrentCultureIgnoreCase) &&
+                            string.Equals(per.PerController, controllerName, StringComparison.CurrentCultureIgnoreCase) &&
                             string.Equals(per.PerActionName, actionName, StringComparison.CurrentCultureIgnoreCase) && (
                                 per.PerFormMethod == 3 ||//如果数据库保存的权限 请求方式 =3 代表允许 get/post请求
                                 per.PerFormMethod == (httpMethod.ToLower() == "get" ? 1 : 2)

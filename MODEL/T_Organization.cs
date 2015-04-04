@@ -16,13 +16,13 @@ namespace MODEL
     {
         public T_Organization()
         {
-            this.T_MemberInformation = new HashSet<T_MemberInformation>();
+            this.T_OgnizationAct = new HashSet<T_OgnizationAct>();
         }
     
         public int OrganizationId { get; set; }
         public string OrganizationName { get; set; }
         public bool IsDelete { get; set; }
     
-        public virtual ICollection<T_MemberInformation> T_MemberInformation { get; set; }
+        public virtual ICollection<T_OgnizationAct> T_OgnizationAct { get; set; }
     }
 }

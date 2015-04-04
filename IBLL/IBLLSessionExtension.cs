@@ -10,6 +10,7 @@ namespace IBLL
     {
 		IDepartmentBLL IDepartmentBLL{get;set;}
 		IMemberInformationBLL IMemberInformationBLL{get;set;}
+		IOgnizationActBLL IOgnizationActBLL{get;set;}
 		IOrganizationBLL IOrganizationBLL{get;set;}
 		IPermissionBLL IPermissionBLL{get;set;}
 		IProjectInformationBLL IProjectInformationBLL{get;set;}

@@ -4,10 +4,11 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="FinalModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="FinalModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="FinalModelStoreContainer">
           <EntitySet Name="T_Department" EntityType="FinalModel.Store.T_Department" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="T_MemberInformation" EntityType="FinalModel.Store.T_MemberInformation" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="T_OgnizationAct" EntityType="FinalModel.Store.T_OgnizationAct" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="T_Organization" EntityType="FinalModel.Store.T_Organization" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="T_Permission" EntityType="FinalModel.Store.T_Permission" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="T_ProjectInformation" EntityType="FinalModel.Store.T_ProjectInformation" store:Type="Tables" Schema="dbo" />
@@ -25,10 +26,6 @@
             <End Role="T_Department" EntitySet="T_Department" />
             <End Role="T_MemberInformation" EntitySet="T_MemberInformation" />
           </AssociationSet>
-          <AssociationSet Name="FK__T_MemberI__Organ__145C0A3F" Association="FinalModel.Store.FK__T_MemberI__Organ__145C0A3F">
-            <End Role="T_Organization" EntitySet="T_Organization" />
-            <End Role="T_MemberInformation" EntitySet="T_MemberInformation" />
-          </AssociationSet>
           <AssociationSet Name="FK__T_MemberI__Study__1273C1CD" Association="FinalModel.Store.FK__T_MemberI__Study__1273C1CD">
             <End Role="T_MemberInformation" EntitySet="T_MemberInformation" />
             <End Role="T_MemberInformation1" EntitySet="T_MemberInformation" />
@@ -40,6 +37,14 @@
           <AssociationSet Name="FK__T_MemberI__Techn__1367E606" Association="FinalModel.Store.FK__T_MemberI__Techn__1367E606">
             <End Role="T_MemberInformation" EntitySet="T_MemberInformation" />
             <End Role="T_MemberInformation1" EntitySet="T_MemberInformation" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_Ognizat__Organ__6FE99F9F" Association="FinalModel.Store.FK__T_Ognizat__Organ__6FE99F9F">
+            <End Role="T_Organization" EntitySet="T_Organization" />
+            <End Role="T_OgnizationAct" EntitySet="T_OgnizationAct" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_Ognizat__RoleA__70DDC3D8" Association="FinalModel.Store.FK__T_Ognizat__RoleA__70DDC3D8">
+            <End Role="T_MemberInformation" EntitySet="T_MemberInformation" />
+            <End Role="T_OgnizationAct" EntitySet="T_OgnizationAct" />
           </AssociationSet>
           <AssociationSet Name="FK__T_Project__ProjI__412EB0B6" Association="FinalModel.Store.FK__T_Project__ProjI__412EB0B6">
             <End Role="T_ProjectInformation" EntitySet="T_ProjectInformation" />
@@ -61,19 +66,19 @@
             <End Role="T_ProjectType" EntitySet="T_ProjectType" />
             <End Role="T_ProjectInformation" EntitySet="T_ProjectInformation" />
           </AssociationSet>
-          <AssociationSet Name="FK__T_RoleAct__RoleA__267ABA7A" Association="FinalModel.Store.FK__T_RoleAct__RoleA__267ABA7A">
+          <AssociationSet Name="FK__T_RoleAct__RoleA__6A30C649" Association="FinalModel.Store.FK__T_RoleAct__RoleA__6A30C649">
             <End Role="T_MemberInformation" EntitySet="T_MemberInformation" />
             <End Role="T_RoleAct" EntitySet="T_RoleAct" />
           </AssociationSet>
-          <AssociationSet Name="FK__T_RoleAct__RoleI__25869641" Association="FinalModel.Store.FK__T_RoleAct__RoleI__25869641">
+          <AssociationSet Name="FK__T_RoleAct__RoleI__693CA210" Association="FinalModel.Store.FK__T_RoleAct__RoleI__693CA210">
             <End Role="T_Role" EntitySet="T_Role" />
             <End Role="T_RoleAct" EntitySet="T_RoleAct" />
           </AssociationSet>
-          <AssociationSet Name="FK__T_RolePer__PerId__2D27B809" Association="FinalModel.Store.FK__T_RolePer__PerId__2D27B809">
+          <AssociationSet Name="FK__T_RolePer__PerId__151B244E" Association="FinalModel.Store.FK__T_RolePer__PerId__151B244E">
             <End Role="T_Permission" EntitySet="T_Permission" />
             <End Role="T_RolePermission" EntitySet="T_RolePermission" />
           </AssociationSet>
-          <AssociationSet Name="FK__T_RolePer__RoleI__2C3393D0" Association="FinalModel.Store.FK__T_RolePer__RoleI__2C3393D0">
+          <AssociationSet Name="FK__T_RolePer__RoleI__14270015" Association="FinalModel.Store.FK__T_RolePer__RoleI__14270015">
             <End Role="T_Role" EntitySet="T_Role" />
             <End Role="T_RolePermission" EntitySet="T_RolePermission" />
           </AssociationSet>
@@ -132,10 +137,19 @@
           <Property Name="TechnicalLevel" Type="int" />
           <Property Name="StudyGuideNumber" Type="nvarchar" MaxLength="20" />
           <Property Name="TechnicalGuideNumber" Type="nvarchar" MaxLength="20" />
-          <Property Name="Organization" Type="int" />
           <Property Name="IsDelete" Type="bit" Nullable="false" />
           <Property Name="Sign" Type="nvarchar" MaxLength="15" />
           <Property Name="OtheInfor" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="T_OgnizationAct">
+          <Key>
+            <PropertyRef Name="OrganizationId" />
+            <PropertyRef Name="RoleActor" />
+          </Key>
+          <Property Name="OrganizationId" Type="int" Nullable="false" />
+          <Property Name="RoleActor" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="IsDel" Type="bit" Nullable="false" />
+          <Property Name="AddTime" Type="datetime" />
         </EntityType>
         <EntityType Name="T_Organization">
           <Key>
@@ -153,14 +167,16 @@
           <Property Name="PerName" Type="nvarchar" Nullable="false" MaxLength="20" />
           <Property Name="PerParent" Type="int" />
           <Property Name="PerAreaName" Type="nvarchar" MaxLength="20" />
-          <Property Name="PerControllerName" Type="nvarchar" MaxLength="20" />
+          <Property Name="PerController" Type="nvarchar" MaxLength="20" />
           <Property Name="PerActionName" Type="nvarchar" MaxLength="20" />
-          <Property Name="PerFormMethod" Type="int" Nullable="false" />
+          <Property Name="PerFormMethod" Type="int" />
           <Property Name="PerIsDel" Type="bit" Nullable="false" />
           <Property Name="PerIsShow" Type="bit" Nullable="false" />
-          <Property Name="PerAddTime" Type="datetime" Nullable="false" />
+          <Property Name="PerAddTime" Type="datetime" />
           <Property Name="PerIco" Type="nvarchar" MaxLength="50" />
           <Property Name="IsDelete" Type="bit" Nullable="false" />
+          <Property Name="bpx" Type="int" />
+          <Property Name="bpy" Type="int" />
         </EntityType>
         <EntityType Name="T_ProjectInformation">
           <Key>
@@ -289,18 +305,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__T_MemberI__Organ__145C0A3F">
-          <End Role="T_Organization" Type="FinalModel.Store.T_Organization" Multiplicity="0..1" />
-          <End Role="T_MemberInformation" Type="FinalModel.Store.T_MemberInformation" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="T_Organization">
-              <PropertyRef Name="OrganizationId" />
-            </Principal>
-            <Dependent Role="T_MemberInformation">
-              <PropertyRef Name="Organization" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__T_MemberI__Study__1273C1CD">
           <End Role="T_MemberInformation" Type="FinalModel.Store.T_MemberInformation" Multiplicity="0..1" />
           <End Role="T_MemberInformation1" Type="FinalModel.Store.T_MemberInformation" Multiplicity="*" />
@@ -334,6 +338,30 @@
             </Principal>
             <Dependent Role="T_MemberInformation1">
               <PropertyRef Name="TechnicalGuideNumber" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_Ognizat__Organ__6FE99F9F">
+          <End Role="T_Organization" Type="FinalModel.Store.T_Organization" Multiplicity="1" />
+          <End Role="T_OgnizationAct" Type="FinalModel.Store.T_OgnizationAct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_Organization">
+              <PropertyRef Name="OrganizationId" />
+            </Principal>
+            <Dependent Role="T_OgnizationAct">
+              <PropertyRef Name="OrganizationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_Ognizat__RoleA__70DDC3D8">
+          <End Role="T_MemberInformation" Type="FinalModel.Store.T_MemberInformation" Multiplicity="1" />
+          <End Role="T_OgnizationAct" Type="FinalModel.Store.T_OgnizationAct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_MemberInformation">
+              <PropertyRef Name="StuNum" />
+            </Principal>
+            <Dependent Role="T_OgnizationAct">
+              <PropertyRef Name="RoleActor" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -397,7 +425,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__T_RoleAct__RoleA__267ABA7A">
+        <Association Name="FK__T_RoleAct__RoleA__6A30C649">
           <End Role="T_MemberInformation" Type="FinalModel.Store.T_MemberInformation" Multiplicity="1" />
           <End Role="T_RoleAct" Type="FinalModel.Store.T_RoleAct" Multiplicity="*" />
           <ReferentialConstraint>
@@ -409,7 +437,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__T_RoleAct__RoleI__25869641">
+        <Association Name="FK__T_RoleAct__RoleI__693CA210">
           <End Role="T_Role" Type="FinalModel.Store.T_Role" Multiplicity="1" />
           <End Role="T_RoleAct" Type="FinalModel.Store.T_RoleAct" Multiplicity="*" />
           <ReferentialConstraint>
@@ -421,7 +449,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__T_RolePer__PerId__2D27B809">
+        <Association Name="FK__T_RolePer__PerId__151B244E">
           <End Role="T_Permission" Type="FinalModel.Store.T_Permission" Multiplicity="1" />
           <End Role="T_RolePermission" Type="FinalModel.Store.T_RolePermission" Multiplicity="*" />
           <ReferentialConstraint>
@@ -433,7 +461,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__T_RolePer__RoleI__2C3393D0">
+        <Association Name="FK__T_RolePer__RoleI__14270015">
           <End Role="T_Role" Type="FinalModel.Store.T_Role" Multiplicity="1" />
           <End Role="T_RolePermission" Type="FinalModel.Store.T_RolePermission" Multiplicity="*" />
           <ReferentialConstraint>
@@ -505,16 +533,12 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="FinalModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="FinalEntities" p1:LazyLoadingEnabled="true">
           <EntitySet Name="T_Department" EntityType="FinalModel.T_Department" />
-          <EntitySet Name="T_MemberInformation" EntityType="FinalModel.T_MemberInformation" />
-          <EntitySet Name="T_Organization" EntityType="FinalModel.T_Organization" />
-          <EntitySet Name="T_Permission" EntityType="FinalModel.T_Permission" />
           <EntitySet Name="T_ProjectInformation" EntityType="FinalModel.T_ProjectInformation" />
           <EntitySet Name="T_ProjectParticipation" EntityType="FinalModel.T_ProjectParticipation" />
           <EntitySet Name="T_ProjectType" EntityType="FinalModel.T_ProjectType" />
@@ -526,50 +550,6 @@
           <EntitySet Name="T_TaskParticipation" EntityType="FinalModel.T_TaskParticipation" />
           <EntitySet Name="T_TaskType" EntityType="FinalModel.T_TaskType" />
           <EntitySet Name="T_TechnicaLevel" EntityType="FinalModel.T_TechnicaLevel" />
-          <AssociationSet Name="FK__T_MemberI__Depar__108B795B" Association="FinalModel.FK__T_MemberI__Depar__108B795B">
-            <End Role="T_Department" EntitySet="T_Department" />
-            <End Role="T_MemberInformation" EntitySet="T_MemberInformation" />
-          </AssociationSet>
-          <AssociationSet Name="FK__T_MemberI__Organ__145C0A3F" Association="FinalModel.FK__T_MemberI__Organ__145C0A3F">
-            <End Role="T_Organization" EntitySet="T_Organization" />
-            <End Role="T_MemberInformation" EntitySet="T_MemberInformation" />
-          </AssociationSet>
-          <AssociationSet Name="FK__T_MemberI__Study__1273C1CD" Association="FinalModel.FK__T_MemberI__Study__1273C1CD">
-            <End Role="T_MemberInformation" EntitySet="T_MemberInformation" />
-            <End Role="T_MemberInformation1" EntitySet="T_MemberInformation" />
-          </AssociationSet>
-          <AssociationSet Name="FK__T_MemberI__Techn__117F9D94" Association="FinalModel.FK__T_MemberI__Techn__117F9D94">
-            <End Role="T_TechnicaLevel" EntitySet="T_TechnicaLevel" />
-            <End Role="T_MemberInformation" EntitySet="T_MemberInformation" />
-          </AssociationSet>
-          <AssociationSet Name="FK__T_MemberI__Techn__1367E606" Association="FinalModel.FK__T_MemberI__Techn__1367E606">
-            <End Role="T_MemberInformation" EntitySet="T_MemberInformation" />
-            <End Role="T_MemberInformation1" EntitySet="T_MemberInformation" />
-          </AssociationSet>
-          <AssociationSet Name="FK__T_Project__ProjL__37A5467C" Association="FinalModel.FK__T_Project__ProjL__37A5467C">
-            <End Role="T_MemberInformation" EntitySet="T_MemberInformation" />
-            <End Role="T_ProjectInformation" EntitySet="T_ProjectInformation" />
-          </AssociationSet>
-          <AssociationSet Name="FK__T_Project__ProjP__38996AB5" Association="FinalModel.FK__T_Project__ProjP__38996AB5">
-            <End Role="T_MemberInformation" EntitySet="T_MemberInformation" />
-            <End Role="T_ProjectInformation" EntitySet="T_ProjectInformation" />
-          </AssociationSet>
-          <AssociationSet Name="FK__T_Project__ProjR__4222D4EF" Association="FinalModel.FK__T_Project__ProjR__4222D4EF">
-            <End Role="T_MemberInformation" EntitySet="T_MemberInformation" />
-            <End Role="T_ProjectParticipation" EntitySet="T_ProjectParticipation" />
-          </AssociationSet>
-          <AssociationSet Name="FK__T_RoleAct__RoleA__267ABA7A" Association="FinalModel.FK__T_RoleAct__RoleA__267ABA7A">
-            <End Role="T_MemberInformation" EntitySet="T_MemberInformation" />
-            <End Role="T_RoleAct" EntitySet="T_RoleAct" />
-          </AssociationSet>
-          <AssociationSet Name="FK__T_TaskPar__TaskR__534D60F1" Association="FinalModel.FK__T_TaskPar__TaskR__534D60F1">
-            <End Role="T_MemberInformation" EntitySet="T_MemberInformation" />
-            <End Role="T_TaskParticipation" EntitySet="T_TaskParticipation" />
-          </AssociationSet>
-          <AssociationSet Name="FK__T_RolePer__PerId__2D27B809" Association="FinalModel.FK__T_RolePer__PerId__2D27B809">
-            <End Role="T_Permission" EntitySet="T_Permission" />
-            <End Role="T_RolePermission" EntitySet="T_RolePermission" />
-          </AssociationSet>
           <AssociationSet Name="FK__T_Project__ProjI__412EB0B6" Association="FinalModel.FK__T_Project__ProjI__412EB0B6">
             <End Role="T_ProjectInformation" EntitySet="T_ProjectInformation" />
             <End Role="T_ProjectParticipation" EntitySet="T_ProjectParticipation" />
@@ -602,7 +582,59 @@
             <End Role="T_TaskInformation" EntitySet="T_TaskInformation" />
             <End Role="T_TaskParticipation" EntitySet="T_TaskParticipation" />
           </AssociationSet>
-        </EntityContainer>
+          <EntitySet Name="T_MemberInformation" EntityType="FinalModel.T_MemberInformation" />
+          <EntitySet Name="T_OgnizationAct" EntityType="FinalModel.T_OgnizationAct" />
+          <EntitySet Name="T_Organization" EntityType="FinalModel.T_Organization" />
+          <AssociationSet Name="FK__T_MemberI__Depar__108B795B" Association="FinalModel.FK__T_MemberI__Depar__108B795B">
+            <End Role="T_Department" EntitySet="T_Department" />
+            <End Role="T_MemberInformation" EntitySet="T_MemberInformation" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_MemberI__Study__1273C1CD" Association="FinalModel.FK__T_MemberI__Study__1273C1CD">
+            <End Role="T_MemberInformation" EntitySet="T_MemberInformation" />
+            <End Role="T_MemberInformation1" EntitySet="T_MemberInformation" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_MemberI__Techn__117F9D94" Association="FinalModel.FK__T_MemberI__Techn__117F9D94">
+            <End Role="T_TechnicaLevel" EntitySet="T_TechnicaLevel" />
+            <End Role="T_MemberInformation" EntitySet="T_MemberInformation" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_MemberI__Techn__1367E606" Association="FinalModel.FK__T_MemberI__Techn__1367E606">
+            <End Role="T_MemberInformation" EntitySet="T_MemberInformation" />
+            <End Role="T_MemberInformation1" EntitySet="T_MemberInformation" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_Ognizat__RoleA__70DDC3D8" Association="FinalModel.FK__T_Ognizat__RoleA__70DDC3D8">
+            <End Role="T_MemberInformation" EntitySet="T_MemberInformation" />
+            <End Role="T_OgnizationAct" EntitySet="T_OgnizationAct" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_Project__ProjL__37A5467C" Association="FinalModel.FK__T_Project__ProjL__37A5467C">
+            <End Role="T_MemberInformation" EntitySet="T_MemberInformation" />
+            <End Role="T_ProjectInformation" EntitySet="T_ProjectInformation" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_Project__ProjP__38996AB5" Association="FinalModel.FK__T_Project__ProjP__38996AB5">
+            <End Role="T_MemberInformation" EntitySet="T_MemberInformation" />
+            <End Role="T_ProjectInformation" EntitySet="T_ProjectInformation" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_Project__ProjR__4222D4EF" Association="FinalModel.FK__T_Project__ProjR__4222D4EF">
+            <End Role="T_MemberInformation" EntitySet="T_MemberInformation" />
+            <End Role="T_ProjectParticipation" EntitySet="T_ProjectParticipation" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_RoleAct__RoleA__6A30C649" Association="FinalModel.FK__T_RoleAct__RoleA__6A30C649">
+            <End Role="T_MemberInformation" EntitySet="T_MemberInformation" />
+            <End Role="T_RoleAct" EntitySet="T_RoleAct" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_TaskPar__TaskR__534D60F1" Association="FinalModel.FK__T_TaskPar__TaskR__534D60F1">
+            <End Role="T_MemberInformation" EntitySet="T_MemberInformation" />
+            <End Role="T_TaskParticipation" EntitySet="T_TaskParticipation" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_Ognizat__Organ__6FE99F9F" Association="FinalModel.FK__T_Ognizat__Organ__6FE99F9F">
+            <End Role="T_Organization" EntitySet="T_Organization" />
+            <End Role="T_OgnizationAct" EntitySet="T_OgnizationAct" />
+          </AssociationSet>
+          <EntitySet Name="T_Permission" EntityType="FinalModel.T_Permission" />
+          <AssociationSet Name="FK__T_RolePer__PerId__151B244E" Association="FinalModel.FK__T_RolePer__PerId__151B244E">
+            <End Role="T_Permission" EntitySet="T_Permission" />
+            <End Role="T_RolePermission" EntitySet="T_RolePermission" />
+          </AssociationSet>
+          </EntityContainer>
         <EntityType Name="T_Department">
           <Key>
             <PropertyRef Name="DepartmentId" />
@@ -611,76 +643,6 @@
           <Property Name="DepartmentName" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
           <Property Name="IsDelete" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="T_MemberInformation" Relationship="FinalModel.FK__T_MemberI__Depar__108B795B" FromRole="T_Department" ToRole="T_MemberInformation" />
-        </EntityType>
-        <EntityType Name="T_MemberInformation">
-          <Key>
-            <PropertyRef Name="StuNum" />
-          </Key>
-          <Property Name="StuNum" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
-          <Property Name="StuName" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
-          <Property Name="Gender" Type="String" Nullable="false" MaxLength="1" Unicode="true" FixedLength="false" />
-          <Property Name="QQNum" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
-          <Property Name="Email" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
-          <Property Name="LoginPwd" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
-          <Property Name="Birthday" Type="DateTime" Precision="3" />
-          <Property Name="PhotoPath" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
-          <Property Name="Class" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
-          <Property Name="JoinTime" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="EndTime" Type="DateTime" Precision="3" />
-          <Property Name="Major" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
-          <Property Name="Counselor" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
-          <Property Name="HeadTeacher" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
-          <Property Name="UndergraduateTutor" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
-          <Property Name="TelephoneNumber" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
-          <Property Name="HomPhoneNumber" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
-          <Property Name="FamilyAddress" Type="String" MaxLength="80" Unicode="true" FixedLength="false" />
-          <Property Name="Department" Type="Int32" />
-          <Property Name="TechnicalLevel" Type="Int32" />
-          <Property Name="StudyGuideNumber" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
-          <Property Name="TechnicalGuideNumber" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
-          <Property Name="Organization" Type="Int32" />
-          <Property Name="IsDelete" Type="Boolean" Nullable="false" />
-          <Property Name="Sign" Type="String" MaxLength="15" Unicode="true" FixedLength="false" />
-          <Property Name="OtheInfor" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
-          <NavigationProperty Name="T_Department" Relationship="FinalModel.FK__T_MemberI__Depar__108B795B" FromRole="T_MemberInformation" ToRole="T_Department" />
-          <NavigationProperty Name="T_Organization" Relationship="FinalModel.FK__T_MemberI__Organ__145C0A3F" FromRole="T_MemberInformation" ToRole="T_Organization" />
-          <NavigationProperty Name="T_MemberInformation1" Relationship="FinalModel.FK__T_MemberI__Study__1273C1CD" FromRole="T_MemberInformation" ToRole="T_MemberInformation1" />
-          <NavigationProperty Name="T_MemberInformation2" Relationship="FinalModel.FK__T_MemberI__Study__1273C1CD" FromRole="T_MemberInformation1" ToRole="T_MemberInformation" />
-          <NavigationProperty Name="T_TechnicaLevel" Relationship="FinalModel.FK__T_MemberI__Techn__117F9D94" FromRole="T_MemberInformation" ToRole="T_TechnicaLevel" />
-          <NavigationProperty Name="T_MemberInformation11" Relationship="FinalModel.FK__T_MemberI__Techn__1367E606" FromRole="T_MemberInformation" ToRole="T_MemberInformation1" />
-          <NavigationProperty Name="T_MemberInformation3" Relationship="FinalModel.FK__T_MemberI__Techn__1367E606" FromRole="T_MemberInformation1" ToRole="T_MemberInformation" />
-          <NavigationProperty Name="T_ProjectInformation" Relationship="FinalModel.FK__T_Project__ProjL__37A5467C" FromRole="T_MemberInformation" ToRole="T_ProjectInformation" />
-          <NavigationProperty Name="T_ProjectInformation1" Relationship="FinalModel.FK__T_Project__ProjP__38996AB5" FromRole="T_MemberInformation" ToRole="T_ProjectInformation" />
-          <NavigationProperty Name="T_ProjectParticipation" Relationship="FinalModel.FK__T_Project__ProjR__4222D4EF" FromRole="T_MemberInformation" ToRole="T_ProjectParticipation" />
-          <NavigationProperty Name="T_RoleAct" Relationship="FinalModel.FK__T_RoleAct__RoleA__267ABA7A" FromRole="T_MemberInformation" ToRole="T_RoleAct" />
-          <NavigationProperty Name="T_TaskParticipation" Relationship="FinalModel.FK__T_TaskPar__TaskR__534D60F1" FromRole="T_MemberInformation" ToRole="T_TaskParticipation" />
-        </EntityType>
-        <EntityType Name="T_Organization">
-          <Key>
-            <PropertyRef Name="OrganizationId" />
-          </Key>
-          <Property Name="OrganizationId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-          <Property Name="OrganizationName" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
-          <Property Name="IsDelete" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="T_MemberInformation" Relationship="FinalModel.FK__T_MemberI__Organ__145C0A3F" FromRole="T_Organization" ToRole="T_MemberInformation" />
-        </EntityType>
-        <EntityType Name="T_Permission">
-          <Key>
-            <PropertyRef Name="PerId" />
-          </Key>
-          <Property Name="PerId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-          <Property Name="PerName" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
-          <Property Name="PerParent" Type="Int32" />
-          <Property Name="PerAreaName" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
-          <Property Name="PerControllerName" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
-          <Property Name="PerActionName" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
-          <Property Name="PerFormMethod" Type="Int32" Nullable="false" />
-          <Property Name="PerIsDel" Type="Boolean" Nullable="false" />
-          <Property Name="PerIsShow" Type="Boolean" Nullable="false" />
-          <Property Name="PerAddTime" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="PerIco" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
-          <Property Name="IsDelete" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="T_RolePermission" Relationship="FinalModel.FK__T_RolePer__PerId__2D27B809" FromRole="T_Permission" ToRole="T_RolePermission" />
         </EntityType>
         <EntityType Name="T_ProjectInformation">
           <Key>
@@ -698,11 +660,11 @@
           <Property Name="ProjPay" Type="Double" Nullable="false" />
           <Property Name="ProjIncome" Type="Double" Nullable="false" />
           <Property Name="ProjMark" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
-          <NavigationProperty Name="T_MemberInformation" Relationship="FinalModel.FK__T_Project__ProjL__37A5467C" FromRole="T_ProjectInformation" ToRole="T_MemberInformation" />
-          <NavigationProperty Name="T_MemberInformation1" Relationship="FinalModel.FK__T_Project__ProjP__38996AB5" FromRole="T_ProjectInformation" ToRole="T_MemberInformation" />
           <NavigationProperty Name="T_ProjectParticipation" Relationship="FinalModel.FK__T_Project__ProjI__412EB0B6" FromRole="T_ProjectInformation" ToRole="T_ProjectParticipation" />
           <NavigationProperty Name="T_ProjectType" Relationship="FinalModel.FK__T_Project__ProjT__36B12243" FromRole="T_ProjectInformation" ToRole="T_ProjectType" />
           <NavigationProperty Name="T_TaskInformation" Relationship="FinalModel.FK__T_TaskInf__ProjI__4CA06362" FromRole="T_ProjectInformation" ToRole="T_TaskInformation" />
+          <NavigationProperty Name="T_MemberInformation" Relationship="FinalModel.FK__T_Project__ProjL__37A5467C" FromRole="T_ProjectInformation" ToRole="T_MemberInformation" />
+          <NavigationProperty Name="T_MemberInformation1" Relationship="FinalModel.FK__T_Project__ProjP__38996AB5" FromRole="T_ProjectInformation" ToRole="T_MemberInformation" />
         </EntityType>
         <EntityType Name="T_ProjectParticipation">
           <Key>
@@ -713,8 +675,8 @@
           <Property Name="ProjReceiver" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
           <Property Name="AddTime" Type="DateTime" Precision="3" />
           <Property Name="IsDel" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="T_MemberInformation" Relationship="FinalModel.FK__T_Project__ProjR__4222D4EF" FromRole="T_ProjectParticipation" ToRole="T_MemberInformation" />
           <NavigationProperty Name="T_ProjectInformation" Relationship="FinalModel.FK__T_Project__ProjI__412EB0B6" FromRole="T_ProjectParticipation" ToRole="T_ProjectInformation" />
+          <NavigationProperty Name="T_MemberInformation" Relationship="FinalModel.FK__T_Project__ProjR__4222D4EF" FromRole="T_ProjectParticipation" ToRole="T_MemberInformation" />
         </EntityType>
         <EntityType Name="T_ProjectType">
           <Key>
@@ -751,8 +713,8 @@
           <Property Name="RoleActor" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
           <Property Name="IsDel" Type="Boolean" Nullable="false" />
           <Property Name="AddTime" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="T_MemberInformation" Relationship="FinalModel.FK__T_RoleAct__RoleA__267ABA7A" FromRole="T_RoleAct" ToRole="T_MemberInformation" />
           <NavigationProperty Name="T_Role" Relationship="FinalModel.FK__T_RoleAct__RoleI__25869641" FromRole="T_RoleAct" ToRole="T_Role" />
+          <NavigationProperty Name="T_MemberInformation" Relationship="FinalModel.FK__T_RoleAct__RoleA__6A30C649" FromRole="T_RoleAct" ToRole="T_MemberInformation" />
         </EntityType>
         <EntityType Name="T_RolePermission">
           <Key>
@@ -763,8 +725,8 @@
           <Property Name="PerId" Type="Int32" Nullable="false" />
           <Property Name="AddTime" Type="DateTime" Precision="3" />
           <Property Name="IsDel" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="T_Permission" Relationship="FinalModel.FK__T_RolePer__PerId__2D27B809" FromRole="T_RolePermission" ToRole="T_Permission" />
           <NavigationProperty Name="T_Role" Relationship="FinalModel.FK__T_RolePer__RoleI__2C3393D0" FromRole="T_RolePermission" ToRole="T_Role" />
+          <NavigationProperty Name="T_Permission" Relationship="FinalModel.FK__T_RolePer__PerId__151B244E" FromRole="T_RolePermission" ToRole="T_Permission" />
         </EntityType>
         <EntityType Name="T_TaskInformation">
           <Key>
@@ -800,8 +762,8 @@
           <Property Name="TaskResponse" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
           <Property Name="StandA" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
           <Property Name="StandB" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
-          <NavigationProperty Name="T_MemberInformation" Relationship="FinalModel.FK__T_TaskPar__TaskR__534D60F1" FromRole="T_TaskParticipation" ToRole="T_MemberInformation" />
           <NavigationProperty Name="T_TaskInformation" Relationship="FinalModel.FK__T_TaskPar__TaskI__52593CB8" FromRole="T_TaskParticipation" ToRole="T_TaskInformation" />
+          <NavigationProperty Name="T_MemberInformation" Relationship="FinalModel.FK__T_TaskPar__TaskR__534D60F1" FromRole="T_TaskParticipation" ToRole="T_MemberInformation" />
         </EntityType>
         <EntityType Name="T_TaskType">
           <Key>
@@ -820,138 +782,6 @@
           <Property Name="IsDelete" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="T_MemberInformation" Relationship="FinalModel.FK__T_MemberI__Techn__117F9D94" FromRole="T_TechnicaLevel" ToRole="T_MemberInformation" />
         </EntityType>
-        <Association Name="FK__T_MemberI__Depar__108B795B">
-          <End Role="T_Department" Type="FinalModel.T_Department" Multiplicity="0..1" />
-          <End Role="T_MemberInformation" Type="FinalModel.T_MemberInformation" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="T_Department">
-              <PropertyRef Name="DepartmentId" />
-            </Principal>
-            <Dependent Role="T_MemberInformation">
-              <PropertyRef Name="Department" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__T_MemberI__Organ__145C0A3F">
-          <End Role="T_Organization" Type="FinalModel.T_Organization" Multiplicity="0..1" />
-          <End Role="T_MemberInformation" Type="FinalModel.T_MemberInformation" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="T_Organization">
-              <PropertyRef Name="OrganizationId" />
-            </Principal>
-            <Dependent Role="T_MemberInformation">
-              <PropertyRef Name="Organization" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__T_MemberI__Study__1273C1CD">
-          <End Role="T_MemberInformation" Type="FinalModel.T_MemberInformation" Multiplicity="0..1" />
-          <End Role="T_MemberInformation1" Type="FinalModel.T_MemberInformation" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="T_MemberInformation">
-              <PropertyRef Name="StuNum" />
-            </Principal>
-            <Dependent Role="T_MemberInformation1">
-              <PropertyRef Name="StudyGuideNumber" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__T_MemberI__Techn__117F9D94">
-          <End Role="T_TechnicaLevel" Type="FinalModel.T_TechnicaLevel" Multiplicity="0..1" />
-          <End Role="T_MemberInformation" Type="FinalModel.T_MemberInformation" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="T_TechnicaLevel">
-              <PropertyRef Name="TechLevelId" />
-            </Principal>
-            <Dependent Role="T_MemberInformation">
-              <PropertyRef Name="TechnicalLevel" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__T_MemberI__Techn__1367E606">
-          <End Role="T_MemberInformation" Type="FinalModel.T_MemberInformation" Multiplicity="0..1" />
-          <End Role="T_MemberInformation1" Type="FinalModel.T_MemberInformation" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="T_MemberInformation">
-              <PropertyRef Name="StuNum" />
-            </Principal>
-            <Dependent Role="T_MemberInformation1">
-              <PropertyRef Name="TechnicalGuideNumber" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__T_Project__ProjL__37A5467C">
-          <End Role="T_MemberInformation" Type="FinalModel.T_MemberInformation" Multiplicity="1" />
-          <End Role="T_ProjectInformation" Type="FinalModel.T_ProjectInformation" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="T_MemberInformation">
-              <PropertyRef Name="StuNum" />
-            </Principal>
-            <Dependent Role="T_ProjectInformation">
-              <PropertyRef Name="ProjLeader" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__T_Project__ProjP__38996AB5">
-          <End Role="T_MemberInformation" Type="FinalModel.T_MemberInformation" Multiplicity="1" />
-          <End Role="T_ProjectInformation" Type="FinalModel.T_ProjectInformation" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="T_MemberInformation">
-              <PropertyRef Name="StuNum" />
-            </Principal>
-            <Dependent Role="T_ProjectInformation">
-              <PropertyRef Name="ProjPublisher" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__T_Project__ProjR__4222D4EF">
-          <End Role="T_MemberInformation" Type="FinalModel.T_MemberInformation" Multiplicity="1" />
-          <End Role="T_ProjectParticipation" Type="FinalModel.T_ProjectParticipation" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="T_MemberInformation">
-              <PropertyRef Name="StuNum" />
-            </Principal>
-            <Dependent Role="T_ProjectParticipation">
-              <PropertyRef Name="ProjReceiver" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__T_RoleAct__RoleA__267ABA7A">
-          <End Role="T_MemberInformation" Type="FinalModel.T_MemberInformation" Multiplicity="1" />
-          <End Role="T_RoleAct" Type="FinalModel.T_RoleAct" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="T_MemberInformation">
-              <PropertyRef Name="StuNum" />
-            </Principal>
-            <Dependent Role="T_RoleAct">
-              <PropertyRef Name="RoleActor" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__T_TaskPar__TaskR__534D60F1">
-          <End Role="T_MemberInformation" Type="FinalModel.T_MemberInformation" Multiplicity="1" />
-          <End Role="T_TaskParticipation" Type="FinalModel.T_TaskParticipation" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="T_MemberInformation">
-              <PropertyRef Name="StuNum" />
-            </Principal>
-            <Dependent Role="T_TaskParticipation">
-              <PropertyRef Name="TaskReceiver" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__T_RolePer__PerId__2D27B809">
-          <End Role="T_Permission" Type="FinalModel.T_Permission" Multiplicity="1" />
-          <End Role="T_RolePermission" Type="FinalModel.T_RolePermission" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="T_Permission">
-              <PropertyRef Name="PerId" />
-            </Principal>
-            <Dependent Role="T_RolePermission">
-              <PropertyRef Name="PerId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__T_Project__ProjI__412EB0B6">
           <End Role="T_ProjectInformation" Type="FinalModel.T_ProjectInformation" Multiplicity="1" />
           <End Role="T_ProjectParticipation" Type="FinalModel.T_ProjectParticipation" Multiplicity="*" />
@@ -1048,7 +878,234 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        <EntityType Name="T_MemberInformation">
+          <Key>
+            <PropertyRef Name="StuNum" />
+          </Key>
+          <Property Type="String" Name="StuNum" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="StuName" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Gender" Nullable="false" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="QQNum" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="LoginPwd" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="Birthday" Precision="3" />
+          <Property Type="String" Name="PhotoPath" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Class" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="JoinTime" Nullable="false" Precision="3" />
+          <Property Type="DateTime" Name="EndTime" Precision="3" />
+          <Property Type="String" Name="Major" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Counselor" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="HeadTeacher" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="UndergraduateTutor" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="TelephoneNumber" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="HomPhoneNumber" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="FamilyAddress" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Department" />
+          <Property Type="Int32" Name="TechnicalLevel" />
+          <Property Type="String" Name="StudyGuideNumber" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="TechnicalGuideNumber" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="IsDelete" Nullable="false" />
+          <Property Type="String" Name="Sign" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="OtheInfor" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="T_Department" Relationship="FinalModel.FK__T_MemberI__Depar__108B795B" FromRole="T_MemberInformation" ToRole="T_Department" />
+          <NavigationProperty Name="T_MemberInformation1" Relationship="FinalModel.FK__T_MemberI__Study__1273C1CD" FromRole="T_MemberInformation" ToRole="T_MemberInformation1" />
+          <NavigationProperty Name="T_MemberInformation2" Relationship="FinalModel.FK__T_MemberI__Study__1273C1CD" FromRole="T_MemberInformation1" ToRole="T_MemberInformation" />
+          <NavigationProperty Name="T_TechnicaLevel" Relationship="FinalModel.FK__T_MemberI__Techn__117F9D94" FromRole="T_MemberInformation" ToRole="T_TechnicaLevel" />
+          <NavigationProperty Name="T_MemberInformation11" Relationship="FinalModel.FK__T_MemberI__Techn__1367E606" FromRole="T_MemberInformation" ToRole="T_MemberInformation1" />
+          <NavigationProperty Name="T_MemberInformation3" Relationship="FinalModel.FK__T_MemberI__Techn__1367E606" FromRole="T_MemberInformation1" ToRole="T_MemberInformation" />
+          <NavigationProperty Name="T_OgnizationAct" Relationship="FinalModel.FK__T_Ognizat__RoleA__70DDC3D8" FromRole="T_MemberInformation" ToRole="T_OgnizationAct" />
+          <NavigationProperty Name="T_ProjectInformation" Relationship="FinalModel.FK__T_Project__ProjL__37A5467C" FromRole="T_MemberInformation" ToRole="T_ProjectInformation" />
+          <NavigationProperty Name="T_ProjectInformation1" Relationship="FinalModel.FK__T_Project__ProjP__38996AB5" FromRole="T_MemberInformation" ToRole="T_ProjectInformation" />
+          <NavigationProperty Name="T_ProjectParticipation" Relationship="FinalModel.FK__T_Project__ProjR__4222D4EF" FromRole="T_MemberInformation" ToRole="T_ProjectParticipation" />
+          <NavigationProperty Name="T_RoleAct" Relationship="FinalModel.FK__T_RoleAct__RoleA__6A30C649" FromRole="T_MemberInformation" ToRole="T_RoleAct" />
+          <NavigationProperty Name="T_TaskParticipation" Relationship="FinalModel.FK__T_TaskPar__TaskR__534D60F1" FromRole="T_MemberInformation" ToRole="T_TaskParticipation" />
+        </EntityType>
+        <EntityType Name="T_OgnizationAct">
+          <Key>
+            <PropertyRef Name="OrganizationId" />
+            <PropertyRef Name="RoleActor" />
+          </Key>
+          <Property Type="Int32" Name="OrganizationId" Nullable="false" />
+          <Property Type="String" Name="RoleActor" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="IsDel" Nullable="false" />
+          <Property Type="DateTime" Name="AddTime" Precision="3" />
+          <NavigationProperty Name="T_MemberInformation" Relationship="FinalModel.FK__T_Ognizat__RoleA__70DDC3D8" FromRole="T_OgnizationAct" ToRole="T_MemberInformation" />
+          <NavigationProperty Name="T_Organization" Relationship="FinalModel.FK__T_Ognizat__Organ__6FE99F9F" FromRole="T_OgnizationAct" ToRole="T_Organization" />
+        </EntityType>
+        <EntityType Name="T_Organization">
+          <Key>
+            <PropertyRef Name="OrganizationId" />
+          </Key>
+          <Property Type="Int32" Name="OrganizationId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="OrganizationName" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="IsDelete" Nullable="false" />
+          <NavigationProperty Name="T_OgnizationAct" Relationship="FinalModel.FK__T_Ognizat__Organ__6FE99F9F" FromRole="T_Organization" ToRole="T_OgnizationAct" />
+        </EntityType>
+        <Association Name="FK__T_MemberI__Depar__108B795B">
+          <End Type="FinalModel.T_Department" Role="T_Department" Multiplicity="0..1" />
+          <End Type="FinalModel.T_MemberInformation" Role="T_MemberInformation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_Department">
+              <PropertyRef Name="DepartmentId" />
+            </Principal>
+            <Dependent Role="T_MemberInformation">
+              <PropertyRef Name="Department" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_MemberI__Study__1273C1CD">
+          <End Type="FinalModel.T_MemberInformation" Role="T_MemberInformation" Multiplicity="0..1" />
+          <End Type="FinalModel.T_MemberInformation" Role="T_MemberInformation1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_MemberInformation">
+              <PropertyRef Name="StuNum" />
+            </Principal>
+            <Dependent Role="T_MemberInformation1">
+              <PropertyRef Name="StudyGuideNumber" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_MemberI__Techn__117F9D94">
+          <End Type="FinalModel.T_TechnicaLevel" Role="T_TechnicaLevel" Multiplicity="0..1" />
+          <End Type="FinalModel.T_MemberInformation" Role="T_MemberInformation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_TechnicaLevel">
+              <PropertyRef Name="TechLevelId" />
+            </Principal>
+            <Dependent Role="T_MemberInformation">
+              <PropertyRef Name="TechnicalLevel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_MemberI__Techn__1367E606">
+          <End Type="FinalModel.T_MemberInformation" Role="T_MemberInformation" Multiplicity="0..1" />
+          <End Type="FinalModel.T_MemberInformation" Role="T_MemberInformation1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_MemberInformation">
+              <PropertyRef Name="StuNum" />
+            </Principal>
+            <Dependent Role="T_MemberInformation1">
+              <PropertyRef Name="TechnicalGuideNumber" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_Ognizat__RoleA__70DDC3D8">
+          <End Type="FinalModel.T_MemberInformation" Role="T_MemberInformation" Multiplicity="1" />
+          <End Type="FinalModel.T_OgnizationAct" Role="T_OgnizationAct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_MemberInformation">
+              <PropertyRef Name="StuNum" />
+            </Principal>
+            <Dependent Role="T_OgnizationAct">
+              <PropertyRef Name="RoleActor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_Project__ProjL__37A5467C">
+          <End Type="FinalModel.T_MemberInformation" Role="T_MemberInformation" Multiplicity="1" />
+          <End Type="FinalModel.T_ProjectInformation" Role="T_ProjectInformation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_MemberInformation">
+              <PropertyRef Name="StuNum" />
+            </Principal>
+            <Dependent Role="T_ProjectInformation">
+              <PropertyRef Name="ProjLeader" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_Project__ProjP__38996AB5">
+          <End Type="FinalModel.T_MemberInformation" Role="T_MemberInformation" Multiplicity="1" />
+          <End Type="FinalModel.T_ProjectInformation" Role="T_ProjectInformation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_MemberInformation">
+              <PropertyRef Name="StuNum" />
+            </Principal>
+            <Dependent Role="T_ProjectInformation">
+              <PropertyRef Name="ProjPublisher" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_Project__ProjR__4222D4EF">
+          <End Type="FinalModel.T_MemberInformation" Role="T_MemberInformation" Multiplicity="1" />
+          <End Type="FinalModel.T_ProjectParticipation" Role="T_ProjectParticipation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_MemberInformation">
+              <PropertyRef Name="StuNum" />
+            </Principal>
+            <Dependent Role="T_ProjectParticipation">
+              <PropertyRef Name="ProjReceiver" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_RoleAct__RoleA__6A30C649">
+          <End Type="FinalModel.T_MemberInformation" Role="T_MemberInformation" Multiplicity="1" />
+          <End Type="FinalModel.T_RoleAct" Role="T_RoleAct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_MemberInformation">
+              <PropertyRef Name="StuNum" />
+            </Principal>
+            <Dependent Role="T_RoleAct">
+              <PropertyRef Name="RoleActor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_TaskPar__TaskR__534D60F1">
+          <End Type="FinalModel.T_MemberInformation" Role="T_MemberInformation" Multiplicity="1" />
+          <End Type="FinalModel.T_TaskParticipation" Role="T_TaskParticipation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_MemberInformation">
+              <PropertyRef Name="StuNum" />
+            </Principal>
+            <Dependent Role="T_TaskParticipation">
+              <PropertyRef Name="TaskReceiver" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_Ognizat__Organ__6FE99F9F">
+          <End Type="FinalModel.T_Organization" Role="T_Organization" Multiplicity="1" />
+          <End Type="FinalModel.T_OgnizationAct" Role="T_OgnizationAct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_Organization">
+              <PropertyRef Name="OrganizationId" />
+            </Principal>
+            <Dependent Role="T_OgnizationAct">
+              <PropertyRef Name="OrganizationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="T_Permission">
+          <Key>
+            <PropertyRef Name="PerId" />
+          </Key>
+          <Property Type="Int32" Name="PerId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="PerName" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="PerParent" />
+          <Property Type="String" Name="PerAreaName" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PerController" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PerActionName" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="PerFormMethod" />
+          <Property Type="Boolean" Name="PerIsDel" Nullable="false" />
+          <Property Type="Boolean" Name="PerIsShow" Nullable="false" />
+          <Property Type="DateTime" Name="PerAddTime" Precision="3" />
+          <Property Type="String" Name="PerIco" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="IsDelete" Nullable="false" />
+          <Property Type="Int32" Name="bpx" />
+          <Property Type="Int32" Name="bpy" />
+          <NavigationProperty Name="T_RolePermission" Relationship="FinalModel.FK__T_RolePer__PerId__151B244E" FromRole="T_Permission" ToRole="T_RolePermission" />
+        </EntityType>
+        <Association Name="FK__T_RolePer__PerId__151B244E">
+          <End Type="FinalModel.T_Permission" Role="T_Permission" Multiplicity="1" />
+          <End Type="FinalModel.T_RolePermission" Role="T_RolePermission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_Permission">
+              <PropertyRef Name="PerId" />
+            </Principal>
+            <Dependent Role="T_RolePermission">
+              <PropertyRef Name="PerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -1059,65 +1116,6 @@
               <MappingFragment StoreEntitySet="T_Department">
                 <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
                 <ScalarProperty Name="DepartmentName" ColumnName="DepartmentName" />
-                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="T_MemberInformation">
-            <EntityTypeMapping TypeName="FinalModel.T_MemberInformation">
-              <MappingFragment StoreEntitySet="T_MemberInformation">
-                <ScalarProperty Name="StuNum" ColumnName="StuNum" />
-                <ScalarProperty Name="StuName" ColumnName="StuName" />
-                <ScalarProperty Name="Gender" ColumnName="Gender" />
-                <ScalarProperty Name="QQNum" ColumnName="QQNum" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="LoginPwd" ColumnName="LoginPwd" />
-                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
-                <ScalarProperty Name="PhotoPath" ColumnName="PhotoPath" />
-                <ScalarProperty Name="Class" ColumnName="Class" />
-                <ScalarProperty Name="JoinTime" ColumnName="JoinTime" />
-                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
-                <ScalarProperty Name="Major" ColumnName="Major" />
-                <ScalarProperty Name="Counselor" ColumnName="Counselor" />
-                <ScalarProperty Name="HeadTeacher" ColumnName="HeadTeacher" />
-                <ScalarProperty Name="UndergraduateTutor" ColumnName="UndergraduateTutor" />
-                <ScalarProperty Name="TelephoneNumber" ColumnName="TelephoneNumber" />
-                <ScalarProperty Name="HomPhoneNumber" ColumnName="HomPhoneNumber" />
-                <ScalarProperty Name="FamilyAddress" ColumnName="FamilyAddress" />
-                <ScalarProperty Name="Department" ColumnName="Department" />
-                <ScalarProperty Name="TechnicalLevel" ColumnName="TechnicalLevel" />
-                <ScalarProperty Name="StudyGuideNumber" ColumnName="StudyGuideNumber" />
-                <ScalarProperty Name="TechnicalGuideNumber" ColumnName="TechnicalGuideNumber" />
-                <ScalarProperty Name="Organization" ColumnName="Organization" />
-                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
-                <ScalarProperty Name="Sign" ColumnName="Sign" />
-                <ScalarProperty Name="OtheInfor" ColumnName="OtheInfor" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="T_Organization">
-            <EntityTypeMapping TypeName="FinalModel.T_Organization">
-              <MappingFragment StoreEntitySet="T_Organization">
-                <ScalarProperty Name="OrganizationId" ColumnName="OrganizationId" />
-                <ScalarProperty Name="OrganizationName" ColumnName="OrganizationName" />
-                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="T_Permission">
-            <EntityTypeMapping TypeName="FinalModel.T_Permission">
-              <MappingFragment StoreEntitySet="T_Permission">
-                <ScalarProperty Name="PerId" ColumnName="PerId" />
-                <ScalarProperty Name="PerName" ColumnName="PerName" />
-                <ScalarProperty Name="PerParent" ColumnName="PerParent" />
-                <ScalarProperty Name="PerAreaName" ColumnName="PerAreaName" />
-                <ScalarProperty Name="PerControllerName" ColumnName="PerControllerName" />
-                <ScalarProperty Name="PerActionName" ColumnName="PerActionName" />
-                <ScalarProperty Name="PerFormMethod" ColumnName="PerFormMethod" />
-                <ScalarProperty Name="PerIsDel" ColumnName="PerIsDel" />
-                <ScalarProperty Name="PerIsShow" ColumnName="PerIsShow" />
-                <ScalarProperty Name="PerAddTime" ColumnName="PerAddTime" />
-                <ScalarProperty Name="PerIco" ColumnName="PerIco" />
                 <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -1241,6 +1239,76 @@
                 <ScalarProperty Name="TechLevelId" ColumnName="TechLevelId" />
                 <ScalarProperty Name="TechLevelName" ColumnName="TechLevelName" />
                 <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_MemberInformation">
+            <EntityTypeMapping TypeName="FinalModel.T_MemberInformation">
+              <MappingFragment StoreEntitySet="T_MemberInformation">
+                <ScalarProperty Name="OtheInfor" ColumnName="OtheInfor" />
+                <ScalarProperty Name="Sign" ColumnName="Sign" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="TechnicalGuideNumber" ColumnName="TechnicalGuideNumber" />
+                <ScalarProperty Name="StudyGuideNumber" ColumnName="StudyGuideNumber" />
+                <ScalarProperty Name="TechnicalLevel" ColumnName="TechnicalLevel" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="FamilyAddress" ColumnName="FamilyAddress" />
+                <ScalarProperty Name="HomPhoneNumber" ColumnName="HomPhoneNumber" />
+                <ScalarProperty Name="TelephoneNumber" ColumnName="TelephoneNumber" />
+                <ScalarProperty Name="UndergraduateTutor" ColumnName="UndergraduateTutor" />
+                <ScalarProperty Name="HeadTeacher" ColumnName="HeadTeacher" />
+                <ScalarProperty Name="Counselor" ColumnName="Counselor" />
+                <ScalarProperty Name="Major" ColumnName="Major" />
+                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+                <ScalarProperty Name="JoinTime" ColumnName="JoinTime" />
+                <ScalarProperty Name="Class" ColumnName="Class" />
+                <ScalarProperty Name="PhotoPath" ColumnName="PhotoPath" />
+                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+                <ScalarProperty Name="LoginPwd" ColumnName="LoginPwd" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="QQNum" ColumnName="QQNum" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="StuName" ColumnName="StuName" />
+                <ScalarProperty Name="StuNum" ColumnName="StuNum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_OgnizationAct">
+            <EntityTypeMapping TypeName="FinalModel.T_OgnizationAct">
+              <MappingFragment StoreEntitySet="T_OgnizationAct">
+                <ScalarProperty Name="AddTime" ColumnName="AddTime" />
+                <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+                <ScalarProperty Name="RoleActor" ColumnName="RoleActor" />
+                <ScalarProperty Name="OrganizationId" ColumnName="OrganizationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_Organization">
+            <EntityTypeMapping TypeName="FinalModel.T_Organization">
+              <MappingFragment StoreEntitySet="T_Organization">
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="OrganizationName" ColumnName="OrganizationName" />
+                <ScalarProperty Name="OrganizationId" ColumnName="OrganizationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_Permission">
+            <EntityTypeMapping TypeName="FinalModel.T_Permission">
+              <MappingFragment StoreEntitySet="T_Permission">
+                <ScalarProperty Name="bpy" ColumnName="bpy" />
+                <ScalarProperty Name="bpx" ColumnName="bpx" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="PerIco" ColumnName="PerIco" />
+                <ScalarProperty Name="PerAddTime" ColumnName="PerAddTime" />
+                <ScalarProperty Name="PerIsShow" ColumnName="PerIsShow" />
+                <ScalarProperty Name="PerIsDel" ColumnName="PerIsDel" />
+                <ScalarProperty Name="PerFormMethod" ColumnName="PerFormMethod" />
+                <ScalarProperty Name="PerActionName" ColumnName="PerActionName" />
+                <ScalarProperty Name="PerController" ColumnName="PerController" />
+                <ScalarProperty Name="PerAreaName" ColumnName="PerAreaName" />
+                <ScalarProperty Name="PerParent" ColumnName="PerParent" />
+                <ScalarProperty Name="PerName" ColumnName="PerName" />
+                <ScalarProperty Name="PerId" ColumnName="PerId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -7,11 +7,10 @@
 <html>
 <head>
     <title>Index</title>
-    <link href="~/left-top.css" rel="stylesheet" />
-    <link href="~/left.css" rel="stylesheet" />
+    <link href="~/Areas/PersonalManger/CSS/left-top.css" rel="stylesheet" />
+    <link href="~/Areas/PersonalManger/CSS/left.css" rel="stylesheet" />
     <script type="text/javascript">
-        function jump(StuNum)
-        {
+        function jump(StuNum) {
             window.location = "/PersonalManger/CheckMember/PageEdit?StuNum=" + StuNum;
         }
     </script>
@@ -39,11 +38,11 @@
                     </div>
                     <div class="div-top-head">
                         <div class="head-circle-my">
-                            <img src="~/xiaolisha.jpg" alt="头像" class="head-img" style="border-radius: 50%">
+                            <img src="@ViewBag.member.PhotoPath" alt="头像" class="head-img" style="border-radius: 50%">
                         </div>
                         <div class="div-top-info">
                             <div class="top-info-text">
-                                <div style="font-size: 18px; font-family: 'Microsoft YaHei'; color: rgb(39,184,165); float: left">方 刚</div>
+                                <div style="font-size: 18px; font-family: 'Microsoft YaHei'; color: rgb(39,184,165); float: left">@ViewBag.member.StuName</div>
                                 <div class="gender-img"></div>
                             </div>
                             <div class="top-intro">
@@ -69,7 +68,12 @@
                             </td>
                             <td class="left-td-two">
                                 <span>所属部门:</span>
-                                <span style="margin-left: 130px">@ViewBag.member.T_Department.DepartmentName</span>
+                                <span style="margin-left: 130px">
+                                    @if (ViewBag.member.T_Department != null)
+                                    {
+                                        @ViewBag.member.T_Department.DepartmentName
+                                    }
+                                </span>
                             </td>
                         </tr>
                         <tr>
@@ -87,7 +91,9 @@
                             </td>
                             <td class="left-td-two">
                                 <span>加入时间:</span>
-                                <span style="margin-left: 130px">@ViewBag.member.JoinTime.GetDateTimeFormats('D')[0].ToString()</span>
+                                <span style="margin-left: 130px">
+                                    @ViewBag.member.JoinTime.GetDateTimeFormats('D')[0].ToString()
+                                </span>
                             </td>
                         </tr>
                         <tr>
@@ -96,7 +102,13 @@
                             </td>
                             <td class="left-td-two">
                                 <span>退出时间:</span>
-                                <span style="margin-left: 130px">@ViewBag.member.EndTime.GetDateTimeFormats('D')[0].ToString()</span>
+                                <span style="margin-left: 130px">
+                                    @if (ViewBag.member.EndTime != null)
+                                    {
+                                        @ViewBag.member.EndTime.GetDateTimeFormats('D')[0].ToString()
+                                    }
+
+                                </span>
                             </td>
                         </tr>
                         <tr>
@@ -105,7 +117,7 @@
                             </td>
                             <td class="left-td-two" style="border-bottom: none">
                                 <span>担任职务:</span>
-                                <span style="margin-left: 130px">@ViewBag.RoleString</span>
+                                <span style="margin-left: 130px" class="cuttitle">@ViewBag.RoleString</span>
                             </td>
                         </tr>
                     </table>
@@ -139,18 +151,6 @@
                         </tr>
                         <tr>
                             <td>
-                                <div class="right-td-div right-td-div-position"></div>
-                                <span class="right-table-span1">手机号码:</span>
-                                <span class="right-table-span2">@ViewBag.member.TelephoneNumber</span>
-                            </td>
-                            <td>
-                                <div class="right-td-div right-td-div-position"></div>
-                                <span class="right-table-span1">家庭号码:</span>
-                                <span class="right-table-span2">@ViewBag.member.HomPhoneNumber</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
                                 <div class="right-td-div right-td-div-position1"></div>
                                 <span class="right-table-span1">Email:</span>
                                 <span class="right-table-span2">@ViewBag.member.Email</span>
@@ -169,8 +169,20 @@
                             </td>
                             <td>
                                 <div class="right-td-div right-td-div-position"></div>
-                                <span class="right-table-span1">本科生导师:</span>
+                                <span class="right-table-span1">导师:</span>
                                 <span class="right-table-span2">@ViewBag.member.UndergraduateTutor</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="right-td-div right-td-div-position"></div>
+                                <span class="right-table-span1">住址:</span>
+                                <span class="right-table-span2">@ViewBag.member.FamilyAddress</span>
+                            </td>
+                            <td>
+                                <div class="right-td-div right-td-div-position1"></div>
+                                <span class="right-table-span1">班级:</span>
+                                <span class="right-table-span2">@ViewBag.member.Class</span>
                             </td>
                         </tr>
                         <tr>
@@ -188,13 +200,13 @@
                         <tr>
                             <td>
                                 <div class="right-td-div right-td-div-position"></div>
-                                <span class="right-table-span1">家庭住址:</span>
-                                <span class="right-table-span2">@ViewBag.member.FamilyAddress</span>
+                                <span class="right-table-span1">手机号码:</span>
+                                <span class="right-table-span2">@ViewBag.member.TelephoneNumber</span>
                             </td>
                             <td>
-                                <div class="right-td-div right-td-div-position1"></div>
-                                <span class="right-table-span1">班级:</span>
-                                <span class="right-table-span2">@ViewBag.member.Class</span>
+                                <div class="right-td-div right-td-div-position"></div>
+                                <span class="right-table-span1">家庭号码:</span>
+                                <span class="right-table-span2">@ViewBag.member.HomPhoneNumber</span>
                             </td>
                         </tr>
                     </table>

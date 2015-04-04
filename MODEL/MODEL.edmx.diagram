@@ -4,11 +4,8 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="0093a05afbe546b99caa72cb4991a640" Name="关系图1">
+      <Diagram DiagramId="0093a05afbe546b99caa72cb4991a640" Name="关系图1" ZoomLevel="118">
         <EntityTypeShape EntityType="FinalModel.T_Department" Width="1.5" PointX="0.75" PointY="6.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="FinalModel.T_MemberInformation" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="FinalModel.T_Organization" Width="1.5" PointX="0.75" PointY="3.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="FinalModel.T_Permission" Width="1.5" PointX="9" PointY="14.875" IsExpanded="true" />
         <EntityTypeShape EntityType="FinalModel.T_ProjectInformation" Width="1.5" PointX="5.25" PointY="5.5" IsExpanded="true" />
         <EntityTypeShape EntityType="FinalModel.T_ProjectParticipation" Width="1.5" PointX="7.5" PointY="3.5" IsExpanded="true" />
         <EntityTypeShape EntityType="FinalModel.T_ProjectType" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
@@ -20,17 +17,6 @@
         <EntityTypeShape EntityType="FinalModel.T_TaskParticipation" Width="1.5" PointX="12.75" PointY="6.125" IsExpanded="true" />
         <EntityTypeShape EntityType="FinalModel.T_TaskType" Width="1.5" PointX="8.25" PointY="11.875" IsExpanded="true" />
         <EntityTypeShape EntityType="FinalModel.T_TechnicaLevel" Width="1.5" PointX="0.75" PointY="9.875" IsExpanded="true" />
-        <AssociationConnector Association="FinalModel.FK__T_MemberI__Depar__108B795B" ManuallyRouted="false" />
-        <AssociationConnector Association="FinalModel.FK__T_MemberI__Organ__145C0A3F" ManuallyRouted="false" />
-        <AssociationConnector Association="FinalModel.FK__T_MemberI__Study__1273C1CD" ManuallyRouted="false" />
-        <AssociationConnector Association="FinalModel.FK__T_MemberI__Techn__117F9D94" ManuallyRouted="false" />
-        <AssociationConnector Association="FinalModel.FK__T_MemberI__Techn__1367E606" ManuallyRouted="false" />
-        <AssociationConnector Association="FinalModel.FK__T_Project__ProjL__37A5467C" ManuallyRouted="false" />
-        <AssociationConnector Association="FinalModel.FK__T_Project__ProjP__38996AB5" ManuallyRouted="false" />
-        <AssociationConnector Association="FinalModel.FK__T_Project__ProjR__4222D4EF" ManuallyRouted="false" />
-        <AssociationConnector Association="FinalModel.FK__T_RoleAct__RoleA__267ABA7A" ManuallyRouted="false" />
-        <AssociationConnector Association="FinalModel.FK__T_TaskPar__TaskR__534D60F1" ManuallyRouted="false" />
-        <AssociationConnector Association="FinalModel.FK__T_RolePer__PerId__2D27B809" ManuallyRouted="false" />
         <AssociationConnector Association="FinalModel.FK__T_Project__ProjI__412EB0B6" ManuallyRouted="false" />
         <AssociationConnector Association="FinalModel.FK__T_Project__ProjT__36B12243" ManuallyRouted="false" />
         <AssociationConnector Association="FinalModel.FK__T_TaskInf__ProjI__4CA06362" ManuallyRouted="false" />
@@ -39,7 +25,23 @@
         <AssociationConnector Association="FinalModel.FK__T_RolePer__RoleI__2C3393D0" ManuallyRouted="false" />
         <AssociationConnector Association="FinalModel.FK__T_TaskInf__TaskT__4BAC3F29" ManuallyRouted="false" />
         <AssociationConnector Association="FinalModel.FK__T_TaskPar__TaskI__52593CB8" ManuallyRouted="false" />
-      </Diagram>
+        <EntityTypeShape EntityType="FinalModel.T_MemberInformation" Width="1.5" PointX="9.0802435675078268" PointY="9.9008942590564928" />
+        <EntityTypeShape EntityType="FinalModel.T_OgnizationAct" Width="1.5" PointX="10.411231213440761" PointY="13.354265383144034" />
+        <EntityTypeShape EntityType="FinalModel.T_Organization" Width="1.5" PointX="4.761406282317548" PointY="12.186035012912953" />
+        <AssociationConnector Association="FinalModel.FK__T_MemberI__Depar__108B795B" />
+        <AssociationConnector Association="FinalModel.FK__T_MemberI__Study__1273C1CD" />
+        <AssociationConnector Association="FinalModel.FK__T_MemberI__Techn__117F9D94" />
+        <AssociationConnector Association="FinalModel.FK__T_MemberI__Techn__1367E606" />
+        <AssociationConnector Association="FinalModel.FK__T_Ognizat__RoleA__70DDC3D8" />
+        <AssociationConnector Association="FinalModel.FK__T_Project__ProjL__37A5467C" />
+        <AssociationConnector Association="FinalModel.FK__T_Project__ProjP__38996AB5" />
+        <AssociationConnector Association="FinalModel.FK__T_Project__ProjR__4222D4EF" />
+        <AssociationConnector Association="FinalModel.FK__T_RoleAct__RoleA__6A30C649" />
+        <AssociationConnector Association="FinalModel.FK__T_TaskPar__TaskR__534D60F1" />
+        <AssociationConnector Association="FinalModel.FK__T_Ognizat__Organ__6FE99F9F" />
+        <EntityTypeShape EntityType="FinalModel.T_Permission" Width="1.5" PointX="11.527104830149144" PointY="23.535805027715771" />
+        <AssociationConnector Association="FinalModel.FK__T_RolePer__PerId__151B244E" />
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

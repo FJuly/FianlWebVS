@@ -12,14 +12,14 @@ namespace MODEL
     using System;
     using System.Collections.Generic;
     
-    public partial class T_RoleAct
+    public partial class T_OgnizationAct
     {
-        public int RoleId { get; set; }
+        public int OrganizationId { get; set; }
         public string RoleActor { get; set; }
         public bool IsDel { get; set; }
         public Nullable<System.DateTime> AddTime { get; set; }
     
-        public virtual T_Role T_Role { get; set; }
         public virtual T_MemberInformation T_MemberInformation { get; set; }
+        public virtual T_Organization T_Organization { get; set; }
     }
 }

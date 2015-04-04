@@ -30,8 +30,32 @@
 </head>
 <body style="font-family: 'Microsoft YaHei'; background-color: rgb(237,241,249)">
     <div style="margin: 0 auto; width: 900px; margin-top: 20px">
-        <div class="panel panel-default panel-danger">
+
+        <div class="panel panel-success">
             <!-- Default panel contents -->
+            <div class="panel-heading">查看职位</div>
+
+            <!-- Table -->
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>职位</th>
+                        <th>查看</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>所有职位</td>
+                        <td>
+                            <a class="btn btn-success" style="width: 80px;" href="/PersonalManger/CheckMember/BrowsePosition">查看</a>
+                        </td>
+                </tbody>
+            </table>
+        </div>
+        <div class="panel panel-default panel-success">
             <div class="panel-heading">选择职位</div>
 
             <!-- Table -->
@@ -123,7 +147,7 @@
                         <td>
                             <button class="btn btn-danger" style="width: 80px; margin-left: 20px" onclick="send(10000,'Delete','BMCY')">删除</button></td>
                     </tr>
-                    <tr>
+                    @*                    <tr>
                         <th scope="row">8</th>
                         <td>技术指导</td>
                         <td>
@@ -132,7 +156,7 @@
                         </td>
                         <td>
                             <button class="btn btn-danger" style="width: 80px; margin-left: 20px" onclick="send(10010,'Delete','TechnicalGuide')">删除</button></td>
-                    </tr>
+                    </tr>*@
                 </tbody>
             </table>
         </div>

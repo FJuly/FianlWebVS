@@ -9,7 +9,7 @@ $.extend({
                 //转换json，很奇怪............
                 var jsonObj = JSON.parse(json);
                 if (jsonObj.Statu == "ok") {
-                    alert("ss");
+                    alert("ddd");
                     location.href = jsonObj.BackUrl;
                 }
                 else {
@@ -153,7 +153,7 @@ $.extend({
             $td.append($div);
             $tr.append($td);
             /*生成其他七列*/
-            var $content = $("<td><a href='#' class='a-stum'>" + data[i].StuNum + "</a></td>" + "<td>" + data[i].StuName + "</td>" +
+            var $content = $("<td><a href='" + "/PersonalManger/CheckMember/PersonPage?StuNum=" + data[i].StuNum + "' class='a-stum'>" + data[i].StuNum + "</a></td>" + data[i].StuNum + "</a></td>" + "<td>" + data[i].StuName + "</td>" +
                 "<td>" + data[i].TelephoneNumber + "</td>" + "<td>" + data[i].Major + "</td>" + "<td>" + data[i].Department + "</td>" +
                 "<td style='width:300px'>" + data[i].roles + "</td>");
             $tr.append($content);

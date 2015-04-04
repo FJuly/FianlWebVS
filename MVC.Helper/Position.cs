@@ -32,8 +32,8 @@ namespace MVC.Helper
     {
         public static readonly int  TechBackbone = 10001;//技术骨干
         public static readonly int EliteProgram = 10002;//项目精英
-        public static readonly int  FullMember = 10003;//正式成员
-        public static readonly int Technician = 10004;//技术人员
-        public static readonly int Student = 10005;//实习生
+        public static readonly int  FullMember = 10004;//正式成员
+        public static readonly int Technician = 10005;//技术人员
+        public static readonly int Student = 10003;//实习生
     }
 }

@@ -1,18 +1,18 @@
 ﻿@{
     Layout = null;
 }
-
+@using MODEL.DTO
 <!DOCTYPE html>
 
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
     <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css">
-    <title>职位浏览</title>
+    <title>年级浏览</title>
 </head>
 <body style="font-family: 'Microsoft YaHei'; background-color: rgb(237,241,249)">
     <div style="margin: 0 auto; width: 1050px; margin-top: 20px">
-        <div class="panel panel-default panel-danger">
+        <div class="panel panel-default panel-success">
             <!-- Default panel contents -->
             <div class="panel-heading">总裁</div>
 
@@ -23,24 +23,24 @@
                         <th>#</th>
                         <th>学号</th>
                         <th>姓名</th>
-                        <th>职务</th>
+                        <th>年级</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (MODEL.T_MemberInformation member in ViewBag.listPresident as List<MODEL.T_MemberInformation>)
+                    @foreach (MemberInformationDTO member in ViewBag.listPresident)
                     { 
                         <tr>
                             <th scope="row">1</th>
                             <td>@member.StuNum</td>
                             <td>@member.StuName</td>
-                            <td>@string.Join(" ", member.T_RoleAct.OrderBy(s => s.RoleId).Select(p => p.T_Role.RoleName).ToArray())</td>
+                            <td>@member.Year</td>
                         </tr>
                     }
                 </tbody>
             </table>
         </div>
 
-        <div class="panel panel-default panel-danger">
+        <div class="panel panel-default panel-success">
             <!-- Default panel contents -->
             <div class="panel-heading">部长</div>
 
@@ -51,24 +51,24 @@
                         <th>#</th>
                         <th>姓名</th>
                         <th>学号</th>
-                        <th>职位</th>
+                        <th>年级</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (MODEL.T_MemberInformation member in ViewBag.Minister as List<MODEL.T_MemberInformation>)
+                    @foreach (MemberInformationDTO member in ViewBag.Minister )
                     { 
                         <tr>
                             <th scope="row">1</th>
                             <td>@member.StuNum</td>
                             <td>@member.StuName</td>
-                            <td>@string.Join(" ", member.T_RoleAct.OrderBy(s => s.RoleId).Select(p => p.T_Role.RoleName).ToArray())</td>
+                            <td>@member.Year</td>
                         </tr>
                     }
                 </tbody>
             </table>
         </div>
 
-        <div class="panel panel-default panel-danger">
+        <div class="panel panel-default panel-success">
             <!-- Default panel contents -->
             <div class="panel-heading">顾问团团长</div>
 
@@ -79,24 +79,24 @@
                         <th>#</th>
                         <th>学号</th>
                         <th>姓名</th>
-                        <th>职务</th>
+                        <th>年级</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (MODEL.T_MemberInformation member in ViewBag.StudyLeader as List<MODEL.T_MemberInformation>)
+                    @foreach (MemberInformationDTO member in ViewBag.StudyLeader )
                     { 
                         <tr>
                             <th scope="row">1</th>
                             <td>@member.StuNum</td>
                             <td>@member.StuName</td>
-                            <td>@string.Join(" ", member.T_RoleAct.OrderBy(s => s.RoleId).Select(p => p.T_Role.RoleName).ToArray())</td>
+                            <td>@member.Year</td>
                         </tr>
                     }
                 </tbody>
             </table>
         </div>
 
-        <div class="panel panel-default panel-danger">
+        <div class="panel panel-default panel-success">
             <!-- Default panel contents -->
             <div class="panel-heading">顾问团团员</div>
 
@@ -107,24 +107,24 @@
                         <th>#</th>
                         <th>学号</th>
                         <th>姓名</th>
-                        <th>职务</th>
+                        <th>年级</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (MODEL.T_MemberInformation member in ViewBag.StudyMember as List<MODEL.T_MemberInformation>)
+                    @foreach (MemberInformationDTO member in ViewBag.StudyMember )
                     { 
                         <tr>
                             <th scope="row">1</th>
                             <td>@member.StuNum</td>
                             <td>@member.StuName</td>
-                            <td>@string.Join(" ", member.T_RoleAct.OrderBy(s => s.RoleId).Select(p => p.T_Role.RoleName).ToArray())</td>
+                            <td>@member.Year</td>
                         </tr>
                     }
                 </tbody>
             </table>
         </div>
 
-        <div class="panel panel-default panel-danger">
+        <div class="panel panel-default panel-success">
             <!-- Default panel contents -->
             <div class="panel-heading">活动策划组组长</div>
 
@@ -135,24 +135,24 @@
                         <th>#</th>
                         <th>学号</th>
                         <th>姓名</th>
-                        <th>职务</th>
+                        <th>年级</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (MODEL.T_MemberInformation member in ViewBag.PlanLeader as List<MODEL.T_MemberInformation>)
+                    @foreach (MemberInformationDTO member in ViewBag.PlanLeader )
                     { 
                         <tr>
                             <th scope="row">1</th>
                             <td>@member.StuNum</td>
                             <td>@member.StuName</td>
-                            <td>@string.Join(" ", member.T_RoleAct.OrderBy(s => s.RoleId).Select(p => p.T_Role.RoleName).ToArray())</td>
+                            <td>@member.Year</td>
                         </tr>
                     }
                 </tbody>
             </table>
         </div>
 
-        <div class="panel panel-default panel-danger">
+        <div class="panel panel-default panel-success">
             <!-- Default panel contents -->
             <div class="panel-heading">活动策划组组员</div>
 
@@ -163,24 +163,24 @@
                         <th>#</th>
                         <th>学号</th>
                         <th>姓名</th>
-                        <th>职务</th>
+                        <th>年级</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (MODEL.T_MemberInformation member in ViewBag.PlanMmember as List<MODEL.T_MemberInformation>)
+                    @foreach (MemberInformationDTO member in ViewBag.PlanMmember )
                     { 
                         <tr>
                             <th scope="row">1</th>
                             <td>@member.StuNum</td>
                             <td>@member.StuName</td>
-                            <td>@string.Join(" ", member.T_RoleAct.OrderBy(s => s.RoleId).Select(p => p.T_Role.RoleName).ToArray())</td>
+                            <td>@member.Year</td>
                         </tr>
                     }
                 </tbody>
             </table>
         </div>
 
-        <div class="panel panel-default panel-danger">
+        <div class="panel panel-default panel-success">
             <!-- Default panel contents -->
             <div class="panel-heading">财务主管</div>
 
@@ -191,45 +191,17 @@
                         <th>#</th>
                         <th>学号</th>
                         <th>姓名</th>
-                        <th>职务</th>
+                        <th>年级</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (MODEL.T_MemberInformation member in ViewBag.Financial as List<MODEL.T_MemberInformation>)
+                    @foreach (MemberInformationDTO member in ViewBag.Financial )
                     { 
                         <tr>
                             <th scope="row">1</th>
                             <td>@member.StuNum</td>
                             <td>@member.StuName</td>
-                            <td>@string.Join(" ", member.T_RoleAct.OrderBy(s => s.RoleId).Select(p => p.T_Role.RoleName).ToArray())</td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
-        </div>
-
-          <div class="panel panel-default panel-danger">
-            <!-- Default panel contents -->
-            <div class="panel-heading">技术指导</div>
-
-            <!-- Table -->
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>学号</th>
-                        <th>姓名</th>
-                        <th>职务</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (MODEL.T_MemberInformation member in ViewBag.TechnicalGuide as List<MODEL.T_MemberInformation>)
-                    { 
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>@member.StuNum</td>
-                            <td>@member.StuName</td>
-                            <td>@string.Join(" ", member.T_RoleAct.OrderBy(s => s.RoleId).Select(p => p.T_Role.RoleName).ToArray())</td>
+                            <td>@member.Year</td>
                         </tr>
                     }
                 </tbody>

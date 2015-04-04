@@ -23,7 +23,7 @@ namespace MODEL
                 PerParent = this.PerParent,
                 PerActionName=this.PerActionName,
                 PerAreaName = this.PerAreaName,
-                PerControllerName = this.PerControllerName,
+                PerController = this.PerController,
                 PerFormMethod = this.PerFormMethod,
                 PerIsShow = this.PerIsShow,
                 PerIco=this.PerIco
@@ -34,7 +34,7 @@ namespace MODEL
 
         #region 2.0 将当前权限 对象 转成 树节点对象 +TreeNode ToNode()
         /// <summary>
-        /// 将当前权限 对象 转成 树节点对象
+        /// 将当前权限 对象 转成 树节点对象                                           
         /// </summary>
         /// <returns></returns>
         public TreeNode ToNode()
@@ -60,7 +60,7 @@ namespace MODEL
         protected string GetUrl()
         {
             return GetUrlPart(this.PerAreaName)
-                + GetUrlPart(this.PerControllerName)
+                + GetUrlPart(this.PerController)
                 + GetUrlPart(this.PerActionName);
         }
 
@@ -80,7 +80,7 @@ namespace MODEL
         {
             List<MODEL.MenuMODEL.TreeNode> listNodes = new List<MenuMODEL.TreeNode>();
             //生成 树节点时，根据 pid=1的根节点 来生成
-            LoadTreeNode(listPer, listNodes, 1);
+            LoadTreeNode(listPer, listNodes, 0);
             return listNodes;
         }
         #endregion

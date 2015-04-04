@@ -1,10 +1,10 @@
 ﻿body { font-family: 'Microsoft YaHei'; }
 /*-----------------------------------个人信息展示页面-----------------------------------------------------*/
-.title-png { border: none; height: 22px; width: 22px; margin: 10px 40px; float: left; margin-right: 0px; background-position: -67px -376px; background-image: url(page.png); }
+.title-png { border: none; height: 22px; width: 22px; margin: 10px 40px; float: left; margin-right: 0px; background-position: -67px -376px; background-image: url(/Areas/PersonalManger/Images/page.png); }
 
 .title-info { font-weight: bold; font-size: 17px; float: left; margin-top: 9px; margin-left: 10px; font-family: 'Microsoft YaHei'; }
 .title-btn { height: 33px; width: 55px; background-color: rgb(255,116,139); border: none; border-radius: 3px; color: white; font-family: 'Microsoft YaHei'; }
-.div-top-img { border: none; width: 470px; height: 169px; background-color: rgb(220,234,236); background-image: url(page.png); background-position: -129px -25px; z-index: 5; position: relative; top: 0; left: 0; }
+.div-top-img { border: none; width: 470px; height: 169px; background-color: rgb(220,234,236); background-image: url(/Areas/PersonalManger/Images/page.png); background-position: -129px -25px; z-index: 5; position: relative; top: 0; left: 0; }
 .div-top-shadow { border: none; width: 470px; height: 169px; position: absolute; top: 15px; left: 15px; background-color: rgb(220,234,236); z-index: 1; }
 
 .div-top-circle { border: none; width: 470px; height: 30px; }
@@ -21,7 +21,7 @@
 
 .top-info-text { border: none; height: 31px; width: 119px; margin-left: 5px; }
 
-.gender-img { background-image: url(page.png); height: 18px; width: 18px; border: none; margin-left: 5px; float: left; background-position: -69px -246px; margin-top: 3px; }
+.gender-img { background-image: url(/Areas/PersonalManger/Images/page.png); height: 18px; width: 18px; border: none; margin-left: 5px; float: left; background-position: -69px -246px; margin-top: 3px; }
 
 .top-intro { width: 254px; height: 33px; border: 3px solid rgb(208,229,228); border-radius: 3px; }
 

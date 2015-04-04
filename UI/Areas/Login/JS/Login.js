@@ -40,15 +40,10 @@ function login() {
         alert("密码或重复密码长度应在6到20个字符之间！");
         matchResult = false;
     }
-
-    //if (matchResult == true) {
-    //    if (userName.charAt(0) >= 0 && userName.charAt(0) <= 9) {
-    //        alert("用户名不能以数字字符开始！");
-    //        matchResult = false;
-    //    }
-    //}
-
-    return matchResult;
+    if (matchResult == true) {
+        document.getElementById("submitForm").submit();
+        alert("sss");
+    }
 }
 
 $(function () {

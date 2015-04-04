@@ -64,8 +64,8 @@ namespace PersonalManger
                     StuName = u.StuName,
                     Major = u.Major,
                     TelephoneNumber = u.TelephoneNumber,
-                    Department = u.T_Department.DepartmentName,//效率比较低
-                    roles = string.Join(" ", u.T_RoleAct.OrderBy(s => s.RoleId).Select(p => p.T_Role.RoleName).ToArray())//效率比较低
+                    Department = u.T_Department == null ? "无" : u.T_Department.DepartmentName,
+                    roles = string.Join(" ", u.T_RoleAct.Where(r=>r.IsDel==false).OrderBy(s => s.RoleId).Select(p => p.T_Role.RoleName).ToArray())//效率比较低
                 });
             totalRecord = list.Count();
             PageModel pageModel = new PageModel()
@@ -128,10 +128,10 @@ namespace PersonalManger
             return r;
         }
 
-        public ActionResult EntryTechnicalGuide(FormCollection form)
-        {
-            return Common(form, "TechnicalGuide");
-        }
+        //public ActionResult EntryTechnicalGuide(FormCollection form)
+        //{
+        //    return Common(form, "TechnicalGuide");
+        //}
 
         #region 录入、删除部门成员+public ActionResult EntryBMCY(FormCollection form)
         /// <summary>

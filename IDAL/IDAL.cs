@@ -14,6 +14,10 @@ namespace IDAL
     {
     }
 
+	public partial interface IOgnizationActDAL : IBaseDAL<MODEL.T_OgnizationAct>
+    {
+    }
+
 	public partial interface IOrganizationDAL : IBaseDAL<MODEL.T_Organization>
     {
     }

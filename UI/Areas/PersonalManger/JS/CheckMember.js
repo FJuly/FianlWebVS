@@ -85,16 +85,33 @@ $(function () {
     //点击第一页按钮触发事件
     $(".a-first").click(function () {
         $("#body").empty();
-        pageIndex = 1;
-        $.Init();
+        var $data = $("#input-text").val();
+        /*有查询条件时请求的行为不同*/
+        if ($data != "")
+        {
+            pageIndex = 1;
+            Search($data);
+        }
+        if ($data == "") {
+            pageIndex = 1;
+            $.Init();
+        }
     });
 
     //点击最后一页按钮触发事件
     $(".a-last").click(function () {
         $("#body").empty();
-        console.info(pageSum);
-        pageIndex = pageSum;
-        $.Init();
+        var $data = $("#input-text").val();
+        /*有查询条件时请求的行为不同*/
+        if ($data != "") {
+            pageIndex = pageSum;
+            Search($data);
+        }
+        if ($data == "") {
+            pageIndex = pageSum;
+            $.Init();
+        }
+
     });
 
     //点击向前翻页按钮触发事件
@@ -102,8 +119,16 @@ $(function () {
         if (pageIndex == 1) { }//判断是否到了第一页
         else {
             $("#body").empty();
-            pageIndex = pageIndex - 1;
-            $.Init();
+            var $data = $("#input-text").val();
+            /*有查询条件时请求的行为不同*/
+            if ($data != "") {
+                pageIndex = pageIndex - 1;
+                Search($data);
+            }
+            if ($data == "") {
+                pageIndex = pageIndex - 1;
+                $.Init();
+            }
         }
     });
     //点击向后翻页按钮触发事件
@@ -111,13 +136,26 @@ $(function () {
         if (pageIndex == pageSum) { }//判断是否到了最后一页
         else {
             $("#body").empty();
-            pageIndex = pageIndex + 1;
-            $.Init();
+            var $data = $("#input-text").val();
+            /*有查询条件时请求的行为不同*/
+            if ($data != "") {
+                pageIndex = pageIndex + 1;
+                Search($data);
+            }
+            if ($data == "") {
+                pageIndex = pageIndex + 1;
+                $.Init();
+            }
         }
     });
     //点击刷新按钮触发事件
     $(".a-refresh").click(function () {
         $("#body").empty();
+        var $data = $("#input-text").val();
+        /*有查询条件时请求的行为不同*/
+        if ($data != "") {
+            Search($data);
+        }
         $.Init();
     });
 })
@@ -134,9 +172,9 @@ $.extend({
             $td.append($div);
             $tr.append($td);
             /*生成其他七列*/
-            var $content = $("<td><a href='#' class='a-stum'>" + data[i].StuNum + "</a></td>" + "<td>" + data[i].StuName + "</td>"+
+            var $content = $("<td><a href='" + "/PersonalManger/CheckMember/PersonPage?StuNum=" + data[i].StuNum + "' class='a-stum'>" + data[i].StuNum + "</a></td>" + "<td>" + data[i].StuName + "</td>" +
                 "<td>" + data[i].TelephoneNumber + "</td>" + "<td>" + data[i].Major + "</td>" + "<td>" + data[i].Department + "</td>"+
-                "<td>" + data[i].roles + "</td>" + "<td><a href='/PersonalManger/CheckMember/PersonPage?StuNum=" + data[i].StuNum + "'class='a-operate' onclick='Edit(" + data[i].StuNum + ")'>查看</a> <a href='#' class='a-operate' id='a-operate-delete' onclick='Delete(" + data[i].StuNum + ")'>删除</a></td>");
+                "<td>" + data[i].Year + "</td>" + "<td><a href='/PersonalManger/CheckMember/PersonPage?StuNum=" + data[i].StuNum + "'class='a-operate' onclick='Edit(" + data[i].StuNum + ")'>查看</a> <a href='#' class='a-operate' id='a-operate-delete' onclick='Delete(" + data[i].StuNum + ")'>删除</a></td>");
             $tr.append($content);
             $body.append($tr);
         }
@@ -148,7 +186,7 @@ function Search(dataBy) {
     $.ajax({
         url: '/PersonalManger/CheckMember/GetPageData',
         type: 'post',
-        data: { "dataBy": dataBy ,"pageindex":1},
+        data: { "dataBy": dataBy, "pageindex": pageIndex },
         success: function (data) {
             var jsonObj = JSON.parse(data);
             if (jsonObj.Statu == "ok") {
