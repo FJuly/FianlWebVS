@@ -10,15 +10,30 @@
     <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <script src="~/Scripts/jquery-1.7.1.min.js"></script>
     <script type="text/javascript">
-        //function save() {
-        //    alert("ddd");
-        //    $form = $("#InformationForm");
-        //    $urlfix = $("#urlfix").val();
-        //    alert($urlfix);
-        //    $form.attr("action", "/PersonalManger/CheckMember/" + $urlfix);
-        //    alert($form.attr("action"));
-        //    $("#InformationForm").submit();
-        //}
+        function hide() {
+            file = $("#fileup").val();
+            if (!/.(gif|jpg|jpeg|png|gif|jpg|png)$/.test(file)) {
+                alert("图片类型必须是.gif,jpeg,jpg,png中的一种");
+            }
+            else {
+                $("#UpLoadImg").submit();
+            }
+        }
+
+        /*htm5实现图片本地预览，js代码*/
+        function preImg(sourceId, targetId) {
+            if (typeof FileReader === 'undefined') {
+                alert('你的浏览器不支持...');
+                return;
+            }
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                var img = document.getElementById(targetId);
+                img.src = this.result;
+            }
+            reader.readAsDataURL(document.getElementById(sourceId).files[0]);
+        }
     </script>
 </head>
 <body style="font-family: 'Microsoft YaHei'">
@@ -30,20 +45,21 @@
         <div class="panel-body">
             <div class="container" style="width: 1000px">
 
-                <form id="UpLoadImg" action="/PersonalManger/CheckMember/UpLoadImg" method="post" enctype="multipart/form-data">
+                <form id="UpLoadImg" action="/PersonalManger/CheckMember/UpLoadImg" method="post" enctype="multipart/form-data" target="submitIform">
                     <h4>修改头像</h4>
                     <div class="row" style="height: 110px; text-align: left">
                         <div class="col-md-offset-1 col-md-5">
                             <div class="row">
                                 <div class="col-md-3">
-                                    <img src="~/final.png" alt="" class="img-circle" style="height: 96px; width: 96px" id="update-photo-img">
+                                    <img src="@ViewBag.member.PhotoPath" alt="" class="img-circle" style="height: 96px; width: 96px" id="update-photo-img">
                                 </div>
                                 <div class="col-md-9">
                                     <p>头像设置</p>
-                                    <p>支持 jpg、gif、png 等格式的图片（大小不能超过1024KB）</p>
+                                    <p>支持 jpg、gif、png 等格式的图片（尺寸80x80）</p>
                                     <div style="position: relative">
                                         <button style="width: 70px" class="btn btn-success btn-xs">预览</button>
                                         <input type="file" style="position: absolute; top: 0px; left: 0px; width: 70px; opacity: 0" id="fileup" onchange="preImg(this.id,'update-photo-img')" name="head" />
+                                        <input type="text" hidden name="StuNum" value="@ViewBag.member.StuNum"/>
                                         <a href="#" role="button" style="width: 70px; margin-left: 5px" class="btn btn-success btn-xs" id="btn-submit" onclick="hide()">上传</a>
                                     </div>
                                 </div>
@@ -51,6 +67,7 @@
                         </div>
                     </div>
                 </form>
+                <iframe name="submitIform" style="display:none;"></iframe>
 
                 <form id="InformationForm" class="form-horizontal" method="post" action="/PersonalManger/CheckMember/@ViewBag.urlfix">
                     <div id="basicinfor">
@@ -85,7 +102,7 @@
                             </div>
                             <label for="UndergraduateTutor" class="col-sm-2 control-label">指导老师:</label>
                             <div class="col-sm-4">
-                                <input type="text" class="form-control" name="UndergraduateTutor" placeholder="指导老师" value="@ViewBag.member.UndergraduateTutor" required="required">
+                                <input type="text" class="form-control" name="UndergraduateTutor" placeholder="指导老师" value="@ViewBag.member.UndergraduateTutor">
                             </div>
                         </div>
 
@@ -118,7 +135,7 @@
                             </div>
                             <label for="HomPhoneNumber" class="col-sm-2 control-label">家庭电话:</label>
                             <div class="col-sm-4">
-                                <input type="text" class="form-control" name="HomPhoneNumber" placeholder="家庭电话"  value="@ViewBag.member.HomPhoneNumber" required="required">
+                                <input type="text" class="form-control" name="HomPhoneNumber" placeholder="家庭电话"  value="@ViewBag.member.HomPhoneNumber">
                             </div>
                         </div>
 

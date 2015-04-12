@@ -4,6 +4,7 @@ using MVC.Helper;
 using P01MVCAjax.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
@@ -23,6 +24,18 @@ namespace PersonalManger
             if (stunum == null)
             {
                  stunum = OperateContext.Current.Usr.StuNum;
+            }
+            /*判断每个人是否具有修改的权限*/
+            string IsEdit;
+            if (OperateContext.Current.HasPemission("PersonalManger", "CheckMember", "AdminEdit", "post"))
+            {
+                IsEdit = "True";
+                ViewBag.IsEdit = IsEdit;
+            }
+            else
+            {
+                IsEdit = "False";
+                ViewBag.IsEdit = IsEdit;
             }
             MODEL.T_MemberInformation member = OperateContext.Current.BLLSession.IMemberInformationBLL.GetListBy(u => u.StuNum == stunum).FirstOrDefault();
             ViewBag.member = member;
@@ -51,6 +64,18 @@ namespace PersonalManger
         /// <returns></returns>
         public ActionResult Index()
         {
+            /*判断每个人是否具有修改的权限*/
+            string IsEdit;
+            if (OperateContext.Current.HasPemission("PersonalManger", "CheckMember", "AdminEdit", "post"))
+            {
+                IsEdit = "True";
+                ViewBag.IsEdit = IsEdit;
+            }
+            else
+            {
+                IsEdit = "False";
+                ViewBag.IsEdit = IsEdit;
+            }
             return View();
         }
         #endregion
@@ -173,21 +198,35 @@ namespace PersonalManger
         }
         #endregion
 
+        #region 普通成员编辑的自己的信息+public ActionResult Edit(MODEL.T_MemberInformation member)
+        /// <summary>
+        /// 普通成员编辑的自己的信息
+        /// </summary>
+        /// <param name="member"></param>
+        /// <returns></returns>
         public ActionResult Edit(MODEL.T_MemberInformation member)
         {
-            if (ModelState.IsValid)
+            try
             {
-                /*EF修改主键一定要加*/
-                string[] proNames = new string[] { "StuNum", "StuName", "Gender", "Email", "LoginPwd", "Class", "Major", "Counselor", "HeadTeacher", "UndergraduateTutor", "TelephoneNumber",
+                if (ModelState.IsValid)
+                {
+                    /*EF修改主键一定要加*/
+                    string[] proNames = new string[] { "StuNum", "StuName", "Gender", "Email", "LoginPwd", "Class", "Major", "Counselor", "HeadTeacher", "UndergraduateTutor", "TelephoneNumber",
             "HomPhoneNumber","FamilyAddress","Sign","OtheInfor"};
-                OperateContext.Current.BLLSession.IMemberInformationBLL.Modify(member, proNames);
-                return Content("修改成功");
+                    OperateContext.Current.BLLSession.IMemberInformationBLL.Modify(member, proNames);
+                    return Content("<script>alert('修改成功');window.location='/PersonalManger/CheckMember/PersonPage?StuNum=" + member.StuNum + "'</script>");
+                }
+                else
+                {
+                    return Content("<script>alert('修改成功');window.location='/PersonalManger/CheckMember/PageEdit?StuNum=" + member.StuNum + "'</script>");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                return Content("修改失败");
+                return Content("<script>alert('修改成功');window.location='/PersonalManger/CheckMember/PageEdit?StuNum=" + member.StuNum + "'</script>");
             }
-        }
+        } 
+        #endregion
 
         #region 上传头像+public ActionResult UpLoadImg(HttpPostedFileBase UpLoadImg)
         /// <summary>
@@ -195,19 +234,36 @@ namespace PersonalManger
         /// </summary>
         /// <param name="UpLoadImg"></param>
         /// <returns></returns>
-        public ActionResult UpLoadImg(HttpPostedFileBase UpLoadImg)
+        public ActionResult UpLoadImg()
         {
-            string fileName = UpLoadImg.FileName;
-            //转换只取得文件名，去掉路径。 
-            if (fileName.LastIndexOf("\\") > -1)
+            HttpPostedFileBase head=Request.Files["head"];
+            string StuNum=Request["StuNum"];
+            string fileName = head.FileName;
+            string ext = Path.GetExtension(fileName).ToLower();
+            if (!ext.Equals(".gif") && !ext.Equals(".jpg") && !ext.Equals(".png") && !ext.Equals(".bmp"))
             {
-                fileName = fileName.Substring(fileName.LastIndexOf("\\") + 1);
+
+                return Content("<script>alert('您上传的文件格式不正确！上传格式有(.gif、.jpg、.png、.bmp)')</script>");
             }
-            UpLoadImg.SaveAs(Server.MapPath("../../image/img/" + fileName));
-            string ImagePath = "../../image/img/" + fileName;
-            MODEL.T_MemberInformation user = new MODEL.T_MemberInformation() { PhotoPath = ImagePath };
-            OperateContext.Current.BLLSession.IMemberInformationBLL.Modify(user, new string[] { "PhotoPath" });
-            return View();
+            else if (head.ContentLength > 1048576 * 5)
+            {
+                return Content("<script>alert('内容最大为5M')</script>");
+            }
+            else
+            {
+                try
+                {
+                    head.SaveAs(Server.MapPath("~/HeadImg/" + fileName));
+                    string ImagePath = "../../HeadImg/" + fileName;
+                    MODEL.T_MemberInformation user = new MODEL.T_MemberInformation() { StuNum = StuNum, PhotoPath = ImagePath };
+                    OperateContext.Current.BLLSession.IMemberInformationBLL.Modify(user, new string[] { "PhotoPath" });
+                    return Content("<script>alert('修改成功')</script>");
+                }
+                catch (Exception ex)
+                {
+                    return Content("<script>alert('修改失败')</script>");
+                }
+            }                 
         }
         #endregion
 

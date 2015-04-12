@@ -45,8 +45,17 @@ namespace Login.Controllers
             {
                 if (OperateContext.Current.UserLogin(user))
                 {
-                    //登陆成功进入主页
-                    return new RedirectResult("/Login/Login/MainPage");
+                    string VCode=Request.Form["VCode"];
+                    string VCodeSer = (string)Session["VCode"];
+                    if (VCode.Equals(VCodeSer))
+                    {
+                        //登陆成功进入主页
+                        return new RedirectResult("/Login/Login/MainPage");
+                    }
+                    else
+                    {
+                        return OperateContext.Current.RedirectAjax("err", "验证码错误", null, null);
+                    }
                 }
                 else
                 {

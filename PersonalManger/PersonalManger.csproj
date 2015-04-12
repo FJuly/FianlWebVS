@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="Controllers\CheckMember.cs" />
     <Compile Include="Controllers\EntryPosition.cs" />
+    <Compile Include="Controllers\PermissionController.cs" />
     <Compile Include="EntryPositionHelper.cs" />
     <Compile Include="PersonnalMangerAreaRegistration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

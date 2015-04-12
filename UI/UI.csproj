@@ -140,7 +140,7 @@
     <Content Include="Areas\PersonalManger\JS\DepartmentInfo.js" />
     <Content Include="Areas\PersonalManger\JS\EntryPosition.js" />
     <Content Include="Areas\PersonalManger\CSS\bootstrap.min.css" />
-    <Content Include="Areas\PersonalManger\Images\final.png" />
+    <Content Include="HeadImg\final.png" />
     <Content Include="Areas\PersonalManger\CSS\left-top.css" />
     <Content Include="Global.asax" />
     <Content Include="Areas\Login\Views\Web.config" />

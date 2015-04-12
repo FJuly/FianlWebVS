@@ -15,6 +15,8 @@
 </head>
 <body style="font-family: 'Microsoft YaHei'; background-color: rgb(237,241,249)">
     <div style="margin: 20px auto;width:1056px;background-color:white">
+@*        判断有没有修改的权限*@
+        <input type="hidden" value="@ViewBag.IsEdit" id="IsEdit">   
         <div class="head">
             <div class="head-nav">
                 <div class="head-nav-img"></div>
@@ -24,7 +26,7 @@
         @*------------------------------------中间搜索框-----------------------------------*@
         <div class="toolbar">
             <div class="search">
-                <button class="ser-btn">搜索</button>
+                <button class="ser-btn" style="height:27px">搜索</button>
                 <div class="ser-img"></div>
                 <div id="div-input">
                     <input type="text" id="input-text" placeholder="学号或姓名" value="" style="border: 1px solid none" />

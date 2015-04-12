@@ -96,7 +96,7 @@ body { }
 .toolbar { width: 1056px; height: 35px; border: 1px solid RGB(166,199,203); border-bottom: none; }
 .search { width: 214px; height: 26px; border: 1px solid rgb(237,121,141); margin-top: 3px; margin-left: 813px; border-radius: 3px; }
 
-.ser-btn { height: 25px; width: 59px; border: none; float: left; background-color: rgb(255,116,139); font-size: 9px; color: white; font-family: 'Microsoft YaHei'; margin-right: 1px; }
+.ser-btn { height: 27px; width: 59px; border: none; float: left; background-color: rgb(255,116,139); font-size: 9px; color: white; font-family: 'Microsoft YaHei'; margin-right: 1px; }
     .ser-btn:active { background-color: rgb(217,71,97); }
 
 button:focus { outline: none; }

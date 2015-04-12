@@ -164,19 +164,37 @@ $(function () {
 $.extend({
     creatTable: function (data) {
         var $body = $("#body");
-        for (var i = 0; i < data.length; i++) {
-            var $tr = $("<tr class='tbody-tr'></tr>");
-            /*生成第一列*/
-            var $td = $("<td id='body-td-first'></td>");
-            var $div = $("<div class='head-table-img'></div>");
-            $td.append($div);
-            $tr.append($td);
-            /*生成其他七列*/
-            var $content = $("<td><a href='" + "/PersonalManger/CheckMember/PersonPage?StuNum=" + data[i].StuNum + "' class='a-stum'>" + data[i].StuNum + "</a></td>" + "<td>" + data[i].StuName + "</td>" +
-                "<td>" + data[i].TelephoneNumber + "</td>" + "<td>" + data[i].Major + "</td>" + "<td>" + data[i].Department + "</td>"+
-                "<td>" + data[i].Year + "</td>" + "<td><a href='/PersonalManger/CheckMember/PersonPage?StuNum=" + data[i].StuNum + "'class='a-operate' onclick='Edit(" + data[i].StuNum + ")'>查看</a> <a href='#' class='a-operate' id='a-operate-delete' onclick='Delete(" + data[i].StuNum + ")'>删除</a></td>");
-            $tr.append($content);
-            $body.append($tr);
+        var IsEdit = $("#IsEdit").val();
+        if (IsEdit == "True") {
+            for (var i = 0; i < data.length; i++) {
+                var $tr = $("<tr class='tbody-tr'></tr>");
+                /*生成第一列*/
+                var $td = $("<td id='body-td-first'></td>");
+                var $div = $("<div class='head-table-img'></div>");
+                $td.append($div);
+                $tr.append($td);
+                /*生成其他七列*/
+                var $content = $("<td><a href='" + "/PersonalManger/CheckMember/PersonPage?StuNum=" + data[i].StuNum + "' class='a-stum'>" + data[i].StuNum + "</a></td>" + "<td>" + data[i].StuName + "</td>" +
+                    "<td>" + data[i].TelephoneNumber + "</td>" + "<td>" + data[i].Major + "</td>" + "<td>" + data[i].Department + "</td>" +
+                    "<td>" + data[i].Year + "</td>" + "<td><a href='/PersonalManger/CheckMember/PersonPage?StuNum=" + data[i].StuNum + "'class='a-operate' onclick='Edit(" + data[i].StuNum + ")'>查看</a> <a href='#' class='a-operate' id='a-operate-delete' onclick='Delete(" + data[i].StuNum + ")'>删除</a></td>");
+                $tr.append($content);
+                $body.append($tr);
+            }
+        } else {
+            for (var i = 0; i < data.length; i++) {
+                var $tr = $("<tr class='tbody-tr'></tr>");
+                /*生成第一列*/
+                var $td = $("<td id='body-td-first'></td>");
+                var $div = $("<div class='head-table-img'></div>");
+                $td.append($div);
+                $tr.append($td);
+                /*生成其他七列*/
+                var $content = $("<td><a href='" + "/PersonalManger/CheckMember/PersonPage?StuNum=" + data[i].StuNum + "' class='a-stum'>" + data[i].StuNum + "</a></td>" + "<td>" + data[i].StuName + "</td>" +
+                    "<td>" + data[i].TelephoneNumber + "</td>" + "<td>" + data[i].Major + "</td>" + "<td>" + data[i].Department + "</td>" +
+                    "<td>" + data[i].Year + "</td>"+ "<td></td>");
+                $tr.append($content);
+                $body.append($tr);
+            }
         }
     }
 });
