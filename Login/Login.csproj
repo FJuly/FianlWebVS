@@ -56,6 +56,10 @@
       <Project>{abd91768-9e9c-48db-9079-3116119763ba}</Project>
       <Name>Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\IBLL\IBLL.csproj">
+      <Project>{496d30d8-441f-4692-8d2c-846b9f0eaad2}</Project>
+      <Name>IBLL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MODEL\MODEL.csproj">
       <Project>{14cfa3c9-2f8e-4b82-be3f-601001df7a30}</Project>
       <Name>MODEL</Name>
@@ -65,7 +69,6 @@
       <Name>MVC.Helper</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -86,6 +86,7 @@ namespace PersonalManger
         /// </summary>
         /// <param name="form"></param>
         /// <returns></returns>
+        [Common.Attributes.Skip]
         public ActionResult GetPageData(FormCollection form)
         {
             string dataBy = form["dataBy"];//模糊查寻的条件
@@ -272,6 +273,7 @@ namespace PersonalManger
         /// 获取所有职务数据
         /// </summary>
         /// <returns></returns>
+         [Common.Attributes.Skip]
         public ActionResult BrowsePosition()
         {
             var  listPresident = OperateContext.Current.BLLSession.IMemberInformationBLL.GetListBy(u => u.T_RoleAct.Where(p => p.IsDel == false).Select(r => r.RoleId).Contains(Position.President)).Select(u

@@ -23,9 +23,11 @@
 
 
 function login() {
-    var userName = document.getElementById("LoginName").value;
-    var pwd = document.getElementById("Pwd").value;
-    var vCode = document.getElementById("VCode").value;
+    var userName = $("#LoginName").val();;
+    var pwd = $("#Pwd").val();
+    var vCode = $("#VCode").val();
+    var remember = $("#remember").val();
+    var autologin = $("#autologin").val();
     var matchResult = true;
     if (LoginName == "" || pwd == "" || vCode == "") {
         alert("请确认是否有空缺项！");
@@ -41,8 +43,19 @@ function login() {
         matchResult = false;
     }
     if (matchResult == true) {
-        document.getElementById("submitForm").submit();
-        alert("sss");
+        $.ajax({
+            url: '/Login/Login/Login',
+            type: 'post',
+            data: { "LoginName": userName, "Pwd": pwd, "VCode": vCode, "Remember": remember, "AutoLogin": autologin, },
+            success: function (data) {
+                var jsonObj = JSON.parse(data);
+                if (jsonObj.Statu == "ok") {
+                    window.location = jsonObj.BackUrl;
+                } else {
+                    alert(jsonObj.Msg);
+                }
+            }
+        })
     }
 }
 

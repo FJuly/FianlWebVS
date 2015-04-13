@@ -133,6 +133,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Content Include="Areas\Login\Images\web_logo.ico" />
+    <Content Include="Areas\Login\JS\jquery-1.3.1.js" />
     <Content Include="Areas\PersonalManger\CSS\DepartmentInfo.css" />
     <Content Include="Areas\PersonalManger\CSS\EntryPosition.css" />
     <Content Include="Areas\PersonalManger\Images\serach.png" />

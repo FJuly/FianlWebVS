@@ -22,11 +22,15 @@ namespace Login.Controllers
         [Common.Attributes.Skip]
         public ActionResult Index()
         {
-            if (Session["User"] != null)
+
+            if (Request.Cookies["Admin_InfoKey"]!=null)
             {
-                MODEL.ViewModel.LoginUser user = Session["User"] as MODEL.ViewModel.LoginUser;
-                ViewData["Name"] = user.LoginName;
-                ViewData["Pwd"] = user.Pwd;
+                string strCookieValue = Request.Cookies["Admin_InfoKey"].Value;
+                string User = Common.SecurityHelper.DecryptUserInfo(strCookieValue);
+                    MODEL.T_MemberInformation user =OperateContext.Current.BLLSession.IMemberInformationBLL.GetListBy(u => u.StuNum == User).First();
+                    ViewData["Name"] = user.StuNum;
+                    ViewData["Pwd"] = user.LoginPwd;
+
             }
             return View();
         }
@@ -43,14 +47,20 @@ namespace Login.Controllers
         {
             if (ModelState.IsValid)
             {
+                string Remember = Request.Form["Remember"];
+                if (Remember.Equals("on"))
+                {
+                    user.IsAlways = true;
+                }
                 if (OperateContext.Current.UserLogin(user))
                 {
-                    string VCode=Request.Form["VCode"];
+                    string VCode = Request.Form["VCode"];
                     string VCodeSer = (string)Session["VCode"];
+                    /*自动登陆时*/
                     if (VCode.Equals(VCodeSer))
                     {
                         //登陆成功进入主页
-                        return new RedirectResult("/Login/Login/MainPage");
+                        return OperateContext.Current.RedirectAjax("ok", null, null, "/Login/Login/MainPage");
                     }
                     else
                     {
@@ -74,6 +84,7 @@ namespace Login.Controllers
         /// 登陆成功进入主页
         /// </summary>
         /// <returns></returns>
+        [Common.Attributes.Skip]
         public ActionResult MainPage()
         {
             return View();
@@ -99,7 +110,7 @@ namespace Login.Controllers
         /// 根据当前登陆用户 权限 生成菜单
         /// </summary>
         /// <returns></returns>
-        /// 
+        [Common.Attributes.Skip]
         public ActionResult GetMenuData()
         {
             return Content(OperateContext.Current.UsrMenuJsonStr);

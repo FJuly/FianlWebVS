@@ -20,8 +20,13 @@
                 url: '/PersonalManger/EntryPosition/Entry' + urlfix,
                 type: 'post',
                 data: { "role": role, "oprate": oprate },
-                success: function (json) {
-                    location.href = json;
+                success: function (data) {
+                    var json = JSON.parse(data);
+                    if (json.Statu == "err") {
+                        alert(json.Msg);
+                    } else {
+                        location.href = json.BackUrl;
+                    }
                 }
             })
         }

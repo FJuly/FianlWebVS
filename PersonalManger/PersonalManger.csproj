@@ -52,6 +52,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{abd91768-9e9c-48db-9079-3116119763ba}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\IBLL\IBLL.csproj">
       <Project>{496d30d8-441f-4692-8d2c-846b9f0eaad2}</Project>
       <Name>IBLL</Name>

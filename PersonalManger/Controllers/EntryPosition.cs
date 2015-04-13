@@ -26,6 +26,7 @@ namespace PersonalManger
         /// </summary>
         /// <param name="form"></param>
         /// <returns></returns>
+        [Common.Attributes.Skip]
         public ActionResult EntryPosition(FormCollection form)
         {
             string num = Request.QueryString["role"];
@@ -47,6 +48,7 @@ namespace PersonalManger
         /// </summary>
         /// <param name="form"></param>
         /// <returns></returns>
+        [Common.Attributes.Skip]
         public ActionResult GetEntryData(FormCollection form)
         {
             int pageIndex = Convert.ToInt32(form["pageindex"]);
@@ -89,39 +91,39 @@ namespace PersonalManger
         }
         #endregion
 
-
+        [Common.Attributes.AjaxRequest]
         public ActionResult EntryZC(FormCollection form)
         {
             ActionResult r = Common(form, "ZC");
             return r;
         }
-
+        [Common.Attributes.AjaxRequest]
         public ActionResult EntryBZ(FormCollection form)
         {
             return Common(form, "BZ");
         }
-
+        [Common.Attributes.AjaxRequest]
         public ActionResult EntryTZ(FormCollection form)
         {
             return Common(form, "TZ");
         }
-
+        [Common.Attributes.AjaxRequest]
         public ActionResult EntryTY(FormCollection form)
         {
 
             return Common(form, "TY");
         }
-
+        [Common.Attributes.AjaxRequest]
         public ActionResult EntryZZ(FormCollection form)
         {
             return Common(form, "ZZ");
         }
-
+        [Common.Attributes.AjaxRequest]
         public ActionResult EntryZY(FormCollection form)
         {
             return Common(form, "ZY");
         }
-
+        [Common.Attributes.AjaxRequest]
         public ActionResult EntryCW(FormCollection form)
         {
             ActionResult r= Common(form, "CW");
@@ -139,6 +141,7 @@ namespace PersonalManger
         /// </summary>
         /// <param name="form"></param>
         /// <returns></returns>
+        [Common.Attributes.AjaxRequest]
         public ActionResult EntryBMCY(FormCollection form)
         {
             return Common(form, "BMCY");
@@ -161,7 +164,7 @@ namespace PersonalManger
             /*当在选择页面选择录入或者的删除职位的时候的为第一次请求*/
             if (string.IsNullOrEmpty(IsPostBack))
             {
-                return Content("/PersonalManger/EntryPosition/EntryPosition?role=" + role + "&oprate=" + oprate + "&urlfix=" + roleStr);
+                return OperateContext.Current.RedirectAjax("ok", null, null, "/PersonalManger/EntryPosition/EntryPosition?role=" + role + "&oprate=" + oprate + "&urlfix=" + roleStr);
             }
              return new EntryPositionHelper().EntryOrDelete(role, oprate, stunums);
         }

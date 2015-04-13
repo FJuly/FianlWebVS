@@ -176,7 +176,7 @@ namespace MVC.Helper
                     string userId = strUserInfo;
                     MODEL.T_MemberInformation usr = BLLSession.IMemberInformationBLL.GetListBy(u => u.StuNum == userId).First();
                     Usr = usr;
-                    //UsrPermission = OperateContext.Current.GetUserPermission(usr.StuNum);
+                    UsrPermission = OperateContext.Current.GetUserPermission(usr.StuNum);
                 }
             }
             return true;
@@ -283,7 +283,7 @@ namespace MVC.Helper
             if (action.IsDefined(typeof(AjaxRequestAttribute), false)
             || action.ControllerDescriptor.IsDefined(typeof(AjaxRequestAttribute), false))
             {
-                return RedirectAjax("nologin", "您没有登陆或没有权限访问此页面~~", null, url);
+                return RedirectAjax("err", "您没有权限访问此页面", null, url);
             }
             else//如果 超链接或表单 没有权限访问，则返回 302重定向命令
             {
