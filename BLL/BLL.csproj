@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>BLL</RootNamespace>
     <AssemblyName>BLL</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -56,10 +57,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DALMSSQL\DALMSSQL.csproj">
-      <Project>{aa19e137-2828-49aa-9dec-99623764c3e4}</Project>
-      <Name>DALMSSQL</Name>
-    </ProjectReference>
     <ProjectReference Include="..\DI\DI.csproj">
       <Project>{ad8c23f1-2e52-4761-8990-da2159891a44}</Project>
       <Name>DI</Name>

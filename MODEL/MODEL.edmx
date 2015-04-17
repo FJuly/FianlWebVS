@@ -1,27 +1,27 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
   <!-- EF Runtime content -->
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="FinalModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="FinalModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="FinalModelStoreContainer">
-          <EntitySet Name="T_Department" EntityType="FinalModel.Store.T_Department" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="T_MemberInformation" EntityType="FinalModel.Store.T_MemberInformation" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="T_OgnizationAct" EntityType="FinalModel.Store.T_OgnizationAct" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="T_Organization" EntityType="FinalModel.Store.T_Organization" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="T_Permission" EntityType="FinalModel.Store.T_Permission" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="T_ProjectInformation" EntityType="FinalModel.Store.T_ProjectInformation" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="T_ProjectParticipation" EntityType="FinalModel.Store.T_ProjectParticipation" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="T_ProjectType" EntityType="FinalModel.Store.T_ProjectType" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="T_ProjPhase" EntityType="FinalModel.Store.T_ProjPhase" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="T_Role" EntityType="FinalModel.Store.T_Role" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="T_RoleAct" EntityType="FinalModel.Store.T_RoleAct" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="T_RolePermission" EntityType="FinalModel.Store.T_RolePermission" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="T_TaskInformation" EntityType="FinalModel.Store.T_TaskInformation" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="T_TaskParticipation" EntityType="FinalModel.Store.T_TaskParticipation" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="T_TaskType" EntityType="FinalModel.Store.T_TaskType" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="T_TechnicaLevel" EntityType="FinalModel.Store.T_TechnicaLevel" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="T_Department" EntityType="FinalModel.Store.T_Department" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="T_MemberInformation" EntityType="FinalModel.Store.T_MemberInformation" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="T_OgnizationAct" EntityType="FinalModel.Store.T_OgnizationAct" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="T_Organization" EntityType="FinalModel.Store.T_Organization" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="T_Permission" EntityType="FinalModel.Store.T_Permission" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="T_ProjectInformation" EntityType="FinalModel.Store.T_ProjectInformation" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="T_ProjectParticipation" EntityType="FinalModel.Store.T_ProjectParticipation" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="T_ProjectType" EntityType="FinalModel.Store.T_ProjectType" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="T_ProjPhase" EntityType="FinalModel.Store.T_ProjPhase" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="T_Role" EntityType="FinalModel.Store.T_Role" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="T_RoleAct" EntityType="FinalModel.Store.T_RoleAct" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="T_RolePermission" EntityType="FinalModel.Store.T_RolePermission" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="T_TaskInformation" EntityType="FinalModel.Store.T_TaskInformation" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="T_TaskParticipation" EntityType="FinalModel.Store.T_TaskParticipation" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="T_TaskType" EntityType="FinalModel.Store.T_TaskType" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="T_TechnicaLevel" EntityType="FinalModel.Store.T_TechnicaLevel" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
           <AssociationSet Name="FK__T_MemberI__Depar__108B795B" Association="FinalModel.Store.FK__T_MemberI__Depar__108B795B">
             <End Role="T_Department" EntitySet="T_Department" />
             <End Role="T_MemberInformation" EntitySet="T_MemberInformation" />
@@ -536,7 +536,7 @@
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="FinalModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="FinalModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns="http://schemas.microsoft.com/ado/2008/09/edm" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
         <EntityContainer Name="FinalEntities" p1:LazyLoadingEnabled="true">
           <EntitySet Name="T_Department" EntityType="FinalModel.T_Department" />
           <EntitySet Name="T_ProjectInformation" EntityType="FinalModel.T_ProjectInformation" />
@@ -936,7 +936,7 @@
           <Key>
             <PropertyRef Name="OrganizationId" />
           </Key>
-          <Property Type="Int32" Name="OrganizationId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="OrganizationId" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Type="String" Name="OrganizationName" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Type="Boolean" Name="IsDelete" Nullable="false" />
           <NavigationProperty Name="T_OgnizationAct" Relationship="FinalModel.FK__T_Ognizat__Organ__6FE99F9F" FromRole="T_Organization" ToRole="T_OgnizationAct" />
@@ -1077,7 +1077,7 @@
           <Key>
             <PropertyRef Name="PerId" />
           </Key>
-          <Property Type="Int32" Name="PerId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="PerId" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Type="String" Name="PerName" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Type="Int32" Name="PerParent" />
           <Property Type="String" Name="PerAreaName" MaxLength="20" FixedLength="false" Unicode="true" />
@@ -1109,7 +1109,7 @@
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
-      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="FinalModelStoreContainer" CdmEntityContainer="FinalEntities">
           <EntitySetMapping Name="T_Department">
             <EntityTypeMapping TypeName="FinalModel.T_Department">
@@ -1317,7 +1317,7 @@
     </edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
-  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
     <Connection>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
@@ -1332,6 +1332,6 @@
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->
-    <Diagrams></Diagrams>
+    <Diagrams />
   </Designer>
 </edmx:Edmx>

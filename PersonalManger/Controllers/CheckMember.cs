@@ -140,17 +140,17 @@ namespace PersonalManger
         /// 获取修改主页上的所有数据
         /// </summary>
         /// <returns></returns>
+        [Common.Attributes.Skip]
         public ViewResult PageEdit()
         {
             /*准备好数据*/
             string stunum = Request["StuNum"];
-            DateTime dt = DateTime.Now;
-            string datetime = (dt.Year - 2).ToString();//获得、所有
+            string datetime = (Convert.ToInt32(stunum.Substring(0,4))-1).ToString();//成员的技术指导和学习顾问都应该是比自己大一届的成员
             List<MODEL.T_Department> dep = OperateContext.Current.BLLSession.IDepartmentBLL.GetListBy(u => u.DepartmentId > 0);
             List<MODEL.T_TechnicaLevel> techLeval = OperateContext.Current.BLLSession.ITechnicaLevelBLL.GetListBy(u => u.TechLevelId > 0);
-            /*选取顾问团成员*/
-            List<MODEL.T_MemberInformation> StudyGuide = OperateContext.Current.BLLSession.IMemberInformationBLL.GetListBy(u => u.StuNum.Contains(datetime) && (u.T_RoleAct.Select(p => p.RoleId).Contains(10003) || u.T_RoleAct.Select(p => p.RoleId).Contains(10004)));
-            List<MODEL.T_Organization> organization = OperateContext.Current.BLLSession.IOrganizationBLL.GetListBy(u => u.OrganizationId > 0);
+            /*chengyuan */
+            List<MODEL.T_MemberInformation> StudyGuide = OperateContext.Current.BLLSession.IMemberInformationBLL.GetListBy(u => u.StuNum.Contains(datetime) && (u.T_RoleAct.Select(p => p.RoleId).Contains(Position.StudyMember) || u.T_RoleAct.Select(p => p.RoleId).Contains(Position.StudyLeader)));
+            //List<MODEL.T_Organization> organization = OperateContext.Current.BLLSession.IOrganizationBLL.GetListBy(u => u.OrganizationId > 0);
             MODEL.T_MemberInformation member = OperateContext.Current.BLLSession.IMemberInformationBLL.GetListBy(u => u.StuNum == stunum).FirstOrDefault();
             if (OperateContext.Current.HasPemission("PersonalManger", "CheckMember", "AdminEdit", "3"))
             {
@@ -165,7 +165,7 @@ namespace PersonalManger
             ViewBag.techLeval = techLeval;
             ViewBag.StudyGuide = StudyGuide;
             ViewBag.member = member;
-            ViewBag.organization = organization;
+            //ViewBag.organization = organization;
             return View();
         }
         #endregion
@@ -205,6 +205,7 @@ namespace PersonalManger
         /// </summary>
         /// <param name="member"></param>
         /// <returns></returns>
+        [Common.Attributes.Skip]
         public ActionResult Edit(MODEL.T_MemberInformation member)
         {
             try

@@ -1,7 +1,9 @@
 ﻿using Common.Attributes;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
@@ -100,6 +102,12 @@ namespace MVC.Helper
         #region 1.1 实例构造函数 初始化 业务仓储
         public OperateContext()
         {
+
+            /*使用反射特别要注意的地方，会到网站根目录下去找*/
+            //string pLocal = Path.GetDirectoryName(Environment.CurrentDirectory);
+            //Assembly asmb = Assembly.Load( "BLL");
+            //Type supType = asmb.GetType("BLL.BLLSession");
+            //IBLL.IBLLSession obj = Activator.CreateInstance(supType) as IBLL.IBLLSession; 
             BLLSession = DI.SpringHelper.GetObject<IBLL.IBLLSession>("BLLSession");
         }
         #endregion

@@ -3,6 +3,7 @@ using Spring.Context.Support;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 
 namespace DI
@@ -32,7 +33,7 @@ namespace DI
         public static T GetObject<T>(string objName) where T : class
         {
             return (T)SpringContext.GetObject(objName);
-        }
+        }   
         #endregion
     }
 }
