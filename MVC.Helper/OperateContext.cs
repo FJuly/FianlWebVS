@@ -201,7 +201,7 @@ namespace MVC.Helper
         {
 
             //根据学号插查询角色Id
-            List<int> listRoleIds = BLLSession.IRoleActBLL.GetListBy(u => u.RoleActor == userId).Select(u => u.RoleId).ToList();
+            List<int> listRoleIds = BLLSession.IRoleActBLL.GetListBy(u => u.RoleActor == userId&&u.IsDel==false).Select(u => u.RoleId).ToList();
             //根据角色Id插查询权限Id
             List<int> listPerIds = BLLSession.IRolePermissionBLL.GetListBy(u => listRoleIds.Contains(u.RoleId)).Select(u => u.PerId).ToList();
             //得到权限集合

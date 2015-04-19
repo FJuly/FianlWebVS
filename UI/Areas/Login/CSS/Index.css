@@ -127,9 +127,9 @@
     float: left;
     width: 30px;
     height: 30px;
-    background-image: url('../Images/index_icon.png');
-    background-position-x: -140px;
-    background-position-y: -20px;
+    /*background-image: url('/HeadImg/final.png');*/
+    /*background-position-x: -140px;
+    background-position-y: -20px;*/
     margin-left: 20px;
     margin-top: 13px;
     cursor:pointer;

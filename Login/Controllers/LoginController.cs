@@ -22,7 +22,6 @@ namespace Login.Controllers
         [Common.Attributes.Skip]
         public ActionResult Index()
         {
-
             if (Request.Cookies["Admin_InfoKey"]!=null)
             {
                 string strCookieValue = Request.Cookies["Admin_InfoKey"].Value;
@@ -30,7 +29,6 @@ namespace Login.Controllers
                     MODEL.T_MemberInformation user =OperateContext.Current.BLLSession.IMemberInformationBLL.GetListBy(u => u.StuNum == User).First();
                     ViewData["Name"] = user.StuNum;
                     ViewData["Pwd"] = user.LoginPwd;
-
             }
             return View();
         }
@@ -87,6 +85,7 @@ namespace Login.Controllers
         [Common.Attributes.Skip]
         public ActionResult MainPage()
         {
+            ViewBag.name = OperateContext.Current.Usr.StuName;
             return View();
         } 
         #endregion

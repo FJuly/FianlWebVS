@@ -38,16 +38,16 @@
                 <div id="header-msg-btn" >
                 </div>
                 <!-- Photo  -->
-                <div id="header-photo" >
+                <div id="header-photo" style="border-radius:50% 50%">
+                    <img src="/HeadImg/final.png" style="border-radius:50% 50%;height:30px;width:30px"/>
                 </div>
                 <!-- Nickname -->
                 <div id="header-nickname" >
-                    昵称.....
+                    @ViewBag.name
                 </div>
                 <!-- Logout -->
                 <div id="header-logout-btn" title="退出登陆" >
-                    <div id="header-logout-img" >
-                    </div>
+                    <div id="header-logout-img" ></div>
                     <div id="header-logout-text" >退出</div>
                 </div>
             </div>
@@ -86,7 +86,7 @@
 
         <div class="main_panel" id="main-panel">
             <div id="panel-body-00" style="width: inherit; height: inherit;">
-                <iframe src="WelcomePage.html" style="border: 0px currentColor; border-image: none; width: 100%; height: 100%;"></iframe>
+                <iframe src="~/WelcomePage.html" style="border: 0px currentColor; border-image: none; width: 100%; height: 100%;"></iframe>
             </div>
         </div>
     </div>

@@ -182,13 +182,13 @@ namespace PersonalManger
             {
                 /*EF修改主键一定要加*/
                 string[] proNames = new string[] { "StuNum", "StuName", "Gender", "Email", "LoginPwd", "Class", "Major", "Counselor", "HeadTeacher", "UndergraduateTutor", "TelephoneNumber",
-            "HomPhoneNumber","FamilyAddress","Department","TechnicalLevel","StudyGuideNumber","TechnicalGuideNumber","Organization","Sign","OtheInfor"};
+            "HomPhoneNumber","FamilyAddress","Department","TechnicalLevel","StudyGuideNumber","TechnicalGuideNumber","Sign","OtheInfor"};
                 int IsSuccess = OperateContext.Current.BLLSession.IMemberInformationBLL.Modify(member, proNames);
                 if (IsSuccess > 0)
-                    return Content("<script>alert('修改成功');window.location='/PersonalManger/CheckMember/PersonPage?StuNum=" + member.StuNum+ "</script>");
+                    return Content("<script>alert('修改成功');window.location='/PersonalManger/CheckMember/PersonPage?StuNum=" + member.StuNum+ "'</script>");
                 else 
                 {
-                    return Content("<script>alert('修改失败');window.location='/PersonalManger/CheckMember/PageEdit?StuNum=" + member.StuNum + "</script>");
+                    return Content("<script>alert('修改失败');window.location='/PersonalManger/CheckMember/PageEdit?StuNum=" + member.StuNum + "'</script>");
                 }
             }
             else
@@ -236,6 +236,7 @@ namespace PersonalManger
         /// </summary>
         /// <param name="UpLoadImg"></param>
         /// <returns></returns>
+        [Common.Attributes.Skip]
         public ActionResult UpLoadImg()
         {
             HttpPostedFileBase head=Request.Files["head"];

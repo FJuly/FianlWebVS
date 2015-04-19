@@ -157,6 +157,7 @@
     <Content Include="Areas\PersonalManger\Views\EntryPosition\EntryChoose.cshtml" />
     <Content Include="Areas\PersonalManger\Views\EntryPosition\EntryPosition.cshtml" />
     <Content Include="Areas\PersonalManger\Views\CheckMember\PersonPage.cshtml" />
+    <Content Include="WelcomePage.html" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Areas\Login\CSS\Index.css" />
     <Content Include="Areas\Login\CSS\Login.css" />

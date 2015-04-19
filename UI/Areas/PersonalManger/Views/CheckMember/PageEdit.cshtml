@@ -212,13 +212,13 @@
                             <div class="form-group">
                                 <label for="JoinTime" class="col-sm-2 control-label">加入时间:</label>
                                 <div class="col-sm-4">
-                                    <input type="date" value="2012-06-15" class="form_datetime form-control" name="EndTime" readonly>
+                                    <input type="text" value="@string.Format("{0:d}", ViewBag.member.JoinTime)" class="form-control" name="EndTime" readonly>
                                 </div>
                                 <label for="EndTime" class="col-sm-2 control-label">退出时间:</label>
                                 <div class="col-sm-4">
-                                    <input type="text" value="2012-06-15" class="form_datetime form-control" name="EndTime" readonly>
+                                    <input type="text" value="无" class="form_datetime form-control" name="EndTime" readonly>
                                 </div>
-                            </div>
+                            </div>  
                             <div class="form-group">
                                 <label for="StudyGuideNumber" class="col-sm-2 control-label">学习顾问:</label>
                                 <div class="col-sm-4">
@@ -238,8 +238,8 @@
                                 </div>
                                 <label for="TechnicalGuideNumber" class="col-sm-2 control-label">组织:</label>
                                 <div class="col-sm-4">
-                                    <select class="form-control" name="TechnicalGuideNumber">
-                                        @foreach (MODEL.T_MemberInformation member in ViewBag.StudyGuide as List<MODEL.T_MemberInformation>)
+                                    <select class="form-control" name="" readonly>
+@*                                        @foreach (MODEL.T_MemberInformation member in ViewBag.StudyGuide as List<MODEL.T_MemberInformation>)
                                         {
                                             if (member.StuNum == @ViewBag.member.TechnicalGuideNumber)
                                             {
@@ -249,7 +249,7 @@
                                             {
                                             <option value="@member.StuNum">@member.StuName</option>
                                             }
-                                        }
+                                        }*@
                                     </select>
                                 </div>
                             </div>

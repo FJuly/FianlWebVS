@@ -279,29 +279,3 @@ function ChangeFrame(id)
 
     
 }
-
-/************标题左移*******************/
-//function NavMoveLeft()
-//{
-//    $navLi = $("#nav-body-ul");
-
-//    //alert($("#nav-body-ul").outerWidth());
-
-//    $Child = $("#nav-body-ul li");
-
-//    if ($("#nav-body-ul li").length * 100 + Number($Child.css("left").substring(0, $Child.css("left").length - 2)) >= $("#nav-body-ul").outerWidth())
-//    {
-//    $Child.css("left", $Child.css("left").substring(0, $Child.css("left").length - 2) - 100 + "px");
-//    }
-
-//}
-///************标题右移*******************/
-//function NavMoveRight()
-//{
-//    $navLi = $("#nav-body-ul");
-//    $Child = $("#nav-body-ul li");
-
-//    if ($Child.css("left").substring(0, $Child.css("left").length - 2)<0) {
-//        $Child.css("left", Number($Child.css("left").substring(0, $Child.css("left").length - 2) )+ 100 + "px");
-//    }
-//}
