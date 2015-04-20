@@ -202,8 +202,15 @@ namespace MVC.Helper
 
             //根据学号插查询角色Id
             List<int> listRoleIds = BLLSession.IRoleActBLL.GetListBy(u => u.RoleActor == userId&&u.IsDel==false).Select(u => u.RoleId).ToList();
+            //查询基础权限
+            List<int> listPerIdCommon = BLLSession.IPermissionBLL.GetListBy(u => u.IsCommon == true).Select(u => u.PerId).ToList();
             //根据角色Id插查询权限Id
-            List<int> listPerIds = BLLSession.IRolePermissionBLL.GetListBy(u => listRoleIds.Contains(u.RoleId)).Select(u => u.PerId).ToList();
+            List<int> listPerId = BLLSession.IRolePermissionBLL.GetListBy(u => listRoleIds.Contains(u.RoleId)).Select(u => u.PerId).ToList();
+            //合并权限
+            listPerId.AddRange(listPerIdCommon);
+            //去除重复元素,得到一个新的集合
+            List<int> listPerIds= listPerId.Distinct().ToList();
+
             //得到权限集合
             List<MODEL.T_Permission> listPers = BLLSession.IPermissionBLL.GetListBy(u => listPerIds.Contains(u.PerId)).Select(u => u.ToPOCO()).ToList();
             return listPers;

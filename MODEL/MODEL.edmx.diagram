@@ -39,8 +39,8 @@
         <AssociationConnector Association="FinalModel.FK__T_RoleAct__RoleA__6A30C649" />
         <AssociationConnector Association="FinalModel.FK__T_TaskPar__TaskR__534D60F1" />
         <AssociationConnector Association="FinalModel.FK__T_Ognizat__Organ__6FE99F9F" />
-        <EntityTypeShape EntityType="FinalModel.T_Permission" Width="1.5" PointX="11.527104830149144" PointY="23.535805027715771" />
-        <AssociationConnector Association="FinalModel.FK__T_RolePer__PerId__151B244E" />
+        <EntityTypeShape EntityType="FinalModel.T_Permission" Width="1.5" PointX="4.388032941328377" PointY="1.1440232699476292" />
+        <AssociationConnector Association="FinalModel.FK__T_RolePer__PerId__3B40CD36" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

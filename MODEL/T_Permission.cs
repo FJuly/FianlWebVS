@@ -30,6 +30,7 @@ namespace MODEL
         public bool PerIsShow { get; set; }
         public Nullable<System.DateTime> PerAddTime { get; set; }
         public string PerIco { get; set; }
+        public bool IsCommon { get; set; }
         public bool IsDelete { get; set; }
         public Nullable<int> bpx { get; set; }
         public Nullable<int> bpy { get; set; }
