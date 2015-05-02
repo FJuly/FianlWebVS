@@ -18,6 +18,10 @@ namespace IDAL
     {
     }
 
+	public partial interface IOnDutyDAL : IBaseDAL<MODEL.T_OnDuty>
+    {
+    }
+
 	public partial interface IOrganizationDAL : IBaseDAL<MODEL.T_Organization>
     {
     }

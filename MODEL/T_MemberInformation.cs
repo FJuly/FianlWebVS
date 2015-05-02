@@ -24,6 +24,7 @@ namespace MODEL
             this.T_ProjectParticipation = new HashSet<T_ProjectParticipation>();
             this.T_RoleAct = new HashSet<T_RoleAct>();
             this.T_TaskParticipation = new HashSet<T_TaskParticipation>();
+            this.T_OnDuty = new HashSet<T_OnDuty>();
         }
     
         public string StuNum { get; set; }
@@ -64,5 +65,6 @@ namespace MODEL
         public virtual ICollection<T_ProjectParticipation> T_ProjectParticipation { get; set; }
         public virtual ICollection<T_RoleAct> T_RoleAct { get; set; }
         public virtual ICollection<T_TaskParticipation> T_TaskParticipation { get; set; }
+        public virtual ICollection<T_OnDuty> T_OnDuty { get; set; }
     }
 }

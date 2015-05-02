@@ -60,7 +60,24 @@ namespace DALMSSQL
 		}
 		#endregion
 
-		#region 04 数据接口 IOrganizationDAL
+		#region 04 数据接口 IOnDutyDAL
+		IOnDutyDAL iOnDutyDAL;
+		public IOnDutyDAL IOnDutyDAL
+		{
+			get
+			{
+				if(iOnDutyDAL==null)
+					iOnDutyDAL= new T_OnDutyDAL();
+				return iOnDutyDAL;
+			}
+			set
+			{
+				iOnDutyDAL= value;
+			}
+		}
+		#endregion
+
+		#region 05 数据接口 IOrganizationDAL
 		IOrganizationDAL iOrganizationDAL;
 		public IOrganizationDAL IOrganizationDAL
 		{
@@ -77,7 +94,7 @@ namespace DALMSSQL
 		}
 		#endregion
 
-		#region 05 数据接口 IPermissionDAL
+		#region 06 数据接口 IPermissionDAL
 		IPermissionDAL iPermissionDAL;
 		public IPermissionDAL IPermissionDAL
 		{
@@ -94,7 +111,7 @@ namespace DALMSSQL
 		}
 		#endregion
 
-		#region 06 数据接口 IProjectInformationDAL
+		#region 07 数据接口 IProjectInformationDAL
 		IProjectInformationDAL iProjectInformationDAL;
 		public IProjectInformationDAL IProjectInformationDAL
 		{
@@ -111,7 +128,7 @@ namespace DALMSSQL
 		}
 		#endregion
 
-		#region 07 数据接口 IProjectParticipationDAL
+		#region 08 数据接口 IProjectParticipationDAL
 		IProjectParticipationDAL iProjectParticipationDAL;
 		public IProjectParticipationDAL IProjectParticipationDAL
 		{
@@ -128,7 +145,7 @@ namespace DALMSSQL
 		}
 		#endregion
 
-		#region 08 数据接口 IProjectTypeDAL
+		#region 09 数据接口 IProjectTypeDAL
 		IProjectTypeDAL iProjectTypeDAL;
 		public IProjectTypeDAL IProjectTypeDAL
 		{
@@ -145,7 +162,7 @@ namespace DALMSSQL
 		}
 		#endregion
 
-		#region 09 数据接口 IProjPhaseDAL
+		#region 10 数据接口 IProjPhaseDAL
 		IProjPhaseDAL iProjPhaseDAL;
 		public IProjPhaseDAL IProjPhaseDAL
 		{
@@ -162,7 +179,7 @@ namespace DALMSSQL
 		}
 		#endregion
 
-		#region 10 数据接口 IRoleDAL
+		#region 11 数据接口 IRoleDAL
 		IRoleDAL iRoleDAL;
 		public IRoleDAL IRoleDAL
 		{
@@ -179,7 +196,7 @@ namespace DALMSSQL
 		}
 		#endregion
 
-		#region 11 数据接口 IRoleActDAL
+		#region 12 数据接口 IRoleActDAL
 		IRoleActDAL iRoleActDAL;
 		public IRoleActDAL IRoleActDAL
 		{
@@ -196,7 +213,7 @@ namespace DALMSSQL
 		}
 		#endregion
 
-		#region 12 数据接口 IRolePermissionDAL
+		#region 13 数据接口 IRolePermissionDAL
 		IRolePermissionDAL iRolePermissionDAL;
 		public IRolePermissionDAL IRolePermissionDAL
 		{
@@ -213,7 +230,7 @@ namespace DALMSSQL
 		}
 		#endregion
 
-		#region 13 数据接口 ITaskInformationDAL
+		#region 14 数据接口 ITaskInformationDAL
 		ITaskInformationDAL iTaskInformationDAL;
 		public ITaskInformationDAL ITaskInformationDAL
 		{
@@ -230,7 +247,7 @@ namespace DALMSSQL
 		}
 		#endregion
 
-		#region 14 数据接口 ITaskParticipationDAL
+		#region 15 数据接口 ITaskParticipationDAL
 		ITaskParticipationDAL iTaskParticipationDAL;
 		public ITaskParticipationDAL ITaskParticipationDAL
 		{
@@ -247,7 +264,7 @@ namespace DALMSSQL
 		}
 		#endregion
 
-		#region 15 数据接口 ITaskTypeDAL
+		#region 16 数据接口 ITaskTypeDAL
 		ITaskTypeDAL iTaskTypeDAL;
 		public ITaskTypeDAL ITaskTypeDAL
 		{
@@ -264,7 +281,7 @@ namespace DALMSSQL
 		}
 		#endregion
 
-		#region 16 数据接口 ITechnicaLevelDAL
+		#region 17 数据接口 ITechnicaLevelDAL
 		ITechnicaLevelDAL iTechnicaLevelDAL;
 		public ITechnicaLevelDAL ITechnicaLevelDAL
 		{

@@ -2,6 +2,7 @@
 using MODEL.FormatModel;
 using MVC.Helper;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -35,12 +36,12 @@ namespace Login.Controllers
         #endregion
 
         #region 登陆，表单提交过来的数据+public ActionResult Login(MODEL.ViewModel.LoginUser user)
-        [Common.Attributes.Skip]
         /// <summary>
         /// 登陆，表单提交过来的数据
         /// </summary>
         /// <param name="user"></param>
         /// <returns></returns>
+         [Common.Attributes.Skip]
         public ActionResult Login(MODEL.ViewModel.LoginUser user)
         {
             if (ModelState.IsValid)
@@ -82,7 +83,6 @@ namespace Login.Controllers
         /// 登陆成功进入主页
         /// </summary>
         /// <returns></returns>
-        [Common.Attributes.Skip]
         public ActionResult MainPage()
         {
             ViewBag.name = OperateContext.Current.Usr.StuName;
@@ -109,7 +109,6 @@ namespace Login.Controllers
         /// 根据当前登陆用户 权限 生成菜单
         /// </summary>
         /// <returns></returns>
-        [Common.Attributes.Skip]
         public ActionResult GetMenuData()
         {
             return Content(OperateContext.Current.UsrMenuJsonStr);

@@ -11,6 +11,7 @@ namespace IDAL
 		IDepartmentDAL IDepartmentDAL{get;set;}
 		IMemberInformationDAL IMemberInformationDAL{get;set;}
 		IOgnizationActDAL IOgnizationActDAL{get;set;}
+		IOnDutyDAL IOnDutyDAL{get;set;}
 		IOrganizationDAL IOrganizationDAL{get;set;}
 		IPermissionDAL IPermissionDAL{get;set;}
 		IProjectInformationDAL IProjectInformationDAL{get;set;}

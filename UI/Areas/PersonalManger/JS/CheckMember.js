@@ -68,7 +68,18 @@ $.extend({
                 if (jsonObj.Statu == "ok") {
                     PreCreateTable(jsonObj);
                 }
-                else { }
+                if (jsonObj.Statu == "nologin") {
+                    alert("您还没有登陆，请登录！");
+                    parent.location = jsonObj.BackUrl;
+
+                }
+                if (jsonObj.Statu == "nopermission") {
+                    alert(jsonObj.Msg);
+                    window.location = jsonObj.BackUrl;
+                }
+                if (jsonObj.Statu == "err") {
+                    alert(jsonObj.Msg);
+                }
             }
         })
     }
@@ -211,8 +222,18 @@ function Search(dataBy) {
                 $("#body").empty();
                 var pageIndex = 1;//初始化页数为1
                 PreCreateTable(jsonObj)
-            } else {
-                alert("服务器出错！！！");
+            }
+            if (jsonObj.Statu == "nologin") {
+                alert(jsonObj.Msg);
+                parent.location = jsonObj.BackUrl;
+
+            }
+            if (jsonObj.Statu == "nopermission") {
+                alert("您没有权限访问此页面!");
+                window.location = jsonObj.BackUrl;
+            }
+            if (jsonObj.Statu == "err") {
+                alert("访问出错！");
             }
         }
     })

@@ -1,0 +1,125 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <script src="~/Scripts/jquery-1.7.1.min.js"></script>
+    <title>EntryDuty</title>
+    <script type="text/javascript">
+        function add(flag) {
+            var oprate = $(flag).text();
+            if (oprate == "增加") {
+                $(flag).text("删除");
+                //获取当前是第几周，生成的时候使用这一周
+                week = $(flag).parent().prev().prev().children("select").children("option:selected").text();
+                $tr = $("<tr></tr>");
+                $th = $("<th></th>");
+                $select = $("<select class='form-control input-sm' style='width: 100px'></select>");
+                /*保持上次的周数，增强用户体验*/
+                for (var i = 1; i <= 16; i++) {
+                    if (i.toString() == week.substring(1, week.length - 1)) {
+                        $option = $("<option selected value='" + i + "'>第" + i + "周</option>")
+                    } else {
+                        $option = $("<option value='" + i + "'>第" + i + "周</option>")
+                    }
+                    $select.append($option);
+                }
+                $th.append($select);
+                $td1 = $("<td></td>");
+                /*复制一份SelectStu*/
+                $td1.append($("#SelectStu").clone(true));
+                $td2 = $("<td><a style=‘width: 80px; color: green’ href='#' onclick='add(this)'>增加</a></td>");
+                $tr.append($th);
+                $tr.append($td1);
+                $tr.append($td2);
+                $("#tbody").append($tr);
+            } else {
+                $(flag).parent().parent().remove();
+            }
+        }
+        function test() {
+            /*准备好数据格式*/
+            var str = "";
+            var trs = $("#tbody").children("tr");
+            trs.each(function (index, element) {
+                str += $(element).children("th").children("select").children("option:selected").val();
+                str += ",";
+                str += $(element).children("td").children("select").children("option:selected").val();
+                str += ";";
+
+            });
+            $.ajax({
+                url: '/Duty/Duty/EntryDuty',
+                type: 'post',
+                data: { "Str": str },
+                success: function (jsonObj) {
+                    if (jsonObj.Statu == "ok") {
+                        alert(jsonObj.Msg);
+                    } else {
+                        alert(jsonObj.Msg);
+                    }
+                }
+            })
+        }
+    </script>
+</head>
+<body style="font-family: 'Microsoft YaHei'; font-size: 14px">
+    <div class="panel panel-success">
+        <!-- Default panel contents -->
+        <div class="panel-heading">值日生录入</div>
+
+        <!-- Table -->
+        <table class="table table-condensed">
+            <thead>
+                <tr>
+                    <th>周数</th>
+                    <th>值日生</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+
+            <tbody id="tbody">
+                <tr>
+                    <th scope="row">
+                        <select class="form-control input-sm" style="width: 100px">
+                            <option value="1">第1周</option>
+                            <option value="2">第2周</option>
+                            <option value="3">第3周</option>
+                            <option value="4">第4周</option>
+                            <option value="5">第5周</option>
+                            <option value="6">第6周</option>
+                            <option value="7">第7周</option>
+                            <option value="8">第8周</option>
+                            <option value="9">第9周</option>
+                            <option value="10">第10周</option>
+                            <option value="11">第11周</option>
+                            <option value="12">第12周</option>
+                            <option value="13">第13周</option>
+                            <option value="14">第14周</option>
+                            <option value="15">第15周</option>
+                             <option value="15">第16周</option>
+                        </select>
+                    </th>
+                    <td>
+                        <select class="form-control input-sm" style="width: 100px" id="SelectStu">
+                            @foreach (MODEL.DTO.MemberInformationDTO dto in ViewBag.Stu)
+                            {                          
+                                <option value="@dto.StuNum">@dto.StuName</option>                         
+                            }
+                        </select>
+                    </td>
+                    <td>
+                        <a style="width: 80px; color: green" href="#" onclick="add(this)">增加</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <button onclick="test()">测试</button>
+</body>
+</html>

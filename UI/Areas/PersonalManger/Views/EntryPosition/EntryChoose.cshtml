@@ -22,10 +22,20 @@
                 data: { "role": role, "oprate": oprate },
                 success: function (data) {
                     var json = JSON.parse(data);
+                    if (json.Statu == "ok") {
+                        location.href = json.BackUrl;
+                    }
+                    if (json.Statu == "nologin") {
+                        alert("您还没有登陆，请登录！");
+                        parent.location = json.BackUrl;
+
+                    }
+                    if (json.Statu == "nopermission") {
+                        alert(json.Msg);
+                        window.location = jsonObj.BackUrl;
+                    }
                     if (json.Statu == "err") {
                         alert(json.Msg);
-                    } else {
-                        location.href = json.BackUrl;
                     }
                 }
             })
@@ -55,7 +65,7 @@
                         <th scope="row">1</th>
                         <td>所有职位</td>
                         <td>
-                            <a class="btn btn-success" style="width: 80px;" href="/PersonalManger/CheckMember/BrowsePosition">查看</a>
+                            <a class="btn btn-success btn-sm btn-sm" style="width: 80px;" href="/PersonalManger/CheckMember/BrowsePosition">查看</a>
                         </td>
                 </tbody>
             </table>
@@ -79,88 +89,88 @@
                         <th scope="row">1</th>
                         <td>总裁</td>
                         <td>
-                            <button class="btn btn-success" style="width: 80px;" onclick="send(@MVC.Helper.Position.President,'Add','ZC')">录入</button>
+                            <button class="btn btn-success btn-sm btn-sm" style="width: 80px;" onclick="send(@MVC.Helper.Position.President,'Add','ZC')">录入</button>
                         </td>
                         <td>
-                            <button class="btn btn-danger" style="width: 80px; margin-left: 20px" onclick="send(@MVC.Helper.Position.President,'Delete','ZC')">删除</button></td>
+                            <button class="btn  btn-danger btn-sm btn-sm" style="width: 80px; margin-left: 20px" onclick="send(@MVC.Helper.Position.President,'Delete','ZC')">删除</button></td>
                     </tr>
                     <tr>
                         <th scope="row">2</th>
                         <td>部长</td>
                         <td>
-                            <button class="btn btn-success" style="width: 80px;" onclick="send(@MVC.Helper.Position.Minister,'Add','BZ')">录入</button>
+                            <button class="btn btn-success btn-sm btn-sm" style="width: 80px;" onclick="send(@MVC.Helper.Position.Minister,'Add','BZ')">录入</button>
 
                         </td>
                         <td>
-                            <button class="btn btn-danger" style="width: 80px; margin-left: 20px" onclick="send(@MVC.Helper.Position.Minister,'Delete','BZ')">删除</button></td>
+                            <button class="btn  btn-danger btn-sm" style="width: 80px; margin-left: 20px" onclick="send(@MVC.Helper.Position.Minister,'Delete','BZ')">删除</button></td>
                     </tr>
                     <tr>
                         <th scope="row">3</th>
                         <td>学习顾问团团长</td>
                         <td>
-                            <button class="btn btn-success" style="width: 80px;" onclick="send(@MVC.Helper.Position.StudyLeader,'Add','TZ')">录入</button>
+                            <button class="btn btn-success btn-sm" style="width: 80px;" onclick="send(@MVC.Helper.Position.StudyLeader,'Add','TZ')">录入</button>
                         </td>
                         <td>
-                            <button class="btn btn-danger" style="width: 80px; margin-left: 20px" onclick="send(@MVC.Helper.Position.StudyLeader,'Delete','TZ')">删除</button></td>
+                            <button class="btn  btn-danger btn-sm" style="width: 80px; margin-left: 20px" onclick="send(@MVC.Helper.Position.StudyLeader,'Delete','TZ')">删除</button></td>
                     </tr>
                     <tr>
                         <th scope="row">4</th>
                         <td>学习顾问团团员</td>
                         <td>
-                            <button class="btn btn-success" style="width: 80px;" onclick="send(@MVC.Helper.Position.PlanMmember,'Add','TY')">录入</button>
+                            <button class="btn btn-success btn-sm" style="width: 80px;" onclick="send(@MVC.Helper.Position.PlanMmember,'Add','TY')">录入</button>
                         </td>
                         <td>
-                            <button class="btn btn-danger" style="width: 80px; margin-left: 20px" onclick="send(@MVC.Helper.Position.PlanMmember,'Delete','TY')">删除</button></td>
+                            <button class="btn  btn-danger btn-sm" style="width: 80px; margin-left: 20px" onclick="send(@MVC.Helper.Position.PlanMmember,'Delete','TY')">删除</button></td>
                     </tr>
                     <tr>
                         <th scope="row">5</th>
                         <td>活动策划组组长</td>
                         <td>
-                            <button class="btn btn-success" style="width: 80px;" onclick="send(@MVC.Helper.Position.PlanLeader,'Add','ZZ')">录入</button>
+                            <button class="btn btn-success btn-sm" style="width: 80px;" onclick="send(@MVC.Helper.Position.PlanLeader,'Add','ZZ')">录入</button>
 
                         </td>
                         <td>
-                            <button class="btn btn-danger" style="width: 80px; margin-left: 20px" onclick="send(@MVC.Helper.Position.PlanLeader,'Delete','ZZ')">删除</button></td>
+                            <button class="btn  btn-danger btn-sm" style="width: 80px; margin-left: 20px" onclick="send(@MVC.Helper.Position.PlanLeader,'Delete','ZZ')">删除</button></td>
                     </tr>
                     <tr>
                         <th scope="row">6</th>
                         <td>活动策划组组员</td>
                         <td>
-                            <button class="btn btn-success" style="width: 80px;" onclick="send(@MVC.Helper.Position.PlanMmember,'Add','ZY')">录入</button>
+                            <button class="btn btn-success btn-sm" style="width: 80px;" onclick="send(@MVC.Helper.Position.PlanMmember,'Add','ZY')">录入</button>
 
                         </td>
                         <td>
-                            <button class="btn btn-danger" style="width: 80px; margin-left: 20px" onclick="send(@MVC.Helper.Position.PlanMmember,'Delete','ZY')">删除</button></td>
+                            <button class="btn  btn-danger btn-sm" style="width: 80px; margin-left: 20px" onclick="send(@MVC.Helper.Position.PlanMmember,'Delete','ZY')">删除</button></td>
                     </tr>
                     <tr>
                         <th scope="row">7</th>
                         <td>财务主管</td>
                         <td>
-                            <button class="btn btn-success" style="width: 80px;" onclick="send(@MVC.Helper.Position.Financial,'Add','CW')">录入</button>
+                            <button class="btn btn-success btn-sm" style="width: 80px;" onclick="send(@MVC.Helper.Position.Financial,'Add','CW')">录入</button>
 
                         </td>
                         <td>
-                            <button class="btn btn-danger" style="width: 80px; margin-left: 20px" onclick="send(@MVC.Helper.Position.Financial,'Delete','CW')">删除</button></td>
+                            <button class="btn  btn-danger btn-sm" style="width: 80px; margin-left: 20px" onclick="send(@MVC.Helper.Position.Financial,'Delete','CW')">删除</button></td>
                     </tr>
                     <tr>
                         <th scope="row">8</th>
                         <td>部门成员</td>
                         <td>
-                            <button class="btn btn-success" style="width: 80px;" onclick="send(10000,'Add','BMCY')">录入</button>
+                            <button class="btn btn-success btn-sm" style="width: 80px;" onclick="send(10000,'Add','BMCY')">录入</button>
 
                         </td>
                         <td>
-                            <button class="btn btn-danger" style="width: 80px; margin-left: 20px" onclick="send(10000,'Delete','BMCY')">删除</button></td>
+                            <button class="btn  btn-danger btn-sm" style="width: 80px; margin-left: 20px" onclick="send(10000,'Delete','BMCY')">删除</button></td>
                     </tr>
                     @*                    <tr>
                         <th scope="row">8</th>
                         <td>技术指导</td>
                         <td>
-                            <button class="btn btn-success" style="width: 80px;" onclick="send(10010,'Add','TechnicalGuide')">录入</button>
+                            <button class="btn btn-success btn-sm" style="width: 80px;" onclick="send(10010,'Add','TechnicalGuide')">录入</button>
 
                         </td>
                         <td>
-                            <button class="btn btn-danger" style="width: 80px; margin-left: 20px" onclick="send(10010,'Delete','TechnicalGuide')">删除</button></td>
+                            <button class="btn  btn-danger btn-sm" style="width: 80px; margin-left: 20px" onclick="send(10010,'Delete','TechnicalGuide')">删除</button></td>
                     </tr>*@
                 </tbody>
             </table>

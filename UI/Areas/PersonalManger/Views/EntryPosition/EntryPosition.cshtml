@@ -13,7 +13,7 @@
     <script type="text/ecmascript">
         /*请求数据时带上职务参数   */
         $(function () {
-            var oprate=$("#oprate").val();
+            var oprate = $("#oprate").val();
             var role = $("#role").val();
             /*根据不同角色初始化表格*/
             $.Init(role, oprate);
@@ -22,19 +22,19 @@
             var role = $("#role").val();
             var oprate = $("#oprate").val();
             /*更改标题*/
-            if (role == @MVC.Helper.Position.President)
+            if (role == "@MVC.Helper.Position.President")
                 $("#head-nav-text").text(oprate + "总裁");
-            if (role == @MVC.Helper.Position.Minister)
+            if (role == "@MVC.Helper.Position.Minister")
                 $("#head-nav-text").text(oprate + "部长");
-            if (role == @MVC.Helper.Position.StudyLeader)
+            if (role == "@MVC.Helper.Position.StudyLeader")
                 $("#head-nav-text").text(oprate + "团长");
-            if (role == @MVC.Helper.Position.StudyMember)
+            if (role == "@MVC.Helper.Position.StudyMember")
                 $("#head-nav-text").text(oprate + "团员");
-            if (role == @MVC.Helper.Position.PlanLeader)
+            if (role == "@MVC.Helper.Position.PlanLeader")
                 $("#head-nav-text").text(oprate + "组长");
-            if (role == @MVC.Helper.Position.PlanMmember)
+            if (role == "@MVC.Helper.Position.PlanMmember")
                 $("#head-nav-text").text(oprate + "组员");
-            if (role == @MVC.Helper.Position.Financial)
+            if (role == "@MVC.Helper.Position.Financial")
                 $("#head-nav-text").text(oprate + "财务主管");
             if (role == 10000)
                 $("#head-nav-text").text(oprate + "部门成员");

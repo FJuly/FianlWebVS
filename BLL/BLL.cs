@@ -29,6 +29,14 @@ namespace BLL
 		}
     }
 
+	public partial class T_OnDuty : BaseBLL<MODEL.T_OnDuty>,IBLL.IOnDutyBLL
+    {
+		public override void SetDAL()
+		{
+			idal = DBSession.IOnDutyDAL;
+		}
+    }
+
 	public partial class T_Organization : BaseBLL<MODEL.T_Organization>,IBLL.IOrganizationBLL
     {
 		public override void SetDAL()

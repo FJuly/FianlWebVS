@@ -148,7 +148,9 @@
     <Content Include="Areas\PersonalManger\JS\jquery-1.3.1.js" />
     <Content Include="Areas\PersonalManger\CSS\CheckMember.css" />
     <Content Include="Areas\PersonalManger\Images\页面2图标.png" />
-    <Content Include="Areas\PersonalManger\Views\Web.config" />
+    <Content Include="Areas\PersonalManger\Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Areas\PersonalManger\Views\CheckMember\DeleteBy.cshtml" />
     <Content Include="Areas\PersonalManger\CSS\left.css" />
     <Content Include="Areas\PersonalManger\Images\page.png" />
@@ -158,6 +160,9 @@
     <Content Include="Areas\PersonalManger\Views\EntryPosition\EntryPosition.cshtml" />
     <Content Include="Areas\PersonalManger\Views\CheckMember\PersonPage.cshtml" />
     <Content Include="WelcomePage.html" />
+    <Content Include="Areas\Duty\Views\Web.config" />
+    <Content Include="Areas\Duty\Views\Duty\EntryDutyView.cshtml" />
+    <Content Include="Areas\Duty\Views\Duty\Index.cshtml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Areas\Login\CSS\Index.css" />
     <Content Include="Areas\Login\CSS\Login.css" />
@@ -201,6 +206,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Duty\Views\Shared\" />
     <Folder Include="Areas\Login\Views\Shared\" />
     <Folder Include="Areas\PersonalManger\Views\Shared\" />
   </ItemGroup>
@@ -226,6 +232,10 @@
     <ProjectReference Include="..\DI\DI.csproj">
       <Project>{ad8c23f1-2e52-4761-8990-da2159891a44}</Project>
       <Name>DI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Duty\Duty.csproj">
+      <Project>{c4a10f50-3b53-4f5c-a655-cb027d17d365}</Project>
+      <Name>Duty</Name>
     </ProjectReference>
     <ProjectReference Include="..\IBLL\IBLL.csproj">
       <Project>{496d30d8-441f-4692-8d2c-846b9f0eaad2}</Project>

@@ -31,7 +31,7 @@ namespace Login.Filters
                     //1.验证用户是否登陆(Session && Cookie)
                     if (!OperateContext.Current.IsLogin())
                     {
-                        filterContext.Result = OperateContext.Current.Redirect("/Login/Login/Login", filterContext.ActionDescriptor);
+                        filterContext.Result = OperateContext.Current.Redirect(true, filterContext.ActionDescriptor);
                     }
                     #endregion
 
@@ -46,7 +46,7 @@ namespace Login.Filters
 
                         if (!OperateContext.Current.HasPemission(strAreaName, strContrllerName, strActionName, strHttpMethod))
                         {
-                            filterContext.Result = OperateContext.Current.Redirect("/admin/admin/login?msg=noPermission", filterContext.ActionDescriptor);
+                            filterContext.Result = OperateContext.Current.Redirect(false,filterContext.ActionDescriptor);
                         }
                     }
                     #endregion

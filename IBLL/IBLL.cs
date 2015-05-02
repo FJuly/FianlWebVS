@@ -18,6 +18,10 @@ namespace IBLL
     {
     }
 
+	public partial interface IOnDutyBLL : IBaseBLL<MODEL.T_OnDuty>
+    {
+    }
+
 	public partial interface IOrganizationBLL : IBaseBLL<MODEL.T_Organization>
     {
     }

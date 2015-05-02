@@ -51,7 +51,17 @@ function login() {
                 var jsonObj = JSON.parse(data);
                 if (jsonObj.Statu == "ok") {
                     window.location = jsonObj.BackUrl;
-                } else {
+                }
+                if (jsonObj.Statu == "nologin") {
+                    alert("您还没有登陆，请登录！");
+                    parent.location = jsonObj.BackUrl;
+
+                }
+                if (jsonObj.Statu == "nopermission") {
+                    alert(jsonObj.Msg);
+                    window.location = jsonObj.BackUrl;
+                }
+                if (jsonObj.Statu == "err") {
                     alert(jsonObj.Msg);
                 }
             }

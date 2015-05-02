@@ -27,7 +27,9 @@ namespace PersonalManger
             }
             /*判断每个人是否具有修改的权限*/
             string IsEdit;
-            if (OperateContext.Current.HasPemission("PersonalManger", "CheckMember", "AdminEdit", "post"))
+            //如果是管理员或者是自己本身则具有修改权限
+            if (OperateContext.Current.HasPemission("PersonalManger", "CheckMember", "AdminEdit", "post")||
+                stunum.Equals(OperateContext.Current.Usr.StuNum))
             {
                 IsEdit = "True";
                 ViewBag.IsEdit = IsEdit;
@@ -86,7 +88,6 @@ namespace PersonalManger
         /// </summary>
         /// <param name="form"></param>
         /// <returns></returns>
-        [Common.Attributes.Skip]
         public ActionResult GetPageData(FormCollection form)
         {
             string dataBy = form["dataBy"];//模糊查寻的条件
@@ -107,7 +108,7 @@ namespace PersonalManger
             }
             catch (Exception ex)
             {
-                return null;
+                return   OperateContext.Current.RedirectAjax("err", null, null, null);
             }
         }
         #endregion
@@ -193,7 +194,7 @@ namespace PersonalManger
             }
             else
             {
-                return Content("修改失败");
+                return  Content("<script>alert('修改失败');window.location='/PersonalManger/CheckMember/PageEdit?StuNum=" + member.StuNum + "'</script>");
             }
 
         }

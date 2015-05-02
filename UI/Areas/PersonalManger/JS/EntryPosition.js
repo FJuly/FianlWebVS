@@ -9,10 +9,18 @@ $.extend({
                 //转换json，很奇怪............
                 var jsonObj = JSON.parse(json);
                 if (jsonObj.Statu == "ok") {
-                    alert("ddd");
                     location.href = jsonObj.BackUrl;
                 }
-                else {
+                if (jsonObj.Statu == "nologin") {
+                    alert("您还没有登陆，请登录！");
+                    parent.location = jsonObj.BackUrl;
+
+                }
+                if (jsonObj.Statu == "nopermission") {
+                    alert(jsonObj.Msg);
+                    window.location = jsonObj.BackUrl;
+                }
+                if (jsonObj.Statu == "err") {
                     alert(jsonObj.Msg);
                 }
             }
@@ -93,7 +101,18 @@ $.extend({
                     $("#body").empty();
                     PreCreateTable(jsonObj);
                 }
-                else { }
+                if (jsonObj.Statu == "nologin") {
+                    alert("您还没有登陆，请登录！");
+                    parent.location = jsonObj.BackUrl;
+
+                }
+                if (jsonObj.Statu == "nopermission") {
+                    alert(jsonObj.Msg);
+                    window.location = jsonObj.BackUrl;
+                }
+                if (jsonObj.Statu == "err") {
+                    alert(jsonObj.Msg);
+                }
             }
         })
     }

@@ -14,6 +14,9 @@ namespace DALMSSQL
 	public partial class T_OgnizationActDAL : BaseDAL<MODEL.T_OgnizationAct>,IDAL.IOgnizationActDAL
     {
     }
+	public partial class T_OnDutyDAL : BaseDAL<MODEL.T_OnDuty>,IDAL.IOnDutyDAL
+    {
+    }
 	public partial class T_OrganizationDAL : BaseDAL<MODEL.T_Organization>,IDAL.IOrganizationDAL
     {
     }

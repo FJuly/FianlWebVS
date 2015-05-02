@@ -81,6 +81,9 @@
     <Compile Include="T_OgnizationAct.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="T_OnDuty.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="T_Organization.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -142,7 +145,9 @@
       <DependentUpon>Model.edmx</DependentUpon>
       <LastGenOutput>Model.cs</LastGenOutput>
     </None>
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

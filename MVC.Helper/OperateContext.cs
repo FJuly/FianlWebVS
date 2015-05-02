@@ -288,21 +288,48 @@ namespace MVC.Helper
         #endregion
 
         #region 3.2 重定向方法 根据Action方法特性  +ActionResult Redirect(string url, ActionDescriptor action)
-        /// <summary>
+       /// <summary>
         /// 重定向方法 有两种情况：如果是Ajax请求，则返回 Json字符串；如果是普通请求，则 返回重定向命令
-        /// </summary>
-        /// <returns></returns>
-        public ActionResult Redirect(string url, ActionDescriptor action)
+       /// </summary>
+       /// <param name="IsNoLogin">判断是未登录还是没有权限</param>
+       /// <param name="url"></param>
+       /// <param name="action"></param>
+       /// <returns></returns>
+        public ActionResult Redirect(bool IsLogin, ActionDescriptor action)
         {
             //如果Ajax请求没有权限，就返回 Json消息
             if (action.IsDefined(typeof(AjaxRequestAttribute), false)
             || action.ControllerDescriptor.IsDefined(typeof(AjaxRequestAttribute), false))
             {
-                return RedirectAjax("err", "您没有权限访问此页面", null, url);
+                if (IsLogin)
+                {
+                    return RedirectAjax("nologin", null, null, "/Login/Login/Index");
+                }
+                else
+                {
+                    Uri MyUrl = Request.UrlReferrer;
+                    string url = MyUrl.ToString();
+                    return RedirectAjax("nopermission", "您没有权限访问此页面", null, url);
+                }
             }
-            else//如果 超链接或表单 没有权限访问，则返回 302重定向命令
+            else//如果 超链接或表单 没有权限访问，js代码
             {
-                return new RedirectResult(url);
+                if (IsLogin)
+                {
+                    ContentResult result = new ContentResult();
+                    //跳回登陆页面
+                    result.Content = "<script type='text/javascript'>alert('您还没有登陆呦!');parent.location='" +"/Login/Login/Index"+ "'</script>"; ;
+                    return result;
+                }
+                else
+                {
+                    //返回上一级URL
+                    Uri MyUrl = Request.UrlReferrer;
+                    string url = MyUrl.ToString();
+                    ContentResult result = new ContentResult();
+                    result.Content = "<script type='text/javascript'>alert('您没有权限访问此页面!');window.location='" + url + "'</script>";
+                    return result;
+                }
             }
         }
         #endregion

@@ -9,6 +9,7 @@
           <EntitySet Name="T_Department" EntityType="FinalModel.Store.T_Department" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="T_MemberInformation" EntityType="FinalModel.Store.T_MemberInformation" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="T_OgnizationAct" EntityType="FinalModel.Store.T_OgnizationAct" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="T_OnDuty" EntityType="FinalModel.Store.T_OnDuty" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="T_Organization" EntityType="FinalModel.Store.T_Organization" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="T_Permission" EntityType="FinalModel.Store.T_Permission" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="T_ProjectInformation" EntityType="FinalModel.Store.T_ProjectInformation" store:Type="Tables" Schema="dbo" />
@@ -45,6 +46,10 @@
           <AssociationSet Name="FK__T_Ognizat__RoleA__70DDC3D8" Association="FinalModel.Store.FK__T_Ognizat__RoleA__70DDC3D8">
             <End Role="T_MemberInformation" EntitySet="T_MemberInformation" />
             <End Role="T_OgnizationAct" EntitySet="T_OgnizationAct" />
+          </AssociationSet>
+          <AssociationSet Name="FK__T_OnDuty__StuNum__40F9A68C" Association="FinalModel.Store.FK__T_OnDuty__StuNum__40F9A68C">
+            <End Role="T_MemberInformation" EntitySet="T_MemberInformation" />
+            <End Role="T_OnDuty" EntitySet="T_OnDuty" />
           </AssociationSet>
           <AssociationSet Name="FK__T_Project__ProjI__412EB0B6" Association="FinalModel.Store.FK__T_Project__ProjI__412EB0B6">
             <End Role="T_ProjectInformation" EntitySet="T_ProjectInformation" />
@@ -150,6 +155,15 @@
           <Property Name="RoleActor" Type="nvarchar" Nullable="false" MaxLength="20" />
           <Property Name="IsDel" Type="bit" Nullable="false" />
           <Property Name="AddTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="T_OnDuty">
+          <Key>
+            <PropertyRef Name="StuNum" />
+            <PropertyRef Name="Week" />
+          </Key>
+          <Property Name="StuNum" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="Week" Type="int" Nullable="false" />
+          <Property Name="IsDelete" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="T_Organization">
           <Key>
@@ -363,6 +377,18 @@
             </Principal>
             <Dependent Role="T_OgnizationAct">
               <PropertyRef Name="RoleActor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__T_OnDuty__StuNum__40F9A68C">
+          <End Role="T_MemberInformation" Type="FinalModel.Store.T_MemberInformation" Multiplicity="1" />
+          <End Role="T_OnDuty" Type="FinalModel.Store.T_OnDuty" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_MemberInformation">
+              <PropertyRef Name="StuNum" />
+            </Principal>
+            <Dependent Role="T_OnDuty">
+              <PropertyRef Name="StuNum" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -634,6 +660,11 @@
           <AssociationSet Name="FK__T_RolePer__PerId__3B40CD36" Association="FinalModel.FK__T_RolePer__PerId__3B40CD36">
             <End Role="T_Permission" EntitySet="T_Permission" />
             <End Role="T_RolePermission" EntitySet="T_RolePermission" />
+          </AssociationSet>
+          <EntitySet Name="T_OnDuty" EntityType="FinalModel.T_OnDuty" />
+          <AssociationSet Name="FK__T_OnDuty__StuNum__40F9A68C" Association="FinalModel.FK__T_OnDuty__StuNum__40F9A68C">
+            <End Role="T_MemberInformation" EntitySet="T_MemberInformation" />
+            <End Role="T_OnDuty" EntitySet="T_OnDuty" />
           </AssociationSet>
           </EntityContainer>
         <EntityType Name="T_Department">
@@ -920,6 +951,7 @@
           <NavigationProperty Name="T_ProjectParticipation" Relationship="FinalModel.FK__T_Project__ProjR__4222D4EF" FromRole="T_MemberInformation" ToRole="T_ProjectParticipation" />
           <NavigationProperty Name="T_RoleAct" Relationship="FinalModel.FK__T_RoleAct__RoleA__6A30C649" FromRole="T_MemberInformation" ToRole="T_RoleAct" />
           <NavigationProperty Name="T_TaskParticipation" Relationship="FinalModel.FK__T_TaskPar__TaskR__534D60F1" FromRole="T_MemberInformation" ToRole="T_TaskParticipation" />
+          <NavigationProperty Name="T_OnDuty" Relationship="FinalModel.FK__T_OnDuty__StuNum__40F9A68C" FromRole="T_MemberInformation" ToRole="T_OnDuty" />
         </EntityType>
         <EntityType Name="T_OgnizationAct">
           <Key>
@@ -1104,6 +1136,28 @@
             </Principal>
             <Dependent Role="T_RolePermission">
               <PropertyRef Name="PerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="T_OnDuty">
+          <Key>
+            <PropertyRef Name="StuNum" />
+            <PropertyRef Name="Week" />
+          </Key>
+          <Property Type="String" Name="StuNum" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Week" Nullable="false" />
+          <Property Type="Boolean" Name="IsDelete" Nullable="false" />
+          <NavigationProperty Name="T_MemberInformation" Relationship="FinalModel.FK__T_OnDuty__StuNum__40F9A68C" FromRole="T_OnDuty" ToRole="T_MemberInformation" />
+        </EntityType>
+        <Association Name="FK__T_OnDuty__StuNum__40F9A68C">
+          <End Type="FinalModel.T_MemberInformation" Role="T_MemberInformation" Multiplicity="1" />
+          <End Type="FinalModel.T_OnDuty" Role="T_OnDuty" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_MemberInformation">
+              <PropertyRef Name="StuNum" />
+            </Principal>
+            <Dependent Role="T_OnDuty">
+              <PropertyRef Name="StuNum" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1312,6 +1366,15 @@
                 <ScalarProperty Name="PerParent" ColumnName="PerParent" />
                 <ScalarProperty Name="PerName" ColumnName="PerName" />
                 <ScalarProperty Name="PerId" ColumnName="PerId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_OnDuty">
+            <EntityTypeMapping TypeName="FinalModel.T_OnDuty">
+              <MappingFragment StoreEntitySet="T_OnDuty">
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="Week" ColumnName="Week" />
+                <ScalarProperty Name="StuNum" ColumnName="StuNum" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
