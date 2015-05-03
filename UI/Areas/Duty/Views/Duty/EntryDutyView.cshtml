@@ -10,6 +10,13 @@
     <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <script src="~/Scripts/jquery-1.7.1.min.js"></script>
     <title>EntryDuty</title>
+    <style>
+        /*有问题*/
+        a { color: #d9534f; text-decoration: none; }
+            a:link { text-decoration: none; color: #d9534f; }
+            a:visited { color: green; }
+            a:hover { color: green; }
+    </style>
     <script type="text/javascript">
         function add(flag) {
             var oprate = $(flag).text();
@@ -33,7 +40,7 @@
                 $td1 = $("<td></td>");
                 /*复制一份SelectStu*/
                 $td1.append($("#SelectStu").clone(true));
-                $td2 = $("<td><a style=‘width: 80px; color: green’ href='#' onclick='add(this)'>增加</a></td>");
+                $td2 = $("<td><a class='a-oprate' href='##' onclick='add(this)'>增加</a></td>");
                 $tr.append($th);
                 $tr.append($td1);
                 $tr.append($td2);
@@ -69,57 +76,59 @@
     </script>
 </head>
 <body style="font-family: 'Microsoft YaHei'; font-size: 14px">
-    <div class="panel panel-success">
-        <!-- Default panel contents -->
-        <div class="panel-heading">值日生录入</div>
+    <div style="margin: 0 auto; width: 1050px; margin-top: 20px">
+        <div class="panel panel-success">
+            <!-- Default panel contents -->
+            <div class="panel-heading">值日生录入</div>
 
-        <!-- Table -->
-        <table class="table table-condensed">
-            <thead>
-                <tr>
-                    <th>周数</th>
-                    <th>值日生</th>
-                    <th>操作</th>
-                </tr>
-            </thead>
+            <!-- Table -->
+            <table class="table table-condensed">
+                <thead>
+                    <tr>
+                        <th>周数</th>
+                        <th>值日生</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
 
-            <tbody id="tbody">
-                <tr>
-                    <th scope="row">
-                        <select class="form-control input-sm" style="width: 100px">
-                            <option value="1">第1周</option>
-                            <option value="2">第2周</option>
-                            <option value="3">第3周</option>
-                            <option value="4">第4周</option>
-                            <option value="5">第5周</option>
-                            <option value="6">第6周</option>
-                            <option value="7">第7周</option>
-                            <option value="8">第8周</option>
-                            <option value="9">第9周</option>
-                            <option value="10">第10周</option>
-                            <option value="11">第11周</option>
-                            <option value="12">第12周</option>
-                            <option value="13">第13周</option>
-                            <option value="14">第14周</option>
-                            <option value="15">第15周</option>
-                             <option value="15">第16周</option>
-                        </select>
-                    </th>
-                    <td>
-                        <select class="form-control input-sm" style="width: 100px" id="SelectStu">
-                            @foreach (MODEL.DTO.MemberInformationDTO dto in ViewBag.Stu)
-                            {                          
-                                <option value="@dto.StuNum">@dto.StuName</option>                         
-                            }
-                        </select>
-                    </td>
-                    <td>
-                        <a style="width: 80px; color: green" href="#" onclick="add(this)">增加</a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+                <tbody id="tbody">
+                    <tr>
+                        <th scope="row">
+                            <select class="form-control input-sm" style="width: 100px">
+                                <option value="1">第1周</option>
+                                <option value="2">第2周</option>
+                                <option value="3">第3周</option>
+                                <option value="4">第4周</option>
+                                <option value="5">第5周</option>
+                                <option value="6">第6周</option>
+                                <option value="7">第7周</option>
+                                <option value="8">第8周</option>
+                                <option value="9">第9周</option>
+                                <option value="10">第10周</option>
+                                <option value="11">第11周</option>
+                                <option value="12">第12周</option>
+                                <option value="13">第13周</option>
+                                <option value="14">第14周</option>
+                                <option value="15">第15周</option>
+                                <option value="15">第16周</option>
+                            </select>
+                        </th>
+                        <td>
+                            <select class="form-control input-sm" style="width: 100px" id="SelectStu">
+                                @foreach (MODEL.DTO.MemberInformationDTO dto in ViewBag.Stu)
+                                {                          
+                                    <option value="@dto.StuNum">@dto.StuName</option>                         
+                                }
+                            </select>
+                        </td>
+                        <td>
+                            <a class="a-oprate" href="#" onclick="add(this)">增加</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <button type="button" onclick="test()" class="btn btn-success" style="float: right; width: 100px">保存</button>
     </div>
-    <button onclick="test()">测试</button>
 </body>
 </html>

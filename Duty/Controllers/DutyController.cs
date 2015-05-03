@@ -11,7 +11,6 @@ namespace Duty.Controllers
 {
     public class DutyController : Controller
     {
-        [Common.Attributes.Skip]
         public ActionResult EntryDutyView()
         {
             DateTime dt = DateTime.Now;
@@ -27,7 +26,7 @@ namespace Duty.Controllers
             return View();
         }
 
-        [Common.Attributes.Skip]
+        [Common.Attributes.AjaxRequest]
         public ActionResult EntryDuty()
         {
             string str = Request.Form["Str"];
@@ -52,7 +51,6 @@ namespace Duty.Controllers
             return OperateContext.Current.RedirectAjax("ok", "修改成功", null, null);
 
         }
-        [Common.Attributes.Skip]
         public ActionResult Index()
         {
             List<int> listWeek = OperateContext.Current.BLLSession.IOnDutyBLL.GetListBy(u => u.IsDelete == false).Select(p => p.Week).ToList();
@@ -66,10 +64,17 @@ namespace Duty.Controllers
                 listdutyCollec.Add(OperateContext.Current.BLLSession.IOnDutyBLL.GetListBy(u => u.IsDelete == false).Where(p => p.Week == i).ToList());
             }
             ViewBag.listdutyCollec = listdutyCollec;
+
+            bool IsEdit = false;//判断有没有编辑的权限，前天是否显示编辑按钮
+            if (OperateContext.Current.HasPemission("Duty", "Duty", "Delete","post"))
+            {
+                IsEdit = true;
+            }
+            ViewBag.IsEdit = IsEdit;
             return View();
         }
 
-        [Common.Attributes.Skip]
+        [Common.Attributes.AjaxRequest]
         public ActionResult Delete()
         {
             String Num = Request.Form["Num"];

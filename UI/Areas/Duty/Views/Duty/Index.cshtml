@@ -12,6 +12,11 @@
     <title>Index</title>
     <style>
         .table th, .table td { text-align: center; }
+        /*有问题*/
+        a { color: #d9534f; text-decoration: none; }
+            a:link { text-decoration: none; color: #d9534f; }
+            a:visited { color: green; }
+            a:hover { color: green; }
     </style>
     <script>
         $(function () {
@@ -43,7 +48,8 @@
                     data: { "Num": num },
                     success: function (jsonObj) {
                         if (jsonObj.Statu == "ok") {
-                            window.location=jsonObj.BackUrl;
+                            alert("删除成功");
+                            window.location = jsonObj.BackUrl;
                         } else {
                             alert(jsonObj.Msg);
                         }
@@ -84,7 +90,10 @@
                 </table>
             </div>
         }
+        @if (ViewBag.IsEdit)
+        {
+            <button type="button" id="Edit" class="btn btn-success" style="float: right; width: 100px;">编辑</button>
+        }
     </div>
-    <button id="Edit">编辑</button>
 </body>
 </html>
