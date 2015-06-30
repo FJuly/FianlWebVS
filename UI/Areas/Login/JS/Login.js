@@ -22,6 +22,12 @@
 }
 
 
+/*回车键登陆*/
+function keyLogin() {
+    if (event.keyCode == 13)  //回车键的键值为13
+        $("#login_btn").click(); //调用登录按钮的登录事件
+}
+
 function login() {
     var userName = $("#LoginName").val();;
     var pwd = $("#Pwd").val();
@@ -63,6 +69,7 @@ function login() {
                 }
                 if (jsonObj.Statu == "err") {
                     alert(jsonObj.Msg);
+                    window.location = "/Login/Login/Index";
                 }
             }
         })

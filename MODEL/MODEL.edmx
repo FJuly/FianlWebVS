@@ -560,7 +560,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
+    
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="FinalModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns="http://schemas.microsoft.com/ado/2008/09/edm" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
@@ -666,7 +668,7 @@
             <End Role="T_MemberInformation" EntitySet="T_MemberInformation" />
             <End Role="T_OnDuty" EntitySet="T_OnDuty" />
           </AssociationSet>
-          </EntityContainer>
+        </EntityContainer>
         <EntityType Name="T_Department">
           <Key>
             <PropertyRef Name="DepartmentId" />
@@ -1161,8 +1163,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        </Schema>
+      </Schema>
     </edmx:ConceptualModels>
+    
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
@@ -1381,9 +1384,11 @@
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
+    
   </edmx:Runtime>
+  
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
-  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
     <Connection>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />

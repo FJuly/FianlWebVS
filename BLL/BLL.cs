@@ -140,5 +140,4 @@ namespace BLL
 			idal = DBSession.ITechnicaLevelDAL;
 		}
     }
-
 }

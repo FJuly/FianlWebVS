@@ -1,16 +1,17 @@
 ﻿body {
-    height:100%;
+    height:780px;
 	margin:0;
 	background-attachment: fixed;
     overflow:hidden;
 }
 /***************************************大背景*********************************************/
 #BackGroundDiv {
-    height:768px;
+    height:100%;
 	width:100%;
 	background-image:url(../Images/background.png);
 	background-repeat:no-repeat;
 	background-position:center center;
+    background-size:cover;
 	margin:0px auto;
 	top:-50%;
 	left:-50%;
@@ -238,7 +239,7 @@
 #btnLogin {
     width:138px;
     height:43px;
-    background: url('../Images/登陆界面图标.png') no-repeat;
+    /*background: url('../Images/登陆界面图标.png') no-repeat;*/
     background-position:-34px -81px;
 }
 
@@ -313,3 +314,58 @@
 
     }
 
+/*************************登陆按钮样式**********************************/
+
+.login-img { 
+display: inline-block; 
+zoom: 1; /* zoom and *display = ie7 hack for display:inline-block */ 
+*display: inline; 
+vertical-align: baseline; 
+margin: 0 2px; 
+outline: none; 
+cursor: pointer; 
+text-align: center; 
+text-decoration: none; 
+font: 14px/100% Arial, Helvetica, sans-serif; 
+text-shadow: 0 1px 1px rgba(0,0,0,.3); 
+-webkit-border-radius: .5em; 
+-moz-border-radius: .5em; 
+border-radius: .5em; 
+-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.2); 
+-moz-box-shadow: 0 1px 2px rgba(0,0,0,.2); 
+box-shadow: 0 1px 2px rgba(0,0,0,.2); 
+height:40px;
+width:140px;
+font-family:'Microsoft YaHei'
+} 
+.login-img:hover { 
+text-decoration: none; 
+} 
+.login-img:active { 
+position: relative; 
+top: 1px; 
+} 
+
+
+/* color styles 
+---------------------------------------------- */ 
+.black { 
+color: #d7d7d7; 
+border: solid 1px #333; 
+background: #333; 
+background: -webkit-gradient(linear, left top, left bottom, from(#666), to(#000)); 
+background: -moz-linear-gradient(top, #666, #000); 
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#666666', endColorstr='#000000'); 
+} 
+.black:hover { 
+background: #000; 
+background: -webkit-gradient(linear, left top, left bottom, from(#444), to(#000)); 
+background: -moz-linear-gradient(top, #444, #000); 
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#444444', endColorstr='#000000'); 
+} 
+.black:active { 
+color: #666; 
+background: -webkit-gradient(linear, left top, left bottom, from(#000), to(#444)); 
+background: -moz-linear-gradient(top, #000, #444); 
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#000000', endColorstr='#666666'); 
+} 

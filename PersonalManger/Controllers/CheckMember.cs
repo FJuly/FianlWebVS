@@ -14,9 +14,10 @@ using System.Web.Mvc;
 
 namespace PersonalManger
 {
+   
     public class CheckMemberController : Controller
     {
-        #region 人信息展示页面+ public ViewResult  ()
+        #region 人信息展示页面+ public ViewResult()
         public ViewResult PersonPage()
         {
             string stunum =Request.QueryString["StuNum"];
@@ -196,7 +197,6 @@ namespace PersonalManger
             {
                 return  Content("<script>alert('修改失败');window.location='/PersonalManger/CheckMember/PageEdit?StuNum=" + member.StuNum + "'</script>");
             }
-
         }
         #endregion
 
@@ -449,5 +449,4 @@ namespace PersonalManger
         }
         #endregion
     }
-    /*怎么去重写List的tostring方法*/
 }

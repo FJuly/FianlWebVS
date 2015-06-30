@@ -20,7 +20,7 @@ namespace DALMSSQL
             {
                 dbContext = new FinalEntities();
                 dbContext.Configuration.ValidateOnSaveEnabled = false;
-                //将新创建的 ef上下文对象 存入线程
+                //将新创建的 ef上下文对象存入线程
                 CallContext.SetData(typeof(DBContextFactory).Name, dbContext);
             }
             return dbContext;

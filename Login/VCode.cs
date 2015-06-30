@@ -43,8 +43,8 @@ namespace Login
         string GetRandomStr()
         {
             string str = string.Empty;
-            string[] strArr = { "a", "b", "b", "h", "1", "2", "y", "3", "4", "5", "6", "7", "8", "9", "0" };
-            for (int i = 0; i < 5; i++)
+            string[] strArr = { "1", "2", "3", "4", "5", "6", "7", "8", "9", "0" };
+            for (int i = 0; i < 4; i++)
             {
                 int index = random.Next(strArr.Length);
                 str += strArr[index];

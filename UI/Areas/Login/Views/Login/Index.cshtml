@@ -13,13 +13,13 @@
     <script src="~/Areas/Login/JS/jquery-1.3.1.js"></script>
     <script src="~/Areas/Login/JS/Login.js"></script>
 </head>
-<body style="font-size: 14px; font-family: 'Microsoft YaHei'">
+<body style="font-size: 14px; font-family: 'Microsoft YaHei'" onkeydown="keyLogin();">
     <!--背景图-->
     <div id="BackGroundDiv">
         <div id="TopDivShadow"></div>
         <div id="TopDiv">
             <div id="LogoImg"></div>
-            <div id="title"><span style="font-size:18px">Final实验室</span></div>
+            <div id="title"><span style="font-size:18px">凡路团队</span></div>
         </div>
 
         <!-- 登录框-->
@@ -59,7 +59,7 @@
                     </div>
                 </div>
                 <div id="btnLogin">
-                    <div onclick="login()" style="color: white" class="login-img">登录</div>
+                    <button onclick="login()" style="color: white" class="login-img  black" id="login_btn">登录</button>
                 </div>
             </div>
         <!--背景切换-->

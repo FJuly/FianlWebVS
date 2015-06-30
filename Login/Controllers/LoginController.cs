@@ -13,8 +13,6 @@ namespace Login.Controllers
     public class LoginController : Controller
     {
         #region 获取登陆页面+public ActionResult Index()
-        //
-        // GET: /Login/
         /// <summary>
         /// 获取登陆页面，不需要验证
         /// </summary>
@@ -111,9 +109,9 @@ namespace Login.Controllers
         /// <returns></returns>
         public ActionResult GetMenuData()
         {
+
             return Content(OperateContext.Current.UsrMenuJsonStr);
         }
         #endregion
-
     }
 }
