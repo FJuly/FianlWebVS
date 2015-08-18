@@ -39,7 +39,7 @@ namespace Login.Controllers
         /// </summary>
         /// <param name="user"></param>
         /// <returns></returns>
-         [Common.Attributes.Skip]
+        [Common.Attributes.Skip]
         public ActionResult Login(MODEL.ViewModel.LoginUser user)
         {
             if (ModelState.IsValid)
@@ -102,14 +102,20 @@ namespace Login.Controllers
         } 
         #endregion
 
-        #region 3.0 根据当前登陆用户 权限 生成菜单 +GetMenuData()
+        #region 根据当前登陆用户权限生成菜单+GetMenuData()
         /// <summary>
-        /// 根据当前登陆用户 权限 生成菜单
+        /// 根据当前登陆用户权限生成菜单
         /// </summary>
         /// <returns></returns>
+        [Common.Attributes.Skip]
         public ActionResult GetMenuData()
         {
-
+            if (!OperateContext.Current.HasPemission("Login", "Login", "MainPage", "post"))
+            {
+                Uri MyUrl = Request.UrlReferrer;
+                string url = MyUrl.ToString();
+                return OperateContext.Current.RedirectAjax("nopermission", "您没有权限访问此页面", null, url);
+            }
             return Content(OperateContext.Current.UsrMenuJsonStr);
         }
         #endregion

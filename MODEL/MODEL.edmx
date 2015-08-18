@@ -189,7 +189,6 @@
           <Property Name="PerAddTime" Type="datetime" />
           <Property Name="PerIco" Type="nvarchar" MaxLength="50" />
           <Property Name="IsCommon" Type="bit" Nullable="false" />
-          <Property Name="IsDelete" Type="bit" Nullable="false" />
           <Property Name="bpx" Type="int" />
           <Property Name="bpy" Type="int" />
         </EntityType>
@@ -560,8 +559,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -658,15 +656,15 @@
             <End Role="T_Organization" EntitySet="T_Organization" />
             <End Role="T_OgnizationAct" EntitySet="T_OgnizationAct" />
           </AssociationSet>
-          <EntitySet Name="T_Permission" EntityType="FinalModel.T_Permission" />
-          <AssociationSet Name="FK__T_RolePer__PerId__3B40CD36" Association="FinalModel.FK__T_RolePer__PerId__3B40CD36">
-            <End Role="T_Permission" EntitySet="T_Permission" />
-            <End Role="T_RolePermission" EntitySet="T_RolePermission" />
-          </AssociationSet>
           <EntitySet Name="T_OnDuty" EntityType="FinalModel.T_OnDuty" />
           <AssociationSet Name="FK__T_OnDuty__StuNum__40F9A68C" Association="FinalModel.FK__T_OnDuty__StuNum__40F9A68C">
             <End Role="T_MemberInformation" EntitySet="T_MemberInformation" />
             <End Role="T_OnDuty" EntitySet="T_OnDuty" />
+          </AssociationSet>
+          <EntitySet Name="T_Permission" EntityType="FinalModel.T_Permission" />
+          <AssociationSet Name="FK__T_RolePer__PerId__3B40CD36" Association="FinalModel.FK__T_RolePer__PerId__3B40CD36">
+            <End Role="T_Permission" EntitySet="T_Permission" />
+            <End Role="T_RolePermission" EntitySet="T_RolePermission" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="T_Department">
@@ -1108,39 +1106,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="T_Permission">
-          <Key>
-            <PropertyRef Name="PerId" />
-          </Key>
-          <Property Type="Int32" Name="PerId" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="PerName" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Type="Int32" Name="PerParent" />
-          <Property Type="String" Name="PerAreaName" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="PerController" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="PerActionName" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Type="Int32" Name="PerFormMethod" />
-          <Property Type="Boolean" Name="PerIsDel" Nullable="false" />
-          <Property Type="Boolean" Name="PerIsShow" Nullable="false" />
-          <Property Type="DateTime" Name="PerAddTime" Precision="3" />
-          <Property Type="String" Name="PerIco" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="Boolean" Name="IsCommon" Nullable="false" />
-          <Property Type="Boolean" Name="IsDelete" Nullable="false" />
-          <Property Type="Int32" Name="bpx" />
-          <Property Type="Int32" Name="bpy" />
-          <NavigationProperty Name="T_RolePermission" Relationship="FinalModel.FK__T_RolePer__PerId__3B40CD36" FromRole="T_Permission" ToRole="T_RolePermission" />
-        </EntityType>
-        <Association Name="FK__T_RolePer__PerId__3B40CD36">
-          <End Type="FinalModel.T_Permission" Role="T_Permission" Multiplicity="1" />
-          <End Type="FinalModel.T_RolePermission" Role="T_RolePermission" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="T_Permission">
-              <PropertyRef Name="PerId" />
-            </Principal>
-            <Dependent Role="T_RolePermission">
-              <PropertyRef Name="PerId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="T_OnDuty">
           <Key>
             <PropertyRef Name="StuNum" />
@@ -1160,6 +1125,38 @@
             </Principal>
             <Dependent Role="T_OnDuty">
               <PropertyRef Name="StuNum" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="T_Permission">
+          <Key>
+            <PropertyRef Name="PerId" />
+          </Key>
+          <Property Type="Int32" Name="PerId" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="PerName" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="PerParent" />
+          <Property Type="String" Name="PerAreaName" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PerController" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PerActionName" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="PerFormMethod" />
+          <Property Type="Boolean" Name="PerIsDel" Nullable="false" />
+          <Property Type="Boolean" Name="PerIsShow" Nullable="false" />
+          <Property Type="DateTime" Name="PerAddTime" Precision="3" />
+          <Property Type="String" Name="PerIco" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="IsCommon" Nullable="false" />
+          <Property Type="Int32" Name="bpx" />
+          <Property Type="Int32" Name="bpy" />
+          <NavigationProperty Name="T_RolePermission" Relationship="FinalModel.FK__T_RolePer__PerId__3B40CD36" FromRole="T_Permission" ToRole="T_RolePermission" />
+        </EntityType>
+        <Association Name="FK__T_RolePer__PerId__3B40CD36">
+          <End Type="FinalModel.T_Permission" Role="T_Permission" Multiplicity="1" />
+          <End Type="FinalModel.T_RolePermission" Role="T_RolePermission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_Permission">
+              <PropertyRef Name="PerId" />
+            </Principal>
+            <Dependent Role="T_RolePermission">
+              <PropertyRef Name="PerId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1351,12 +1348,20 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="T_OnDuty">
+            <EntityTypeMapping TypeName="FinalModel.T_OnDuty">
+              <MappingFragment StoreEntitySet="T_OnDuty">
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="Week" ColumnName="Week" />
+                <ScalarProperty Name="StuNum" ColumnName="StuNum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="T_Permission">
             <EntityTypeMapping TypeName="FinalModel.T_Permission">
               <MappingFragment StoreEntitySet="T_Permission">
                 <ScalarProperty Name="bpy" ColumnName="bpy" />
                 <ScalarProperty Name="bpx" ColumnName="bpx" />
-                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
                 <ScalarProperty Name="IsCommon" ColumnName="IsCommon" />
                 <ScalarProperty Name="PerIco" ColumnName="PerIco" />
                 <ScalarProperty Name="PerAddTime" ColumnName="PerAddTime" />
@@ -1369,15 +1374,6 @@
                 <ScalarProperty Name="PerParent" ColumnName="PerParent" />
                 <ScalarProperty Name="PerName" ColumnName="PerName" />
                 <ScalarProperty Name="PerId" ColumnName="PerId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="T_OnDuty">
-            <EntityTypeMapping TypeName="FinalModel.T_OnDuty">
-              <MappingFragment StoreEntitySet="T_OnDuty">
-                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
-                <ScalarProperty Name="Week" ColumnName="Week" />
-                <ScalarProperty Name="StuNum" ColumnName="StuNum" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

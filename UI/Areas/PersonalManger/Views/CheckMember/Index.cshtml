@@ -14,9 +14,9 @@
     <script src="~/Areas/PersonalManger/JS/CheckMember.js"></script>
 </head>
 <body style="font-family: 'Microsoft YaHei'; background-color: rgb(237,241,249)">
-    <div style="margin: 20px auto;width:1056px;background-color:white">
-@*        判断有没有修改的权限*@
-        <input type="hidden" value="@ViewBag.IsEdit" id="IsEdit">   
+    <div style="margin: 20px auto; width: 1056px; background-color: white">
+        @*        判断有没有修改的权限*@
+        <input type="hidden" value="@ViewBag.IsEdit" id="IsEdit">
         <div class="head">
             <div class="head-nav">
                 <div class="head-nav-img"></div>
@@ -26,15 +26,13 @@
         @*------------------------------------中间搜索框-----------------------------------*@
         <div class="toolbar">
             <div class="search">
-                <button class="ser-btn" style="height:27px">搜索</button>
+                <button class="ser-btn" style="height: 27px">搜索</button>
                 <div class="ser-img"></div>
                 <div id="div-input">
                     <input type="text" id="input-text" placeholder="学号或姓名" value="" style="border: 1px solid none" />
                 </div>
             </div>
         </div>
-
-
         @* -------------------表格----------------------------------------------------------*@
         <div class="table-self">
             <table class="table-hover" id="table" style="font-family: 'Microsoft YaHei'">
@@ -56,20 +54,28 @@
         </div>
         @*----------------------------------分页条--------------------------------------------------------------------*@
         <div style="width: 1056px; height: 35px; border: 1px RGB(166,199,203) solid; background-color: rgb(215,232,234)">
-            <select class="select-pagesize ">
-                <option>10</option>
-            </select>
+            <div class="select-pagesize ">
+                <select style="border:none">
+                    <option>10</option>
+                </select>
+            </div>
             <div class="div-line"></div>
-            <a class="a-first" href="###"></a>
-            <a class="a-pre" href="###"></a>
-            <label class="lable-text">第</label>
-            <span class="lable-page"></span>
-            <label class="lable-text" style="margin-left: 5px">页</label>
-            <label class="lable-text" id="lable-page-sum" style="margin-left: 5px"></label>
-            <a class="a-next" href="###"></a>
-            <a class="a-last" href="###"></a>
+            <div class="div-pre">
+                <a class="a-first" href="###"></a>
+                <a class="a-pre" href="###"></a>
+            </div>
+            <div class="div-middle">
+                <label class="lable-text">第</label>
+                <span class="lable-page"></span>
+                <label class="lable-text" style="margin-left: 5px">页</label>
+                <label class="lable-text" id="lable-page-sum" style="margin-left: 5px"></label>
+            </div>
+            <div class="div-last">
+                <a class="a-next" href="###"></a>
+                <a class="a-last" href="###"></a>
+            </div>
             <div class="div-line"></div>
-            <a class="a-refresh" href="###"></a>
+            <div class="div-fresh"><a class="a-refresh" href="###"></a></div>
             <label class="lable-text-right">显示1到10，总计15条记录</label>
         </div>
     </div>

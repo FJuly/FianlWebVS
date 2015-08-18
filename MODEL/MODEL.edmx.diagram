@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="0093a05afbe546b99caa72cb4991a640" Name="关系图1" ZoomLevel="36">
+      <Diagram DiagramId="0093a05afbe546b99caa72cb4991a640" Name="关系图1" ZoomLevel="58">
         <EntityTypeShape EntityType="FinalModel.T_Department" Width="1.5" PointX="0.75" PointY="6.625" IsExpanded="true" />
         <EntityTypeShape EntityType="FinalModel.T_ProjectInformation" Width="1.5" PointX="5.25" PointY="5.5" IsExpanded="true" />
         <EntityTypeShape EntityType="FinalModel.T_ProjectParticipation" Width="1.5" PointX="7.5" PointY="3.5" IsExpanded="true" />
@@ -39,10 +39,10 @@
         <AssociationConnector Association="FinalModel.FK__T_RoleAct__RoleA__6A30C649" />
         <AssociationConnector Association="FinalModel.FK__T_TaskPar__TaskR__534D60F1" />
         <AssociationConnector Association="FinalModel.FK__T_Ognizat__Organ__6FE99F9F" />
-        <EntityTypeShape EntityType="FinalModel.T_Permission" Width="1.5" PointX="4.388032941328377" PointY="1.1440232699476292" />
-        <AssociationConnector Association="FinalModel.FK__T_RolePer__PerId__3B40CD36" />
         <EntityTypeShape EntityType="FinalModel.T_OnDuty" Width="1.5" PointX="9.4151102217915987" PointY="17.080661871042413" />
         <AssociationConnector Association="FinalModel.FK__T_OnDuty__StuNum__40F9A68C" />
+        <EntityTypeShape EntityType="FinalModel.T_Permission" Width="1.5" PointX="0.22470612834426862" PointY="27.005007011352575" />
+        <AssociationConnector Association="FinalModel.FK__T_RolePer__PerId__3B40CD36" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

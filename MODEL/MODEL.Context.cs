@@ -40,7 +40,7 @@ namespace MODEL
         public DbSet<T_MemberInformation> T_MemberInformation { get; set; }
         public DbSet<T_OgnizationAct> T_OgnizationAct { get; set; }
         public DbSet<T_Organization> T_Organization { get; set; }
-        public DbSet<T_Permission> T_Permission { get; set; }
         public DbSet<T_OnDuty> T_OnDuty { get; set; }
+        public DbSet<T_Permission> T_Permission { get; set; }
     }
 }

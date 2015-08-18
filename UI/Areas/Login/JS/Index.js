@@ -11,26 +11,26 @@ $(function () {
 
 ///窗体resize事件响应
 $(function () {
-ChangeFrame('00');
-$("#left-shrink-btn").click(function () {
-    LeftMenuShrink();        
-});
+    ChangeFrame('00');
+    $("#left-shrink-btn").click(function () {
+        LeftMenuShrink();
+    });
 
-///Onload事件响应
-$(window).load(
-    function () {
-        ResizeWindow();
-        InitLeftMenu();
+    ///Onload事件响应
+    $(window).load(
+        function () {
+            ResizeWindow();
+            InitLeftMenu();
 
-    }
-    );
+        }
+        );
 
-///窗体resize事件响应
-$(window).resize(
-    function () {
-        ResizeWindow();
-    }
-    );
+    ///窗体resize事件响应
+    $(window).resize(
+        function () {
+            ResizeWindow();
+        }
+        );
 
 });
 
@@ -85,8 +85,7 @@ function InitLeftMenu(jsonMenu) {
 
 
 //根据浏览器高度改变nav和main的高度
-function ResizeWindow()
-{
+function ResizeWindow() {
     var windowHeight = $(window).outerHeight(); //获取浏览器高度
     var windowWidth = $(window).outerWidth(); //获取浏览器宽度
 
@@ -101,21 +100,18 @@ function ResizeWindow()
     $("#header-right").css('width', $("#header").outerWidth() - 187 + 'px');
 
     ResizeChildMenu();
-    if ($(".menu").css("width") == '0px')
-    {
+    if ($(".menu").css("width") == '0px') {
         $("#nav-body").animate({ width: $(window).outerWidth() - 0 }, 200);
         $("#nav-body-ul").animate({ width: $(window).outerWidth() - 0 }, 200);
-    } else
-    {
-        $("#nav-body").animate({ width: $(window).outerWidth() - 185 },200);
-        $("#nav-body-ul").animate({ width: $(window).outerWidth() - 185  }, 200);
+    } else {
+        $("#nav-body").animate({ width: $(window).outerWidth() - 185 }, 200);
+        $("#nav-body-ul").animate({ width: $(window).outerWidth() - 185 }, 200);
     }
-    
+
 }
 
 //根据浏览器高度改变子列表的高度
-function ResizeChildMenu()
-{
+function ResizeChildMenu() {
     var $childMenu = $(".child_menu");
 
     var $menuColumn = $(".menu_column_title");
@@ -124,22 +120,18 @@ function ResizeChildMenu()
 }
 
 //Show子菜单事件
-function SlideToggleChildMenu(childMenu,id)
-{
+function SlideToggleChildMenu(childMenu, id) {
     var $childMenus = $(".child_menu");
     var $childMenu = $(childMenu);
     var $states = $(".menu_column_title_state");
     var $state = $("#menu-column-title-state-" + id);
-    if ($state.css('background-position') == '-240px 0px')
-    {
-        setTimeout(function () { $state.css('background-position-x', '-260px'); }, 200); 
-    } else
-    {
+    if ($state.css('background-position') == '-240px 0px') {
+        setTimeout(function () { $state.css('background-position-x', '-260px'); }, 200);
+    } else {
         setTimeout(function () { $state.css('background-position-x', '-240px'); }, 200);
     }
     $childMenus.each(function (i, n) {
-        if (n.style.display == "block" && $childMenu.next().css("display") != "block")
-        {
+        if (n.style.display == "block" && $childMenu.next().css("display") != "block") {
             setTimeout(function () { $($states[i]).css('background-position-x', '-240px'); }, 200);
             $(n).slideToggle(800);
         }
@@ -148,14 +140,12 @@ function SlideToggleChildMenu(childMenu,id)
 
     $childMenu.next().slideToggle(800);
 
-    
+
 }
 
 //菜单滑动事件
-function LeftMenuShrink()
-{
-    if ($(".menu").css("width") == '0px')
-    {
+function LeftMenuShrink() {
+    if ($(".menu").css("width") == '0px') {
         $("#left").animate({ width: 185 }, 500);
         $(".menu").animate({ width: 185 }, 500);
         $("#left-shrink-btn").animate({ left: 185 }, 500);
@@ -163,21 +153,20 @@ function LeftMenuShrink()
         $("#main").animate({ left: 185, width: $(window).outerWidth() - 185 }, 500);
         $("#nav-body").animate({ width: $(window).outerWidth() - 185 }, 500);
         $("#nav-body-ul").animate({ width: $(window).outerWidth() - 185 }, 500);
-    } else
-    {
+    } else {
         $("#left").animate({ width: 0 }, 500);
         $(".menu").animate({ width: 0 }, 500);
         $("#left-shrink-btn").animate({ left: 0 }, 500);
         setTimeout(function () { $("#left-shrink-btn").css('background-position-x', '-20px'); }, 200);
         $("#main").animate({ left: 0, width: $(window).outerWidth() - 0 }, 500);
-        $("#nav-body").animate({ width: $(window).outerWidth() - 0}, 500);
+        $("#nav-body").animate({ width: $(window).outerWidth() - 0 }, 500);
         $("#nav-body-ul").animate({ width: $(window).outerWidth() - 0 }, 500);
     }
 }
 
 /*AddFrame*/
 function AddIframe(id, url, name) {
-    if (($("#nav-body-ul li").length + 1) * 100  >= $("#nav-body-ul").outerWidth()) {
+    if (($("#nav-body-ul li").length + 1) * 100 >= $("#nav-body-ul").outerWidth()) {
         alert("您打开的页面太多惹~~关掉几个再试试？？");
         return;
     }
@@ -193,26 +182,25 @@ function AddIframe(id, url, name) {
     $mainPanelChilds.each(function (i, n) {
         n.style.display = "none";
     });
-    
+
     if (document.getElementById("nav-column-" + id)) {
         document.getElementById("panel-body-" + id).style.display = 'block';
-    } else
-    {
-        
+    } else {
+
         strLi += '<li id="nav-column-' + id + '">';
         strLi += '<div class="main_nav_li_interlayer" onclick="ChangeFrame(' + id + ')" >'
         strLi += '<div class="mian_nav_li_content">';
         strLi += '<span class="mian_nav_li_content_title">' + name + '</span>';
         strLi += '</div>';
         strLi += '</div>'
-        strLi += '<div onclick="SubIframe('+id+')" onmouseover ="NavCloseBtnMouseOver(' + id + ')" onmouseout ="NavCloseBtnMouseOut(' + id + ')" class="mian_nav_li_close_btn" id="nav-li-close-btn-' + id + '"></div>';
+        strLi += '<div onclick="SubIframe(' + id + ')" onmouseover ="NavCloseBtnMouseOver(' + id + ')" onmouseout ="NavCloseBtnMouseOut(' + id + ')" class="mian_nav_li_close_btn" id="nav-li-close-btn-' + id + '"></div>';
         strLi += '</li>';
 
 
         $ul.append(strLi);
-    
-        strIframe += '<div id="panel-body-'+id+'" style="width:inherit;height:inherit">';
-        strIframe += '<iframe src="'+url+'" style="border:0px none;width:100%;height:100%;">';
+
+        strIframe += '<div id="panel-body-' + id + '" style="width:inherit;height:inherit">';
+        strIframe += '<iframe src="' + url + '" style="border:0px none;width:100%;height:100%;">';
         strIframe += '</iframe>';
         strIframe += '</div>';
 
@@ -228,21 +216,19 @@ function AddIframe(id, url, name) {
 
 }
 
-function NavCloseBtnMouseOver(navId)
-{
+function NavCloseBtnMouseOver(navId) {
     $li = $("#nav-column-" + navId);
     var oldBPY = $li.css('background-position-y');
-    $li.css('background-position-y',oldBPY.substring(0,oldBPY.length-2) - 40 +"px");
+    $li.css('background-position-y', oldBPY.substring(0, oldBPY.length - 2) - 40 + "px");
 }
 
 function NavCloseBtnMouseOut(navId) {
     $li = $("#nav-column-" + navId);
     var oldBPY = $li.css('background-position-y');
-    $li.css('background-position-y',Number(oldBPY.substring(0,oldBPY.length-2)) + 40 +"px");
+    $li.css('background-position-y', Number(oldBPY.substring(0, oldBPY.length - 2)) + 40 + "px");
 }
 
-function SubIframe(id)
-{
+function SubIframe(id) {
     var $navLi = $("#nav-column-" + id);
     $navLi.remove();
     var $iframe = $("#panel-body-" + id);
@@ -263,8 +249,7 @@ function SubIframe(id)
 }
 
 /*iframe   title onclick事件*/
-function ChangeFrame(id)
-{
+function ChangeFrame(id) {
     var $mainPanel = $("#main-panel");
     var $mainPanelChilds = $mainPanel.children();
     $mainPanelChilds.each(function (i, n) {
@@ -275,7 +260,5 @@ function ChangeFrame(id)
         $(n).css("background-position-y", "-20px");
     });
 
-    $("#nav-column-" + id).css("background-position-y","-100px");
-
-    
+    $("#nav-column-" + id).css("background-position-y", "-100px");
 }

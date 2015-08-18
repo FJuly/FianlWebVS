@@ -142,7 +142,7 @@
     <Content Include="Areas\PersonalManger\CSS\left.css" />
     <Content Include="Areas\PersonalManger\Images\page.png" />
     <Content Include="Areas\PersonalManger\Views\CheckMember\DepartmentInfo.cshtml" />
-    <Content Include="Areas\PersonalManger\Views\CheckMember\BrowsePosition.cshtml" />
+    <Content Include="Areas\PersonalManger\Views\CheckMember\BrowserPosition.cshtml" />
     <Content Include="Areas\PersonalManger\Views\EntryPosition\EntryChoose.cshtml" />
     <Content Include="Areas\PersonalManger\Views\EntryPosition\EntryPosition.cshtml" />
     <Content Include="Areas\PersonalManger\Views\CheckMember\PersonPage.cshtml" />

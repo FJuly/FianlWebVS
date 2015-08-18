@@ -12,7 +12,7 @@ namespace Login.Filters
     /// </summary>
     public class LoginValidateAttribute:System.Web.Mvc.AuthorizeAttribute
     {
-        #region 1.0 验证方法 - 在 ActionExcuting过滤器之前执行
+        #region 验证方法 - 在 ActionExcuting过滤器之前执行
         /// <summary>
         /// 验证方法 - 在 ActionExcuting过滤器之前执行
         /// </summary>
@@ -20,8 +20,7 @@ namespace Login.Filters
         public override void OnAuthorization(System.Web.Mvc.AuthorizationContext filterContext)
         {
             //1.如果请求的 Admin 区域里的 控制器类和方法，那么就要验证权限 && filterContext.RouteData.DataTokens["area"].ToString().ToLower() == "Login".ToLower()
-            if (filterContext.RouteData.DataTokens.Keys.Contains("area")//当前请求匹配的 路由对象中 是否 有 area区域
-               )
+            if (filterContext.RouteData.DataTokens.Keys.Contains("area"))//当前请求匹配的 路由对象中 是否 有 area区域          
             {
                 //2.检查 被请求的 方法 和 控制器是否有 Skip 标签，如果有，则不验证；如果没有，则验证
                 if (!filterContext.ActionDescriptor.IsDefined(typeof(Common.Attributes.SkipAttribute), false) &&
@@ -51,7 +50,6 @@ namespace Login.Filters
                     }
                     #endregion
                 }
-
             }
         } 
         #endregion

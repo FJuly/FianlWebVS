@@ -10,7 +10,7 @@
     <script src="~/Areas/PersonalManger/JS/jquery-1.3.1.js"></script>
     <script src="~/Areas/PersonalManger/JS/EntryPosition.js"></script>
     <title>Index</title>
-    <script type="text/ecmascript">
+    <script type="text/javascript">
         /*请求数据时带上职务参数   */
         $(function () {
             var oprate = $("#oprate").val();
@@ -18,48 +18,22 @@
             /*根据不同角色初始化表格*/
             $.Init(role, oprate);
         })
-        $(function () {
-            var role = $("#role").val();
-            var oprate = $("#oprate").val();
-            /*更改标题*/
-            if (role == "@MVC.Helper.Position.President")
-                $("#head-nav-text").text(oprate + "总裁");
-            if (role == "@MVC.Helper.Position.Minister")
-                $("#head-nav-text").text(oprate + "部长");
-            if (role == "@MVC.Helper.Position.StudyLeader")
-                $("#head-nav-text").text(oprate + "团长");
-            if (role == "@MVC.Helper.Position.StudyMember")
-                $("#head-nav-text").text(oprate + "团员");
-            if (role == "@MVC.Helper.Position.PlanLeader")
-                $("#head-nav-text").text(oprate + "组长");
-            if (role == "@MVC.Helper.Position.PlanMmember")
-                $("#head-nav-text").text(oprate + "组员");
-            if (role == "@MVC.Helper.Position.Financial")
-                $("#head-nav-text").text(oprate + "财务主管");
-            if (role == 10000)
-                $("#head-nav-text").text(oprate + "部门成员");
-            if (role == 10010)
-                $("#head-nav-text").text(oprate + "技术指导");
-        })
     </script>
 </head>
 <body style="font-family: 'Microsoft YaHei'; background-color: rgb(237,241,249)">
-    <input type="hidden" value="@ViewBag.oprate" id="oprate"/>
-    <input type="hidden" value="@ViewBag.num" id="role"/>
-    <input type="hidden" value="IsPostBack" id="IsPostBack" />
-    <input type="hidden" value="@ViewBag.urlfix" id="urlfix"/>
+    <input type="hidden" value="@ViewBag.Oprate" id="oprate"/>
+    <input type="hidden" value="@ViewBag.Role" id="role"/>
     <div style="margin: 20px auto; width: 1056px; background-color: white">
         <div class="head">
             <div class="head-nav">
                 <div class="head-nav-img"></div>
-                <div class="head-nav-text" id="head-nav-text">@ViewBag.oprate</div>
+                <div class="head-nav-text" id="head-nav-text">@ViewBag.RoleName</div>
             </div>
         </div>
         @*------------------------------------中间搜索框-----------------------------------*@
         <div class="toolbar">
-            <button class="btn btn-success btn-sm" id="entry" onclick="entry()">@ViewBag.oprate</button>
+            <button class="btn btn-success btn-sm" id="entry" onclick="entry()">@ViewBag.Oprate</button>
         </div>
-
 
         @* -------------------表格----------------------------------------------------------*@
         <div class="table-self">

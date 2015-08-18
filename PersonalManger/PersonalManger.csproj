@@ -73,7 +73,8 @@
   <ItemGroup>
     <Compile Include="Controllers\CheckMember.cs" />
     <Compile Include="Controllers\EntryPosition.cs" />
-    <Compile Include="Controllers\PermissionController.cs" />
+    <Compile Include="Controllers\Permission.cs" />
+    <Compile Include="DTO\PositionDTO.cs" />
     <Compile Include="EntryPositionHelper.cs" />
     <Compile Include="PersonnalMangerAreaRegistration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

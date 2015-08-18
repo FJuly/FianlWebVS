@@ -228,6 +228,33 @@ namespace MVC.Helper
         /// <returns></returns>
         public bool HasPemission(string areaName, string controllerName, string actionName, string httpMethod)
         {
+            #region 废弃的代码 不可用
+            //foreach (var per in UsrPermission)
+            //{
+
+            //    if (per.PerActionName == "*")
+            //    {
+            //        if (string.Equals(per.PerAreaName, areaName, StringComparison.CurrentCultureIgnoreCase)
+            //            && string.Equals(per.PerController, controllerName, StringComparison.CurrentCultureIgnoreCase))
+            //        {
+            //            return true;
+            //        }
+            //    }
+            //    else
+            //    {
+            //        if (string.Equals(per.PerAreaName, areaName, StringComparison.CurrentCultureIgnoreCase) &&
+            //          string.Equals(per.PerController, controllerName, StringComparison.CurrentCultureIgnoreCase) &&
+            //            string.Equals(per.PerActionName, actionName, StringComparison.CurrentCultureIgnoreCase) && (
+            //               per.PerFormMethod == 3 ||//如果数据库保存的权限 请求方式 =3 代表允许 get/post请求
+            //                per.PerFormMethod == (httpMethod.ToLower() == "get" ? 1 : 2)))
+            //        {
+            //            return true;
+            //        }
+            //    }
+            //}
+            //return false; 
+            #endregion
+
             var listP = from per in UsrPermission
                         where
                             string.Equals(per.PerAreaName, areaName, StringComparison.CurrentCultureIgnoreCase) &&
@@ -309,6 +336,7 @@ namespace MVC.Helper
                 {
                     Uri MyUrl = Request.UrlReferrer;
                     string url = MyUrl.ToString();
+                    //url可能为空
                     return RedirectAjax("nopermission", "您没有权限访问此页面", null, url);
                 }
             }

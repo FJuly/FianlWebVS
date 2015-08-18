@@ -1,10 +1,10 @@
 ﻿
 $.extend({
-    Entry: function (stunums, oprate, urlfix, IsPostBack, role) {
+    Entry: function (stunums, oprate,role) {
         $.ajax({
-            url: '/PersonalManger/EntryPosition/Entry' + urlfix,
+            url: '/PersonalManger/EntryPosition/Entry',
             type: 'post',
-            data: { "stunums": stunums, "oprate": oprate, "IsPostBack": IsPostBack, "role": role },
+            data: { "stunums": stunums,"role": role },
             success: function (json) {
                 //转换json，很奇怪............
                 var jsonObj = JSON.parse(json);
@@ -33,10 +33,7 @@ function entry() {
     var stunums = "";
     var role = $("#role").val();
     var oprate = $("#oprate").val();
-    var IsPostBack = $("#IsPostBack").val();
-    var urlfix = $("#urlfix").val();
     $("input[type='checkbox']").each(function () {
-
         if ($(this).attr("checked")) {
             stunums = stunums + $(this).attr("data-stunum") + ";";
         }
@@ -48,12 +45,11 @@ function entry() {
             if ($("input[type='checkbox']:checked").length > 1) {
                 alert("只能录入一位");
             } else {
-
                 $.Entry(stunums, oprate, urlfix, IsPostBack, role);
             }
         }
     }
-    $.Entry(stunums, oprate, urlfix, IsPostBack, role);
+    $.Delete(stunums,role);
 }
 
 /*分页定义的变量*/
@@ -95,7 +91,6 @@ $.extend({
             type: 'post',
             data: { "pageindex": pageIndex, "role": role, "oprate": oprate },
             success: function (json) {
-                //转换json，很奇怪............
                 var jsonObj = JSON.parse(json);
                 if (jsonObj.Statu == "ok") {
                     $("#body").empty();
