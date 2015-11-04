@@ -26,5 +26,4 @@ namespace IBLL
 		ITaskTypeBLL ITaskTypeBLL{get;set;}
 		ITechnicaLevelBLL ITechnicaLevelBLL{get;set;}
     }
-
 }

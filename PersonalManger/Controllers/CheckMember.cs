@@ -13,16 +13,23 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI;
 
 namespace PersonalManger
 {
    
     public class CheckMemberController : Controller
     {
-        #region 人信息展示页面+ public ViewResult()，静态页面做一个缓存
+        #region 人信息展示页面+ public ViewResult(）
+        [OutputCache(Duration = 60, VaryByParam = "StuNum",Location=OutputCacheLocation.Client)]//静态页面整页缓存
         public ViewResult PersonPage()
         {
             string stunum =Request.QueryString["StuNum"];
+            ViewBag.Message = DateTime.Now.ToString();
+            if (stunum == null)
+            {
+                stunum = OperateContext.Current.Usr.StuNum;
+            }
 
             /*判断每个人是否具有修改的权限*/
             string IsEdit;
@@ -338,7 +345,6 @@ namespace PersonalManger
                     whereLambda = u => u.IsDelete == false && (u.Department == DepId);
                 }
                 return PageData(whereLambda, pageIndex);
-
             }
         }
         #endregion
@@ -348,7 +354,7 @@ namespace PersonalManger
         {
             int totalRecord;
 
-            int pageSize = 10;//页容量固定死为10
+            int pageSize = 11;//页容量固定死为10
             try//为什么异常没有捕捉到
             {
                 var list = OperateContext.Current.BLLSession.IMemberInformationBLL.GetPagedList(pageIndex, pageSize,

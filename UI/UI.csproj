@@ -146,7 +146,7 @@
     <Content Include="Areas\PersonalManger\Views\EntryPosition\EntryChoose.cshtml" />
     <Content Include="Areas\PersonalManger\Views\EntryPosition\EntryPosition.cshtml" />
     <Content Include="Areas\PersonalManger\Views\CheckMember\PersonPage.cshtml" />
-    <Content Include="WelcomePage.html" />
+    <None Include="Views\Default\Index.cshtml" />
     <Content Include="Areas\Duty\Views\Web.config" />
     <Content Include="Areas\Duty\Views\Duty\EntryDutyView.cshtml" />
     <Content Include="Areas\Duty\Views\Duty\Index.cshtml" />
@@ -192,13 +192,12 @@
     <Content Include="Areas\PersonalManger\Views\CheckMember\Index.cshtml" />
     <Content Include="Views\Default\boot.cshtml" />
     <Content Include="Areas\PersonalManger\Views\CheckMember\PageEdit.cshtml" />
-    <Content Include="Views\Default\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Duty\Views\Shared\" />
     <Folder Include="Areas\Login\Views\Shared\" />
-    <Folder Include="Areas\PersonalManger\Views\Shared\" />
+    <Folder Include="Areas\PersonalManger\Views\Shared\EditorTemplates\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Login\Views\Login\Index.cshtml" />

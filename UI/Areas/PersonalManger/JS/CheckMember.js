@@ -28,7 +28,7 @@ function Delete(stuNum) {
 
 /*分页定义的变量*/
 var json = "";//json数据
-var pageSize = 10;//页的容量
+var pageSize = 20;//页的容量
 var pageIndex = 1;//记录翻到了第几页
 var rowSum;//记录总行数
 var pageSum;//记录总页数

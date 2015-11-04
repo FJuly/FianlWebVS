@@ -73,6 +73,4 @@ namespace IBLL
 	public partial interface ITechnicaLevelBLL : IBaseBLL<MODEL.T_TechnicaLevel>
     {
     }
-
-
 }
